@@ -6,4 +6,10 @@ public class Piece {
     public Piece(String name, Player owner) {
         status = false;
     }
+
+//    public move(int x, int y) {
+//
+//        if isValidMove()
+//    }
+
 }

@@ -4,9 +4,17 @@ import java.util.ArrayList;
  * Guess this is a use case class
  */
 public class Board {
-    private Player p1;
-    private Player p2;
+//    private Player p1;
+//    private Player p2;
+
+
     private Piece[][] board;
+
+    private Player activePlayer;
+
+    public Board() {
+        // .....
+    }
 
     /**
      * Add a piece to the coordinate
