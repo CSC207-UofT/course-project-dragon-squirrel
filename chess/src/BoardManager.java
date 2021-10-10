@@ -17,10 +17,13 @@ public class BoardManager {
      */
     public boolean movePiece(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
 
-        if isValidMove(X, Y) {
-            board.addPiece();
-            board.removePiece();
-        }
+//        if (isValidMove()) {
+//            board.addPiece();
+//            board.removePiece();
+//        }
+
+        return false;
+    }
 
     /**
      * End a player's round, and let the other player move
@@ -40,7 +43,8 @@ public class BoardManager {
         return null;
     }
 
-    private boolean isValidMove() {
+    private boolean isValidMove(int X, int Y) {
         // ....
+        return false;
         }
 }
