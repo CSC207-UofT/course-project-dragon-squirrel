@@ -1,9 +1,14 @@
-## Replace this README.md!
+So this is the basic structure/vague idea of the project
 
-This is a standard README.md file for you to replace. You'll want to include your own content here!
+Entity:                 Player, Human, AI, Piece, ModifiedPiece
+Use Case:               Board
+Controller/Presenter:   BoardManager
+Outer most layer:       UI
 
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+It's just a framework yet, most of the details are not implemented
 
+We can definitely add more class to it, or separate a class into small pieces
 
-Some changes from Future
+I did not exactly follow the SOLID principle, but I feel this design is solid somehow
+
+Any suggestions and improvements are welcomed!
