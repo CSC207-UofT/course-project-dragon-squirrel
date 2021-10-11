@@ -20,11 +20,11 @@ as a move wherein the attacking piece does not actually move. A piece is capture
 health points are depleted.
 
 ## Standard game: piece specific behaviours
-pawn: one square directly forward, optional two squares directly forward if it has not moved yet
-rook: horizontal/vertical straight line
-bishop: diagonal straight line
-knight: L-shape move, can "jump" over pieces
-queen: horizontal/vertical/diagonal line
+pawn: one square directly forward, optional two squares directly forward if it has not moved yet  
+rook: horizontal/vertical straight line  
+bishop: diagonal straight line  
+knight: L-shape move, can "jump" over pieces  
+queen: horizontal/vertical/diagonal line  
 king: one square any direction
 
 ## Present Scope
