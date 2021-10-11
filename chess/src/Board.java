@@ -1,3 +1,5 @@
+package chess.src;
+
 import java.util.ArrayList;
 
 /**
@@ -59,6 +61,17 @@ public class Board {
      * @param p
      */
     public void switchPieceStatus(Piece p) {
+
+    }
+
+    /**
+     * Return 0 if the path is clear but the new coordinate is occupied with an opponent's piece
+     * Return 1 if the path is clear and the new coordinate is vacant
+     * Return 2 if the path is not clear
+     * Return 3 if the path is not clear but the new coordinate is vacant (for knight)
+     */
+    public int clearValidPath(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
+        //uses the validMove() method in Piece
 
     }
 
