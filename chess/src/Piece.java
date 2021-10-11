@@ -1,5 +1,3 @@
-package chess.src;
-
 public class Piece {
     private String name;
     private Player owner;

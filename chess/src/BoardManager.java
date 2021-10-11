@@ -1,5 +1,3 @@
-package chess.src;
-
 /**
  * This should be in the controller/presenter layer
  * It should receive some input from players and send command to a Board instance
@@ -18,26 +16,34 @@ public class BoardManager {
     }
 
     /**
-     * Move the piece that is at board[oldCoorX][oldCoorY] to board[newCoorX][newCoorY]
+     * Move the piece that is at board[oldX][oldY] to board[newX][newY]
      * Check whether the movement is valid and possibly attack another piece
      * @return  If successfully moved, return true
      */
-    public boolean movePiece(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        int clearValid = getBoard().clearValidPath();
+    public boolean movePiece(int oldX, int oldY, int newX, int newY) {
+        int clearValid = board.clearValidPath(oldX, oldY, newX, newY);
+
+
+        // This if-else can be changed to switch statement
+
         if (clearValid == 0) {
-            board.removePiece();
-            board.addPiece();
+            Piece p = board.removePiece(oldX, oldY);
+            board.addPiece(p, newX, newY);
             return true;
         }
+
         if (clearValid == 1) {
             board.addPiece();
             return true;
         }
+
         if (clearValid == 2)
             return false;
         else {
             //code for knights and other stuff
         }
+
+        return false;
 
 //        if (isValidMove()) {
 //            board.addPiece();

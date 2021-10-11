@@ -1,5 +1,3 @@
-package chess.src;
-
 import java.util.ArrayList;
 
 /**
@@ -18,6 +16,10 @@ public class Board {
         // .....
     }
 
+    public Piece getPiece(int X, int Y) {
+        return null;
+    }
+
     /**
      * Add a piece to the coordinate
      * @param pieceToAdd
@@ -33,9 +35,10 @@ public class Board {
      * addPiece() and removePiece() work together to move a piece within the board
      * @param X
      * @param Y
+     * @return  The piece been removed
      */
-    public void removePiece(int X, int Y) {
-
+    public Piece removePiece(int X, int Y) {
+        return null;
     }
 
     /**
@@ -49,9 +52,8 @@ public class Board {
 
     /**
      * Switch player status between
-     * @param p
      */
-    public void switchPlayerStatus(Player p) {
+    public void switchActivePlayer() {
 
     }
 
@@ -69,10 +71,11 @@ public class Board {
      * Return 1 if the path is clear and the new coordinate is vacant
      * Return 2 if the path is not clear
      * Return 3 if the path is not clear but the new coordinate is vacant (for knight)
+     * Return -1 if there is some error
      */
     public int clearValidPath(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         //uses the validMove() method in Piece
-
+        return -1;
     }
 
 //        /**
