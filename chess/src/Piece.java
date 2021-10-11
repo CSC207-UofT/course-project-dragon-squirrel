@@ -1,5 +1,3 @@
-package chess.src;
-
 public class Piece {
     private String name;
     private Player owner;
@@ -9,10 +7,11 @@ public class Piece {
         status = false;
     }
 
-//    public move(int x, int y) {
-//
-//        if isValidMove()
-//    }
+    public String getName() { return name; }
+
+    public Player getOwner() { return owner; }
+
+    public boolean getStatus() { return status; }
 
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         if (newCoorX > 0 & newCoorX < 9 & newCoorY > 0 & newCoorY < 9 &
