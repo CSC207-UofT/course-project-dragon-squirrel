@@ -8,8 +8,7 @@
  */
 public class BoardManager {
     private Board board;
-    //
-
+    private GameRule gl;    // A set of rules that determines valid move and piece interactions
 
     public Board getBoard() {
         return board;
@@ -21,34 +20,37 @@ public class BoardManager {
      * @return  If successfully moved, return true
      */
     public boolean movePiece(int oldX, int oldY, int newX, int newY) {
-        int clearValid = board.clearValidPath(oldX, oldY, newX, newY);
 
-
-        // This if-else can be changed to switch statement
-
-        if (clearValid == 0) {
-            Piece p = board.removePiece(oldX, oldY);
-            board.addPiece(p, newX, newY);
-            return true;
-        }
-
-        if (clearValid == 1) {
-            board.addPiece();
-            return true;
-        }
-
-        if (clearValid == 2)
-            return false;
-        else {
-            //code for knights and other stuff
-        }
-
-        return false;
+        /**
+         *  I moved and separated clearValidPath() into two methods
+         *  Use gl.isPathClear() and gl.isCoordinateVacant() instead
+         */
+//        int clearValid = gl.clearValidPath(oldX, oldY, newX, newY);
+//        if (clearValid == 0) {
+//            Piece p = board.removePiece(oldX, oldY);
+//            board.addPiece(p, newX, newY);
+//            return true;
+//        }
+//
+//        if (clearValid == 1) {
+//            board.addPiece();
+//            return true;
+//        }
+//
+//        if (clearValid == 2)
+//            return false;
+//        else {
+//            //code for knights and other stuff
+//        }
+//
+//        return false;
 
 //        if (isValidMove()) {
 //            board.addPiece();
 //            board.removePiece();
 //        }
+
+        return false;
     }
 
     /**
@@ -56,6 +58,13 @@ public class BoardManager {
      */
     public void passRound() {
 
+    }
+
+    /**
+     * If opponent is too strong u can give up lol
+     */
+    public void giveUp() {
+        // Kill current player's all pieces
     }
 
     /**
