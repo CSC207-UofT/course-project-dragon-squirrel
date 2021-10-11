@@ -21,13 +21,13 @@ health points are depleted.
 
 ## Standard game: piece specific behaviours
 pawn: one square directly forward, optional two squares directly forward if it has not moved yet  
-rook: horizontal/vertical straight line  
-bishop: diagonal straight line  
-knight: L-shape move, can "jump" over pieces  
-queen: horizontal/vertical/diagonal line  
-king: one square any direction
+  rook: horizontal/vertical straight line
+  bishop: diagonal straight line
+  knight: L-shape move, can "jump" over pieces
+  queen: horizontal/vertical/diagonal line
+  king: one square any direction
 
 ## Present Scope
 A simple game of chess can be played by two human players by entering coordinate input. No graphical user interface 
 exists at the moment but the user interface will let the player know if the suggested move executed or not through its 
-prompts. An AI strategy implementation will not be considered at this stage. 
+prompts. An AI strategy implementation will not be considered at this stage.
