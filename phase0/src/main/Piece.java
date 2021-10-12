@@ -14,7 +14,7 @@ public class Piece {
     public boolean getStatus() { return status; }
 
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        if (newCoorX > 0 & newCoorX < 9 & newCoorY > 0 & newCoorY < 9 &
+        if (newCoorX >= 0 & newCoorX < 8 & newCoorY >= 0 & newCoorY < 8 &
                 (oldCoorX != newCoorX || oldCoorY != newCoorY )) {
             return true;}
         else {
