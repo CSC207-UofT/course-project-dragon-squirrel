@@ -6,10 +6,10 @@ The UI class displays the current board (doesn't have to be graphic), and allows
 Once the player decides to move a piece, the UI class send commands by invoking BoardManager.
 BoardManager class then checks whether the player's move is allowed by calling methods in GameRule class,
 and GameRule may need to call methods in Piece class to determine validity.
-If the move is invalid, BoardManager return false to UI class and UI let the player make another move.
-If the move is valid, BoardManager will send command (call methods) to Board class to actually move the piece. If the 
-move involves pieces interaction, then BoardManager will invoke GameRule and further calculate result and let 
-Board class make changes.
+If the move is invalid, BoardManager returns false to UI class and UI prompts the player to make another move.
+If the move is valid, BoardManager will send commands (call methods) to Board class to actually move the piece. If the 
+move involves piece interaction (i.e. a piece attacks another, etc.), then BoardManager will invoke GameRule to further 
+calculate results before letting Board class make changes.
 
 A player can move multiple pieces during its turn (in one of our designs). The above process repeats until all pieces
 are moved or the player manually passes its turn (by calling methods in BoardManager).
