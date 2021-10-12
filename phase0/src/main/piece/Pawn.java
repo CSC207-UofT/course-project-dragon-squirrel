@@ -18,20 +18,20 @@ public class Pawn extends Piece{
         }
         boolean solution;
         if (isWhite) {
-            solution = ((newCoorY - oldCoorY == -1 && newCoorX - oldCoorX == 0) || (newCoorY - oldCoorY == -1 && Math.abs(newCoorX - oldCoorX) == 1));
+            solution = ((newCoorX - oldCoorX == -1 && newCoorY - oldCoorY == 0) || (newCoorX - oldCoorX == -1 && Math.abs(newCoorY - oldCoorY) == 1));
         }
         else {
-            solution = ((newCoorY - oldCoorY == 1 && newCoorX - oldCoorX == 0) || (newCoorY - oldCoorY == 1 && Math.abs(newCoorX - oldCoorX) == 1));
+            solution = ((newCoorX - oldCoorX == 1 && newCoorY - oldCoorY == 0) || (newCoorX - oldCoorX == 1 && Math.abs(newCoorY - oldCoorY) == 1));
         }
         if (solution) {
             return true;
         }
         if (init) {
             if (isWhite) {
-                solution = (newCoorY - oldCoorY == -2 && newCoorX - oldCoorX == 0);
+                solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
             }
             else {
-                solution = (newCoorY - oldCoorY == 2 && newCoorX - oldCoorX == 0);
+                solution = (newCoorX - oldCoorX == 2 && newCoorY - oldCoorY == 0);
             }
         }
 
