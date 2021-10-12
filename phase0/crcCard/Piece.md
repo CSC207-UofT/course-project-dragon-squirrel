@@ -6,6 +6,7 @@
     "type": "interface",
     "responsibilities": [
       "\\Define how chesspiece move"
+      "boolean isAlive()"
       "boolean isValidMove()"
     ],
     "collaborators": [
