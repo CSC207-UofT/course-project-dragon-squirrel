@@ -1,3 +1,5 @@
+// Represents one of two participants in a game
+
 public class Player {
 
     public boolean white;   // Wether player is white team or not

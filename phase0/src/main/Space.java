@@ -1,3 +1,5 @@
+// Represents one spot in the board and optional piece
+
 public class Space {
 
     private Piece piece;    // piece occupying (or null) this space
