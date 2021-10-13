@@ -1,3 +1,5 @@
+// 8x8 array of spaces containing pieces
+
 import java.util.ArrayList;
 
 public class Board {
