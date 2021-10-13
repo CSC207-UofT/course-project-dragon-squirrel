@@ -1,4 +1,5 @@
-// An abstract class that respresents the commonality of all pieces
+// An abstract class that respresents the commonality of all pieces.
+// The abstract methods are implemented by the children classes.s
 
 public class Piece {
 
