@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Board {
 
-    public Space[][] spaces;    // grid representing all valid squares/cells/spaces
+    private Space[][] spaces;    // grid representing all valid squares/cells/spaces
 
     // Instantiation without parameters constructs the default board
     public Board() {
