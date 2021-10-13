@@ -1,14 +1,12 @@
-public class Pawn extends Piece{
-    private String name;
-    private Player owner;
-    private boolean status;
-    public boolean init;
-    private final boolean isWhite;
+package piece;
 
-    public Pawn(String name, Player owner, boolean whiteOrNot){
-        super(name, owner);
+public class Pawn extends Piece{
+
+    public boolean init;
+
+    public Pawn(String name, Color color){
+        super(name, color);
         init = true;
-        isWhite = whiteOrNot;
     }
 
     @Override
@@ -17,7 +15,7 @@ public class Pawn extends Piece{
             return false;
         }
         boolean solution;
-        if (isWhite) {
+        if (color == Color.WHITE) {
             solution = ((newCoorX - oldCoorX == -1 && newCoorY - oldCoorY == 0) || (newCoorX - oldCoorX == -1 && Math.abs(newCoorY - oldCoorY) == 1));
         }
         else {
@@ -27,7 +25,7 @@ public class Pawn extends Piece{
             return true;
         }
         if (init) {
-            if (isWhite) {
+            if (color == Color.WHITE) {
                 solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
             }
             else {

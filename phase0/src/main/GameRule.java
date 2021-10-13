@@ -1,3 +1,5 @@
+import piece.Piece;
+
 /**
  * This contains one set of game rules.
  * Since the game has two sets of rule, we can easily make subclass of it to describe the second rule
@@ -5,7 +7,7 @@
 public class GameRule {
 
 	private Board board;
-	// we can use board.getPiece() to access pieces
+	private Piece[] pieces;
 
 //	/**
 //	 * Return 0 if the path is clear but the new coordinate is occupied with an opponent's piece
@@ -18,6 +20,35 @@ public class GameRule {
 //		//uses the validMove() method in Piece
 //		return -1;
 //	}
+	public GameRule() {
+
+	}
+
+	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+		String pieceName = board.getPiece(oldX, oldY);
+		String targetPieceName = board.getPiece(newX, newY);
+		Piece pieceToMove = null;
+		Piece targetPiece = null;
+
+		// There gotta be a better way to get the piece
+		for (Piece p: pieces) {
+			if (pieceName.equals(p.getName()))
+				pieceToMove = p;
+			if (targetPieceName.equals(p.getName()))
+				targetPiece = p;
+		}
+
+		if (!isCoordinateValid(oldX, oldY, newX , newY ))
+			return false;
+
+		if (pieceToMove == null)
+			return false;
+
+		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece))
+			return false;
+
+		return false;
+	}
 
 	/**
 	 * It might be a good idea to separate clearValidPath() into two methods
@@ -31,6 +62,14 @@ public class GameRule {
 	 */
 	public boolean isCoordinateVacant(int X, int Y) {
 		return false;
+	}
+
+	/**
+	 * Check: old and new coordinates are not same
+	 *        new coordinate is within the board
+	 */
+	private boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
+		return newX > 0 & newX < 9 & newY > 0 & newY < 9 & (oldX != newX || oldY != newY);
 	}
 
 	/**

@@ -1,10 +1,8 @@
+package piece;
 public class Bishop extends Piece{
-    private String name;
-    private Player owner;
-    private boolean status;
 
-    public Bishop(String name, Player owner){
-        super(name, owner);
+    public Bishop(String name, Color color){
+        super(name, color);
     }
 
     @Override

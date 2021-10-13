@@ -1,28 +1,34 @@
-public class Piece {
-    private String name;
-    private Player owner;
-    private boolean status;     // This tells whether this piece has been moved during the turn
+package piece;
 
-    public Piece(String name, Player owner) {
-        status = false;
+public class Piece {
+    protected String name;
+    protected Color color;    // Black or White
+    protected boolean status;     // This tells whether this piece has been moved during the turn
+
+    public Piece(String name, Color color) {
+        this.name = name;
+        this.color = color;
+        this.status = false;
     }
 
     public String getName() { return name; }
 
-    public Player getOwner() { return owner; }
+    public Color getColor() { return color; }
 
     public boolean getStatus() { return status; }
 
+    public boolean hasSameColor(Piece another) { return this.color == another.color; }
+
+
+    // This can actually be done in GameRule, so I moved the code there (try not let entity enforce rules)
+    // The subclasses of Piece can still override it tho
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        if (newCoorX > 0 & newCoorX < 9 & newCoorY > 0 & newCoorY < 9 &
-                (oldCoorX != newCoorX || oldCoorY != newCoorY )) {
-            return true;}
-        else {
-            return false;
-        }
+
         // to be overridden but the first line of the overridden method can call super.validMove(...) just to check that
         // the new coordinates given are within the boundaries of the board and that the new coordinates given are a new
         // set of coordinates, return false otherwise.
+
+        return false;
     }
 
 }

@@ -1,10 +1,9 @@
-public class Rook extends Piece{
-    private String name;
-    private Player owner;
-    private boolean status;
+package piece;
 
-    public Rook(String name, Player owner){
-        super(name, owner);
+public class Rook extends Piece{
+
+    public Rook(String name, Color color){
+        super(name, color);
     }
 
     @Override

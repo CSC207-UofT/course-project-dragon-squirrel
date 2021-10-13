@@ -1,10 +1,9 @@
-public class Knight extends Piece{
-    private String name;
-    private Player owner;
-    private boolean status;
+package piece;
 
-    public Knight(String name, Player owner){
-        super(name, owner);
+public class Knight extends Piece{
+
+    public Knight(String name, Color color){
+        super(name, color);
     }
 
     @Override

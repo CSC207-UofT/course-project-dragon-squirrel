@@ -1,10 +1,9 @@
-public class Queen extends Piece{
-    private String name;
-    private Player owner;
-    private boolean status;
+package piece;
 
-    public Queen(String name, Player owner){
-        super(name, owner);
+public class Queen extends Piece{
+
+    public Queen(String name, Color color){
+        super(name, color);
     }
 
     @Override
