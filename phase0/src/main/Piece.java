@@ -1,4 +1,7 @@
+// An abstract class that respresents the commonality of all pieces
+
 public class Piece {
+
     private boolean white;  // Whether piece is white or not
     private boolean alive;   // Whether piece is alive or not
 
