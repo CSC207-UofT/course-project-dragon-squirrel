@@ -1,33 +1,46 @@
 public class Piece {
-    private String name;
-    private Player owner;
-    private boolean status;     // This tells whether this piece has been moved during the turn
-    private boolean alive = true;   // Whether the piece is alive or not (dead)
+    private boolean white;  // Whether piece is white or not
+    private boolean alive;   // Whether piece is alive or not
 
-    public Piece(String name, Player owner) {
-        status = false;
+    // Instantiate a piece
+    // @white whether piece is white or not
+    // @alive whether piece is alive or not
+    // @return no return
+    public Piece(boolean white, boolean alive) {
+        this.white = this.setWhite(white);
+        this.alive = this.setAlive(alive);
     }
 
-    public String getName() { return name; }
+    // @return whether piece is white or not
+    public boolean isWhite(){
+        return this.white;
+    }
 
-    public Player getOwner() { return owner; }
+    // set piece as white or not
+    // @white whether piece is white or not
+    // @return null
+    public void setWhite(boolean white){
+        this.white = white;
+    }
 
-    public boolean getStatus() { return status; }
-
+    // @return whether piece is alive or not
     public boolean isAlive() {
         return this.alive;
     }
 
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        if (newCoorX > 0 & newCoorX < 9 & newCoorY > 0 & newCoorY < 9 &
-                (oldCoorX != newCoorX || oldCoorY != newCoorY )) {
-            return true;}
-        else {
-            return false;
-        }
-        // to be overridden but the first line of the overridden method can call super.validMove(...) just to check that
-        // the new coordinates given are within the boundaries of the board and that the new coordinates given are a new
-        // set of coordinates, return false otherwise.
+    // set piece as alive or not
+    // @alive whether piece is alive or not
+    // @return null
+    public void setAlive(boolean alive){
+        this.alive = alive;
     }
+
+    // each subclass of piece will implement their own validMove
+    // Board will handle outside of board boundaries error
+    // @board board that the game is taking place on
+    // @start starting space
+    // @end ending space
+    // @return whether move is valid or not
+    public abstract boolean validMove(Board board, Space start, Space end);
 
 }
