@@ -3,17 +3,12 @@
 import java.util.ArrayList;
 
 public class Board {
-
     private Space[][] spaces;    // grid representing all valid squares/cells/spaces
 
-    // Instantiation without parameters constructs the default board
     public Board() {
         this.defaultBoard();
     }
 
-    // @x the x coordinate of the space
-    // @y the y coordinate of the space
-    // @return the space of the given x and y coordinates
     public Space getspace(int x, int y) {
         if(x < 0 || x > 7 || y < 0 || y > 7){
             throw new Exception("index out of bound(s)");
@@ -21,10 +16,8 @@ public class Board {
         return spaces[x][y];
     }
 
-    // Initializes the default chess board
     public void defaultBoard()
     {
-
         // initialize white pieces
         spaces[7][0] = new space(0, 0, new Rook(true));
         spaces[7][1] = new space(0, 1, new Knight(true));
@@ -68,5 +61,4 @@ public class Board {
             }
         }
     }
-
 }

@@ -2,7 +2,6 @@
 // The abstract methods are implemented by the children classes.s
 
 public class Piece {
-
     private boolean white;  // Whether piece is white or not
     private boolean alive;   // Whether piece is alive or not
 
@@ -43,5 +42,4 @@ public class Piece {
     // @end ending space
     // @return whether move is valid or not
     public abstract boolean validMove(Board board, Space start, Space end);
-
 }

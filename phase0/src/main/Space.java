@@ -1,7 +1,6 @@
 // Represents one spot in the board and optional piece
 
 public class Space {
-
     private Piece piece;    // piece occupying (or null) this space
     private int x;  // space's x coordinate
     private int y;  // space's y coordinate
@@ -39,5 +38,4 @@ public class Space {
     public void setY(int y){
         this.y = y;
     }
-
 }
