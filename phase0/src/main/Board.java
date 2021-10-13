@@ -1,82 +1,70 @@
 import java.util.ArrayList;
 
-/**
- * Guess this is a use case class
- */
 public class Board {
-//    private Player p1;
-//    private Player p2;
 
+    public Space[][] spaces;    // grid representing all valid squares/cells/spaces
 
-    private Piece[][] board;
-
-    private Player activePlayer;
-
+    // Instantiation without parameters constructs the default board
     public Board() {
-        // .....
+        this.defaultBoard();
     }
 
-    public Piece getPiece(int X, int Y) {
-        return null;
+    // @x the x coordinate of the space
+    // @y the y coordinate of the space
+    // @return the space of the given x and y coordinates
+    public Space getspace(int x, int y) {
+        if(x < 0 || x > 7 || y < 0 || y > 7){
+            throw new Exception("index out of bound(s)");
+        }
+        return spaces[x][y];
     }
 
-    /**
-     * Add a piece to the coordinate
-     * @param pieceToAdd
-     * @param X
-     * @param Y
-     */
-    public void addPiece(Piece pieceToAdd, int X, int Y) {
+    // Initializes the default chess board
+    public void defaultBoard()
+    {
 
+        // initialize white pieces
+        spaces[7][0] = new space(0, 0, new Rook(true));
+        spaces[7][1] = new space(0, 1, new Knight(true));
+        spaces[7][2] = new space(0, 2, new Bishop(true));
+        spaces[7][3] = new space(0, 0, new Queen(true));
+        spaces[7][4] = new space(0, 1, new King(true));
+        spaces[7][5] = new space(0, 2, new Bishop(true));
+        spaces[7][7] = new space(0, 1, new Knight(true));
+        spaces[7][6] = new space(0, 0, new Rook(true));
+        spaces[6][0] = new space(1, 0, new Pawn(true));
+        spaces[6][1] = new space(1, 1, new Pawn(true));
+        spaces[6][2] = new space(1, 0, new Pawn(true));
+        spaces[6][3] = new space(1, 1, new Pawn(true));
+        spaces[6][4] = new space(1, 0, new Pawn(true));
+        spaces[6][5] = new space(1, 1, new Pawn(true));
+        spaces[6][6] = new space(1, 0, new Pawn(true));
+        spaces[6][7] = new space(1, 1, new Pawn(true));
+
+        // initialize black pieces
+        spaces[0][0] = new space(0, 0, new Rook(false));
+        spaces[0][1] = new space(0, 1, new Knight(false));
+        spaces[0][2] = new space(0, 2, new Bishop(false));
+        spaces[0][3] = new space(0, 0, new Queen(false));
+        spaces[0][4] = new space(0, 1, new King(false));
+        spaces[0][5] = new space(0, 2, new Bishop(false));
+        spaces[0][6] = new space(0, 1, new Knight(false));
+        spaces[0][7] = new space(0, 0, new Rook(false));
+        spaces[1][0] = new space(1, 0, new Pawn(false));
+        spaces[1][1] = new space(1, 1, new Pawn(false));
+        spaces[1][2] = new space(1, 0, new Pawn(false));
+        spaces[1][3] = new space(1, 1, new Pawn(false));
+        spaces[1][4] = new space(1, 0, new Pawn(false));
+        spaces[1][5] = new space(1, 1, new Pawn(false));
+        spaces[1][6] = new space(1, 0, new Pawn(false));
+        spaces[1][7] = new space(1, 1, new Pawn(false));
+
+        // initialize remaining spaces with no pieces
+        for (int i = 2; i < 6; i++) {
+            for (int j = 0; j < 8; j++) {
+                spaces[i][j] = new space(i, j, null);
+            }
+        }
     }
 
-    /**
-     * Remove a piece from the coordinate
-     * addPiece() and removePiece() work together to move a piece within the board
-     * @param X
-     * @param Y
-     * @return  The piece been removed
-     */
-    public Piece removePiece(int X, int Y) {
-        return null;
-    }
-
-    /**
-     * This kicks in when a piece is being attacked
-     * @param pieceToModify
-     * @param HpDeduction
-     */
-    public void DeductPieceHp(Piece pieceToModify, int HpDeduction) {
-
-    }
-
-    /**
-     * Switch player status between
-     */
-    public void switchActivePlayer() {
-
-    }
-
-    /**
-     * Switch piece status between 'moved' and 'movable'
-     * This is useful if we are moving multiple pieces in a round
-     * @param p
-     */
-    public void switchPieceStatus(Piece p) {
-
-    }
-
-
-//        /**
-//     * piece1 attacks piece2, calculate result
-//     * @param piece1
-//     * @param piece2
-//     * @param coorX     X coordinate of the piece being attacked
-//     * @param coorY     Y coordinate of the piece being attacked
-//     *
-//     * The params and implementation will likely change in the future
-//     */
-//    private void attackPiece(Piece piece1, Piece piece2, int coorX, int coorY) {
-//
-//    }
 }
