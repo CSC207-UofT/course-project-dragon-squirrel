@@ -29,8 +29,8 @@ public class PieceTest {
     @Test(timeout = 50)
     public void testIsAlive(){
         assertEquals(true, p1.isAlive);
-        assertEquals(false, p1.isAlive);
-        assertEquals(true, p1.isAlive);
-        assertEquals(false, p1.isAlive);
+        assertEquals(false, p2.isAlive);
+        assertEquals(true, p3.isAlive);
+        assertEquals(false, p4.isAlive);
     }
 }
