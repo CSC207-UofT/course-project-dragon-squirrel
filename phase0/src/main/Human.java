@@ -1,6 +1,8 @@
 public class Human extends Player{
 
-    public Human(String ID) {
-        super(ID);
+    public Human(white){
+        this.white;
+        this.human = true;
     }
+
 }
