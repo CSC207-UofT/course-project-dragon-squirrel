@@ -80,4 +80,9 @@ public class BoardManager {
     public void switchPieceStatus(Piece p) {
 
     }
+
+    public void resetBoard() {
+        board.reset();
+        // Also reset the pieces somehow
+    }
 }
