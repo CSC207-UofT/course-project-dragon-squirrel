@@ -1,6 +1,26 @@
 public class Player {
-    private String ID;
-    // private boolean status;     // This tells whether a player is in its turn to move
+    public boolean white;
+    public boolean human;
 
-    public Player(String ID) { this.ID = ID; }
+    public boolean isWhite(){
+        return this.white;
+    }
+
+    public boolean isHuman(){
+        return this.human;
+    }
+}
+
+public class Human extends Player{
+    public Human(white){
+        this.white;
+        this.human = true;
+    }
+}
+
+public class Computer extends Player{
+    public Computer(white){
+        this.white;
+        this.human = false;
+    }
 }
