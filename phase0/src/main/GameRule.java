@@ -58,7 +58,7 @@ public class GameRule {
 	 *        new coordinate is within the board
 	 */
 	private boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
-		return newX > 0 & newX < 9 & newY > 0 & newY < 9 & (oldX != newX || oldY != newY);
+		return newX >= 0 & newX < 8 & newY >= 0 & newY < 8 & (oldX != newX || oldY != newY);
 	}
 
 	/**
