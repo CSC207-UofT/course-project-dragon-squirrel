@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 
 public class Board {
-    private Space[][] spaces;    // grid representing all valid squares/cells/spaces
+    private String[][] names;    // grid representing all valid spaces
 
     public Board() {
         this.defaultBoard();

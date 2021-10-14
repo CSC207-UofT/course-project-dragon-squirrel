@@ -13,5 +13,7 @@ public class King extends Piece{
             return false;
         }
         return Math.abs(oldCoorX - newCoorX) <= 1 && Math.abs(oldCoorY - newCoorY) <= 1;
+
+        //TODO: what if we are castling
     }
 }
