@@ -1,26 +1,17 @@
+import piece.Color;
+
 public class Player {
-    public boolean white;
-    public boolean human;
+    private String ID;
+    private Color color;
+    private boolean status;     // This tells whether a player is in its turn to move
 
-    public boolean isWhite(){
-        return this.white;
+    public Player(String ID) { this.ID = ID; }
+
+    public String getID() {
+        return ID;
     }
 
-    public boolean isHuman(){
-        return this.human;
-    }
-}
-
-public class Human extends Player{
-    public Human(white){
-        this.white;
-        this.human = true;
-    }
-}
-
-public class Computer extends Player{
-    public Computer(white){
-        this.white;
-        this.human = false;
+    public Color getColor() {
+        return color;
     }
 }
