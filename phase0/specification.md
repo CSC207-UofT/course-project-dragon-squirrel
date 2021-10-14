@@ -6,6 +6,7 @@ starting positions. Taking turns, each player enters a move until the game ends.
 specific behaviours and game specific rules. If the current player is an AI, a vavlid move is directly made
 
 ## Chess Game
+
 Each player makes one valid move on their piece during their turn. Invalid moves prompt the current player to reenter a 
 new move. An opponent's piece can be captured in the process if a move is made to take the opponent's piece's place. The 
 captured piece is wiped from the board.
