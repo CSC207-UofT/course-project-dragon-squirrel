@@ -11,9 +11,9 @@ public class Pawn extends Piece{
 
     @Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        if (!super.validMove(oldCoorX, oldCoorY, newCoorX, newCoorY)) {
-            return false;
-        }
+//        if (!super.validMove(oldCoorX, oldCoorY, newCoorX, newCoorY)) {
+//            return false;
+//        }
         boolean solution;
         if (color == Color.WHITE) {
             solution = ((newCoorX - oldCoorX == -1 && newCoorY - oldCoorY == 0) || (newCoorX - oldCoorX == -1 && Math.abs(newCoorY - oldCoorY) == 1));

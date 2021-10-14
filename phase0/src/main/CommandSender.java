@@ -63,7 +63,7 @@ public class CommandSender {
 	 * If opponent is too strong u can give up lol
 	 */
 	public void giveUp() {
-		// Kill current player's all pieces
+
 	}
 
 	public void startNewGame() {

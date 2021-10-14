@@ -1,4 +1,7 @@
 import piece.Piece;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This should be in the controller/presenter layer
  * It should receive some input from players and send command to a Board instance
@@ -11,10 +14,22 @@ public class BoardManager {
 
     // These are the variables we might need
     private Board board;
-    private Piece[] pieces;
+    private Map<String, Piece> pieces;   // This is essentially dict in python with key: ID, value: Piece
     private Player p1;
     private Player p2;
     private Player activePlayer;
+    private GameStatus status;
+
+    public BoardManager() {
+        this.board = new Board();
+        this.pieces = new HashMap<>();
+
+
+    }
+
+    public Player getActivePlayer() {
+        return activePlayer;
+    }
 
     public void movePiece(int oldX, int oldY, int newX, int newY) {
         // Calls addPiece() and removePiece()

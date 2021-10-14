@@ -1,4 +1,5 @@
 import piece.Piece;
+import java.util.Map;
 
 /**
  * This contains one set of game rules.
@@ -7,39 +8,20 @@ import piece.Piece;
 public class GameRule {
 
 	private Board board;
-	private Piece[] pieces;
+	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
 
-//	/**
-//	 * Return 0 if the path is clear but the new coordinate is occupied with an opponent's piece
-//	 * Return 1 if the path is clear and the new coordinate is vacant
-//	 * Return 2 if the path is not clear
-//	 * Return 3 if the path is not clear but the new coordinate is vacant (for knight)
-//	 * Return -1 if there is some error
-//	 */
-//	public int clearValidPath(int oldX, int oldY, int newX, int newY) {
-//		//uses the validMove() method in Piece
-//		return -1;
-//	}
 	public GameRule() {
-
+		// Initialize variables so they are the same objects in BoardManager
 	}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+		if (!isCoordinateValid(oldX, oldY, newX , newY))
+			return false;
+
 		String pieceName = board.getPiece(oldX, oldY);
 		String targetPieceName = board.getPiece(newX, newY);
-		Piece pieceToMove = null;
-		Piece targetPiece = null;
-
-		// There gotta be a better way to get the piece
-		for (Piece p: pieces) {
-			if (pieceName.equals(p.getName()))
-				pieceToMove = p;
-			if (targetPieceName.equals(p.getName()))
-				targetPiece = p;
-		}
-
-		if (!isCoordinateValid(oldX, oldY, newX , newY ))
-			return false;
+		Piece pieceToMove = piecesDict.get(pieceName);
+		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
 
 		if (pieceToMove == null)
 			return false;
@@ -47,7 +29,13 @@ public class GameRule {
 		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece))
 			return false;
 
-		return false;
+		if (!pieceToMove.validMove(oldX, oldY, newX , newY))
+			return false;
+
+		// There is probably more rule checking
+		// GameRule doesn't modify actual board/pieces at here
+
+		return true;
 	}
 
 	/**

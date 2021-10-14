@@ -1,6 +1,6 @@
 package piece;
 
-public class Piece {
+public abstract class Piece {
     protected String name;
     protected Color color;    // Black or White
     protected boolean status;     // This tells whether this piece has been moved during the turn
@@ -22,13 +22,11 @@ public class Piece {
 
     // This can actually be done in GameRule, so I moved the code there (try not let entity enforce rules)
     // The subclasses of Piece can still override it tho
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
+    public abstract boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
 
         // to be overridden but the first line of the overridden method can call super.validMove(...) just to check that
         // the new coordinates given are within the boundaries of the board and that the new coordinates given are a new
         // set of coordinates, return false otherwise.
 
-        return false;
-    }
 
 }
