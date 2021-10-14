@@ -32,28 +32,7 @@ public class BoardManager {
     }
 
     public void movePiece(int oldX, int oldY, int newX, int newY) {
-        // Calls addPiece() and removePiece()
-    }
-
-    /**
-     * Add a piece to the coordinate
-     * @param pieceToAdd
-     * @param X
-     * @param Y
-     */
-    public void addPiece(Piece pieceToAdd, int X, int Y) {
-
-    }
-
-    /**
-     * Remove a piece from the coordinate
-     * addPiece() and removePiece() work together to move a piece within the board
-     * @param X
-     * @param Y
-     * @return  The piece been removed
-     */
-    public Piece removePiece(int X, int Y) {
-        return null;
+        // Calls board.addPiece() and board.removePiece()
     }
 
     /**

@@ -6,6 +6,10 @@ public class CommandSender {
 	private BoardManager bm;
 	private GameRule gl;    // A set of rules that determines valid move and piece interactions
 
+	public CommandSender() {
+		startNewGame();
+	}
+
 	/**
 	 * Move the piece that is at board[oldX][oldY] to board[newX][newY]
 	 * Check whether the movement is valid and possibly attack another piece
@@ -13,14 +17,11 @@ public class CommandSender {
 	 */
 	public boolean movePiece(int oldX, int oldY, int newX, int newY) {
 
-
-
 		if (gl.isMoveValid(oldX, oldY, newX, newY)) {
 			bm.movePiece(oldX, oldY, newX, newY);
 			return true;
 		} else
 			return false;
-
 
 		/**
 		 *  I moved and separated clearValidPath() into two methods
@@ -67,7 +68,8 @@ public class CommandSender {
 	}
 
 	public void startNewGame() {
-
+		bm = new BoardManager();
+		gl = new GameRule();
 	}
 
 	/**

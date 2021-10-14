@@ -33,7 +33,8 @@ public class GameRule {
 			return false;
 
 		// There is probably more rule checking
-		// GameRule doesn't modify actual board/pieces at here
+		// Maybe call isPathClear() and isCoordinateVacant()
+		// GameRule doesn't modify actual board/pieces here
 
 		return true;
 	}
