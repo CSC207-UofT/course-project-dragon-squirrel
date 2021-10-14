@@ -1,3 +1,6 @@
+import piece.Piece;
+import java.util.Map;
+
 /**
  * This contains one set of game rules.
  * Since the game has two sets of rule, we can easily make subclass of it to describe the second rule
@@ -5,19 +8,36 @@
 public class GameRule {
 
 	private Board board;
-	// we can use board.getPiece() to access pieces
+	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
 
-//	/**
-//	 * Return 0 if the path is clear but the new coordinate is occupied with an opponent's piece
-//	 * Return 1 if the path is clear and the new coordinate is vacant
-//	 * Return 2 if the path is not clear
-//	 * Return 3 if the path is not clear but the new coordinate is vacant (for knight)
-//	 * Return -1 if there is some error
-//	 */
-//	public int clearValidPath(int oldX, int oldY, int newX, int newY) {
-//		//uses the validMove() method in Piece
-//		return -1;
-//	}
+	public GameRule() {
+		// Initialize variables so they are the same objects in BoardManager
+	}
+
+	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+		if (!isCoordinateValid(oldX, oldY, newX , newY))
+			return false;
+
+		String pieceName = board.getPiece(oldX, oldY);
+		String targetPieceName = board.getPiece(newX, newY);
+		Piece pieceToMove = piecesDict.get(pieceName);
+		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
+
+		if (pieceToMove == null)
+			return false;
+
+		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece))
+			return false;
+
+		if (!pieceToMove.validMove(oldX, oldY, newX , newY))
+			return false;
+
+		// There is probably more rule checking
+		// Maybe call isPathClear() and isCoordinateVacant()
+		// GameRule doesn't modify actual board/pieces here
+
+		return true;
+	}
 
 	/**
 	 * It might be a good idea to separate clearValidPath() into two methods
@@ -31,6 +51,14 @@ public class GameRule {
 	 */
 	public boolean isCoordinateVacant(int X, int Y) {
 		return false;
+	}
+
+	/**
+	 * Check: old and new coordinates are not same
+	 *        new coordinate is within the board
+	 */
+	private boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
+		return newX > 0 & newX < 9 & newY > 0 & newY < 9 & (oldX != newX || oldY != newY);
 	}
 
 	/**
