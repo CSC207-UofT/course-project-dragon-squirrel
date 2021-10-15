@@ -11,5 +11,7 @@ public class King extends Piece{
     @Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) <= 1 && Math.abs(oldCoorY - newCoorY) <= 1;
+
+        //TODO: what if we are castling
     }
 }
