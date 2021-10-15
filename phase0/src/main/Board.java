@@ -53,7 +53,7 @@ public class Board {
         board[0][4] = "b_king";
         board[0][5] = "b_bishop";
         board[0][6] = "b_knight";
-        board[0][7] = "b_rook"
+        board[0][7] = "b_rook";
         board[1][0] = "b_pawn";
         board[1][1] = "b_pawn";
         board[1][2] = "b_pawn";

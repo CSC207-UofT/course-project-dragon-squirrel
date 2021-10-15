@@ -15,42 +15,13 @@ public class CommandSender {
 	 * Check whether the movement is valid and possibly attack another piece
 	 * @return  If successfully moved, return true
 	 */
-	public boolean movePiece(int oldX, int oldY, int newX, int newY) {
+	public boolean makeMove(int oldX, int oldY, int newX, int newY) {
 
 		if (gl.isMoveValid(oldX, oldY, newX, newY)) {
 			bm.movePiece(oldX, oldY, newX, newY);
 			return true;
 		} else
 			return false;
-
-		/**
-		 *  I moved and separated clearValidPath() into two methods
-		 *  Use gl.isPathClear() and gl.isCoordinateVacant() instead
-		 */
-//        int clearValid = gl.clearValidPath(oldX, oldY, newX, newY);
-//        if (clearValid == 0) {
-//            Piece p = board.removePiece(oldX, oldY);
-//            board.addPiece(p, newX, newY);
-//            return true;
-//        }
-//
-//        if (clearValid == 1) {
-//            board.addPiece();
-//            return true;
-//        }
-//
-//        if (clearValid == 2)
-//            return false;
-//        else {
-//            //code for knights and other stuff
-//        }
-//
-//        return false;
-
-//        if (isValidMove()) {
-//            board.addPiece();
-//            board.removePiece();
-//        }
 	}
 
 	/**
@@ -81,10 +52,5 @@ public class CommandSender {
 	 */
 	public Object getBoardUpdate() {
 		return null;
-	}
-
-	private boolean isValidMove(int X, int Y) {
-		// ....
-		return false;
 	}
 }
