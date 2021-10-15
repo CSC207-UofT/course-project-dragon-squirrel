@@ -40,12 +40,12 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 **_Entities:_**
 - [Player](src/main/Player.java):
 - [Pieces](src/main/Piece.java):
-1. King
-2. Queen
-3. Bishop
-4. Knight
-5. Rook
-6. Pawn
+1. [King](src/main/piece/King.java)
+2. [Queen](src/main/piece/Queen.java)
+3. [Bishop](src/main/piece/Bishop.java)
+4. [Knight](src/main/piece/Knight.java)
+5. [Rook](src/main/piece/Rook.java)
+6. [Pawn](src/main/piece/Pawn.java)
 
 **_Use Case:_**
 - Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
@@ -86,6 +86,7 @@ We have had a discussion with our TA and there were some problems found.
 
 **For our next phases, we will be working on:**
 - Complete and testing the codes
+- Packaging classes
 - GUI
 - A timer for the game, if players do not make move(s) within the time limit,
   they automatically forfeit their turn.
