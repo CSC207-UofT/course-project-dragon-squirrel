@@ -279,7 +279,7 @@
 
 |BoardManager (use case)||
 |---|---|
-|Board board <br> Player p1 <br> Player p2 <br> Player activePlayer <br> GameStatus|Superclass: <br> Subclass: <br> Collaborators: Piece, Board|
+|Board board <br> Map<String, Piece> pieces <br> Player p1 <br> Player p2 <br> Player activePlayer <br> GameStatus|Superclass: <br> Subclass: <br> Collaborators: Piece, Board|
 |getActivePlayer() <br> movePiece() <br> deductPieceHp() <br> switchActivePlayer() <br> switchPieceStatus <br> resetBoard()
 
 |CommandSender (controller)||
