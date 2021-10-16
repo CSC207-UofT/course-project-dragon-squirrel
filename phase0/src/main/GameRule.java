@@ -10,11 +10,13 @@ public class GameRule {
 	private Board board;
 	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
 
-	public GameRule() {
-		// Initialize variables so they are the same objects in BoardManager
+	public GameRule(Board board, Map<String, Piece> piecesDict) {
+		this.board = board;
+		this.piecesDict = piecesDict;
 	}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+		/**
 		if (!isCoordinateValid(oldX, oldY, newX , newY))
 			return false;
 
@@ -35,6 +37,7 @@ public class GameRule {
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
 		// GameRule doesn't modify actual board/pieces here
+		 */
 
 		return true;
 	}

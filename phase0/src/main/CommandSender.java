@@ -5,9 +5,15 @@ public class CommandSender {
 
 	private BoardManager bm;
 	private GameRule gl;    // A set of rules that determines valid move and piece interactions
+	private BoardUpdater bu;
 
 	public CommandSender() {
+
 		startNewGame();
+	}
+
+	public BoardUpdater getBoardUpdater() {
+		return this.bu;
 	}
 
 	/**
@@ -40,7 +46,8 @@ public class CommandSender {
 
 	public void startNewGame() {
 		bm = new BoardManager();
-		gl = new GameRule();
+		gl = new GameRule(bm.getBoard(), bm.getPieces());
+		this.bu = new BoardUpdater(bm);
 	}
 
 	/**
@@ -50,7 +57,7 @@ public class CommandSender {
 	 * ex. a full image (doesn't have to be a picture) of the current board, and players can see it directly
 	 * ex. updates/changes from the last round, so UI handles the update info and shows the correct things
 	 */
-	public Object getBoardUpdate() {
-		return null;
+	public void getBoardUpdate() {
+		bu.display();
 	}
 }

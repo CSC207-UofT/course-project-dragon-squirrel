@@ -23,8 +23,18 @@ public class BoardManager {
     public BoardManager() {
         this.board = new Board();
         this.pieces = new HashMap<>();
+    }
 
+    public Board getBoard() {
+        return board;
+    }
 
+    public String[][] getCurrentBoard() {
+        return board.getBoard();
+    }
+
+    public Map<String, Piece> getPieces() {
+        return pieces;
     }
 
     public Player getActivePlayer() {
@@ -33,6 +43,8 @@ public class BoardManager {
 
     public void movePiece(int oldX, int oldY, int newX, int newY) {
         // Calls board.addPiece() and board.removePiece()
+        String pieceToMove = board.removePiece(oldX, oldY);
+        board.addPiece(pieceToMove, newX, newY);
     }
 
     /**
