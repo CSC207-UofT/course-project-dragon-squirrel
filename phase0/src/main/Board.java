@@ -3,7 +3,7 @@ import piece.Piece;
 import java.util.ArrayList;
 
 /**
- * Guess this is a use case class
+ * Entity
  */
 public class Board {
 
