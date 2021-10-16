@@ -1,3 +1,5 @@
+import piece.Piece;
+
 import java.util.ArrayList;
 
 /**
@@ -8,15 +10,22 @@ public class Board {
     private String[][] board;   // Each cell can be the name/ID of a piece
 
     public Board() {
-        // .....
+        board = new String[8][8];
+        reset();
+    }
+
+    public String[][] getBoard() {
+        return board;
     }
 
     public void addPiece(String pieceName, int X, int Y) {
-
+        board[X][Y] = pieceName;
     }
 
-    public void removePiece(String pieceName, int X, int Y) {
-
+    public String removePiece(int X, int Y) {
+        String piece = board[X][Y];
+        board[X][Y] = "vacant";
+        return piece;
     }
 
     public boolean isPositionVacant(int X, int Y) { return board[X][Y].equals("vacant"); }
