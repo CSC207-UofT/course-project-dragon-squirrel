@@ -10,27 +10,37 @@ public class GameRule {
 	private Board board;
 	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
 
-	public GameRule() {
-		// Initialize variables so they are the same objects in BoardManager
+	public GameRule(Board board, Map<String, Piece> piecesDict) {
+		this.board = board;
+		this.piecesDict = piecesDict;
 	}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
-		if (!isCoordinateValid(oldX, oldY, newX , newY))
-			return false;
 
-		String pieceName = board.getPiece(oldX, oldY);
-		String targetPieceName = board.getPiece(newX, newY);
-		Piece pieceToMove = piecesDict.get(pieceName);
-		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
-
-		if (pieceToMove == null)
-			return false;
-
-		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece))
-			return false;
-
-		if (!pieceToMove.validMove(oldX, oldY, newX , newY))
-			return false;
+//		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
+//			System.out.println("Coordinate invalid");
+//			return false;
+//		}
+//
+//		String pieceName = board.getPiece(oldX, oldY);
+//		String targetPieceName = board.getPiece(newX, newY);
+//		Piece pieceToMove = piecesDict.get(pieceName);
+//		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
+//
+//		if (pieceToMove == null) {
+//			System.out.println("Piece not found");
+//			return false;
+//		}
+//
+//		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece)) {
+//			System.out.println("Invalid capture");
+//			return false;
+//		}
+//
+//		if (!pieceToMove.validMove(oldX, oldY, newX , newY)) {
+//			System.out.println("Invalid Move");
+//			return false;
+//		}
 
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
