@@ -5,7 +5,11 @@ public class UI {
      * Say the player clicks the move button
      */
     public void onButtonClick() {
-        cs.movePiece(0,0,0,0);
+        boolean success;
+        do {
+            success = cs.makeMove(0, 0, 0, 0);
+        } while (!success);
+
     }
 
     // Maybe it shows something and receives user input?
