@@ -43,8 +43,8 @@ public class Board {
         board[7][3] = "w_queen";
         board[7][4] = "w_king";
         board[7][5] = "w_bishop";
-        board[7][7] = "w_knight";
-        board[7][6] = "w_rook";
+        board[7][6] = "w_knight";
+        board[7][7] = "w_rook";
         board[6][0] = "w_pawn";
         board[6][1] = "w_pawn";
         board[6][2] = "w_pawn";
