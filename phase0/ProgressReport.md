@@ -39,7 +39,8 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 ## CRC Model
 **_Entities:_**
 - [Player](src/main/Player.java):
-- [Pieces](src/main/Piece.java):
+- Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
+- Pieces:
 1. [King](src/main/piece/King.java)
 2. [Queen](src/main/piece/Queen.java)
 3. [Bishop](src/main/piece/Bishop.java)
@@ -48,11 +49,12 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 6. [Pawn](src/main/piece/Pawn.java)
 
 **_Use Case:_**
-- Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
-- [Game Rule(Regular & Modified)](src/main/GameRule.java)
 
-**_Controller & Presenter:_**
+- [Game Rule(Regular & Modified)](src/main/GameRule.java)
 - [BoardManager](src/main/BoardManager.java)
+  
+**_Controller & Presenter:_**
+- [CommandSender](src/main/CommandSender.java)
 
 We have demonstrated our CRC cards details into a .pdf file as well as separately 
 in the crcCard folder. 
