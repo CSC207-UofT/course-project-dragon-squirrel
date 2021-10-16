@@ -16,28 +16,35 @@ public class GameRule {
 	}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
-		/**
-		if (!isCoordinateValid(oldX, oldY, newX , newY))
-			return false;
 
-		String pieceName = board.getPiece(oldX, oldY);
-		String targetPieceName = board.getPiece(newX, newY);
-		Piece pieceToMove = piecesDict.get(pieceName);
-		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
-
-		if (pieceToMove == null)
-			return false;
-
-		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece))
-			return false;
-
-		if (!pieceToMove.validMove(oldX, oldY, newX , newY))
-			return false;
+//		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
+//			System.out.println("Coordinate invalid");
+//			return false;
+//		}
+//
+//		String pieceName = board.getPiece(oldX, oldY);
+//		String targetPieceName = board.getPiece(newX, newY);
+//		Piece pieceToMove = piecesDict.get(pieceName);
+//		Piece targetPiece = targetPieceName == null ? null : piecesDict.get(targetPieceName);
+//
+//		if (pieceToMove == null) {
+//			System.out.println("Piece not found");
+//			return false;
+//		}
+//
+//		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece)) {
+//			System.out.println("Invalid capture");
+//			return false;
+//		}
+//
+//		if (!pieceToMove.validMove(oldX, oldY, newX , newY)) {
+//			System.out.println("Invalid Move");
+//			return false;
+//		}
 
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
 		// GameRule doesn't modify actual board/pieces here
-		 */
 
 		return true;
 	}

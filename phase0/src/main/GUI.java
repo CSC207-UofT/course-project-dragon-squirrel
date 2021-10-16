@@ -26,9 +26,6 @@ public class GUI extends JFrame{
 		add(rootPanel);
 		createUIComponents();
 		addActionListeners();
-
-		cs = new CommandSender();
-		bu = cs.getBoardUpdater();
 	}
 
 	private void createUIComponents() {
@@ -40,7 +37,9 @@ public class GUI extends JFrame{
 		startGameBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				cs = new CommandSender();
 				cs.startNewGame();
+				bu = cs.getBoardUpdater();
 				bu.display();
 			}
 		});
