@@ -2,7 +2,7 @@ package piece;
 
 public class Pawn extends Piece{
 
-    public boolean hasMovedDuringGame;
+    public boolean hasNotMovedDuringGame;
 
     public Pawn(String name, Color color){
         super(name, color);
