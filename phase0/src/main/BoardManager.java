@@ -1,4 +1,5 @@
-import piece.Piece;
+import piece.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class BoardManager {
     public BoardManager() {
         this.board = new Board();
         this.pieces = new HashMap<>();
+        resetMap();
     }
 
     public Board getBoard() {
@@ -38,6 +40,38 @@ public class BoardManager {
 
     public Player getActivePlayer() {
         return activePlayer;
+    }
+
+    public void resetMap() {
+        // initialize white pieces and put into Map
+        pieces.put("w_rook_l", new Rook("w_rook_l", Color.WHITE));
+        pieces.put("w_knight_l", new Knight("w_knight_l", Color.WHITE));
+        pieces.put("w_bishop_l", new Bishop("w_bishop_l", Color.WHITE));
+        pieces.put("w_queen", new Queen("w_queen", Color.WHITE));
+        pieces.put("w_king", new King("w_king", Color.WHITE));
+        pieces.put("w_bishop_r", new Bishop("w_bishop_r", Color.WHITE));
+        pieces.put("w_knight_r", new Knight("w_knight_r", Color.WHITE));
+        pieces.put("w_rook_r", new Rook("w_rook_r", Color.WHITE));
+
+        for (int i = 0; i < 8; i++) {
+            String name = "w_pawn_" + i;
+            pieces.put(name, new Pawn(name, Color.WHITE));
+        }
+
+        // initialize black pieces and put into Map
+        pieces.put("b_rook_l", new Rook("b_rook_l", Color.BLACK));
+        pieces.put("b_knight_l", new Knight("b_knight_l", Color.BLACK));
+        pieces.put("b_bishop_l", new Bishop("b_bishop_l", Color.BLACK));
+        pieces.put("b_queen", new Queen("b_queen", Color.BLACK));
+        pieces.put("b_king", new King("b_king", Color.BLACK));
+        pieces.put("b_bishop_r", new Bishop("b_bishop_r", Color.BLACK));
+        pieces.put("b_knight_r", new Knight("b_knight_r", Color.BLACK));
+        pieces.put("b_rook_r", new Rook("b_rook_r", Color.BLACK));
+
+        for (int i = 0; i < 8; i++) {
+            String name = "b_pawn_" + i;
+            pieces.put(name, new Pawn(name, Color.BLACK));
+        }
     }
 
     public void movePiece(int oldX, int oldY, int newX, int newY) {
