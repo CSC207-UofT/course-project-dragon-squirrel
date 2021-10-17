@@ -1,8 +1,8 @@
 package piece;
 
 public abstract class Piece {
-    protected String name;
-    protected Color color;    // Black or White
+    protected String name;  // ex: "w_pawn"
+    protected Color color;    // Black or White (BLACK/WHITE)
     protected boolean status;     // This tells whether this piece has been moved during the turn
 
     public Piece(String name, Color color) {
@@ -16,6 +16,10 @@ public abstract class Piece {
     public Color getColor() { return color; }
 
     public boolean getStatus() { return status; }
+
+    public void setStatus(boolean status){
+        this.status = status;
+    }
 
     public boolean hasSameColor(Piece another) { return this.color == another.color; }
 
