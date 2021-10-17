@@ -1,20 +1,20 @@
 We will first build a basic playable chess game. The game rules may differ from the regular chess game.
 There will be two human players play against each other. No AI player during this phase.
 
-The UI class displays the current board (doesn't have to be graphic), and allows player to move a piece.
+The GUI pops up a window and allows player to move a piece, the BoardUpdater displays the current board in text format,
 
-Once the player decides to move a piece, the UI class send commands by invoking BoardManager.
-BoardManager class then checks whether the player's move is allowed by calling methods in GameRule class,
-and GameRule may need to call methods in Piece class to determine validity.
-If the move is invalid, BoardManager returns false to UI class and UI prompts the player to make another move.
-If the move is valid, BoardManager will send commands (call methods) to Board class to actually move the piece. If the 
-move involves piece interaction (i.e. a piece attacks another, etc.), then BoardManager will invoke GameRule to further 
-calculate results before letting Board class make changes.
+Once the player decides to move a piece (click buttons in GUI), the CommandSender class was called, and it checks 
+whether the player's move is valid by calling methods in GameRule class. GameRule will further call Board class and
+Piece class to check the route of move, and whether it's allowed according to the type of pieces.
 
-A player can move multiple pieces during its turn (in one of our designs). The above process repeats until all pieces
-are moved or the player manually passes its turn (by calling methods in BoardManager).
-The UI class will then tell BoardManager to switch player, so the other player can move pieces.
+If the move is invalid, CommandSender returns false to GUI class, and player can make another move.
+If the move is valid, CommandSender will send commands (call methods) to BoardManager class to actually move the piece 
+and remove the captured piece if applicable.
 
-After each successful piece move, BoardManager will check whether the current player wins.
+After a successful move, BoardManager will check whether the current player wins (checkmate), and will also switch 
+active player(so that only active player's piece can be moved).
+
+In phase2 design, a player can move multiple pieces during its turn. The above process repeats until all pieces
+are moved or the player manually passes its turn (by calling methods in BoardManager), then switch player.
 
 More functions like timer will be added later.
