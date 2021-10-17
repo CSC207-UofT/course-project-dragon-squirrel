@@ -23,10 +23,10 @@ public class Pawn extends Piece{
         }
         if (hasNotMovedDuringGame) {
             if (color == Color.WHITE) {
-                solution = ((newCoorX - oldCoorX == -2 || newCoorX - oldCoorX == -1) && newCoorY - oldCoorY == 0);
+                solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
             }
             else {
-                solution = ((newCoorX - oldCoorX == 2 || newCoorX - oldCoorX == 1) && newCoorY - oldCoorY == 0);
+                solution = (newCoorX - oldCoorX == 2 && newCoorY - oldCoorY == 0);
             }
         }
 
