@@ -27,20 +27,20 @@ public class GameRule {
 		Piece pieceToMove = piecesDict.get(pieceName);
 		Piece targetPiece = targetPieceName == "vacant" ? null : piecesDict.get(targetPieceName);
 
-//		if (pieceToMove == null) {
-//			System.out.println("Piece not found");
-//			return false;
-//		}
-//
-//		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece)) {
-//			System.out.println("Invalid capture");
-//			return false;
-//		}
-//
-//		if (!pieceToMove.validMove(oldX, oldY, newX , newY)) {
-//			System.out.println("Invalid Move");
-//			return false;
-//		}
+		if (pieceToMove == null) {
+			System.out.println("Piece not found");
+			return false;
+		}
+
+		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece)) {
+			System.out.println("Invalid capture");
+			return false;
+		}
+
+		if (!pieceToMove.validMove(oldX, oldY, newX , newY)) {
+			System.out.println("Invalid Move");
+			return false;
+		}
 
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
