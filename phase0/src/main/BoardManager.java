@@ -41,6 +41,10 @@ public class BoardManager {
         return activePlayer;
     }
 
+    public void setActivePlayer(Player player){
+        this.activePlayer = player;
+    }
+
     public void movePiece(int oldX, int oldY, int newX, int newY) {
         // Calls board.addPiece() and board.removePiece()
         String pieceToMove = board.removePiece(oldX, oldY);

@@ -14,4 +14,17 @@ public class Player {
     public Color getColor() {
         return color;
     }
+
+    public void setColor(Color color){
+        this.color = color;
+    }
+
+    public boolean getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(boolean status){
+        this.status = status;
+    }
+
 }
