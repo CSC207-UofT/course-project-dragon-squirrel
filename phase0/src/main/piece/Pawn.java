@@ -2,11 +2,11 @@ package piece;
 
 public class Pawn extends Piece{
 
-    public boolean hasMovedDuringGame;
+    public boolean hasNotMovedDuringGame;
 
     public Pawn(String name, Color color){
         super(name, color);
-        hasMovedDuringGame = true;
+        hasNotMovedDuringGame = true;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Pawn extends Piece{
         if (solution) {
             return true;
         }
-        if (hasMovedDuringGame) {
+        if (hasNotMovedDuringGame) {
             if (color == Color.WHITE) {
                 solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
             }
