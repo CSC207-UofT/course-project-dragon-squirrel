@@ -5,9 +5,9 @@
     "subclasses": "AI; human",
     "type": "Normal",
     "responsibilities": [
-      " \\Create a new player",
-      "String name",
-      "int ID"
+      "String ID",
+      "Color color",
+      "boolean status"
     ],
     "collaborators": [
       "Board"

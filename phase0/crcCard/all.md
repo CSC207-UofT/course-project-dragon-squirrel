@@ -254,7 +254,7 @@
 
 |Pawn (entity)||
 |---|---|
-|String name <br> Color color <br> boolean status <br> hasMovedDuringGame // for optional 2 squares (sq) forward|Superclass: Piece <br> Subclass: <br> Collaborators: Board|
+|String name <br> Color color <br> boolean status <br> hasNotMovedDuringGame // for optional 2 squares (sq) forward|Superclass: Piece <br> Subclass: <br> Collaborators: Board|
 |validMove() // 1sq directly forward, optional 2sq directly forward if not yet moved, promotion if reach other end
 
 |ModifiedPiece (entity) <br> interface||
@@ -264,7 +264,7 @@
 
 |Board (entity)||
 |---|---|
-|String[][] board // each cell contains piece name/id |Superclass: <br> Subclass: <br> Collaborators: Piece|
+|String[][] board // each cell contains piece name/id |Superclass: <br> Subclass: <br> Collaborators: Piece, BoardManager|
 |addPiece() <br> removePiece() <br> isPositionVacant() <br> getPiece() // using coordinates <br> reset() // initializes piece names onto position
 
 |ModifiedBoard (entity)||
@@ -280,12 +280,12 @@
 |BoardManager (use case)||
 |---|---|
 |Board board <br> Map<String, Piece> pieces <br> Player p1 <br> Player p2 <br> Player activePlayer <br> GameStatus|Superclass: <br> Subclass: <br> Collaborators: Piece, Board|
-|getActivePlayer() <br> movePiece() <br> deductPieceHp() <br> switchActivePlayer() <br> switchPieceStatus <br> resetBoard()
+|getActivePlayer() <br> movePiece() <br> deductPieceHp() <br> switchActivePlayer() <br> switchPieceStatus() <br> resetBoard()
 
 |CommandSender (controller)||
 |---|---|
 |BoardManager <br> GameRule|Superclass: <br> Subclass: <br> Collaborators: BoardManager, GameRule|
-|movePiece() <br> passRound // forfeit turn <br> giveUp() <br> startNewGame() // initializes new BoardManager and new GameRule <br> getBoardUpdate()
+|movePiece() <br> passRound() // forfeit turn <br> giveUp() <br> startNewGame() // initializes new BoardManager and new GameRule <br> getBoardUpdate()
 
 |UI (command line interface)||
 |---|---|

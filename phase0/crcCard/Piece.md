@@ -3,13 +3,19 @@
     "name": "Piece(entity)",
     "superclasses": "",
     "subclasses": "King; Queen; Rook; Bishop; Knight; Pawn;",
-    "type": "interface",
+    "type": "abstract",
     "responsibilities": [
-      "\\Define how chesspiece move"
-      "boolean isValidMove()"
+      "\\Define how chesspiece move",
+      "String name",
+      "Color color",
+      "boolean status",
+      "getName()",
+      "getColor()",
+      "getStatus()",
+      "boolean ValidMove()"
     ],
     "collaborators": [
-      ""
+      "Board"
     ]
   }
 ]

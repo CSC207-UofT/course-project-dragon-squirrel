@@ -1,6 +1,6 @@
 [
   {
-    "name": "ModifiedBoard(use case)",
+    "name": "ModifiedBoard(entity)",
     "superclasses": "Board",
     "subclasses": "",
     "type": "Normal",
@@ -8,7 +8,7 @@
       "\\ We have not decided on rules yet."
     ],
     "collaborators": [
-      ""
+      "ModifiedPiece"
     ]
   }
 ]
