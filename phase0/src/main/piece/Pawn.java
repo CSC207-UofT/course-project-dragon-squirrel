@@ -6,7 +6,7 @@ public class Pawn extends Piece{
 
     public Pawn(String name, Color color){
         super(name, color);
-        hasMovedDuringGame = true;
+        hasNotMovedDuringGame = true;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class Pawn extends Piece{
         if (solution) {
             return true;
         }
-        if (hasMovedDuringGame) {
+        if (hasNotMovedDuringGame) {
             if (color == Color.WHITE) {
-                solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
+                solution = ((newCoorX - oldCoorX == -2 || newCoorX - oldCoorX == -1) && newCoorY - oldCoorY == 0);
             }
             else {
-                solution = (newCoorX - oldCoorX == 2 && newCoorY - oldCoorY == 0);
+                solution = ((newCoorX - oldCoorX == 2 || newCoorX - oldCoorX == 1) && newCoorY - oldCoorY == 0);
             }
         }
 
