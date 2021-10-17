@@ -3,7 +3,7 @@ import piece.Piece;
 import java.util.ArrayList;
 
 /**
- * Guess this is a use case class
+ * Entity
  */
 public class Board {
 
@@ -31,7 +31,7 @@ public class Board {
     public boolean isPositionVacant(int X, int Y) { return board[X][Y].equals("vacant"); }
 
     public String getPiece(int X, int Y) {
-        return null;
+        return board[X][Y];
     }
 
     public void reset()
