@@ -42,6 +42,9 @@ public class BoardManager {
         return activePlayer;
     }
 
+    public void setActivePlayer(Player player){
+        this.activePlayer = player;
+
     public void resetMap() {
         // initialize white pieces and put into Map
         pieces.put("w_rook_l", new Rook("w_rook_l", Color.WHITE));
