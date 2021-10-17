@@ -90,6 +90,7 @@ Enter move using (row, column) start and end coordinates.
 - Future (scenario walkthrough, remaining code)
 - Tingzhou (End report, other code)
 - Christopher (unitest, other code)
+- Dylan (quality improvement, other code)
 
 We have had a discussion with our TA and there were some problems found. 
 **Each of us has contribution to discuss, share ideas, and fix those problems we found.**
