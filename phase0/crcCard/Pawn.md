@@ -6,8 +6,11 @@
     "type": "Normal",
     "responsibilities": [
       "\\Create new Pawn"
-      "Player player",
-      "isValidMove()"
+      "String name",
+      "Color color",
+      "boolean status",
+      "hasNotMovedDuringGame"
+      "ValidMove()"
     ],
     "collaborators": [
       "Board"

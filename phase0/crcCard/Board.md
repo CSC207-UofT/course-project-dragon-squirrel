@@ -1,22 +1,21 @@
 [
   {
-    "name": "Board(use case)",
+    "name": "Board(entity)",
     "superclasses": "",
     "subclasses": "",
     "type": "Abstract",
     "responsibilities": [
-      "\\Create a new Chess Board when playing a new game.",
-      "Player p1,
-      "Player p2",
-      "Player currentPlayer",
-      "Piece[][] board",
+      "\\Initialize piece names to corresponding position in array.",
+      "Sting[][] board",
       "abstract addPiece()",
       "abstract removePiece()",
-      "abstract Board()",
+      "abstract isPositionVacant()",
+      "getPiece()",
+      "reset()"
       ""
     ],
     "collaborators": [
-      "ChessPiece; BoardManager"
+      "Piece; BoardManager"
     ]
   }
 ]

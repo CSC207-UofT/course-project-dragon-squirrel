@@ -1,16 +1,26 @@
 [
   {
-    "name": "BoardManager(controller & presenter)",
+    "name": "BoardManager(use case)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
-      "\\\\ control the board and update the information about UI",
+      "\\\\ control the board",
+      "Board board",
+      "Map<String, Piece> piecesDict",
+      "Player p1",
+      "Player p2",
+      "Player activePlayer",
+      "GameStatus",
+      "getActivePlayer()","
       "void movePiece()",
-      "getBoardUpdate()"
+      "deductPieceHp()",
+      "switchActivePlayer()",
+      "switchPieceStatus()",
+      "resetBoard()"
     ],
     "collaborators": [
-      "UI; Board"
+      "Pieces; Board"
     ]
   }
 ]

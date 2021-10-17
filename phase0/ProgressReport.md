@@ -18,7 +18,7 @@ the starting position (with GUI).
 So far, we are mainly working on designing and coding the standard version of chess with
 the same rules as a real chess game.
 For the modified chess-based game, we designed:
-- to let player can make multiple in each turn. 
+- Player can make multiple moves/attacks each turn. 
 - Each modified piece corresponds to health point and attack level. An attack counts as one 
 of the multiple moves made during a turn wherein the attacking piece does not actually move.
 - A piece is captured / removed from game when its health points are depleted.
@@ -28,11 +28,11 @@ We have set specific behaviours for different pieces, which is the same as
 the behaviours of pieces in a real chess game.
 
 Additionally, we are thinking of designing 
-- a timer for the game, if players do not make move(s) within the time limit, 
+- A timer for the game, if players do not make move(s) within the time limit, 
 they automatically forfeit their turn. 
-- an undo button that undo moves by one turn. 
-- Players would have a GUI display piece's available moves. 
-- Also, a hint on one of the best possible moves can be given if player asked.
+- An undo button that undoes moves by one turn. 
+- A GUI that displays piece's available moves. 
+- Also, a hint on one of the best possible moves can be given if player asks.
 
 Details can be found in the Markdown File "[specification.md](specification.md)"
 
@@ -74,8 +74,13 @@ More details can be found in the Markdown file "[walkthrough.md](walkthrough.md)
 
 ## Skeleton Program
 For this phase, our skeleton program contains basic classes as shown in the CRC card, with basic methods 
-that would allow us to run a basic chess game. We haven't implemented our UI class yet so the game cannot
-be displayed by graph yet. We have added unittest files for each class under "src/test" folder. ....
+that would allow us to run a basic chess game. A simple GUI allows players to enter their moves.
+We have added unittest files for each class under "src/test" folder. ....
+
+Tips on running the code:  
+If window popup is blank, expand it.  
+Press start new game to see text-based chess board in the console.  
+Enter move using (row, column) start and end coordinates.
 
 ## Report
 ### Contribution
@@ -85,6 +90,7 @@ be displayed by graph yet. We have added unittest files for each class under "sr
 - Future (scenario walkthrough, remaining code)
 - Tingzhou (End report, other code)
 - Christopher (unitest, other code)
+- Dylan (quality improvement, other code)
 
 We have had a discussion with our TA and there were some problems found. 
 **Each of us has contribution to discuss, share ideas, and fix those problems we found.**
