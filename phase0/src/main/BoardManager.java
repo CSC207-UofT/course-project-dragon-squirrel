@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This should be in the controller/presenter layer
  * It should receive some input from players and send command to a Board instance
  * It should reflect the changes on the board and let players know
  * Perhaps we can separate controller and presenter to 2 classes

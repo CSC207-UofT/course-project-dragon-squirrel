@@ -6,8 +6,11 @@
     "type": "Normal",
     "responsibilities": [
       "\\Create new Rook"
-      "Player player",
-      "isValidMove()"
+      "String name",
+      "Color color",
+      "boolean status",
+      "hasMovedDuringGame"
+      "ValidMove()"
     ],
     "collaborators": [
       "Board"

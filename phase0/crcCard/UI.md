@@ -1,14 +1,14 @@
 [
   {
-    "name": "UI(UI)",
+    "name": "UI(command line interface)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
-      "\\ We have not figured out how to make UI yet."
+      "CommandSender cs"
     ],
     "collaborators": [
-      "BoardManager"
+      "CommandSender"
     ]
   }
 ]

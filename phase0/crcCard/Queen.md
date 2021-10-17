@@ -6,8 +6,10 @@
     "type": "Normal",
     "responsibilities": [
       "\\Create new Queen"
-      "Player player",
-      "isValidMove()"
+      "String name",
+      "Color color",
+      "boolean status"
+      "ValidMove()"
     ],
     "collaborators": [
       "Board"
