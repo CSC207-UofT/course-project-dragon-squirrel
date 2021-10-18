@@ -1,9 +1,10 @@
 import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BoardTest {
+public class TestBoard {
     Board b;
 
     @Before
@@ -68,9 +69,9 @@ public class BoardTest {
 
     @Test(timeout = 50)
     public void TestaddPiece(){
-        assertEquals("vacant", b[5][0]);
+        assertEquals("vacant", b.getBoard()[5][0]);
         b.addPiece("w_pawn", 5, 0);
-        assertEquals("w_pawn", b[5][0]);
+        assertEquals("w_pawn", b.getBoard()[5][0]);
     }
 
     @Test(timeout = 50)
@@ -81,14 +82,14 @@ public class BoardTest {
     }
 
     @Test(timeout = 50)
-    public void TestisPostionVacant(){
-        assertEquals(true, isPostitionVacant(5, 0));
-        assertEquals(false, isPositionVacant(6, 0));
+    public void TestisPositionVacant(){
+        assertEquals(true, b.isPositionVacant(5, 0));
+        assertEquals(false, b.isPositionVacant(6, 0));
     }
 
     @Test(timeout = 50)
     public void TestgetPiece(){
-        assertEquals("w_pawn", getPiece(6, 0));
+        assertEquals("w_pawn", b.getPiece(6, 0));
     }
 
     @Test(timeout = 50)
@@ -138,7 +139,8 @@ public class BoardTest {
             }
         }
 
-        assertEquals(board, b.reset());
+        b.reset();
+        assertEquals(board, b.getBoard());
     }
 
 }

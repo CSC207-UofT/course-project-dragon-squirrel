@@ -1,14 +1,17 @@
+package TestPieces;
+
 import org.junit.Before;
 import org.junit.Test;
+import piece.Rook;
 
 import static org.junit.Assert.assertEquals;
 
-public class RookTest {
+public class TestRook {
     Rook r;
 
     @Before
     public void setup(){
-        r = new Rook("w_rook", WHITE);
+        r = new Rook("w_rook", Color.WHITE);
     }
 
     @Test

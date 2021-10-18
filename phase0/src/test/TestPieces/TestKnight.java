@@ -1,14 +1,18 @@
+package TestPieces;
+
 import org.junit.Before;
 import org.junit.Test;
+import piece.Color;
+import piece.Knight;
 
 import static org.junit.Assert.assertEquals;
 
-public class KnightTest {
+public class TestKnight {
     Knight k;
 
     @Before
     public void setup(){
-        k = new Knight("w_knight", WHITE);
+        k = new Knight("w_knight", Color.WHITE);
     }
 
     @Test(timeout = 50)

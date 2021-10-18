@@ -1,14 +1,17 @@
+package TestPieces;
+
 import org.junit.Before;
 import org.junit.Test;
+import piece.Queen;
 
 import static org.junit.Assert.assertEquals;
 
-public class QueenTest {
+public class TestQueen {
     Queen q;
 
     @Before
     public void setup(){
-        q = new Queen("w_queen", WHITE);
+        q = new Queen("w_queen", Color.WHITE);
     }
 
     @Test(timeout = 50)

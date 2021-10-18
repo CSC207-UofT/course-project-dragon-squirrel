@@ -1,14 +1,18 @@
+package TestPieces;
+
 import org.junit.Before;
 import org.junit.Test;
+import piece.Color;
+import piece.Pawn;
 
 import static org.junit.Assert.assertEquals;
 
-public class PawnTest {
+public class TestPawn {
     Pawn p;
 
     @Before
     public void setup(){
-        p = new Pawn("w_pawn", WHITE);
+        p = new Pawn("w_pawn", Color.WHITE);
     }
 
     @Test

@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PlayerTest {
+public class TestPlayer {
     Player p1;
     Player p2;
     Player p3;
