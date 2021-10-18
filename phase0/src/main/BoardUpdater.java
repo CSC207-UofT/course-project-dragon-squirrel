@@ -7,17 +7,6 @@ public class BoardUpdater {
 	public BoardUpdater(BoardManager bm) {
 		this.bm = bm;
 		boardImage = new String[8][8];
-
-//		boardImage = new String[][]{
-//				{"Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook"},
-//				{"Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{"Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"},
-//				{"Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook"}
-//		};
 	}
 
 	private void updateBoardImage() {

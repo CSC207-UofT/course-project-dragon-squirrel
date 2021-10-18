@@ -15,8 +15,6 @@ public class BoardManager {
     // These are the variables we might need
     private Board board;
     private Map<String, Piece> pieces;   // This is essentially dict in python with key: ID, value: Piece
-    private Player p1;
-    private Player p2;
     private Player activePlayer;
     private GameStatus status;
 
@@ -86,8 +84,6 @@ public class BoardManager {
 
     /**
      * This kicks in when a piece is being attacked
-     * @param pieceToModify
-     * @param HpDeduction
      */
     public void DeductPieceHp(Piece pieceToModify, int HpDeduction) {
 
@@ -103,7 +99,6 @@ public class BoardManager {
     /**
      * Switch piece status between 'moved' and 'movable'
      * This is useful if we are moving multiple pieces in a round
-     * @param p
      */
     public void switchPieceStatus(Piece p) {
 

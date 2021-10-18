@@ -1,7 +1,3 @@
-import piece.Piece;
-
-import java.util.ArrayList;
-
 /**
  * Entity
  */
@@ -28,7 +24,9 @@ public class Board {
         return piece;
     }
 
-    public boolean isPositionVacant(int X, int Y) { return board[X][Y].equals("vacant"); }
+    public boolean isPositionVacant(int X, int Y) {
+        return board[X][Y].equals("vacant");
+    }
 
     public String getPiece(int X, int Y) {
         return board[X][Y];
