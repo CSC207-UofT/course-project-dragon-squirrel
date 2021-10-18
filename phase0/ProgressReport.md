@@ -85,12 +85,24 @@ Enter move using (row, column) start and end coordinates.
 ## Report
 ### Contribution
 
-- Jin (push CRC card, piece specific rules code)
-- Jennifer (specification, non piece specific rules code)
-- Future (scenario walkthrough, remaining code)
-- Tingzhou (End report, other code)
-- Christopher (unitest, other code)
-- Dylan (quality improvement, other code)
+- Jin 
+  - original CRC card
+  - Piece (King, Queen, Rook, etc.)
+- Jennifer
+  - Specification
+  - Redid/restructure all.md CRC card and update Jin's separate CRC cards
+  - resetMap() in BoardManager
+  - isCoordinateValid(), isPathClear() in GameRule
+- Future
+  - walkthrough.md
+  - code structure design
+  - BoardManager, BoardUpdater, CommandSender, GameRule, GUI
+- Tingzhou
+  - Progress report
+- Christopher 
+  - unittests
+- Dylan 
+  - quality improvement
 
 We have had a discussion with our TA and there were some problems found. 
 **Each of us has contribution to discuss, share ideas, and fix those problems we found.**

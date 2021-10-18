@@ -10,7 +10,7 @@ public class BoardManagerTest {
     @Before
     private void setup(){
         bm = new BoardManager();
-        b = new Board()
+        b = new Board();
     }
 
     @Test(timeout = 50)
