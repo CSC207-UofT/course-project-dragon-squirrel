@@ -32,14 +32,14 @@ public class TestBoardManager {
 
     @Test(timeout = 50)
     public void TestgetActivePlayer(){
-        assertEquals(bm.p1, bm.getActivePlayer());
+        assertEquals(bm.getP1(), bm.getActivePlayer());
     }
 
     @Test(timeout = 50)
     public void TestmovePiece(){
-        assertEquals("vacant", bm.board.getPiece(5, 0));
+        assertEquals("vacant", bm.getBoard().getPiece(5, 0));
         bm.movePiece(6, 0, 5, 0);
-        assertEquals("w_pawn", bm.board.getPiece(5, 0));
+        assertEquals("w_pawn", bm.getBoard().getPiece(5, 0));
     }
 
 }

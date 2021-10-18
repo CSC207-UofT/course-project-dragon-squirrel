@@ -2,6 +2,7 @@ package TestPieces;
 
 import org.junit.Before;
 import org.junit.Test;
+import piece.Color;
 import piece.Queen;
 
 import static org.junit.Assert.assertEquals;

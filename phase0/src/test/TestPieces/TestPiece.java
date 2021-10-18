@@ -3,20 +3,21 @@ package TestPieces;
 import org.junit.Before;
 import org.junit.Test;
 import piece.Color;
-import piece.Piece;
+import piece.Pawn;
+import piece.Rook;
 
 import static org.junit.Assert.assertEquals;
 
 public class TestPiece {
-    Piece p1;
-    Piece p2;
-    Piece p3;
+    Pawn p1;
+    Pawn p2;
+    Rook p3;
 
     @Before
     public void setup(){
-        p1 = new Piece("w_pawn", Color.WHITE);
-        p2 = new Piece("b_pawn", Color.BLACK);
-        p3 = new Piece("w_rook", Color.WHITE);
+        p1 = new Pawn("w_pawn_1", Color.WHITE);
+        p2 = new Pawn("b_pawn_1", Color.BLACK);
+        p3 = new Rook("w_rook_l", Color.WHITE);
     }
 
     @Test(timeout = 50)
@@ -27,8 +28,8 @@ public class TestPiece {
 
     @Test(timeout = 50)
     public void TestgetColor(){
-        assertEquals(WHITE, p1.getColor());
-        assertEquals(BLACK, p2.getColor());
+        assertEquals(Color.WHITE, p1.getColor());
+        assertEquals(Color.BLACK, p2.getColor());
     }
 
     @Test(timeout = 50)

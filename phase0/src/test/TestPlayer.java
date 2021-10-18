@@ -13,7 +13,7 @@ public class TestPlayer {
     public void setup(){
         p1 = new Player("player_1");
         p2 = new Player("player_2");
-        p3 = new Plyaer("player_3");
+        p3 = new Player("player_3");
         p4 = new Player("player_4");
     }
 

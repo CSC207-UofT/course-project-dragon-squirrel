@@ -38,6 +38,14 @@ public class BoardManager {
         return pieces;
     }
 
+    public Player getP1() {
+        return this.p1;
+    }
+
+    public Player getP2() {
+        return this.p2;
+    }
+
     public Player getActivePlayer() {
         return activePlayer;
     }
