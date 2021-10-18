@@ -1,14 +1,18 @@
+package TestPieces;
+
 import org.junit.Before;
 import org.junit.Test;
+import piece.Color;
+import piece.Bishop;
 
 import static org.junit.Assert.assertEquals;
 
-public class BishopTest {
+public class TestBishop {
     Bishop b;
 
     @Before
     public void setup(){
-        b = new Bishop("w_bishop", WHITE);
+        b = new Bishop("w_bishop", Color.WHITE);
     }
 
     @Test(timeout = 50)

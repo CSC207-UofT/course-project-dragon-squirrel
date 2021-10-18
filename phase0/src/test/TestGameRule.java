@@ -3,6 +3,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GameRuleTest {
+public class TestGameRule {
 
 }
