@@ -34,27 +34,21 @@ public class GUI extends JFrame{
 
 	private void addActionListeners() {
 
-		startGameBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cs = new CommandSender();
-				cs.startNewGame();
-				bu = cs.getBoardUpdater();
-				bu.display();
-			}
+		startGameBtn.addActionListener(e -> {
+			cs = new CommandSender();
+			cs.startNewGame();
+			bu = cs.getBoardUpdater();
+			bu.display();
 		});
 
-		moveBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int startX = Integer.parseInt(startXtf.getText());
-				int startY = Integer.parseInt(startYtf.getText());
-				int targetX = Integer.parseInt(targetXtf.getText());
-				int targetY = Integer.parseInt(targetYtf.getText());
-				boolean moveSuccess = cs.makeMove(startX, startY, targetX, targetY);
-				if (moveSuccess) {
-					bu.display();
-				}
+		moveBtn.addActionListener(e -> {
+			int startX = Integer.parseInt(startXtf.getText());
+			int startY = Integer.parseInt(startYtf.getText());
+			int targetX = Integer.parseInt(targetXtf.getText());
+			int targetY = Integer.parseInt(targetYtf.getText());
+			boolean moveSuccess = cs.makeMove(startX, startY, targetX, targetY);
+			if (moveSuccess) {
+				bu.display();
 			}
 		});
 
@@ -64,20 +58,6 @@ public class GUI extends JFrame{
 		board.setValueAt("bb", 0, 0);
 		board.setRowHeight(100);
 		startGameBtn.setText("change");
-//		String[] colName = {null, null, null, null, null, null, null, null};
-//		String[][] boardContent = {
-//				{"Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook"},
-//				{"Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{null, null, null, null, null, null, null, null},
-//				{"Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"},
-//				{"Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook"}
-//		};
-////
-//		board = new JTable(new DefaultTableModel(boardContent, colName));
-//		board.setRowHeight(50);
 	}
 
 	public static void main(String[] args) {
