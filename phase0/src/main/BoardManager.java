@@ -42,8 +42,9 @@ public class BoardManager {
         return activePlayer;
     }
 
-    public void setActivePlayer(Player player){
+    public void setActivePlayer(Player player) {
         this.activePlayer = player;
+    }
 
     public void resetMap() {
         // initialize white pieces and put into Map
