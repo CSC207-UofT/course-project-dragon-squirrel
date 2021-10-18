@@ -30,14 +30,14 @@ public class TestBoard {
         board[7][5] = "w_bishop_r";
         board[7][6] = "w_knight_r";
         board[7][7] = "w_rook_r";
-        board[6][0] = "w_pawn_1";
-        board[6][1] = "w_pawn_2";
-        board[6][2] = "w_pawn_3";
-        board[6][3] = "w_pawn_4";
-        board[6][4] = "w_pawn_5";
-        board[6][5] = "w_pawn_6";
-        board[6][6] = "w_pawn_7";
-        board[6][7] = "w_pawn_8";
+        board[6][0] = "w_pawn_0";
+        board[6][1] = "w_pawn_1";
+        board[6][2] = "w_pawn_2";
+        board[6][3] = "w_pawn_3";
+        board[6][4] = "w_pawn_4";
+        board[6][5] = "w_pawn_5";
+        board[6][6] = "w_pawn_6";
+        board[6][7] = "w_pawn_7";
 
         // initialize black pieces
         board[0][0] = "b_rook_l";
@@ -48,14 +48,14 @@ public class TestBoard {
         board[0][5] = "b_bishop_r";
         board[0][6] = "b_knight_r";
         board[0][7] = "b_rook_r";
-        board[1][0] = "b_pawn_1";
-        board[1][1] = "b_pawn_2";
-        board[1][2] = "b_pawn_3";
-        board[1][3] = "b_pawn_4";
-        board[1][4] = "b_pawn_5";
-        board[1][5] = "b_pawn_6";
-        board[1][6] = "b_pawn_7";
-        board[1][7] = "b_pawn_8";
+        board[1][0] = "b_pawn_0";
+        board[1][1] = "b_pawn_1";
+        board[1][2] = "b_pawn_2";
+        board[1][3] = "b_pawn_3";
+        board[1][4] = "b_pawn_4";
+        board[1][5] = "b_pawn_5";
+        board[1][6] = "b_pawn_6";
+        board[1][7] = "b_pawn_7";
 
         // initialize remaining board with no pieces
         for (int i = 2; i < 6; i++) {
@@ -76,9 +76,9 @@ public class TestBoard {
 
     @Test(timeout = 50)
     public void TestremovePiece(){
-        assertEquals("w_pawn", 6, 0);
+        assertEquals("w_pawn_0", b.getPiece(6, 0));
         b.removePiece(6, 0);
-        assertEquals("vacant", 6, 0);
+        assertEquals("vacant", b.getPiece(6, 0));
     }
 
     @Test(timeout = 50)
@@ -89,7 +89,7 @@ public class TestBoard {
 
     @Test(timeout = 50)
     public void TestgetPiece(){
-        assertEquals("w_pawn", b.getPiece(6, 0));
+        assertEquals("w_pawn_0", b.getPiece(6, 0));
     }
 
     @Test(timeout = 50)
@@ -105,14 +105,14 @@ public class TestBoard {
         board[7][5] = "w_bishop_r";
         board[7][6] = "w_knight_r";
         board[7][7] = "w_rook_r";
-        board[6][0] = "w_pawn_1";
-        board[6][1] = "w_pawn_2";
-        board[6][2] = "w_pawn_3";
-        board[6][3] = "w_pawn_4";
-        board[6][4] = "w_pawn_5";
-        board[6][5] = "w_pawn_6";
-        board[6][6] = "w_pawn_7";
-        board[6][7] = "w_pawn_8";
+        board[6][0] = "w_pawn_0";
+        board[6][1] = "w_pawn_1";
+        board[6][2] = "w_pawn_2";
+        board[6][3] = "w_pawn_3";
+        board[6][4] = "w_pawn_4";
+        board[6][5] = "w_pawn_5";
+        board[6][6] = "w_pawn_6";
+        board[6][7] = "w_pawn_7";
 
         // initialize black pieces
         board[0][0] = "b_rook_l";
@@ -123,14 +123,14 @@ public class TestBoard {
         board[0][5] = "b_bishop_r";
         board[0][6] = "b_knight_r";
         board[0][7] = "b_rook_r";
-        board[1][0] = "b_pawn_1";
-        board[1][1] = "b_pawn_2";
-        board[1][2] = "b_pawn_3";
-        board[1][3] = "b_pawn_4";
-        board[1][4] = "b_pawn_5";
-        board[1][5] = "b_pawn_6";
-        board[1][6] = "b_pawn_7";
-        board[1][7] = "b_pawn_8";
+        board[1][0] = "b_pawn_0";
+        board[1][1] = "b_pawn_1";
+        board[1][2] = "b_pawn_2";
+        board[1][3] = "b_pawn_3";
+        board[1][4] = "b_pawn_4";
+        board[1][5] = "b_pawn_5";
+        board[1][6] = "b_pawn_6";
+        board[1][7] = "b_pawn_7";
 
         // initialize remaining board with no pieces
         for (int i = 2; i < 6; i++) {
