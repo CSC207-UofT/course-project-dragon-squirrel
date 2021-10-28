@@ -1,14 +1,13 @@
 package super_chess.super_piece;
 
 import piece.Color;
-import piece.Piece;
 import piece.PieceInterface;
 
 public class SuperPieceAdapter implements SuperPieceInterface {
 
     PieceInterface piece;
 
-    public SuperPieceAdapter(Piece piece){
+    public SuperPieceAdapter(PieceInterface piece){
         this.piece = piece;
     }
 
