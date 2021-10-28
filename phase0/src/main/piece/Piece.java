@@ -1,7 +1,7 @@
 package piece;
 
 public abstract class Piece {
-    protected String name;  // ex: "w_pawn"
+    protected String name;  // ex: "w_pawn_1"
     protected Color color;    // Black or White (BLACK/WHITE)
     protected boolean status;     // This tells whether this piece has been moved during the turn
 

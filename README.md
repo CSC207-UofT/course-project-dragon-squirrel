@@ -1,6 +1,6 @@
 So this is the basic structure/vague idea of the project
 
-Entity:                 Player, Human, AI, Piece, ModifiedPiece
+Entity:                 Player, Human, AI, Piece, piece.ModifiedPiece
 Use Case:               Board
 Controller/Presenter:   BoardManager
 Outer most layer:       UI

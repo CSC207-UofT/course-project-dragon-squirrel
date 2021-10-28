@@ -3,6 +3,9 @@ import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 
 public class TestBoard {
     Board b;
@@ -83,8 +86,8 @@ public class TestBoard {
 
     @Test(timeout = 50)
     public void TestisPositionVacant(){
-        assertEquals(true, b.isPositionVacant(5, 0));
-        assertEquals(false, b.isPositionVacant(6, 0));
+        assertTrue(b.isPositionVacant(5, 0));
+        assertFalse(b.isPositionVacant(6, 0));
     }
 
     @Test(timeout = 50)
