@@ -5,6 +5,6 @@ public interface PieceInterface {
     Color getColor();
     boolean getStatus();
     void setStatus(boolean status);
-    boolean hasSameColor(PieceInterface another);
+    //boolean hasSameColor(Piece another);  // tricky
     boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
 }

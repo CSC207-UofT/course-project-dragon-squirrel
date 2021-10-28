@@ -32,28 +32,28 @@ public class SuperPieceAdapter implements SuperPieceInterface {
         this.piece.setStatus(status);
     }
 
-    @Override
-    public boolean hasSuperSameColor(PieceInterface another) {
-        return this.piece.hasSameColor(another);
-    }
+//    @Override
+//    public boolean hasSuperSameColor(Piece another) {
+//        return this.piece.hasSameColor(another);
+//    }
 
-    @Override
-    public int getSuperHp() {
-        return 0;
-    }
-
-    @Override
-    public int getSuperAtk() {
-        return 0;
-    }
-
-    @Override
-    public boolean hasSuperMoved() {
-        return false;
-    }
-
-    @Override
-    public boolean hasSuperAttacked() {
-        return false;
-    }
+//    @Override
+//    public int getSuperHp() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public int getSuperAtk() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public boolean hasSuperMoved() {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean hasSuperAttacked() {
+//        return false;
+//    }
 }
