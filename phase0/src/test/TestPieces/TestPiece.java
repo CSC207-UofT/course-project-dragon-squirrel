@@ -22,8 +22,8 @@ public class TestPiece {
 
     @Test(timeout = 50)
     public void TestgetName(){
-        assertEquals("w_pawn", p1.getName());
-        assertEquals("b_pawn", p2.getName());
+        assertEquals("w_pawn_1", p1.getName());
+        assertEquals("b_pawn_1", p2.getName());
     }
 
     @Test(timeout = 50)

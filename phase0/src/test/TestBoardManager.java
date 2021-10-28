@@ -10,14 +10,14 @@ public class TestBoardManager {
     Board b;
 
     @Before
-    private void setup(){
+    public void setup(){
         bm = new BoardManager();
         b = new Board();
     }
 
     @Test(timeout = 50)
     public void TestgetBoard(){
-        assertEquals(b, bm.getBoard());
+        assertEquals(b.getBoard(), bm.getBoard().getBoard());
     }
 
     @Test(timeout = 50)

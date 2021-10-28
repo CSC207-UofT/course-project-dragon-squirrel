@@ -25,7 +25,7 @@ public class BoardManager {
     }
 
     public Board getBoard() {
-        return board;
+        return this.board;
     }
 
     public String[][] getCurrentBoard() {
