@@ -1,13 +1,13 @@
 package super_chess;
 
-import super_chess.super_piece.SuperPiece;
+import super_chess.super_piece.SuperPieceInterface;
 
 import java.util.Map;
 
 public interface SuperBoardManager {
     SuperBoard getSuperBoard();
     String[][] getSuperCurrentBoard();
-    Map<String, SuperPiece> getSuperPieces();
+    Map<String, SuperPieceInterface> getSuperPieces();
     SuperPlayer getSuperP1();
     SuperPlayer getSuperP2();
     SuperPlayer getSuperActivePlayer();

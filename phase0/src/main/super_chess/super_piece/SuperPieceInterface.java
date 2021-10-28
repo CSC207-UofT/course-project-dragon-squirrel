@@ -1,8 +1,10 @@
 package super_chess.super_piece;
 
-public interface SuperPiece {
+import piece.Color;
+
+public interface SuperPieceInterface {
     String getSuperName();  // ex: "w_super_pawn_1"
-    SuperColor getSuperColor(); // ex: WHITE
+    Color getSuperColor(); // ex: WHITE
     boolean getSuperStatus();   // true -> piece has moved during the turn
     void setSuperStatus();
     boolean hasSuperSameColor();
