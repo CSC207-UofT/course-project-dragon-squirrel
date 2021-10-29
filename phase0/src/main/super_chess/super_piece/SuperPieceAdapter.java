@@ -3,7 +3,7 @@ package super_chess.super_piece;
 import piece.Color;
 import piece.PieceInterface;
 
-public class SuperPieceAdapter implements SuperPieceInterface {
+public class SuperPieceAdapter extends SuperPiece implements SuperPieceInterface {
 
     PieceInterface piece;
 

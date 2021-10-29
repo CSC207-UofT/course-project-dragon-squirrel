@@ -10,8 +10,8 @@ public interface SuperPieceInterface {
 //    boolean hasSuperSameColor(SuperPiece another);    // tricky
 
     // new features
-//    int getSuperHp();
-//    int getSuperAtk();  // attack points
-//    boolean hasSuperMoved();    // can only move once per turn
-//    boolean hasSuperAttacked(); // can only attack once per turn
+    int getSuperHp();
+    int getSuperAtk();  // attack points
+    boolean hasSuperMoved();    // can only move once per turn
+    boolean hasSuperAttacked(); // can only attack once per turn
 }
