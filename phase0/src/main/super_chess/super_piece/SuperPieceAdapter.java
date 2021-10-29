@@ -31,28 +31,16 @@ public class SuperPieceAdapter extends SuperPiece implements SuperPieceInterface
         this.piece.setStatus(status);
     }
 
-//    @Override
-//    public boolean hasSuperSameColor(Piece another) {
-//        return this.piece.hasSameColor(another);
-//    }
+    // (start comment) confused why both need to be defined
+    @Override
+    public boolean hasSuperSameColor(SuperPieceInterface another) {
+        return this.piece.hasSameColor((PieceInterface) another);
+    }
 
-//    @Override
-//    public int getSuperHp() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getSuperAtk() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public boolean hasSuperMoved() {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean hasSuperAttacked() {
-//        return false;
-//    }
+    @Override
+    public boolean hasSuperSameColor(PieceInterface another) {
+        return this.piece.hasSameColor(another);
+    }
+    // (end comment)
+
 }
