@@ -32,4 +32,9 @@ public class Pawn extends Piece{
 
         return solution;
     }
+
+    @Override
+    public boolean hasSameColor(PieceInterface another) {
+        return this.color == another.getColor();
+    }
 }

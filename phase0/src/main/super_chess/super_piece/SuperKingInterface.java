@@ -1,6 +1,6 @@
 package super_chess.super_piece;
 
-public interface SuperKing {
+public interface SuperKingInterface {
     boolean hasSuperNotMoved(); // during the whole match
     boolean isValidSuperMove();
 

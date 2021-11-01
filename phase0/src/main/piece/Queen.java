@@ -10,4 +10,9 @@ public class Queen extends Piece{
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY) || (Math.abs(oldCoorX - newCoorX) == 0 || Math.abs(oldCoorY - newCoorY) == 0);
     }
+
+    @Override
+    public boolean hasSameColor(PieceInterface another) {
+        return this.color == another.getColor();
+    }
 }

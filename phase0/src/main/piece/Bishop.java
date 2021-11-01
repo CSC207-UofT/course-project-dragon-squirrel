@@ -1,5 +1,5 @@
 package piece;
-public class Bishop extends Piece{
+public class Bishop extends Piece {
 
     public Bishop(String name, Color color){
         super(name, color);
@@ -8,5 +8,10 @@ public class Bishop extends Piece{
     @Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
+    }
+
+    @Override
+    public boolean hasSameColor(PieceInterface another) {
+        return this.color == another.getColor();
     }
 }

@@ -12,4 +12,9 @@ public class Knight extends Piece{
         int Y = Math.abs(oldCoorY - newCoorY);
         return (X == 2 && Y == 1) || (X == 1 && Y == 2);
     }
+
+    @Override
+    public boolean hasSameColor(PieceInterface another) {
+        return this.color == another.getColor();
+    }
 }

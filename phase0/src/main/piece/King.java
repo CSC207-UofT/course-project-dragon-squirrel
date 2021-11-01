@@ -14,4 +14,9 @@ public class King extends Piece{
 
         //TODO: what if we are castling
     }
+
+    @Override
+    public boolean hasSameColor(PieceInterface another) {
+        return this.color == another.getColor();
+    }
 }

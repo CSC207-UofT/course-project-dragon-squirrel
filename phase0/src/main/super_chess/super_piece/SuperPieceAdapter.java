@@ -37,10 +37,5 @@ public class SuperPieceAdapter extends SuperPiece implements SuperPieceInterface
         return this.piece.hasSameColor((PieceInterface) another);
     }
 
-    @Override
-    public boolean hasSuperSameColor(PieceInterface another) {
-        return this.piece.hasSameColor(another);
-    }
-    // (end comment)
 
 }
