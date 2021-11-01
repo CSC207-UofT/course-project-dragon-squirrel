@@ -45,7 +45,7 @@
 |String name <br> Color color <br> boolean status <br> hasNotMovedDuringGame // for optional 2 squares (sq) forward|Superclass: Piece <br> Subclass: <br> Collaborators: Board|
 |validMove() // 1sq directly forward, optional 2sq directly forward if not yet moved, promotion if reach other end
 
-|ModifiedPiece (entity) <br> interface||
+|piece.ModifiedPiece (entity) <br> interface||
 |---|---|
 |int hp <br> int atk|Superclass: Piece <br> Subclass: <br> Collaborators: ModifiedBoard|
 |getHp() <br> getAtk()
@@ -57,7 +57,7 @@
 
 |ModifiedBoard (entity)||
 |---|---|
-|Responsibilities: //may add additional features|Superclass: Board <br> Subclass: <br> Collaborators: ModifiedPiece|
+|Responsibilities: //may add additional features|Superclass: Board <br> Subclass: <br> Collaborators: piece.ModifiedPiece|
 
 |GameRule (use case)||
 |---|---|
