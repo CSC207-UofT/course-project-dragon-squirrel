@@ -3,9 +3,13 @@
     "name": "ModifiedPiece(entity)",
     "superclasses": "Piece",
     "subclasses": "",
-    "type": "Normal",
+    "type": "interface",
     "responsibilities": [
       "\\ We have not decided on rules yet."
+      "int hp",
+      "int atk",
+      "getHp()",
+      "getAtk()"
     ],
     "collaborators": [
       "ModifiedBoard"
