@@ -5,7 +5,7 @@
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
-      "BoardManager",
+      "Board.BoardManager",
       "GameRule",
       "movePiece()",
       "passRound()",
@@ -14,7 +14,7 @@
       "getBoardUpdate()"
     ],
     "collaborators": [
-      "BoardManager, GameRule"
+      "Board.BoardManager, GameRule"
     ]
   }
 ]

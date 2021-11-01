@@ -1,3 +1,4 @@
+import Board.Board;
 import piece.Piece;
 import java.util.Map;
 
@@ -59,48 +60,14 @@ public class GameRule {
 	 *        new coordinate is within the board
 	 */
 	private boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
-		return newX >= 0 & newX < 8 & newY >= 0 & newY < 8 & (oldX != newX || oldY != newY);
+		return newX >= 0 & newX < board.getBoard().length & newY >= 0 & newY < board.getBoard()[0].length & (oldX != newX || oldY != newY);
 	}
 
 	/**
 	 * Check: path between old and new coordinates is clear of pieces
 	 * 		  does not check coordinates old and new themselves
 	 */
-	public boolean isPathClear(int oldX, int oldY, int newX, int newY) {
-		if (oldY == newY) {
-			// vertical north and south
-			for (int i = Math.min(oldX, newX) + 1; i < Math.max(oldX, newX); i++) {
-				if (board.isPositionVacant(i, newY))
-					return false;
-			}
-		}
 
-		if (oldX == newX) {
-			// horizontal east and west
-			for (int i = Math.min(oldY, newY) + 1; i < Math.max(oldY, newY); i++) {
-				if (board.isPositionVacant(newX, i))
-					return false;
-			}
-		}
-
-		if ((oldX < newX & oldY < newY) || (oldX > newX & oldY > newY)) {
-			// diagonal northwest or southeast
-			for (int i = 1; i < Math.abs(newX - oldX); i++) {
-				if (board.isPositionVacant(Math.min(oldX, newX) + i, Math.min(oldY, newY) + i))
-					return false;
-			}
-		}
-
-		if ((oldX > newX & oldY < newY) || (oldX < newX & oldY > newY)) {
-			// diagonal northeast or southwest
-			for (int i = Math.abs(newX - oldX) - 1; i > 0; i--) {
-				if (board.isPositionVacant(Math.max(oldX, newX) - i, Math.min(oldY, newY) + i))
-					return false;
-			}
-		}
-
-		return true;
-	}
 
 	/**
 	 * It might be a good idea to separate clearValidPath() into two methods

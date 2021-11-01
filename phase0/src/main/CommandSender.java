@@ -1,3 +1,6 @@
+import Board.BoardManager;
+import Board.BoardUpdater;
+
 /**
  * Like it said, sends commands from player
  */

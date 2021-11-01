@@ -10,7 +10,7 @@
       "boolean status"
     ],
     "collaborators": [
-      "Board"
+      "Board.Board"
     ]
   }
 ]

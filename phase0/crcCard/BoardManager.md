@@ -1,12 +1,12 @@
 [
   {
-    "name": "BoardManager(use case)",
+    "name": "Board.BoardManager(use case)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
       "\\\\ control the board",
-      "Board board",
+      "Board.Board board",
       "Map<String, Piece> piecesDict",
       "Player p1",
       "Player p2",
@@ -20,7 +20,7 @@
       "resetBoard()"
     ],
     "collaborators": [
-      "Pieces; Board"
+      "Pieces; Board.Board"
     ]
   }
 ]

@@ -6,7 +6,7 @@
     "type": "Normal",
     "responsibilities": [
       "\\ Determining whether a player's behavior is in compliance with the rules."
-      "Board board",
+      "Board.Board board",
       "Map<String, Piece> piecesDict",
       "isMoveValid",
       "isPathClear",
@@ -17,7 +17,7 @@
       "getAvailableMoves()"
     ],
     "collaborators": [
-      "Board; Piece"
+      "Board.Board; Piece"
     ]
   }
 ]

@@ -39,7 +39,7 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 ## CRC Model
 **_Entities:_**
 - [Player](src/main/Player.java):
-- Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
+- Board.Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
 - Pieces:
 1. [King](src/main/piece/King.java)
 2. [Queen](src/main/piece/Queen.java)
@@ -51,7 +51,7 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 **_Use Case:_**
 
 - [Game Rule(Regular & Modified)](src/main/GameRule.java)
-- [BoardManager](src/main/BoardManager.java)
+- [Board.BoardManager](src/main/BoardManager.java)
   
 **_Controller & Presenter:_**
 - [CommandSender](src/main/CommandSender.java)
@@ -91,12 +91,12 @@ Enter move using (row, column) start and end coordinates.
 - Jennifer
   - Specification
   - Redid/restructure all.md CRC card and update Jin's separate CRC cards
-  - resetMap() in BoardManager
+  - resetMap() in Board.BoardManager
   - isCoordinateValid(), isPathClear() in GameRule
 - Future
   - walkthrough.md
   - code structure design
-  - BoardManager, BoardUpdater, CommandSender, GameRule, GUI
+  - Board.BoardManager, Board.BoardUpdater, CommandSender, GameRule, GUI
 - Tingzhou
   - Progress report
 - Christopher 
@@ -122,5 +122,5 @@ belongs to the Clean Architecture and obey the SOLID principles. We make lots of
 we found and how to solve the problems.
 
 ### Questions
-1. Since our UI class is going to show the board to player, but we cannot let UI access the Board class due to 
-Clean Architecture. Should we let UI store a cache of current board and use methods to deliver updates from the Board class each time players make moves?
+1. Since our UI class is going to show the board to player, but we cannot let UI access the Board.Board class due to 
+Clean Architecture. Should we let UI store a cache of current board and use methods to deliver updates from the Board.Board class each time players make moves?

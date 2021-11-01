@@ -22,14 +22,4 @@ public abstract class Piece {
     }
 
     public boolean hasSameColor(Piece another) { return this.color == another.color; }
-
-    // This can actually be done in GameRule, so I moved the code there (try not let entity enforce rules)
-    // The subclasses of Piece can still override it tho
-    public abstract boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
-
-        // to be overridden but the first line of the overridden method can call super.validMove(...) just to check that
-        // the new coordinates given are within the boundaries of the board and that the new coordinates given are a new
-        // set of coordinates, return false otherwise.
-
-
 }
