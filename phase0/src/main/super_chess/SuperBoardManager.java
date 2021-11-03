@@ -5,7 +5,7 @@ import super_chess.super_piece.SuperPieceInterface;
 import java.util.Map;
 
 public interface SuperBoardManager {
-    SuperBoard getSuperBoard();
+    SuperBoardInterface getSuperBoard();
     String[][] getSuperCurrentBoard();
     Map<String, SuperPieceInterface> getSuperPieces();
     SuperPlayer getSuperP1();

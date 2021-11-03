@@ -40,8 +40,8 @@ The game ends when the king is dead, a player gives up, or a player pauses the g
 The board consists of rivers, some bridges, and home safe zones. 
 * River: Only the pawn can cross the river. All other pieces must use the bridge. The pawn is not *visible* in the river 
 because it is "submerged". 
-* Bridges are elevated. Therefore, pieces cannot attack a piece on the other side of or on the bridge. However, if 
-a piece is on the bridge, due to the high altitude, it can attack all *visible* pieces. All pieces can use the bridge.
+* Bridges are elevated. Therefore, pieces cannot attack a piece on the other side of the bridge. However, pieces can 
+attack a piece on the bridge. If a piece is on the bridge, due to the high altitude, it can attack all *visible* pieces. All pieces can use the bridge.
 * Home safe zones: If a piece is in its own home safe zone, it cannot be attacked. However, it is still *visible* from 
 the bridge, therefore pieces in its own home safe zone can still be attacked by pieces on the bridge. 
 
