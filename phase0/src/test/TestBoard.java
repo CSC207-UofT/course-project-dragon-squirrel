@@ -1,3 +1,4 @@
+import board.Board;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
@@ -12,7 +13,7 @@ public class TestBoard {
 
     @Before
     public void setup(){
-        b = new Board();
+        b = new Board(8, 8);
     }
 
     @After

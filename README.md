@@ -1,7 +1,7 @@
 So this is the basic structure/vague idea of the project
 
-Entity:                 Player, Human, AI, Piece, piece.ModifiedPiece
-Use Case:               Board
+Entity:                 player.Player, player.Human, player.AI, Piece, piece.ModifiedPiece
+Use Case:               board.Board
 Controller/Presenter:   BoardManager
 Outer most layer:       UI
 

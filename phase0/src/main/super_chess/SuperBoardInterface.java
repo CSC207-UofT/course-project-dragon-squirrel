@@ -3,13 +3,13 @@ package super_chess;
 public interface SuperBoardInterface {
 
     // adapted methods
+    String[][] getSuperBoard();
     String getSuperPiece(int X, int Y);
-    String addSuperPiece();
-    void removeSuperPiece();
-    boolean isSuperPositionVacant();
+    void addSuperPiece(String pieceName, int X, int Y);
+    String removeSuperPiece(int X, int Y);
+    boolean isSuperPositionVacant(int X, int Y);
 
     // new features
-    String[][] getSuperBoard();
     void superReset();
 
 }

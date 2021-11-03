@@ -1,12 +1,12 @@
 ## Summary
 We will first build a basic playable chess game. The game rules may differ from the regular chess game.
-There will be two human players who play against each other. No AI player during this phase.
+There will be two human players who play against each other. No player.AI player during this phase.
 
 ## Walk-through
 The GUI pops up a window and allows player to move a piece, the BoardUpdater displays the current board in text format,
 
 Once the player decides to move a piece (click buttons in GUI), the CommandSender class is called, and it checks 
-whether the player's move is valid by calling methods in GameRule class. GameRule will further call Board class and
+whether the player's move is valid by calling methods in GameRule class. GameRule will further call board.Board class and
 Piece class to check the route of the move, and whether it's allowed according to the type of pieces.
 
 If the move is invalid, CommandSender returns false to GUI class, and player can make another move.

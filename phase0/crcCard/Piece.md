@@ -15,7 +15,7 @@
       "boolean ValidMove()"
     ],
     "collaborators": [
-      "Board"
+      "board.Board"
     ]
   }
 ]

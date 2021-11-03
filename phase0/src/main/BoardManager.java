@@ -1,10 +1,12 @@
+import board.Board;
 import piece.*;
+import player.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * It should receive some input from players and send command to a Board instance
+ * It should receive some input from players and send command to a board.Board instance
  * It should reflect the changes on the board and let players know
  * Perhaps we can separate controller and presenter to 2 classes
  *
@@ -21,7 +23,7 @@ public class BoardManager {
     private GameStatus status;
 
     public BoardManager() {
-        this.board = new Board();
+        this.board = new Board(8, 8);
         this.pieces = new HashMap<>();
         resetMap();
     }

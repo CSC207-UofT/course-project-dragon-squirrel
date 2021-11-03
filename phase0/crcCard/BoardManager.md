@@ -6,11 +6,11 @@
     "type": "Normal",
     "responsibilities": [
       "\\\\ control the board",
-      "Board board",
+      "board.Board board",
       "Map<String, Piece> piecesDict",
-      "Player p1",
-      "Player p2",
-      "Player activePlayer",
+      "player.Player p1",
+      "player.Player p2",
+      "player.Player activePlayer",
       "GameStatus",
       "getActivePlayer()","
       "void movePiece()",
@@ -20,7 +20,7 @@
       "resetBoard()"
     ],
     "collaborators": [
-      "Pieces; Board"
+      "Pieces; board.Board"
     ]
   }
 ]

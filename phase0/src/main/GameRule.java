@@ -1,3 +1,4 @@
+import board.Board;
 import piece.Piece;
 import java.util.Map;
 
@@ -128,7 +129,7 @@ public class GameRule {
 
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an AI player make thoughtful decisions (involves decision tree etc.)
+	 * This is VERY important if we want an player.AI player make thoughtful decisions (involves decision tree etc.)
 	 * We don't need to worry about it now
 	 *
 	 * @param p The piece that moves (we want to know which kind of piece it is)

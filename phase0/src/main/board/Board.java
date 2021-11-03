@@ -1,3 +1,5 @@
+package board;
+
 import piece.Piece;
 
 import java.util.ArrayList;
@@ -8,9 +10,14 @@ import java.util.ArrayList;
 public class Board implements BoardInterface {
 
     private String[][] board;   // Each cell can be the name/ID of a piece
+    private int width;  // east to west
+    private int length; // north to south
 
-    public Board() {
-        board = new String[8][8];
+
+    public Board(int width, int length) {
+        this.width = width;
+        this.length = length;
+        board = new String[this.width][this.length];
         reset();
     }
 

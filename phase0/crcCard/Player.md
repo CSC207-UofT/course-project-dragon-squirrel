@@ -1,8 +1,8 @@
 [
   {
-    "name": "Player(entity)",
+    "name": "player.Player(entity)",
     "superclasses": "",
-    "subclasses": "AI; human",
+    "subclasses": "player.AI; human",
     "type": "Normal",
     "responsibilities": [
       "String ID",
@@ -10,7 +10,7 @@
       "boolean status"
     ],
     "collaborators": [
-      "Board"
+      "board.Board"
     ]
   }
 ]

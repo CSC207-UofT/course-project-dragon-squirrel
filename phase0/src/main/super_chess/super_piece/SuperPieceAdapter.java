@@ -5,36 +5,36 @@ import piece.PieceInterface;
 
 public class SuperPieceAdapter extends SuperPiece implements SuperPieceInterface {
 
-    PieceInterface piece;
+    PieceInterface superPiece;
 
-    public SuperPieceAdapter(PieceInterface piece){
-        this.piece = piece;
+    public SuperPieceAdapter(PieceInterface superPiece){
+        this.superPiece = superPiece;
     }
 
     @Override
     public String getSuperName() {
-        return this.piece.getName();
+        return this.superPiece.getName();
     }
 
     @Override
     public Color getSuperColor() {
-        return this.piece.getColor();
+        return this.superPiece.getColor();
     }
 
     @Override
     public boolean getSuperStatus() {
-        return this.piece.getStatus();
+        return this.superPiece.getStatus();
     }
 
     @Override
     public void setSuperStatus(boolean status) {
-        this.piece.setStatus(status);
+        this.superPiece.setStatus(status);
     }
 
     // (start comment) confused why both need to be defined
     @Override
     public boolean hasSuperSameColor(SuperPieceInterface another) {
-        return this.piece.hasSameColor((PieceInterface) another);
+        return this.superPiece.hasSameColor((PieceInterface) another);
     }
 
 
