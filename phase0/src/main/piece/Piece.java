@@ -21,8 +21,6 @@ public abstract class Piece implements PieceInterface {
         this.status = status;
     }
 
-    public boolean hasSameColor(Piece another) { return this.color == another.color; }
-
     public abstract boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
 
 }

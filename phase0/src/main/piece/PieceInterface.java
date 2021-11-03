@@ -5,5 +5,4 @@ public interface PieceInterface {
     Color getColor();
     boolean getStatus();
     void setStatus(boolean status);
-    boolean hasSameColor(PieceInterface another);  // tricky
 }
