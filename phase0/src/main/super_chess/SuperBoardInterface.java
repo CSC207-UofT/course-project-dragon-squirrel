@@ -1,12 +1,15 @@
 package super_chess;
 
 public interface SuperBoardInterface {
-    String[][] getSuperBoard();
-    String getSuperPiece();
+
+    // adapted methods
+    String getSuperPiece(int X, int Y);
     String addSuperPiece();
     void removeSuperPiece();
     boolean isSuperPositionVacant();
-    void superReset();
 
     // new features
+    String[][] getSuperBoard();
+    void superReset();
+
 }

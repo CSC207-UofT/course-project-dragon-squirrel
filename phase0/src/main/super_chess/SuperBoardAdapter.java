@@ -2,11 +2,12 @@ package super_chess;
 
 public class SuperBoardAdapter implements SuperBoardInterface{
 
+    // public String[][] superBoard = BoardInterface(13, 10);
     private String[][] superBoard; // Each cell contains the name of the piece
     public static String[][] superBoardLand; // Each cell contains the name of the type of land
 
-    public SuperBoardAdapter() {
-        superBoard = new String[13][10];
+    public SuperBoardAdapter() {    // public superBoardAdapter(BoardInterface superBoard)
+        superBoard = new String[13][10];    // this.superBoard = superBoard;
         superBoardLand = new String[13][10];
         superReset();
         superSetLand();
@@ -18,12 +19,12 @@ public class SuperBoardAdapter implements SuperBoardInterface{
 
     @Override
     public String[][] getSuperBoard() {
-        // duplicate code
+        // duplicate code // adapter fails
         return superBoard;
     }
 
     @Override
-    public String getSuperPiece() {
+    public String getSuperPiece(int X, int Y) {
         return null;
         // duplicate code
     }
