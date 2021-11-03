@@ -9,7 +9,7 @@ public interface SuperBoardInterface {
     String removeSuperPiece(int X, int Y);
     boolean isSuperPositionVacant(int X, int Y);
 
-    // new features
+    // new methods
     void superReset();
 
 }

@@ -5,8 +5,8 @@ public abstract class SuperBoard implements SuperBoardInterface{
     private String[][] superBoard; // Each cell contains the name of the piece
     public static String[][] superBoardLand; // Each cell contains the name of the type of land
 
-    public SuperBoard() {    // public superBoardAdapter(board.BoardInterface superBoard)
-        superBoard = new String[13][10];    // this.superBoard = superBoard;
+    public SuperBoard() {
+        superBoard = new String[13][10];
         superBoardLand = new String[13][10];
         superReset();
         superSetLand();

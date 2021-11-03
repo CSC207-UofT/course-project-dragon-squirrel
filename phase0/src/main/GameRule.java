@@ -1,4 +1,5 @@
 import board.Board;
+import board.BoardInterface;
 import piece.Piece;
 import java.util.Map;
 
@@ -8,10 +9,10 @@ import java.util.Map;
  */
 public class GameRule {
 
-	private Board board;
+	private BoardInterface board;
 	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
 
-	public GameRule(Board board, Map<String, Piece> piecesDict) {
+	public GameRule(BoardInterface board, Map<String, Piece> piecesDict) {
 		this.board = board;
 		this.piecesDict = piecesDict;
 	}

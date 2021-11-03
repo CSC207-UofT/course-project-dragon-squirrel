@@ -1,4 +1,5 @@
 import board.Board;
+import board.BoardInterface;
 import piece.*;
 import player.Player;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 public class BoardManager {
 
     // These are the variables we might need
-    private Board board;
+    private BoardInterface board;
     private Map<String, Piece> pieces;   // This is essentially dict in python with key: ID, value: Piece
     private Player p1;
     private Player p2;
@@ -28,7 +29,7 @@ public class BoardManager {
         resetMap();
     }
 
-    public Board getBoard() {
+    public BoardInterface getBoard() {
         return this.board;
     }
 
