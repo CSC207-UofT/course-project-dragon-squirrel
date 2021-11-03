@@ -1,11 +1,11 @@
 package super_chess;
 
-public class SuperBoard implements SuperBoardInterface{
+public class SuperBoardAdapter implements SuperBoardInterface{
 
     private String[][] superBoard; // Each cell contains the name of the piece
     public static String[][] superBoardLand; // Each cell contains the name of the type of land
 
-    public SuperBoard() {
+    public SuperBoardAdapter() {
         superBoard = new String[13][10];
         superBoardLand = new String[13][10];
         superReset();
