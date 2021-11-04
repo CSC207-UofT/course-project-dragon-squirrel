@@ -67,7 +67,9 @@ public class GameRule {
 	 *        new coordinate is within the board
 	 */
 	public boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
-		return newX >= 0 & newX < 8 & newY >= 0 & newY < 8 & (oldX != newX || oldY != newY);
+		int xBoundary = board.getBoundaries().x;
+		int yBoundary = board.getBoundaries().y;
+		return newX >= 0 & newX < xBoundary + 1 & newY >= 0 & newY < yBoundary + 1 & (oldX != newX || oldY != newY);
 	}
 
 	/**

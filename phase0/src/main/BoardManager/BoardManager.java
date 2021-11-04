@@ -22,8 +22,8 @@ public class BoardManager {
     private Player activePlayer;
     private GameStatus status;
 
-    public BoardManager() {
-        this.board = new Board(8, 8);
+    public BoardManager(int column, int row) {
+        this.board = new Board(column, row);
         this.pieces = new HashMap<>();
         resetMap();
     }
@@ -54,6 +54,10 @@ public class BoardManager {
 
     public void setActivePlayer(Player player) {
         this.activePlayer = player;
+    }
+
+    public void setPieces(String pieceName, PieceInterface piece){
+        pieces.put(pieceName, piece);
     }
 
     public void resetMap() {

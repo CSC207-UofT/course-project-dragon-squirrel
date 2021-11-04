@@ -74,11 +74,6 @@ public class SuperGameRule extends GameRule {
         return true;
     }
 
-    @Override
-    public boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
-        return newX >= 0 & newX < 13 & newY >= 0 & newY < 10 & (oldX != newX || oldY != newY);
-    }
-
     // checks if path is clear of bridges because pieces not on bridges can't attack over bridges
     public boolean isPathClearOfBridge(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();

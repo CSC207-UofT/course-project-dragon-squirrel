@@ -67,7 +67,7 @@
 
 |BoardManager.BoardManager (use case)||
 |---|---|
-|Board.Board board <br> Map<String, Piece> pieces <br> Player.Player p1 <br> Player.Player p2 <br> Player.Player activePlayer <br> GameStatus|Superclass: <br> Subclass: <br> Collaborators: Piece, Board.Board|
+|Board.Board board <br> Map<String, Piece> pieces <br> Player.Player p1 <br> Player.Player p2 <br> Player.Player activePlayer <br> BoardManager.GameStatus|Superclass: <br> Subclass: <br> Collaborators: Piece, Board.Board|
 |getActivePlayer() <br> movePiece() <br> deductPieceHp() <br> switchActivePlayer() <br> switchPieceStatus() <br> resetBoard()
 
 |Controller.CommandSender (controller)||

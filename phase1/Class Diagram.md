@@ -101,7 +101,7 @@ classDiagram
     BoardManager.BoardManager : Player.Player p1
     BoardManager.BoardManager : Player.Player p2
     BoardManager.BoardManager : Player.Player activePlayer
-    BoardManager.BoardManager : GameStatus
+    BoardManager.BoardManager : BoardManager.GameStatus
     BoardManager.BoardManager : getActivePlayer()
     BoardManager.BoardManager : movePiece()
     BoardManager.BoardManager : deductPieceHp()

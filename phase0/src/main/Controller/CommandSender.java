@@ -1,7 +1,6 @@
 package Controller;
 
 import BoardManager.BoardManager;
-import Controller.BoardUpdater;
 import GameRule.GameRule;
 
 /**
@@ -51,7 +50,7 @@ public class CommandSender {
 	}
 
 	public void startNewGame() {
-		bm = new BoardManager();
+		bm = new BoardManager(8, 8);
 		gl = new GameRule(bm.getBoard(), bm.getPieces());
 		this.bu = new BoardUpdater(bm);
 	}

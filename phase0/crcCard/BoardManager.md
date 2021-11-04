@@ -11,7 +11,7 @@
       "Player.Player p1",
       "Player.Player p2",
       "Player.Player activePlayer",
-      "GameStatus",
+      "BoardManager.GameStatus",
       "getActivePlayer()","
       "void movePiece()",
       "deductPieceHp()",
