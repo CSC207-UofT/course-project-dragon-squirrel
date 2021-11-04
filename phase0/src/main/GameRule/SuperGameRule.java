@@ -54,13 +54,13 @@ public class SuperGameRule extends GameRule {
         String targetPieceName = superBoard.getPiece(newX, newY);
 
         // Check: pieces besides the knight cannot move/attack over the bridge
-        if (!pieceName.equals("knight") && !isPathClearOfBridge(oldX, oldY, newX, newY)) {
+        if (!pieceName.contains("knight") && !isPathClearOfBridge(oldX, oldY, newX, newY)) {
             System.out.println("invalid attack/move over bridge");
             return false;
         }
 
         //Check: pieces cannot attack pawns "submerged" in the river or move into the river if it is not a pawn
-        if (!pieceName.equals("pawn") && targetLand.equals("river")){
+        if (!pieceName.contains("pawn") && targetLand.equals("river")){
             System.out.println("invalid attack/move into river");
             return false;
         }
