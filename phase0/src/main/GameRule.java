@@ -70,7 +70,7 @@ public class GameRule {
 		if (oldY == newY) {
 			// vertical north and south
 			for (int i = Math.min(oldX, newX) + 1; i < Math.max(oldX, newX); i++) {
-				if (board.isPositionVacant(i, newY))
+				if (!board.isPositionVacant(i, newY))
 					return false;
 			}
 		}
@@ -78,7 +78,7 @@ public class GameRule {
 		if (oldX == newX) {
 			// horizontal east and west
 			for (int i = Math.min(oldY, newY) + 1; i < Math.max(oldY, newY); i++) {
-				if (board.isPositionVacant(newX, i))
+				if (!board.isPositionVacant(newX, i))
 					return false;
 			}
 		}
@@ -86,7 +86,7 @@ public class GameRule {
 		if ((oldX < newX & oldY < newY) || (oldX > newX & oldY > newY)) {
 			// diagonal northwest or southeast
 			for (int i = 1; i < Math.abs(newX - oldX); i++) {
-				if (board.isPositionVacant(Math.min(oldX, newX) + i, Math.min(oldY, newY) + i))
+				if (!board.isPositionVacant(Math.min(oldX, newX) + i, Math.min(oldY, newY) + i))
 					return false;
 			}
 		}
@@ -94,7 +94,7 @@ public class GameRule {
 		if ((oldX > newX & oldY < newY) || (oldX < newX & oldY > newY)) {
 			// diagonal northeast or southwest
 			for (int i = Math.abs(newX - oldX) - 1; i > 0; i--) {
-				if (board.isPositionVacant(Math.max(oldX, newX) - i, Math.min(oldY, newY) + i))
+				if (!board.isPositionVacant(Math.max(oldX, newX) - i, Math.min(oldY, newY) + i))
 					return false;
 			}
 		}

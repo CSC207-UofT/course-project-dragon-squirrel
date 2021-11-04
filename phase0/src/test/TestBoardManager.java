@@ -32,10 +32,10 @@ public class TestBoardManager {
         assertEquals(new HashMap<>(), bm.getPieces());
     }
 
-    @Test(timeout = 50)
-    public void TestgetActivePlayer(){
-        assertEquals(bm.getP1(), bm.getActivePlayer());
-    }
+//    @Test(timeout = 50)
+//    public void TestgetActivePlayer(){
+//        assertEquals(bm.getP1(), bm.getActivePlayer());
+//    }
 
     @Test(timeout = 50)
     public void TestmovePiece(){

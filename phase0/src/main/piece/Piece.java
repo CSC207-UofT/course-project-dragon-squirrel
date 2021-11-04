@@ -1,5 +1,7 @@
 package piece;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class Piece implements PieceInterface {
     protected String name;  // ex: "w_pawn_1"
     protected Color color;    // Black or White (BLACK/WHITE)
@@ -23,4 +25,7 @@ public abstract class Piece implements PieceInterface {
 
     public abstract boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
 
+    public boolean hasSameColor(PieceInterface targetPiece) {
+        return this.color == targetPiece.getColor();
+    }
 }

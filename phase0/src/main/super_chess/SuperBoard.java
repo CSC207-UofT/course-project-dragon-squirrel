@@ -16,6 +16,8 @@ public class SuperBoard implements SuperBoardInterface{
         return superBoardLand;
     }
 
+    public String getLandType(int X, int Y) {return superBoardLand[X][Y];}
+
     @Override
     public String[][] getSuperBoard() {
         // duplicate code
@@ -23,25 +25,26 @@ public class SuperBoard implements SuperBoardInterface{
     }
 
     @Override
-    public String getSuperPiece() {
-        return null;
+    public String getSuperPiece(int X, int Y) {
+        return superBoard[X][Y];
         // duplicate code
     }
 
     @Override
-    public String addSuperPiece() {
-        return null;
+    public void addSuperPiece(String pieceName, int X, int Y) {
+        superBoard[X][Y] = pieceName;
         // duplicate code with addPiece() in Piece class
     }
 
     @Override
-    public void removeSuperPiece() {
+    public void removeSuperPiece(int X, int Y) {
+        superBoard[X][Y] = "vacant";
         // duplicate code
     }
 
     @Override
-    public boolean isSuperPositionVacant() {
-        return false;
+    public boolean isSuperPositionVacant(int X, int Y) {
+        return superBoard[X][Y].equals("vacant");
         // duplicate code
     }
 
@@ -95,21 +98,21 @@ public class SuperBoard implements SuperBoardInterface{
     }
 
     public void superSetLand() {
-        // water (w), bridge (b), safe (s), ground (.)
+        // river (r), bridge (b), black_zone (z), white_zone (x) ground (.)
 
-        String s =  "w..ssss..w" +
-                    ".w......w." +
+        String s =  "r..zzzz..r" +
+                    ".r......r." +
                     "bbb....bbb" +
-                    ".w......w." +
-                    ".w......w." +
-                    "bwb.bb.bwb" +
-                    "bbbwbbwbbb" +
-                    "bwb.bb.bwb" +
-                    ".w......w." +
-                    ".w......w." +
+                    ".r......r." +
+                    ".r......r." +
+                    "brb.bb.brb" +
+                    "bbbrbbrbbb" +
+                    "brb.bb.brb" +
+                    ".r......r." +
+                    ".r......r." +
                     "bbb....bbb" +
-                    ".w......w." +
-                    "w..ssss..w";
+                    ".r......r." +
+                    "r..xxxx..r";
 
         // initialize type of land
         for (int k = 0; k < s.length(); k++) {
@@ -118,12 +121,14 @@ public class SuperBoard implements SuperBoardInterface{
             int j = k % 10;
             String land;
 
-            if (c == 'w') {
-                land = "water";
+            if (c == 'r') {
+                land = "river";
             } else if (c == 'b') {
                 land = "bridge";
-            } else if (c == 's') {
-                land = "safe";
+            } else if (c == 'z') {
+                land = "black_zone";
+            } else if (c == 'x') {
+                land = "white_zone";
             } else {
                 land = "ground";
             }
