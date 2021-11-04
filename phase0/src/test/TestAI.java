@@ -1,5 +1,5 @@
+import Player.AI;
 import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ public class TestAI {
 
     @Before
     public void setup(){
-        ai = new AI("Computer Player");
+        ai = new AI("Computer Player.Player");
     }
 
 }

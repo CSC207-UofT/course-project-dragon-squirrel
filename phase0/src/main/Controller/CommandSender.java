@@ -1,3 +1,9 @@
+package Controller;
+
+import BoardManager.BoardManager;
+import Controller.BoardUpdater;
+import GameRule.GameRule;
+
 /**
  * Like it said, sends commands from player
  */

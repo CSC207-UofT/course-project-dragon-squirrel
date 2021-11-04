@@ -1,3 +1,5 @@
+import Board.Board;
+import BoardManager.BoardManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +16,7 @@ public class TestBoardManager {
     @Before
     public void setup(){
         bm = new BoardManager();
-        b = new Board();
+        b = new Board(8, 8);
     }
 
     @Test(timeout = 50)

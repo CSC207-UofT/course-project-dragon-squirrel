@@ -1,6 +1,6 @@
 [
   {
-    "name": "Board(entity)",
+    "name": "Board.Board(entity)",
     "superclasses": "",
     "subclasses": "",
     "type": "Abstract",
@@ -15,7 +15,7 @@
       ""
     ],
     "collaborators": [
-      "Piece; BoardManager"
+      "Piece; BoardManager.BoardManager"
     ]
   }
 ]

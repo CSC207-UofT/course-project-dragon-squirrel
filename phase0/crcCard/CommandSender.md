@@ -1,12 +1,12 @@
 [
   {
-    "name": "CommandSender(controller)",
+    "name": "Controller.CommandSender(controller)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
-      "BoardManager",
-      "GameRule",
+      "BoardManager.BoardManager",
+      "GameRule.GameRule",
       "movePiece()",
       "passRound()",
       "giveUp()",
@@ -14,7 +14,7 @@
       "getBoardUpdate()"
     ],
     "collaborators": [
-      "BoardManager, GameRule"
+      "BoardManager.BoardManager, GameRule.GameRule"
     ]
   }
 ]

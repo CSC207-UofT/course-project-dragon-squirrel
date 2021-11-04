@@ -1,4 +1,4 @@
-package super_chess;
+package Player;
 
 import piece.Color;
 

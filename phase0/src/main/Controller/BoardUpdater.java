@@ -1,3 +1,7 @@
+package Controller;
+
+import BoardManager.BoardManager;
+
 public class BoardUpdater {
 
 	private BoardManager bm;
