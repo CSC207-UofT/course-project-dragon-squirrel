@@ -1,7 +1,8 @@
 package Controller;
 
-import BoardManager.BoardManager;
-import GameRule.GameRule;
+import Board.SuperBoard;
+import BoardManager.*;
+import GameRule.*;
 
 /**
  * Like it said, sends commands from player
@@ -14,7 +15,7 @@ public class CommandSender {
 
 	public CommandSender() {
 
-		startNewGame();
+		startNewClassicGame();
 	}
 
 	public BoardUpdater getBoardUpdater() {
@@ -49,9 +50,15 @@ public class CommandSender {
 
 	}
 
-	public void startNewGame() {
-		bm = new BoardManager(8, 8);
+	public void startNewClassicGame() {
+		bm = new BoardManager();
 		gl = new GameRule(bm.getBoard(), bm.getPieces());
+		this.bu = new BoardUpdater(bm);
+	}
+
+	public void startNewSuperGame() {
+		bm = new SuperBoardManager();
+		gl = new SuperGameRule(bm.getBoard(), bm.getPieces());
 		this.bu = new BoardUpdater(bm);
 	}
 

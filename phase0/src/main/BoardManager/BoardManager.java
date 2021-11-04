@@ -1,6 +1,6 @@
 package BoardManager;
 
-import Board.Board;
+import Board.*;
 import Player.Player;
 import piece.*;
 
@@ -22,8 +22,14 @@ public class BoardManager {
     private Player activePlayer;
     private GameStatus status;
 
+    public BoardManager() {
+        this.board = new Board(8, 8);
+        this.pieces = new HashMap<>();
+        resetMap();
+    }
+
     public BoardManager(int column, int row) {
-        this.board = new Board(column, row);
+        this.board = new SuperBoard(column, row);
         this.pieces = new HashMap<>();
         resetMap();
     }

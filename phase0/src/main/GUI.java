@@ -37,7 +37,11 @@ public class GUI extends JFrame{
 
 		startGameBtn.addActionListener(e -> {
 			cs = new CommandSender();
-			cs.startNewGame();
+
+			// Do either
+//			cs.startNewClassicGame();
+			cs.startNewSuperGame();
+
 			bu = cs.getBoardUpdater();
 			bu.display();
 		});

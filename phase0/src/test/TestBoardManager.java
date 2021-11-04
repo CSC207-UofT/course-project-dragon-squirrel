@@ -15,7 +15,7 @@ public class TestBoardManager {
 
     @Before
     public void setup(){
-        bm = new BoardManager(8, 8);
+        bm = new BoardManager();
         b = new Board(8, 8);
     }
 

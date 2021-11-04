@@ -11,6 +11,7 @@ public class SuperBoardManager extends BoardManager{
 
     @Override
     public void resetMap() {
+        System.out.println("superboardManager resetMap");
         // instantiate white pieces and put into Map: write in health point and attack level
         super.setPieces("w_rook_l", new SuperPieceDecorator(new Rook("w_rook_l", Color.WHITE), 1, 1));
         super.setPieces("w_knight_l", new SuperPieceDecorator(new Knight("w_knight_l", Color.WHITE), 1, 1));
