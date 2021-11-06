@@ -1,3 +1,10 @@
+package rule;
+
+import board.Board;
+import command.ChessMove;
+import command.MoveRecord;
+import piece.Color;
+import piece.Pawn;
 import piece.Piece;
 import java.util.Map;
 
@@ -9,16 +16,26 @@ public class GameRule {
 
 	private Board board;
 	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
+	private MoveRecord MR;
 
-	public GameRule(Board board, Map<String, Piece> piecesDict) {
+	public GameRule(Board board, Map<String, Piece> piecesDict, MoveRecord MR) {
 		this.board = board;
 		this.piecesDict = piecesDict;
+		this.MR = MR;
 	}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
 			System.out.println("Coordinate invalid");
+			return false;
+		}
+
+		if (!enPassant(oldX, oldY, newX, newY)){
+			return false;
+		}
+
+		if (!pawnCapture(oldX, oldY, newX, newY)){
 			return false;
 		}
 
@@ -44,7 +61,7 @@ public class GameRule {
 
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
-		// GameRule doesn't modify actual board/pieces here
+		// rule.GameRule doesn't modify actual board/pieces here
 
 		if (!pieceName.contains("knight") && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
@@ -127,7 +144,7 @@ public class GameRule {
 
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an AI player make thoughtful decisions (involves decision tree etc.)
+	 * This is VERY important if we want an player.AI player make thoughtful decisions (involves decision tree etc.)
 	 * We don't need to worry about it now
 	 *
 	 * @param p The piece that moves (we want to know which kind of piece it is)
@@ -137,5 +154,49 @@ public class GameRule {
 	 */
 	public int[][] getAvailableMoves(Piece p, int X, int Y) {
 		return null;
+	}
+
+	public boolean enPassant(int oldX, int oldY, int newX, int newY){
+		ChessMove lastMove = MR.get();
+		Piece lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
+		Piece movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+		if (!board.getPiece(oldX, oldY).contains("pawn")){
+			return false;
+		}
+		if (!lastMove.getOldPieceName().contains("pawn")){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX){
+			return false;
+		}
+		if (lastMovePiece.hasSameColor(movingPiece)){
+			return false;
+		}
+		if (movingPiece.getColor().equals(Color.WHITE)){
+			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
+		}
+		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
+	}
+
+	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
+		Piece movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+		Piece capturedPiece = piecesDict.get(board.getPiece(newX, newY));
+		if (!board.getPiece(oldX, oldY).contains("pawn")){
+			return false;
+		}
+		if (capturedPiece == null){
+			return false;
+		}
+		if (capturedPiece.hasSameColor(movingPiece)){
+			return false;
+		}
+		if (movingPiece.getColor().equals(Color.WHITE)){
+			return (newX - oldX == -1 && Math.abs(newY - oldY) == 1);
+		}
+		else return (newX - oldX == 1 && Math.abs(newY - oldY) == 1);
+
 	}
 }

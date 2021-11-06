@@ -1,10 +1,15 @@
+package board;
+
+import board.Board;
+import command.MoveRecord;
 import piece.*;
+import player.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * It should receive some input from players and send command to a Board instance
+ * It should receive some input from players and send command to a board.Board instance
  * It should reflect the changes on the board and let players know
  * Perhaps we can separate controller and presenter to 2 classes
  *
@@ -17,15 +22,21 @@ public class BoardManager {
     private Map<String, Piece> pieces;   // This is essentially dict in python with key: ID, value: Piece
     private Player activePlayer;
     private GameStatus status;
+    private MoveRecord MR;
 
     public BoardManager() {
         this.board = new Board();
         this.pieces = new HashMap<>();
+        this.MR = new MoveRecord();
         resetMap();
     }
 
     public Board getBoard() {
         return this.board;
+    }
+
+    public MoveRecord getMR(){
+        return MR;
     }
 
     public String[][] getCurrentBoard() {

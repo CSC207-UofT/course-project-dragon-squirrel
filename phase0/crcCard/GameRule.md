@@ -1,12 +1,12 @@
 [
   {
-    "name": "GameRule(use case)",
+    "name": "rule.GameRule(use case)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
       "\\ Determining whether a player's behavior is in compliance with the rules."
-      "Board board",
+      "board.Board board",
       "Map<String, Piece> piecesDict",
       "isMoveValid",
       "isPathClear",
@@ -17,7 +17,7 @@
       "getAvailableMoves()"
     ],
     "collaborators": [
-      "Board; Piece"
+      "board.Board; Piece"
     ]
   }
 ]

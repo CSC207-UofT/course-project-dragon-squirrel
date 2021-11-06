@@ -1,7 +1,7 @@
 [
   {
     "name": "ModifiedBoard(entity)",
-    "superclasses": "Board",
+    "superclasses": "board.Board",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [

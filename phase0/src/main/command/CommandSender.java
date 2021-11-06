@@ -1,3 +1,9 @@
+package command;
+
+import board.BoardManager;
+import board.BoardUpdater;
+import rule.GameRule;
+
 /**
  * Like it said, sends commands from player
  */
@@ -14,6 +20,29 @@ public class CommandSender {
 
 	public BoardUpdater getBoardUpdater() {
 		return this.bu;
+	}
+
+	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
+		if (gl.isMoveValid(oldX, oldY, newX, newY)){
+			return new ChessMove(bm, oldX, oldY, newX, newY);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public void pressMove(ChessMove newChessMove){
+		Move newMove = new Move(bm, newChessMove);
+		try {
+			newMove.execute();
+		}catch (NullPointerException e){
+			System.out.println("Invalid Move");
+		}
+	}
+
+	public void pressUndo(){
+		Move newMove = new Move(bm);
+		newMove.undo();
 	}
 
 	/**
@@ -46,7 +75,7 @@ public class CommandSender {
 
 	public void startNewGame() {
 		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getPieces());
+		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		this.bu = new BoardUpdater(bm);
 	}
 

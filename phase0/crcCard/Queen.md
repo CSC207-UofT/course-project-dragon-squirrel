@@ -12,7 +12,7 @@
       "ValidMove()"
     ],
     "collaborators": [
-      "Board"
+      "board.Board"
     ]
   }
 ]

@@ -1,3 +1,7 @@
+package board;
+
+import board.BoardManager;
+
 public class BoardUpdater {
 
 	private BoardManager bm;

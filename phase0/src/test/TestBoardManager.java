@@ -1,3 +1,5 @@
+import board.Board;
+import board.BoardManager;
 import org.junit.Before;
 import org.junit.Test;
 

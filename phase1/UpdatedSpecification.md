@@ -1,10 +1,10 @@
 ## Introduction 
 (same as before)
-Running the program starts a GUI that allows two humans or one human and an AI to enjoy a standard game of chess or a
-newly designed chess-based game with added features and rules. Once player type (human v human or human v AI), game
+Running the program starts a GUI that allows two humans or one human and an player.AI to enjoy a standard game of chess or a
+newly designed chess-based game with added features and rules. Once player type (human v human or human v player.AI), game
 type, and piece colour are chosen, a corresponding board is displayed with pieces initialized at their respective
 starting positions. Taking turns, each player enters a move until the game ends. Each move must follow the piece
-specific behaviours and game specific rules. If the current player is an AI, a valid move is directly made.
+specific behaviours and game specific rules. If the current player is an player.AI, a valid move is directly made.
 
 ## Chess
 (same as before)

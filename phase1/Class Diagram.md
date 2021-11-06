@@ -6,16 +6,16 @@ Using Mermaid v8.9.1
 Class Diagram (Chess Game):
 ```mermaid
 classDiagram
-    Player <-- Human : implement
-    Player <-- AI : implement
+    player.Player <-- player.Human : implement
+    player.Player <-- player.AI : implement
     
-    Player : String ID
-    Player : Color color
-    Player : boolean status
+    player.Player : String ID
+    player.Player : Color color
+    player.Player : boolean status
     
-    Human : String ID
+    player.Human : String ID
     
-    AI : String ID
+    player.AI : String ID
     
     
     Piece <-- King : implement
@@ -71,50 +71,50 @@ classDiagram
     ModifiedPiece : getAtk()
     
     
-    Board <--> Piece : Collaborators
-    Board : String [][] board
-    Board : addPiece()
-    Board : removePiece()
-    Board : isPositionVacant()
-    Board : getPiece()
-    Board : reset()
+    board.Board <--> Piece : Collaborators
+    board.Board : String [][] board
+    board.Board : addPiece()
+    board.Board : removePiece()
+    board.Board : isPositionVacant()
+    board.Board : getPiece()
+    board.Board : reset()
     
-    ModifiedBoard --> Board : implement
-    
-    
-    GameRule --> Piece : collaborator
-    GameRule --> Board : collaborator
-    GameRule : Board board
-    GameRule : Map<String, Piece> piecesDict 
-    GameRule : isMoveValid()
-    GameRule : isPathClear()
-    GameRule : isCoordinateVacant()
-    GameRule : isCoordinateValid()
-    GameRule : pieceInteraction()
-    GameRule : isPlayerWinning()
-    GameRule : getAvailableMoves()
-    
-    BoardManager --> Piece : Collaborator
-    BoardManager <--> Board : Collaborator
-    BoardManager : Board board
-    BoardManager : Map<String, Piece> pieces
-    BoardManager : Player p1
-    BoardManager : Player p2
-    BoardManager : Player activePlayer
-    BoardManager : GameStatus
-    BoardManager : getActivePlayer()
-    BoardManager : movePiece()
-    BoardManager : deductPieceHp()
-    BoardManager : switchActivePlayer()
-    BoardManager : switchPieceStatus()
-    BoardManager : resetBoard()
+    ModifiedBoard --> board.Board : implement
     
     
-    CommandSender --> BoardManager : controller
-    CommandSender --> GameRule : controller
-    CommandSender : movePiece()
-    CommandSender : passRound()
-    CommandSender : giveUp()
-    CommandSender : startNewGame()
-    CommandSender : getBoardUpdate()
+    rule.GameRule --> Piece : collaborator
+    rule.GameRule --> board.Board : collaborator
+    rule.GameRule : board.Board board
+    rule.GameRule : Map<String, Piece> piecesDict 
+    rule.GameRule : isMoveValid()
+    rule.GameRule : isPathClear()
+    rule.GameRule : isCoordinateVacant()
+    rule.GameRule : isCoordinateValid()
+    rule.GameRule : pieceInteraction()
+    rule.GameRule : isPlayerWinning()
+    rule.GameRule : getAvailableMoves()
+    
+    board.BoardManager --> Piece : Collaborator
+    board.BoardManager <--> board.Board : Collaborator
+    board.BoardManager : board.Board board
+    board.BoardManager : Map<String, Piece> pieces
+    board.BoardManager : player.Player p1
+    board.BoardManager : player.Player p2
+    board.BoardManager : player.Player activePlayer
+    board.BoardManager : board.GameStatus
+    board.BoardManager : getActivePlayer()
+    board.BoardManager : movePiece()
+    board.BoardManager : deductPieceHp()
+    board.BoardManager : switchActivePlayer()
+    board.BoardManager : switchPieceStatus()
+    board.BoardManager : resetBoard()
+    
+    
+    command.CommandSender --> board.BoardManager : controller
+    command.CommandSender --> rule.GameRule : controller
+    command.CommandSender : movePiece()
+    command.CommandSender : passRound()
+    command.CommandSender : giveUp()
+    command.CommandSender : startNewGame()
+    command.CommandSender : getBoardUpdate()
 ```
