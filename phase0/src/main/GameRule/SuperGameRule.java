@@ -20,11 +20,11 @@ public class SuperGameRule extends GameRule {
         SuperBoard superBoard = (SuperBoard) super.getBoard();
         String land = superBoard.getLandType(oldX, oldY);
 
-        if (land.equals("Bridge") && !validFromBridgeAttack(oldX, oldY, newX, newY)){
+        if (land.equals("bridge") && !validFromBridgeAttack(oldX, oldY, newX, newY)){
             return false;
         }
 
-        if (!land.equals("Bridge") && !validFromElsewhereAttack(oldX, oldY, newX, newY)){
+        if (!land.equals("bridge") && !validFromElsewhereAttack(oldX, oldY, newX, newY)){
             return false;
         }
 
