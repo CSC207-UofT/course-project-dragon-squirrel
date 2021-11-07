@@ -75,6 +75,6 @@
 |BoardManager.BoardManager <br> GameRule.GameRule|Superclass: <br> Subclass: <br> Collaborators: BoardManager.BoardManager, GameRule.GameRule|
 |movePiece() <br> passRound() // forfeit turn <br> giveUp() <br> startNewGame() // initializes new BoardManager.BoardManager and new GameRule.GameRule <br> getBoardUpdate()
 
-|UI (command line interface)||
+|UI (Command line interface)||
 |---|---|
 |Controller.CommandSender cs|Superclass: <br> Subclass: <br> Collaborators: Controller.CommandSender|
