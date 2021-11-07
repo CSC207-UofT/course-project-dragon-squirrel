@@ -34,6 +34,7 @@ public class BoardManager {
     public BoardManager(int column, int row) {
         this.board = new SuperBoard(column, row);
         this.pieces = new HashMap<>();
+        this.MR = new MoveRecord();
         resetMap();
     }
 

@@ -39,8 +39,8 @@ public class GUI extends JFrame{
 			cs = new CommandSender();
 
 			// Do either
-//			cs.startNewClassicGame();
-			cs.startNewSuperGame();
+			cs.startNewClassicGame();
+//			cs.startNewSuperGame();
 
 			bu = cs.getBoardUpdater();
 			bu.display();

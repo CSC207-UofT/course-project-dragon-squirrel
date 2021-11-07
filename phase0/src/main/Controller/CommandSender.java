@@ -16,8 +16,8 @@ public class CommandSender {
 
 	public CommandSender() {
 
-//		startNewClassicGame();
-		startNewSuperGame();
+		startNewClassicGame();
+//		startNewSuperGame();
 	}
 
 	public BoardUpdater getBoardUpdater() {
