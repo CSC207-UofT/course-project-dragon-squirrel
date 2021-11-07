@@ -1,6 +1,10 @@
 package GameRule;
 
 import Board.Board;
+import Command.ChessMove;
+import Command.MoveRecord;
+import piece.Color;
+import piece.Piece;
 import piece.PieceInterface;
 
 import java.awt.*;
@@ -15,10 +19,12 @@ public class GameRule {
 
 	private Board board;
 	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
+	private MoveRecord MR;
 
-	public GameRule(Board board, Map<String, PieceInterface> piecesDict) {
+	public GameRule(Board board, Map<String, PieceInterface> piecesDict, MoveRecord MR) {
 		this.board = board;
 		this.piecesDict = piecesDict;
+		this.MR = MR;
 	}
 
 	public Board getBoard(){return board;}
@@ -29,6 +35,14 @@ public class GameRule {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
 			System.out.println("Coordinate invalid");
+			return false;
+		}
+
+		if (!enPassant(oldX, oldY, newX, newY)){
+			return false;
+		}
+
+		if (!pawnCapture(oldX, oldY, newX, newY)){
 			return false;
 		}
 
@@ -159,5 +173,49 @@ public class GameRule {
 	 */
 	public int[][] getAvailableMoves(PieceInterface p, int X, int Y) {
 		return null;
+	}
+
+	public boolean enPassant(int oldX, int oldY, int newX, int newY){
+		ChessMove lastMove = MR.get();
+		PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
+		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+		if (!board.getPiece(oldX, oldY).contains("pawn")){
+			return false;
+		}
+		if (!lastMove.getOldPieceName().contains("pawn")){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX){
+			return false;
+		}
+		if (lastMovePiece.hasSameColor(movingPiece)){
+			return false;
+		}
+		if (movingPiece.getColor().equals(piece.Color.WHITE)){
+			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
+		}
+		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
+	}
+
+	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
+		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+		PieceInterface capturedPiece = piecesDict.get(board.getPiece(newX, newY));
+		if (!board.getPiece(oldX, oldY).contains("pawn")){
+			return false;
+		}
+		if (capturedPiece == null){
+			return false;
+		}
+		if (capturedPiece.hasSameColor(movingPiece)){
+			return false;
+		}
+		if (movingPiece.getColor().equals(Color.WHITE)){
+			return (newX - oldX == -1 && Math.abs(newY - oldY) == 1);
+		}
+		else return (newX - oldX == 1 && Math.abs(newY - oldY) == 1);
+
 	}
 }

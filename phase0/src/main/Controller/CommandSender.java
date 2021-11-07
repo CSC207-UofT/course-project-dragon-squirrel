@@ -1,6 +1,8 @@
 package Controller;
 
 import BoardManager.*;
+import Command.ChessMove;
+import Command.Move;
 import GameRule.*;
 
 /**
@@ -22,6 +24,23 @@ public class CommandSender {
 		return this.bu;
 	}
 
+	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
+		if (gl.isMoveValid(oldX, oldY, newX, newY)){
+			return new ChessMove(bm, oldX, oldY, newX, newY);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public void pressMove(ChessMove newChessMove){
+		Move newMove = new Move(bm, newChessMove);
+		try {
+			newMove.execute();
+		}catch (NullPointerException e){
+			System.out.println("Invalid Move");
+		}
+	}
 	/**
 	 * Move the piece that is at board[oldX][oldY] to board[newX][newY]
 	 * Check whether the movement is valid and possibly attack another piece
@@ -70,7 +89,7 @@ public class CommandSender {
 
 	public void startNewClassicGame() {
 		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getPieces());
+		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		this.bu = new BoardUpdater(bm);
 	}
 

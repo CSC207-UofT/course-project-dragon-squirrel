@@ -1,6 +1,6 @@
 [
   {
-    "name": "UI(command line interface)",
+    "name": "UI(Command line interface)",
     "superclasses": "",
     "subclasses": "",
     "type": "Normal",

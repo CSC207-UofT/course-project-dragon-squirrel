@@ -1,6 +1,7 @@
 package BoardManager;
 
 import Board.*;
+import Command.MoveRecord;
 import Player.Player;
 import piece.*;
 
@@ -21,10 +22,12 @@ public class BoardManager {
     private Map<String, PieceInterface> pieces;   // This is essentially dict in python with key: ID, value: Piece
     private Player activePlayer;
     private GameStatus status;
+    private MoveRecord MR;
 
     public BoardManager() {
         this.board = new Board(8, 8);
         this.pieces = new HashMap<>();
+        this.MR = new MoveRecord();
         resetMap();
     }
 
@@ -36,6 +39,10 @@ public class BoardManager {
 
     public Board getBoard() {
         return this.board;
+    }
+
+    public MoveRecord getMR(){
+        return MR;
     }
 
     public String[][] getCurrentBoard() {
