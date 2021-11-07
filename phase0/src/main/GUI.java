@@ -1,6 +1,7 @@
+import Controller.BoardUpdater;
+import Controller.CommandSender;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GUI extends JFrame{
 	private JButton startGameBtn;
@@ -36,7 +37,11 @@ public class GUI extends JFrame{
 
 		startGameBtn.addActionListener(e -> {
 			cs = new CommandSender();
-			cs.startNewGame();
+
+			// Do either
+//			cs.startNewClassicGame();
+			cs.startNewSuperGame();
+
 			bu = cs.getBoardUpdater();
 			bu.display();
 		});

@@ -1,5 +1,5 @@
+import Player.Human;
 import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ public class TestHuman {
 
     @Before
     public void setup(){
-        h = new Human("Human Player");
+        h = new Human("Player.Human Player.Player");
     }
 
 }

@@ -5,10 +5,10 @@
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [
-      "CommandSender cs"
+      "Controller.CommandSender cs"
     ],
     "collaborators": [
-      "CommandSender"
+      "Controller.CommandSender"
     ]
   }
 ]

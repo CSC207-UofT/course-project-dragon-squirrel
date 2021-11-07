@@ -1,3 +1,5 @@
+package Player;
+
 import piece.Color;
 
 public class Player {

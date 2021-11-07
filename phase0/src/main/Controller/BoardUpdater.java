@@ -1,3 +1,7 @@
+package Controller;
+
+import BoardManager.*;
+
 public class BoardUpdater {
 
 	private BoardManager bm;
@@ -7,6 +11,11 @@ public class BoardUpdater {
 	public BoardUpdater(BoardManager bm) {
 		this.bm = bm;
 		boardImage = new String[8][8];
+	}
+
+	public BoardUpdater(SuperBoardManager bm) {
+		this.bm = bm;
+		boardImage = new String[13][10];
 	}
 
 	private void updateBoardImage() {

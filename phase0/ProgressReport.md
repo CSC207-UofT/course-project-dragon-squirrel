@@ -11,14 +11,14 @@ We decided to program a standard chess game and a modified chess game in Java.
 ## Specification
 For our specification, we designed to have a standard game of chess and a newly 
 designed chess-based game with different rules that allows two human 
-players or one player and an AI to play. Once player type and color are chosen, 
+players or one player and an Player.AI to play. Once player type and color are chosen, 
 we will let the program display a corresponding board with pieces initialized at 
 the starting position (with GUI). 
 
 So far, we are mainly working on designing and coding the standard version of chess with
 the same rules as a real chess game.
 For the modified chess-based game, we designed:
-- Player can make multiple moves/attacks each turn. 
+- Player.Player can make multiple moves/attacks each turn. 
 - Each modified piece corresponds to health point and attack level. An attack counts as one 
 of the multiple moves made during a turn wherein the attacking piece does not actually move.
 - A piece is captured / removed from game when its health points are depleted.
@@ -38,8 +38,8 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 
 ## CRC Model
 **_Entities:_**
-- [Player](src/main/Player.java):
-- Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
+- [Player.Player](src/main/Player.java):
+- Board.Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
 - Pieces:
 1. [King](src/main/piece/King.java)
 2. [Queen](src/main/piece/Queen.java)
@@ -51,10 +51,10 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 **_Use Case:_**
 
 - [Game Rule(Regular & Modified)](src/main/GameRule.java)
-- [BoardManager](src/main/BoardManager.java)
+- [BoardManager.BoardManager](src/main/BoardManager.java)
   
 **_Controller & Presenter:_**
-- [CommandSender](src/main/CommandSender.java)
+- [Controller.CommandSender](src/main/CommandSender.java)
 
 **_UI_**
 - [UI](src/main/UI.java)
@@ -91,12 +91,12 @@ Enter move using (row, column) start and end coordinates.
 - Jennifer
   - Specification
   - Redid/restructure all.md CRC card and update Jin's separate CRC cards
-  - resetMap() in BoardManager
-  - isCoordinateValid(), isPathClear() in GameRule
+  - resetMap() in BoardManager.BoardManager
+  - isCoordinateValid(), isPathClear() in GameRule.GameRule
 - Future
   - walkthrough.md
   - code structure design
-  - BoardManager, BoardUpdater, CommandSender, GameRule, GUI
+  - BoardManager.BoardManager, Controller.BoardUpdater, Controller.CommandSender, GameRule.GameRule, GUI
 - Tingzhou
   - Progress report
 - Christopher 
@@ -122,5 +122,5 @@ belongs to the Clean Architecture and obey the SOLID principles. We make lots of
 we found and how to solve the problems.
 
 ### Questions
-1. Since our UI class is going to show the board to player, but we cannot let UI access the Board class due to 
-Clean Architecture. Should we let UI store a cache of current board and use methods to deliver updates from the Board class each time players make moves?
+1. Since our UI class is going to show the board to player, but we cannot let UI access the Board.Board class due to 
+Clean Architecture. Should we let UI store a cache of current board and use methods to deliver updates from the Board.Board class each time players make moves?

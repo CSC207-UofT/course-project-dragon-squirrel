@@ -1,3 +1,5 @@
+package BoardManager;
+
 public enum GameStatus {
 	ACTIVE,
 	BLACK_WIN,

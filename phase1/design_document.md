@@ -13,7 +13,7 @@ Players are also able to undo.
 ## Adherence to Clean Architecture
 
 ## Adherence to SOLID Design Principles
-**S**: Class GameRule's sole responsibility is to check whether move is valid according to game rules.  
+**S**: Class GameRule.GameRule's sole responsibility is to check whether move is valid according to game rules.  
 
 **O**: Both abstract classes Piece and SuperPiece implement its corresponding Piece or SuperPiece interface which 
 provides the necessary methods needed to be implemented. Since other classes interact with the methods outlined by the 
@@ -30,7 +30,7 @@ not, it is not ideal to have only one interface with those additional features w
 chess pieces) will not even need to use them. Thus, two different interfaces are made: SuperPieceinterface and 
 Pieceinterface.
 
-**D**: High level classes such as GameRule depend on the methods outlined by Piece/SuperPiece interfaces rather than 
+**D**: High level classes such as GameRule.GameRule depend on the methods outlined by Piece/SuperPiece interfaces rather than 
 the low level modules such as the concrete Piece class themselves.
 
 ## Packaging Strategies

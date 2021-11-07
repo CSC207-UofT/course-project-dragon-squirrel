@@ -1,18 +1,26 @@
+package Board;
+
+import java.awt.*;
+
 /**
  * Entity
  */
 public class Board {
 
     private String[][] board;   // Each cell can be the name/ID of a piece
+    Point boundaries;
 
-    public Board() {
-        board = new String[8][8];
+    public Board(int column, int row) {
+        board = new String[column][row];
+        this.boundaries = new Point(column, row);
         reset();
     }
 
     public String[][] getBoard() {
         return board;
     }
+
+    public Point getBoundaries() {return boundaries;}
 
     public void addPiece(String pieceName, int X, int Y) {
         board[X][Y] = pieceName;

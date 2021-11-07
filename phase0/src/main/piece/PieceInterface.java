@@ -5,5 +5,6 @@ public interface PieceInterface {
     Color getColor();
     boolean getStatus();
     void setStatus(boolean status);
-    boolean hasSameColor(PieceInterface another);  // tricky
+    boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
+    boolean hasSameColor(PieceInterface targetPiece);
 }

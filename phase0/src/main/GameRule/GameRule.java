@@ -1,4 +1,10 @@
-import piece.Piece;
+package GameRule;
+
+import Board.Board;
+import piece.PieceInterface;
+
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -8,12 +14,16 @@ import java.util.Map;
 public class GameRule {
 
 	private Board board;
-	private Map<String, Piece> piecesDict;   // key: ID, value: Piece
+	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
 
-	public GameRule(Board board, Map<String, Piece> piecesDict) {
+	public GameRule(Board board, Map<String, PieceInterface> piecesDict) {
 		this.board = board;
 		this.piecesDict = piecesDict;
 	}
+
+	public Board getBoard(){return board;}
+
+	public Map<String, PieceInterface> getPiecesDict(){return piecesDict;}
 
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
 
@@ -24,8 +34,8 @@ public class GameRule {
 
 		String pieceName = board.getPiece(oldX, oldY);
 		String targetPieceName = board.getPiece(newX, newY);
-		Piece pieceToMove = piecesDict.get(pieceName);
-		Piece targetPiece = targetPieceName.equals("vacant") ? null : piecesDict.get(targetPieceName);
+		PieceInterface pieceToMove = piecesDict.get(pieceName);
+		PieceInterface targetPiece = targetPieceName.equals("vacant") ? null : piecesDict.get(targetPieceName);
 
 		if (pieceToMove == null) {
 			System.out.println("Piece not found");
@@ -44,7 +54,7 @@ public class GameRule {
 
 		// There is probably more rule checking
 		// Maybe call isPathClear() and isCoordinateVacant()
-		// GameRule doesn't modify actual board/pieces here
+		// GameRule.GameRule doesn't modify actual board/pieces here
 
 		if (!pieceName.contains("knight") && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
@@ -58,48 +68,60 @@ public class GameRule {
 	 * Check: old and new coordinates are not same
 	 *        new coordinate is within the board
 	 */
-	private boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
-		return newX >= 0 & newX < 8 & newY >= 0 & newY < 8 & (oldX != newX || oldY != newY);
+	public boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
+		int xBoundary = board.getBoundaries().x;
+		int yBoundary = board.getBoundaries().y;
+		return newX >= 0 & newX < xBoundary + 1 & newY >= 0 & newY < yBoundary + 1 & (oldX != newX || oldY != newY);
 	}
 
 	/**
 	 * Check: path between old and new coordinates is clear of pieces
 	 * 		  does not check coordinates old and new themselves
 	 */
-	public boolean isPathClear(int oldX, int oldY, int newX, int newY) {
+	// checks if path is clear of pieces
+	public boolean isPathClear(int oldX, int oldY, int newX, int newY){
+		ArrayList<Point> coordinates = pathCoordinates(oldX, oldY, newX, newY);
+		for (Point point: coordinates) {
+			if (!board.isPositionVacant(point.x, point.y)){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// returns a list of the coordinates in the path between (oldX, oldY) and (newX, newY)
+	public ArrayList<Point> pathCoordinates(int oldX, int oldY, int newX, int newY) {
+		ArrayList<Point> coordinates = new ArrayList<>();
+
 		if (oldY == newY) {
 			// vertical north and south
 			for (int i = Math.min(oldX, newX) + 1; i < Math.max(oldX, newX); i++) {
-				if (board.isPositionVacant(i, newY))
-					return false;
+				coordinates.add(new Point(i, newY));
 			}
 		}
 
-		if (oldX == newX) {
+		else if (oldX == newX) {
 			// horizontal east and west
 			for (int i = Math.min(oldY, newY) + 1; i < Math.max(oldY, newY); i++) {
-				if (board.isPositionVacant(newX, i))
-					return false;
+				coordinates.add(new Point(newX, i));
 			}
 		}
 
-		if ((oldX < newX & oldY < newY) || (oldX > newX & oldY > newY)) {
+		else if ((oldX < newX & oldY < newY) || (oldX > newX & oldY > newY)) {
 			// diagonal northwest or southeast
 			for (int i = 1; i < Math.abs(newX - oldX); i++) {
-				if (board.isPositionVacant(Math.min(oldX, newX) + i, Math.min(oldY, newY) + i))
-					return false;
+				coordinates.add(new Point(Math.min(oldX, newX) + i, Math.min(oldY, newY) + i));
 			}
 		}
 
-		if ((oldX > newX & oldY < newY) || (oldX < newX & oldY > newY)) {
+		else {
 			// diagonal northeast or southwest
 			for (int i = Math.abs(newX - oldX) - 1; i > 0; i--) {
-				if (board.isPositionVacant(Math.max(oldX, newX) - i, Math.min(oldY, newY) + i))
-					return false;
+				coordinates.add(new Point(Math.max(oldX, newX) - i, Math.min(oldY, newY) + i));
 			}
 		}
 
-		return true;
+		return coordinates;
 	}
 
 	/**
@@ -114,7 +136,7 @@ public class GameRule {
 	 * The only pieces interaction scenario I can think of is that one attacks another
 	 * Let's design some game rules together! (maybe after this phase)
 	 */
-	public void piecesInteraction(Piece attacker, Piece defender) {
+	public void piecesInteraction(PieceInterface attacker, PieceInterface defender) {
 		// Maybe use board.DeductPieceHp()
 	}
 
@@ -127,7 +149,7 @@ public class GameRule {
 
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an AI player make thoughtful decisions (involves decision tree etc.)
+	 * This is VERY important if we want an Player.AI player make thoughtful decisions (involves decision tree etc.)
 	 * We don't need to worry about it now
 	 *
 	 * @param p The piece that moves (we want to know which kind of piece it is)
@@ -135,7 +157,7 @@ public class GameRule {
 	 * @param Y Current Y coordinate
 	 * @return  An array of coordinates, each is a valid position to move
 	 */
-	public int[][] getAvailableMoves(Piece p, int X, int Y) {
+	public int[][] getAvailableMoves(PieceInterface p, int X, int Y) {
 		return null;
 	}
 }

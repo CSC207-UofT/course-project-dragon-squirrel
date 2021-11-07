@@ -1,10 +1,10 @@
-package super_chess;
+package Player;
 
-import super_chess.super_piece.SuperColor;
+import piece.Color;
 
 public interface SuperPlayer {
     String getSuperID();
-    SuperColor getSuperColor();
+    Color getSuperColor();
     void setSuperColor();
     boolean getSuperStatus();
     void setSuperStatus();
