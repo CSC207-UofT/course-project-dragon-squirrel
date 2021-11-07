@@ -22,13 +22,16 @@ public class SuperPieceDecorator extends PieceDecorator{
         return this.atk;
     }
 
-     public boolean getHasNotMoved() {
+    public boolean getHasNotMoved() {
         return this.hasNotMoved;
      }
 
-     public boolean getHasNotAttacked() {
+    public boolean getHasNotAttacked() {
         return this.hasNotAttacked;
      }
+
+    public void setHp(int hp) {this.hp = hp;}
+
 }
 
 // This is what we'd write in SuperBoardManager to instantiate the superPieces

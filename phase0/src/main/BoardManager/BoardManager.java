@@ -105,13 +105,6 @@ public class BoardManager {
     }
 
     /**
-     * This kicks in when a piece is being attacked
-     */
-    public void DeductPieceHp(Piece pieceToModify, int HpDeduction) {
-
-    }
-
-    /**
      * Switch player status between
      */
     public void switchActivePlayer() {

@@ -1,6 +1,5 @@
 package Controller;
 
-import Board.SuperBoard;
 import BoardManager.*;
 import GameRule.*;
 
@@ -15,7 +14,8 @@ public class CommandSender {
 
 	public CommandSender() {
 
-		startNewClassicGame();
+//		startNewClassicGame();
+		startNewSuperGame();
 	}
 
 	public BoardUpdater getBoardUpdater() {
@@ -28,12 +28,30 @@ public class CommandSender {
 	 * @return  If successfully moved, return true
 	 */
 	public boolean makeMove(int oldX, int oldY, int newX, int newY) {
-
-		if (gl.isMoveValid(oldX, oldY, newX, newY)) {
-			bm.movePiece(oldX, oldY, newX, newY);
-			return true;
-		} else
+		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
 			return false;
+		}
+
+		// if there is an attack: target coordinate has an opponent's piece
+		if (gl instanceof SuperGameRule && bm instanceof SuperBoardManager){
+
+			if (((SuperGameRule) gl).isAttackAvailable(oldX, oldY, newX, newY)){
+				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
+					return false;
+				}
+				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
+				if (attackedToDeath) {
+					System.out.println("attacked to death");
+					bm.movePiece(oldX, oldY, newX, newY);
+					return true;
+				}
+
+				return true;
+			}
+		}
+
+		bm.movePiece(oldX, oldY, newX, newY);
+		return true;
 	}
 
 	/**

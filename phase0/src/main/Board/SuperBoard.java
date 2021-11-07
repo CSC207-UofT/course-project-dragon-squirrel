@@ -65,19 +65,19 @@ public class SuperBoard extends Board{
     public void superSetLand() {
         // river (r), bridge (b), black_zone (z), white_zone (x) ground (.)
 
-        String s =  "r..zzzz..r" +
+        String s =  ".r.zzzz.r." +
                     ".r......r." +
                     "bbb....bbb" +
                     ".r......r." +
                     ".r......r." +
-                    "brb.bb.brb" +
+                    ".r..bb..r." +
                     "bbbrbbrbbb" +
-                    "brb.bb.brb" +
+                    ".r..bb..r." +
                     ".r......r." +
                     ".r......r." +
                     "bbb....bbb" +
                     ".r......r." +
-                    "r..xxxx..r";
+                    ".r.xxxx.r.";
 
         // initialize type of land
         for (int k = 0; k < s.length(); k++) {

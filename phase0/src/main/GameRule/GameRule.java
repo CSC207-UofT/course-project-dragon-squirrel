@@ -23,6 +23,8 @@ public class GameRule {
 
 	public Board getBoard(){return board;}
 
+	public Map<String, PieceInterface> getPiecesDict(){return piecesDict;}
+
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
