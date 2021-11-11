@@ -10,6 +10,7 @@ import piece.PieceInterface;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * This contains one set of game rules.
@@ -43,6 +44,7 @@ public class GameRule {
 		}
 
 		if (!pawnCapture(oldX, oldY, newX, newY)){
+			System.out.println("not a pawn Capture");
 			return false;
 		}
 
@@ -176,31 +178,40 @@ public class GameRule {
 	}
 
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){
-		ChessMove lastMove = MR.get();
-		PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
-		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
-		if (!board.getPiece(oldX, oldY).contains("pawn")){
-			return false;
+		try {
+			ChessMove lastMove = MR.get();
+			PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
+			PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+			if (!board.getPiece(oldX, oldY).contains("pawn")) {
+				return false;
+			}
+			if (!lastMove.getOldPieceName().contains("pawn")) {
+				return false;
+			}
+			if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2) {
+				return false;
+			}
+			if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX) {
+				return false;
+			}
+			if (lastMovePiece.hasSameColor(movingPiece)) {
+				return false;
+			}
+			if (movingPiece.getColor().equals(piece.Color.WHITE)) {
+				return newX == oldX - 1 && newY == lastMove.getNewCoordY();
+			} else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
+		} catch (NoSuchElementException e) {
+			return true;
 		}
-		if (!lastMove.getOldPieceName().contains("pawn")){
-			return false;
-		}
-		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
-			return false;
-		}
-		if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX){
-			return false;
-		}
-		if (lastMovePiece.hasSameColor(movingPiece)){
-			return false;
-		}
-		if (movingPiece.getColor().equals(piece.Color.WHITE)){
-			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
-		}
-		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
 	}
 
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
+		try {
+			MR.get();
+		} catch (NoSuchElementException e) {
+			return true;
+		}
+
 		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
 		PieceInterface capturedPiece = piecesDict.get(board.getPiece(newX, newY));
 		if (!board.getPiece(oldX, oldY).contains("pawn")){
