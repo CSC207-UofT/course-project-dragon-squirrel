@@ -38,8 +38,9 @@ position. A piece is captured when it's health points are depleted.
 The game ends when the king is dead, a player gives up, or a player pauses the game.
 
 The board consists of rivers, some bridges, and home safe zones. 
-* **River**: Only the pawn can cross the river. All other pieces must use the bridge. The pawn is not *visible* in the 
-river because it is "submerged". 
+* **River**: Only the pawn can cross the river. All other pieces must use the bridge. However, the knight can jump over
+the river as long as it lands on a land type other than the river. The pawn is not *visible* in the river because it is 
+"submerged". 
 * **Bridges** are elevated. Therefore, pieces cannot attack a piece on the other side of the bridge. However, pieces can 
 attack a piece on the bridge. If a piece is on the bridge, due to the high altitude, it can attack all *visible* pieces.
 All pieces can use the bridge and thus a piece can move onto and over the bridge as it pleases.
@@ -50,7 +51,7 @@ pieces.
 
 Below is a picture of the 13x10 board:
 
-*Picture of board (Chris' one on discord is pretty nice)
+*Picture of board
 
 ## Phase 1 Additional Functionalities
 
@@ -60,5 +61,5 @@ Players can undo. Each undo goes back by one move.
 
 * The game may be played with a timer. If players do not make their move(s) within the time limit, they automatically
 forfeit their turn. 
-* A GUI displays the board (probably try to get some of it done for phase 1 especially cause SuperChess would look nice with it)
+* A GUI displays the board
 * A hint on one of the best possible move can be given if the player asks.

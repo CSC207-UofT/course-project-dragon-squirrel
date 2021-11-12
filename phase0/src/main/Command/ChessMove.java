@@ -8,8 +8,9 @@ public class ChessMove {
     private BoardManager BM;
     private final String oldPieceName;
     private final String newPieceName;
+    private boolean attack;
 
-    public ChessMove(BoardManager newBM, int oldX, int oldY, int newX, int newY){
+    public ChessMove(BoardManager newBM, int oldX, int oldY, int newX, int newY, boolean isAttack){
         BM = newBM;
         oldPosition[0] = oldX;
         oldPosition[1] = oldY;
@@ -17,6 +18,7 @@ public class ChessMove {
         newPosition[1] = newY;
         oldPieceName = newBM.getBoard().getPiece(oldX, oldY);
         newPieceName = newBM.getBoard().getPiece(newX, newY);
+        attack = isAttack;
     }
 
     public int getOldCoordX(){

@@ -32,6 +32,9 @@ public class GameRule {
 
 	public Map<String, PieceInterface> getPiecesDict(){return piecesDict;}
 
+	/**
+	 * @return whether move is valid according to classic chess game rules
+	 */
 	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
@@ -40,11 +43,12 @@ public class GameRule {
 		}
 
 		if (!enPassant(oldX, oldY, newX, newY)){
+			System.out.println("invalid enPassant");
 			return false;
 		}
 
 		if (!pawnCapture(oldX, oldY, newX, newY)){
-			System.out.println("not a pawn Capture");
+			System.out.println("not a pawn capture");
 			return false;
 		}
 
@@ -68,10 +72,6 @@ public class GameRule {
 			return false;
 		}
 
-		// There is probably more rule checking
-		// Maybe call isPathClear() and isCoordinateVacant()
-		// GameRule.GameRule doesn't modify actual board/pieces here
-
 		if (!pieceName.contains("knight") && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
 			return false;
@@ -91,10 +91,9 @@ public class GameRule {
 	}
 
 	/**
-	 * Check: path between old and new coordinates is clear of pieces
-	 * 		  does not check coordinates old and new themselves
+	 * Does not check coordinates old and new themselves
+	 * @return whether path between (oldX, oldY) and (newX, newY) is clear of pieces
 	 */
-	// checks if path is clear of pieces
 	public boolean isPathClear(int oldX, int oldY, int newX, int newY){
 		ArrayList<Point> coordinates = pathCoordinates(oldX, oldY, newX, newY);
 		for (Point point: coordinates) {
@@ -105,7 +104,9 @@ public class GameRule {
 		return true;
 	}
 
-	// returns a list of the coordinates in the path between (oldX, oldY) and (newX, newY)
+	/**
+	 * @return a list of the coordinates in the path between (oldX, oldY) and (newX, newY)
+	 */
 	public ArrayList<Point> pathCoordinates(int oldX, int oldY, int newX, int newY) {
 		ArrayList<Point> coordinates = new ArrayList<>();
 
@@ -140,10 +141,6 @@ public class GameRule {
 		return coordinates;
 	}
 
-	/**
-	 * It might be a good idea to separate clearValidPath() into two methods
-	 * this seems like the same thing as isPositionVacant() in board
-	 */
 	public boolean isCoordinateVacant(int X, int Y) {
 		return false;
 	}

@@ -11,7 +11,8 @@ public class SuperBoardManager extends BoardManager{
     }
 
     /**
-     * This kicks in when a piece is being attacked
+     * the Hp of pieceToModify is deducted by HpDeduction. If the new Hp is less than 1 (in other words the
+     * pieceToModify is attacked to death) the new Hp becomes -1.
      */
     public void deductPieceHp(SuperPieceDecorator pieceToModify, int HpDeduction) {
         int newHp = pieceToModify.getHp() - HpDeduction;
@@ -21,8 +22,10 @@ public class SuperBoardManager extends BoardManager{
         pieceToModify.setHp(newHp);
     }
 
-    // Changes hp of piece attacked.
-    // Return true if piece has been attacked to death.
+    /**
+     * Changes Hp of the piece attacked.
+     * @return true if piece has been attacked to death, false otherwise
+     */
     public boolean attackToDeath(int oldX, int oldY, int newX, int newY){
         Board superBoard = super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);

@@ -1,3 +1,4 @@
+import Command.ChessMove;
 import Controller.BoardUpdater;
 import Controller.CommandSender;
 
@@ -36,12 +37,7 @@ public class GUI extends JFrame{
 	private void addActionListeners() {
 
 		startGameBtn.addActionListener(e -> {
-			cs = new CommandSender();
-
-			// Do either
-			cs.startNewClassicGame();
-//			cs.startNewSuperGame();
-
+			cs = new CommandSender(true);
 			bu = cs.getBoardUpdater();
 			bu.display();
 		});
@@ -51,8 +47,9 @@ public class GUI extends JFrame{
 			int startY = Integer.parseInt(startYtf.getText());
 			int targetX = Integer.parseInt(targetXtf.getText());
 			int targetY = Integer.parseInt(targetYtf.getText());
-			boolean moveSuccess = cs.makeMove(startX, startY, targetX, targetY);
-			if (moveSuccess) {
+			ChessMove chessMove = cs.creatNewChessMove(startX, startY, targetX, targetY);
+			if (chessMove != null) {
+				cs.pressMove(chessMove);
 				bu.display();
 			}
 		});
