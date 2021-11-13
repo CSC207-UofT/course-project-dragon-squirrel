@@ -2,7 +2,7 @@ package GameRule;
 
 import Board.*;
 import Command.MoveRecord;
-import Piece.PieceInterface;
+import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;

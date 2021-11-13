@@ -3,9 +3,9 @@ package GameRule;
 import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
-import Piece.Color;
-import Piece.Piece;
-import Piece.PieceInterface;
+import piece.Color;
+import piece.Piece;
+import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -194,7 +194,7 @@ public class GameRule {
 		if (lastMovePiece.hasSameColor(movingPiece)){
 			return false;
 		}
-		if (movingPiece.getColor().equals(Piece.Color.WHITE)){
+		if (movingPiece.getColor().equals(piece.Color.WHITE)){
 			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
 		}
 		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();

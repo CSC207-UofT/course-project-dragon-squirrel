@@ -2,9 +2,9 @@ package TestPiece;
 
 import org.junit.Before;
 import org.junit.Test;
-import Piece.Color;
-import Piece.Pawn;
-import Piece.Rook;
+import piece.Color;
+import piece.Pawn;
+import piece.Rook;
 
 import static org.junit.Assert.assertEquals;
 

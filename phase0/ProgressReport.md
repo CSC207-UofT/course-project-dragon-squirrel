@@ -19,9 +19,9 @@ So far, we are mainly working on designing and coding the standard version of ch
 the same rules as a real chess game.
 For the modified chess-based game, we designed:
 - Player.Player can make multiple moves/attacks each turn. 
-- Each modified Piece corresponds to health point and attack level. An attack counts as one 
-of the multiple moves made during a turn wherein the attacking Piece does not actually move.
-- A Piece is captured / removed from game when its health points are depleted.
+- Each modified piece corresponds to health point and attack level. An attack counts as one 
+of the multiple moves made during a turn wherein the attacking piece does not actually move.
+- A piece is captured / removed from game when its health points are depleted.
 - The game ends when one king is dead, a player gives up, or a player pauses the game.
 
 We have set specific behaviours for different pieces, which is the same as 
@@ -31,7 +31,7 @@ Additionally, we are thinking of designing
 - A timer for the game, if players do not make move(s) within the time limit, 
 they automatically forfeit their turn. 
 - An undo button that undoes moves by one turn. 
-- A GUI that displays Piece's available moves. 
+- A GUI that displays piece's available moves. 
 - Also, a hint on one of the best possible moves can be given if player asks.
 
 Details can be found in the Markdown File "[specification.md](specification.md)"
@@ -41,12 +41,12 @@ Details can be found in the Markdown File "[specification.md](specification.md)"
 - [Player.Player](src/main/Player.java):
 - Board.Board([Regular](src/main/Board.java) & [Modified](src/main/ModifiedPiece.java))
 - Pieces:
-1. [King](src/main/Piece/King.java)
-2. [Queen](src/main/Piece/Queen.java)
-3. [Bishop](src/main/Piece/Bishop.java)
-4. [Knight](src/main/Piece/Knight.java)
-5. [Rook](src/main/Piece/Rook.java)
-6. [Pawn](src/main/Piece/Pawn.java)
+1. [King](src/main/piece/King.java)
+2. [Queen](src/main/piece/Queen.java)
+3. [Bishop](src/main/piece/Bishop.java)
+4. [Knight](src/main/piece/Knight.java)
+5. [Rook](src/main/piece/Rook.java)
+6. [Pawn](src/main/piece/Pawn.java)
 
 **_Use Case:_**
 
@@ -87,7 +87,7 @@ Enter move using (row, column) start and end coordinates.
 
 - Jin 
   - original CRC card
-  - Piece (King, Queen, Rook, etc.)
+  - piece (King, Queen, Rook, etc.)
 - Jennifer
   - Specification
   - Redid/restructure all.md CRC card and update Jin's separate CRC cards
@@ -114,7 +114,7 @@ We have had a discussion with our TA and there were some problems found.
 - A timer for the game, if players do not make move(s) within the time limit,
   they automatically forfeit their turn.
 - An undo button that undo moves by one turn.
-- Players would have a GUI display Piece's available moves.
+- Players would have a GUI display piece's available moves.
 - A hint option on one of the best possible moves can be given if player asked.
 
 We have designed some great ideas as the beginning of our project, we discussed how to make our designs 

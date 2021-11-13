@@ -7,7 +7,7 @@
     "responsibilities": [
       "\\ Determining whether a player's behavior is in compliance with the rules."
       "Board.Board board",
-      "Map<String, Piece> piecesDict",
+      "Map<String, piece> piecesDict",
       "isMoveValid",
       "isPathClear",
       "isCoordinateVacant()",
@@ -17,7 +17,7 @@
       "getAvailableMoves()"
     ],
     "collaborators": [
-      "Board.Board; Piece"
+      "Board.Board; piece"
     ]
   }
 ]

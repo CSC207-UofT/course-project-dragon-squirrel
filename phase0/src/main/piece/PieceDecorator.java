@@ -1,4 +1,4 @@
-package Piece;
+package piece;
 
 public class PieceDecorator implements PieceInterface {
     private Piece piece;

@@ -1,8 +1,8 @@
 package BoardManager;
 
 import Board.*;
-import Piece.*;
-import Piece.SuperPieceDecorator;
+import piece.*;
+import piece.SuperPieceDecorator;
 
 public class SuperBoardManager extends BoardManager{
 

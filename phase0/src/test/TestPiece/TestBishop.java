@@ -2,8 +2,8 @@ package TestPiece;
 
 import org.junit.Before;
 import org.junit.Test;
-import Piece.Color;
-import Piece.Bishop;
+import piece.Color;
+import piece.Bishop;
 
 import static org.junit.Assert.assertEquals;
 

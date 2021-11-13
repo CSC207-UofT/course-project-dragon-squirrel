@@ -1,6 +1,6 @@
 [
   {
-    "name": "Piece(entity)",
+    "name": "piece(entity)",
     "superclasses": "",
     "subclasses": "King; Queen; Rook; Bishop; Knight; Pawn;",
     "type": "abstract",

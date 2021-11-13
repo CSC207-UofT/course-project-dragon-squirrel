@@ -5,7 +5,7 @@
     "subclasses": "",
     "type": "Abstract",
     "responsibilities": [
-      "\\Initialize Piece names to corresponding position in array.",
+      "\\Initialize piece names to corresponding position in array.",
       "Sting[][] board",
       "abstract addPiece()",
       "abstract removePiece()",
@@ -15,7 +15,7 @@
       ""
     ],
     "collaborators": [
-      "Piece; BoardManager.BoardManager"
+      "piece; BoardManager.BoardManager"
     ]
   }
 ]

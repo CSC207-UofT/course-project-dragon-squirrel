@@ -2,8 +2,8 @@ package TestPiece;
 
 import org.junit.Before;
 import org.junit.Test;
-import Piece.Color;
-import Piece.Rook;
+import piece.Color;
+import piece.Rook;
 
 import static org.junit.Assert.assertEquals;
 

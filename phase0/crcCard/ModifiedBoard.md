@@ -8,7 +8,7 @@
       "\\ We have not decided on rules yet."
     ],
     "collaborators": [
-      "Piece.ModifiedPiece"
+      "piece.ModifiedPiece"
     ]
   }
 ]
