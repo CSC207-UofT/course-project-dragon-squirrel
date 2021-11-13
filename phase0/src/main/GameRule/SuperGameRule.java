@@ -1,6 +1,7 @@
 package GameRule;
 
 import Board.*;
+import Command.MoveRecord;
 import piece.PieceInterface;
 
 import java.awt.*;
@@ -10,8 +11,8 @@ import java.util.Map;
 
 public class SuperGameRule extends GameRule {
 
-    public SuperGameRule(Board superBoard, Map<String, PieceInterface> superPiecesDict) {
-        super(superBoard, superPiecesDict);
+    public SuperGameRule(Board superBoard, Map<String, PieceInterface> superPiecesDict, MoveRecord MR) {
+        super(superBoard, superPiecesDict, MR);
     }
 
     @Override
