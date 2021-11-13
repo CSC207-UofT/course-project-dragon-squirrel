@@ -53,7 +53,6 @@ public class GUI extends JFrame{
 				bu.display();
 			}
 		});
-
 	}
 
 	private void refreshBoard() {

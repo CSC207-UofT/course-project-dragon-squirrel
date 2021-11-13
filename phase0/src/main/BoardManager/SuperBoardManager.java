@@ -10,14 +10,35 @@ public class SuperBoardManager extends BoardManager{
         super(13, 10);
     }
 
-    /**
-     * the Hp of pieceToModify is deducted by HpDeduction. If the new Hp is less than 1 (in other words the
-     * pieceToModify is attacked to death) the new Hp becomes -1.
-     */
-    public void deductPieceHp(SuperPieceDecorator pieceToModify, int HpDeduction) {
-        int newHp = pieceToModify.getHp() - HpDeduction;
-        if (newHp < 1){
-            newHp = -1;
+//    /**
+//     * the Hp of pieceToModify is deducted by HpDeduction. If the new Hp is less than 1 (in other words the
+//     * pieceToModify is attacked to death) the new Hp becomes -1.
+//     */
+//    public void deductsPieceHp(SuperPieceDecorator pieceToModify, int HpDeduction) {
+//        int newHp = pieceToModify.getHp() - HpDeduction;
+//        if (newHp < 1){
+//            newHp = -1;
+//        }
+//        pieceToModify.setHp(newHp);
+//    }
+
+    public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
+        Board superBoard = super.getBoard();
+        String pieceName = superBoard.getPiece(oldX, oldY);
+        String pieceToModifyName = superBoard.getPiece(newX, newY);
+        SuperPieceDecorator piece = (SuperPieceDecorator) getPieces().get(pieceName);
+        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) getPieces().get(pieceToModifyName);
+        int atkLevel = piece.getAtk();
+        int newHp;
+
+        if (deduct) {
+            newHp = pieceToModify.getHp() - atkLevel;
+            if (newHp < 1) {
+                newHp = 0;
+            }
+        }
+        else {
+            newHp = pieceToModify.getHp() + atkLevel;
         }
         pieceToModify.setHp(newHp);
     }
@@ -27,16 +48,13 @@ public class SuperBoardManager extends BoardManager{
      * @return true if piece has been attacked to death, false otherwise
      */
     public boolean attackToDeath(int oldX, int oldY, int newX, int newY){
+        deductOrAddHp(oldX, oldY, newX, newY, true);
+
         Board superBoard = super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        String pieceToAttackName = superBoard.getPiece(newX, newY);
-        SuperPieceDecorator piece = (SuperPieceDecorator) getPieces().get(pieceName);
-        SuperPieceDecorator pieceToAttack = (SuperPieceDecorator) getPieces().get(pieceToAttackName);
-        int atkLevel = piece.getAtk();
+        String pieceToModifyName = superBoard.getPiece(newX, newY);
+        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) getPieces().get(pieceToModifyName);
 
-        deductPieceHp(pieceToAttack, atkLevel);
-
-        return atkLevel >= pieceToAttack.getHp();
+        return pieceToModify.getHp() == 0;
     }
 
     @Override

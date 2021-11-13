@@ -1,6 +1,6 @@
 package Command;
 
-import BoardManager.BoardManager;
+import BoardManager.*;
 
 
 public class Move implements Command{
@@ -26,8 +26,13 @@ public class Move implements Command{
     public void undo() {
         ChessMove lastMove = BM.getMR().get();
         BM.getMR().remove();
-        BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
-        BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
 
+        if (lastMove.getMoveType() == 2){
+            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(), lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
+        }
+        else  {
+            BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
+            BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
+        }
     }
 }

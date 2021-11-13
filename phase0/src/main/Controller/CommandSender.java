@@ -24,13 +24,9 @@ public class CommandSender {
 
 	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
 		int moveType = moveValid(oldX, oldY, newX, newY);
-		if (moveType == 1){
-			return new ChessMove(bm, oldX, oldY, newX, newY, false);
-		}
-		else if (moveType == 2) {
-			return new ChessMove(bm, oldX, oldY, newX, newY, true);
-		}
-		else {
+		if (moveType > 0){
+			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
+		} else {
 			return null;
 		}
 	}
@@ -45,8 +41,8 @@ public class CommandSender {
 	}
 	/**
 	 * @return 	-1 if move or attack is invalid <P>
-	 * 			1 if move is valid or the move is valid after a successful attack <P>
-	 * 			2 if attack is valid
+	 * 			1 if move is valid or move is valid after a successful attack <P>
+	 * 			2 if attack is valid <P>
 	 */
 	public int moveValid(int oldX, int oldY, int newX, int newY) {
 		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
