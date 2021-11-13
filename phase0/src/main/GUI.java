@@ -14,6 +14,7 @@ public class GUI extends JFrame{
 	private JButton moveBtn;
 	private JLabel startPositionLabel1;
 	private JLabel startPositionLabel2;
+	private JButton startSuperGameBtn;
 	private JTable board;
 
 	private CommandSender cs;
@@ -38,6 +39,12 @@ public class GUI extends JFrame{
 
 		startGameBtn.addActionListener(e -> {
 			cs = new CommandSender(true);
+			bu = cs.getBoardUpdater();
+			bu.display();
+		});
+
+		startSuperGameBtn.addActionListener(e -> {
+			cs = new CommandSender(false);
 			bu = cs.getBoardUpdater();
 			bu.display();
 		});
