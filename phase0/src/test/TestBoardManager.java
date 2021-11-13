@@ -21,6 +21,7 @@ public class TestBoardManager {
 
     @Test(timeout = 50)
     public void TestgetBoard(){
+
         assertTrue(Arrays.equals(b.getBoard(), bm.getCurrentBoard()));
     }
 
@@ -43,7 +44,7 @@ public class TestBoardManager {
     public void TestmovePiece(){
         assertEquals("vacant", bm.getBoard().getPiece(5, 0));
         bm.movePiece(6, 0, 5, 0);
-        assertEquals("w_pawn", bm.getBoard().getPiece(5, 0));
+        assertEquals("w_pawn_0", bm.getBoard().getPiece(5, 0));
     }
 
 }
