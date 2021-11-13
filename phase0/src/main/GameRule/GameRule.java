@@ -4,7 +4,6 @@ import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
 import piece.Color;
-import piece.Piece;
 import piece.PieceInterface;
 
 import java.awt.*;

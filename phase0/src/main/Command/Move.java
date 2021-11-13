@@ -19,7 +19,9 @@ public class Move implements Command{
     @Override
     public void execute() {
         BM.getMR().add(CM);
-        BM.movePiece(CM.getOldCoordX(), CM.getOldCoordY(), CM.getNewCoordX(), CM.getNewCoordY());
+        if (CM.getMoveType() > 1) {
+            BM.movePiece(CM.getOldCoordX(), CM.getOldCoordY(), CM.getNewCoordX(), CM.getNewCoordY());
+        }
     }
 
     @Override

@@ -10,18 +10,6 @@ public class SuperBoardManager extends BoardManager{
         super(13, 10);
     }
 
-//    /**
-//     * the Hp of pieceToModify is deducted by HpDeduction. If the new Hp is less than 1 (in other words the
-//     * pieceToModify is attacked to death) the new Hp becomes -1.
-//     */
-//    public void deductsPieceHp(SuperPieceDecorator pieceToModify, int HpDeduction) {
-//        int newHp = pieceToModify.getHp() - HpDeduction;
-//        if (newHp < 1){
-//            newHp = -1;
-//        }
-//        pieceToModify.setHp(newHp);
-//    }
-
     public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
         Board superBoard = super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
@@ -54,39 +42,39 @@ public class SuperBoardManager extends BoardManager{
         String pieceToModifyName = superBoard.getPiece(newX, newY);
         SuperPieceDecorator pieceToModify = (SuperPieceDecorator) getPieces().get(pieceToModifyName);
 
-        return pieceToModify.getHp() == 0;
+        return pieceToModify.getHp() < 1;
     }
 
     @Override
     public void resetMap() {
         // instantiate white pieces and put into Map: write in health point and attack level
-        super.setPieces("w_rook_l", new SuperPieceDecorator(new Rook("w_rook_l", Color.WHITE), 1, 1));
-        super.setPieces("w_knight_l", new SuperPieceDecorator(new Knight("w_knight_l", Color.WHITE), 1, 1));
-        super.setPieces("w_bishop_l", new SuperPieceDecorator(new Bishop("w_bishop_l", Color.WHITE), 1, 1));
-        super.setPieces("w_queen", new SuperPieceDecorator(new Queen("w_queen", Color.WHITE), 1, 1));
-        super.setPieces("w_king", new SuperPieceDecorator(new King("w_king", Color.WHITE), 1, 1));
-        super.setPieces("w_bishop_r", new SuperPieceDecorator(new Bishop("w_bishop_r", Color.WHITE), 1, 1));
-        super.setPieces("w_knight_r", new SuperPieceDecorator(new Knight("w_knight_r", Color.WHITE), 1, 1));
-        super.setPieces("w_rook_r", new SuperPieceDecorator(new Rook("w_rook_r", Color.WHITE), 1, 1));
+        super.setPieces("w_rook_l", new SuperPieceDecorator(new Rook("w_rook_l", Color.WHITE), 4, 1));
+        super.setPieces("w_knight_l", new SuperPieceDecorator(new Knight("w_knight_l", Color.WHITE), 3, 5));
+        super.setPieces("w_bishop_l", new SuperPieceDecorator(new Bishop("w_bishop_l", Color.WHITE), 4, 1));
+        super.setPieces("w_queen", new SuperPieceDecorator(new Queen("w_queen", Color.WHITE), 2, 2));
+        super.setPieces("w_king", new SuperPieceDecorator(new King("w_king", Color.WHITE), 2, 7));
+        super.setPieces("w_bishop_r", new SuperPieceDecorator(new Bishop("w_bishop_r", Color.WHITE), 4, 1));
+        super.setPieces("w_knight_r", new SuperPieceDecorator(new Knight("w_knight_r", Color.WHITE), 3, 5));
+        super.setPieces("w_rook_r", new SuperPieceDecorator(new Rook("w_rook_r", Color.WHITE), 4, 1));
 
         for (int i = 0; i < 10; i++) {
             String name = "w_pawn_" + i;
-            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.WHITE), 5, 1));
+            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.WHITE), 5, 6));
         }
 
         // instantiate black pieces and put into Map: write in health point and attack level
-        super.setPieces("b_rook_l", new SuperPieceDecorator(new Rook("b_rook_l", Color.BLACK), 1, 1));
-        super.setPieces("b_knight_l", new SuperPieceDecorator(new Knight("b_knight_l", Color.BLACK), 1, 1));
-        super.setPieces("b_bishop_l", new SuperPieceDecorator(new Bishop("b_bishop_l", Color.BLACK), 1, 1));
-        super.setPieces("b_queen", new SuperPieceDecorator(new Queen("b_queen", Color.BLACK), 1, 2));
-        super.setPieces("b_king", new SuperPieceDecorator(new King("b_king", Color.BLACK), 1, 1));
-        super.setPieces("b_bishop_r", new SuperPieceDecorator(new Bishop("b_bishop_r", Color.BLACK), 1, 1));
-        super.setPieces("b_knight_r", new SuperPieceDecorator(new Knight("b_knight_r", Color.BLACK), 1, 1));
-        super.setPieces("b_rook_r", new SuperPieceDecorator(new Rook("b_rook_r", Color.BLACK), 1, 1));
+        super.setPieces("b_rook_l", new SuperPieceDecorator(new Rook("b_rook_l", Color.BLACK), 4, 1));
+        super.setPieces("b_knight_l", new SuperPieceDecorator(new Knight("b_knight_l", Color.BLACK), 3, 5));
+        super.setPieces("b_bishop_l", new SuperPieceDecorator(new Bishop("b_bishop_l", Color.BLACK), 4, 1));
+        super.setPieces("b_queen", new SuperPieceDecorator(new Queen("b_queen", Color.BLACK), 2, 2));
+        super.setPieces("b_king", new SuperPieceDecorator(new King("b_king", Color.BLACK), 2, 7));
+        super.setPieces("b_bishop_r", new SuperPieceDecorator(new Bishop("b_bishop_r", Color.BLACK), 4, 1));
+        super.setPieces("b_knight_r", new SuperPieceDecorator(new Knight("b_knight_r", Color.BLACK), 3, 5));
+        super.setPieces("b_rook_r", new SuperPieceDecorator(new Rook("b_rook_r", Color.BLACK), 4, 1));
 
         for (int i = 0; i < 10; i++) {
             String name = "b_pawn_" + i;
-            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.BLACK), 1, 1));
+            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.BLACK), 5, 6));
         }
     }
 }

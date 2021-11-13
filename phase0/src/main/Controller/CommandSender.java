@@ -23,7 +23,7 @@ public class CommandSender {
 	}
 
 	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
-		int moveType = moveValid(oldX, oldY, newX, newY);
+		int moveType = moveType(oldX, oldY, newX, newY);
 		if (moveType > 0){
 			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
 		} else {
@@ -45,7 +45,7 @@ public class CommandSender {
 	 * 			2 if move is valid <P>
 	 * 			3 if move is valid after a successful attack
 	 */
-	public int moveValid(int oldX, int oldY, int newX, int newY) {
+	public int moveType(int oldX, int oldY, int newX, int newY) {
 		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
 			return -1;
 		}
@@ -84,11 +84,12 @@ public class CommandSender {
 	public void startNewGame(boolean classic) {
 		if (classic) {
 			bm = new BoardManager();
+			gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		}
 		else {
 			bm = new SuperBoardManager();
+			gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		}
-		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		this.bu = new BoardUpdater(bm);
 	}
 
