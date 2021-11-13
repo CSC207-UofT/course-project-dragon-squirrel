@@ -1,3 +1,5 @@
+package TestBoard;
+
 import Board.Board;
 import org.junit.Before;
 import org.junit.After;

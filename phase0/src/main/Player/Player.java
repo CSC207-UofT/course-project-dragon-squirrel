@@ -1,6 +1,6 @@
 package Player;
 
-import piece.Color;
+import Piece.Color;
 
 public class Player {
     private String ID;

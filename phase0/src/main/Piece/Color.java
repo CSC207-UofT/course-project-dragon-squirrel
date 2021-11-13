@@ -1,4 +1,4 @@
-package piece;
+package Piece;
 
 public enum Color {
 	WHITE,

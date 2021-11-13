@@ -1,9 +1,9 @@
-package TestPieces;
+package TestPiece;
 
 import org.junit.Before;
 import org.junit.Test;
-import piece.Color;
-import piece.Knight;
+import Piece.Color;
+import Piece.Knight;
 
 import static org.junit.Assert.assertEquals;
 

@@ -2,11 +2,10 @@ package GameRule;
 
 import Board.*;
 import Command.MoveRecord;
-import piece.PieceInterface;
+import Piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 
 public class SuperGameRule extends GameRule {

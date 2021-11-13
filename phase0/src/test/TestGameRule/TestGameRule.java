@@ -1,8 +1,10 @@
+package TestGameRule;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestModifiedPiece {
+public class TestGameRule {
 
 }

@@ -1,6 +1,6 @@
 [
   {
-    "name": "piece.ModifiedPiece(entity)",
+    "name": "Piece.ModifiedPiece(entity)",
     "superclasses": "Piece",
     "subclasses": "",
     "type": "interface",

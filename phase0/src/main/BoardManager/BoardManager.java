@@ -3,7 +3,7 @@ package BoardManager;
 import Board.*;
 import Command.MoveRecord;
 import Player.Player;
-import piece.*;
+import Piece.*;
 
 import java.util.HashMap;
 import java.util.Map;

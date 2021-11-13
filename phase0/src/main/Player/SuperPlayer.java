@@ -1,6 +1,6 @@
 package Player;
 
-import piece.Color;
+import Piece.Color;
 
 public interface SuperPlayer {
     String getSuperID();

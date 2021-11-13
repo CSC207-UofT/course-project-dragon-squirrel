@@ -13,7 +13,7 @@
 |Piece (entity) <br> abstract ||
 |---|---|
 |String name <br> Color color <br> boolean status|Superclass: <br> Subclass: King, Queen, Rook, Bishop, Knight, Pawn <br> Collaborators: Board.Board|
-|getName() <br> getColor() <br> getStatus() <br> validMove() // follows piece specific rules
+|getName() <br> getColor() <br> getStatus() <br> validMove() // follows Piece specific rules
 
 |King (entity)||
 |---|---|
@@ -45,19 +45,19 @@
 |String name <br> Color color <br> boolean status <br> hasNotMovedDuringGame // for optional 2 squares (sq) forward|Superclass: Piece <br> Subclass: <br> Collaborators: Board.Board|
 |validMove() // 1sq directly forward, optional 2sq directly forward if not yet moved, promotion if reach other end
 
-|piece.ModifiedPiece (entity) <br> interface||
+|Piece.ModifiedPiece (entity) <br> interface||
 |---|---|
 |int hp <br> int atk|Superclass: Piece <br> Subclass: <br> Collaborators: ModifiedBoard|
 |getHp() <br> getAtk()
 
 |Board.Board (entity)||
 |---|---|
-|String[][] board // each cell contains piece name/id |Superclass: <br> Subclass: <br> Collaborators: Piece, BoardManager.BoardManager|
-|addPiece() <br> removePiece() <br> isPositionVacant() <br> getPiece() // using coordinates <br> reset() // initializes piece names onto position
+|String[][] board // each cell contains Piece name/id |Superclass: <br> Subclass: <br> Collaborators: Piece, BoardManager.BoardManager|
+|addPiece() <br> removePiece() <br> isPositionVacant() <br> getPiece() // using coordinates <br> reset() // initializes Piece names onto position
 
 |ModifiedBoard (entity)||
 |---|---|
-|Responsibilities: //may add additional features|Superclass: Board.Board <br> Subclass: <br> Collaborators: piece.ModifiedPiece|
+|Responsibilities: //may add additional features|Superclass: Board.Board <br> Subclass: <br> Collaborators: Piece.ModifiedPiece|
 
 |GameRule.GameRule (use case)||
 |---|---|

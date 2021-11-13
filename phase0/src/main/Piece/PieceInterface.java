@@ -1,4 +1,4 @@
-package piece;
+package Piece;
 
 public interface PieceInterface {
     String getName();

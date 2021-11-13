@@ -17,7 +17,7 @@ Players are also able to undo.
 
 **O**: Both abstract classes Piece and SuperPiece implement its corresponding Piece or SuperPiece interface which 
 provides the necessary methods needed to be implemented. Since other classes interact with the methods outlined by the 
-interface and concrete piece classes must extend their corresponding abstract class, methods of concrete piece classes
+interface and concrete Piece classes must extend their corresponding abstract class, methods of concrete Piece classes
 are open for extension, but closed for modification. 
 
 **L**: The methods and attributes in the abstract Piece and SuperPiece classes are all common functionalities that are

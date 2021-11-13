@@ -1,4 +1,4 @@
-package piece;
+package Piece;
 public class Bishop extends Piece{
 
     public Bishop(String name, Color color){

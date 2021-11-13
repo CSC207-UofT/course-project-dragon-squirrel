@@ -1,4 +1,4 @@
-package piece;
+package Piece;
 
 public class SuperPieceDecorator extends PieceDecorator{
     int hp;
