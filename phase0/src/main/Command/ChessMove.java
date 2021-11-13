@@ -11,8 +11,9 @@ public class ChessMove {
     private int moveType;
 
     /**
-     * @param typeOfMove   1 if it is a move <P>
-     *                     2 if it is an attack
+     * @param typeOfMove   1 if it is an attack <P>
+     *                     2 if it is a move
+     *                     3 if it is a move after a successful attack
      */
     public ChessMove(BoardManager newBM, int oldX, int oldY, int newX, int newY, int typeOfMove){
         BM = newBM;
@@ -50,8 +51,9 @@ public class ChessMove {
     }
 
     /**
-     * @return  1 if it is a move <P>
-     *          2 if it is an attack
+     * @return  1 if it is an attack <P>
+     *          2 if it is a move <P>
+     *          3 if it is a move after a successful attack
      */
     public int getMoveType() {
         return moveType;

@@ -41,8 +41,9 @@ public class CommandSender {
 	}
 	/**
 	 * @return 	-1 if move or attack is invalid <P>
-	 * 			1 if move is valid or move is valid after a successful attack <P>
-	 * 			2 if attack is valid <P>
+	 * 			1 if attack is valid <P>
+	 * 			2 if move is valid <P>
+	 * 			3 if move is valid after a successful attack
 	 */
 	public int moveValid(int oldX, int oldY, int newX, int newY) {
 		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
@@ -57,10 +58,10 @@ public class CommandSender {
 				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
 				if (attackedToDeath) {
 					System.out.println("attacked to death");
-					return 1;
-				} return 2;
+					return 3;
+				} return 1;
 			}
-		} return 1;
+		} return 2;
 	}
 
 	/**

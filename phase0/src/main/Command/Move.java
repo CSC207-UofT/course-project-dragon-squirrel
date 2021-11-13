@@ -27,12 +27,18 @@ public class Move implements Command{
         ChessMove lastMove = BM.getMR().get();
         BM.getMR().remove();
 
-        if (lastMove.getMoveType() == 2){
-            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(), lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
-        }
-        else  {
+        // move is an attack: add back health points
+        if (lastMove.getMoveType() == 1){
+            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(),
+                    lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
+        } // move is a move: put pieces back in place
+        else {
             BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
             BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
+        } // move is a move after a successful attack: put pieces back in place and add back health points
+        if (lastMove.getMoveType() == 3) {
+            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(),
+                    lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
         }
     }
 }
