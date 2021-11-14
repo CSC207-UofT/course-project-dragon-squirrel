@@ -60,27 +60,39 @@ GameRule since we have to use instanceof to check which type the piece is.
 
 
 ## Adherence to SOLID Design Principles
-**S**: Class GameRule.GameRule's sole responsibility is to check whether move is valid according to game rules.  
+**S**: Class (Super)GameRule's sole responsibility is to check whether move is valid according to its game rules. 
+Controller classes are separated into BoardUpdater and CommandSender classes because they have different 
+responsibilities, thus avoiding low cohesion. Coordinates of the pieces are not stored in both the pieces themselves 
+and the Board class. Rather, it is stored only in a private String[][] board attribute in class Board. This way, code is
+not shared between actors.
 
-**O**: Both abstract classes Piece and SuperPiece implement its corresponding Piece or SuperPiece interface which 
-provides the necessary methods needed to be implemented. Since other classes interact with the methods outlined by the 
-interface and concrete piece classes must extend their corresponding abstract class, methods of concrete piece classes
-are open for extension, but closed for modification. 
+**O**: Both the abstract Piece class and PieceDecorator class implement PieceInterface. This interface sets 
+a skeleton outline of the necessary methods required to be implemented. Because piece classes (Bishop, Knight, etc.)
+and the SuperPieceDecorator class extend classes that implement PieceInterface, they are thus closed for modification, 
+but open for extension. In any case, the decorator design pattern used here is itself a design which requires that the 
+base component remains unchanged and behaviours are only added on top.
 
-**L**: The methods and attributes in the abstract Piece and SuperPiece classes are all common functionalities that are
-required by all concrete pieces. For instance, attribute hasNotMovedDuringGame was not put in the abstract 
-Piece/SuperPiece classes because not all concrete pieces require it; It is only used by the rook, king, and pawn, for 
-castling and two-square moves.  
+**L**: In all the classic chess classes (Board, BoardManager, and GameRule) that are with a corresponding super chess 
+subclass, its methods and attributes are shared with the subclass. In other words, there does not exist a method in the 
+superclass that is irrelevant to its subclass. For example, the super chess game rules are all extensions of the classic
+chess game rules; super chess pieces acquire the exact same behaviours as those in classic chess. Thus, for example, 
+the overridden method isMoveValid() in SuperGameRule still calls the isMoveValid() in GameRule. 
 
-**I**: Because Piece and SuperPiece are different in that one has attack levels and health points while the other does 
-not, it is not ideal to have only one interface with those additional features when a set of subclasses (the standard 
-chess pieces) will not even need to use them. Thus, two different interfaces are made: SuperPieceinterface and 
-Pieceinterface.
+**I**: Because classic chess pieces and super chess pieces are different in that one has attacks and health points 
+while the other does not, PieceInterface does not specify methods related to health points and attacks. Rather, it only
+outlines methods that are required by both classic and super chess pieces. 
 
-**D**: High level classes such as GameRule.GameRule depend on the methods outlined by Piece/SuperPiece interfaces rather than 
-the low level modules such as the concrete Piece class themselves.
+**D**: High level classes such as GameRule depend on the methods outlined by the PieceInterface rather than 
+the low level modules such as the concrete piece classes themselves. However, it is worrisome that high level classes
+such as CommandSender depend on classes like GameRule and BoardManager which do not implement an interface. If these 
+two classes were to change, it may involve high coupling and become quite chaotic.
 
 ## Packaging Strategies
+This is packaging by feature. At first, we put SuperChess and Chess classes into separate folders. However, this proved
+difficult since we realized that super chess classes required many of its corresponding classic chess class methods. To 
+avoid duplicate code, the super chess classes extend its corresponding classic chess classes and thus putting super 
+and classic classes into one folder proved easier. This is why SuperBoard and Board is in a Board package, GameRule and
+SuperGameRule is in a GameRule package, etc.
 
 ## Summary of present/future Design Patterns 
 ###Command Pattern
@@ -100,3 +112,24 @@ Additionally, observer pattern helps deliver the information while bypassing the
 Due to some technical issues, this part is not yet implemented.
 
 ## Progress Report
+### Contribution 
+<span style="color:green">plans to work on next in green</span>
+
+- Jin
+    - ...
+- Jennifer
+    - Updated Specification
+    - Decorator design pattern
+    - Brief Description of SOLID
+    - Brief Description of Packaging Strategy
+    - Implementation of SuperChess
+      - subclasses: SuperBoard, SuperBoardManager, SuperGameRule
+    - <span style="color:green"> GUI with chessboard </span>
+- Future
+    - ...
+- Tingzhou
+    - ...
+- Christopher
+    - ...
+- Dylan
+    - ...
