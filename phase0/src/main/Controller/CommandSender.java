@@ -39,6 +39,12 @@ public class CommandSender {
 			System.out.println("Invalid Move");
 		}
 	}
+
+	public void undoMove(){
+		Move move = new Move(bm, bm.getMR().get());
+		move.undo();
+	}
+
 	/**
 	 * @return 	-1 if move or attack is invalid <P>
 	 * 			1 if attack is valid <P>
