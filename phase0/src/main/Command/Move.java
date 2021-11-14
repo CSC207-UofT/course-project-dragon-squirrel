@@ -1,7 +1,6 @@
 package Command;
 
 import BoardManager.BoardManager;
-import piece.Pawn;
 
 
 public class Move implements Command{
@@ -20,20 +19,35 @@ public class Move implements Command{
     @Override
     public void execute() {
         BM.getMR().add(CM);
+        
 //        if (CM.getOldPieceName().contains("Pawn") ||
 //                CM.getOldPieceName().contains("Rook") ||
 //                CM.getOldPieceName().contains("King")  ){
 //            BM.getPieces().get(CM.getOldPieceName());
 //        }
-        BM.movePiece(CM.getOldCoordX(), CM.getOldCoordY(), CM.getNewCoordX(), CM.getNewCoordY());
+        
+        if (CM.getMoveType() > 1) {
+            BM.movePiece(CM.getOldCoordX(), CM.getOldCoordY(), CM.getNewCoordX(), CM.getNewCoordY());
+        }
     }
-
+    
     @Override
     public void undo() {
         ChessMove lastMove = BM.getMR().get();
         BM.getMR().remove();
-        BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
-        BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
 
+        // move is an attack: add back health points
+        if (lastMove.getMoveType() == 1){
+            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(),
+                    lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
+        } // move is a move: put pieces back in place
+        else {
+            BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
+            BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
+        } // move is a move after a successful attack: put pieces back in place and add back health points
+        if (lastMove.getMoveType() == 3) {
+            ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(),
+                    lastMove.getNewCoordX(), lastMove.getNewCoordY(), false);
+        }
     }
 }

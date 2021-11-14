@@ -14,10 +14,8 @@ public class CommandSender {
 	private GameRule gl;    // A set of rules that determines valid move and piece interactions
 	private BoardUpdater bu;
 
-	public CommandSender() {
-
-//		startNewClassicGame();
-		startNewSuperGame();
+	public CommandSender(boolean classic) {
+		startNewGame(classic);
 	}
 
 	public BoardUpdater getBoardUpdater() {
@@ -25,10 +23,10 @@ public class CommandSender {
 	}
 
 	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
-		if (gl.isMoveValid(oldX, oldY, newX, newY)){
-			return new ChessMove(bm, oldX, oldY, newX, newY);
-		}
-		else {
+		int moveType = moveType(oldX, oldY, newX, newY);
+		if (moveType > 0){
+			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
+		} else {
 			return null;
 		}
 	}
@@ -42,35 +40,28 @@ public class CommandSender {
 		}
 	}
 	/**
-	 * Move the piece that is at board[oldX][oldY] to board[newX][newY]
-	 * Check whether the movement is valid and possibly attack another piece
-	 * @return  If successfully moved, return true
+	 * @return 	-1 if move or attack is invalid <P>
+	 * 			1 if attack is valid <P>
+	 * 			2 if move is valid <P>
+	 * 			3 if move is valid after a successful attack
 	 */
-	public boolean makeMove(int oldX, int oldY, int newX, int newY) {
+	public int moveType(int oldX, int oldY, int newX, int newY) {
 		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
-			return false;
+			return -1;
 		}
-
 		// if there is an attack: target coordinate has an opponent's piece
 		if (gl instanceof SuperGameRule && bm instanceof SuperBoardManager){
-
 			if (((SuperGameRule) gl).isAttackAvailable(oldX, oldY, newX, newY)){
 				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
-					return false;
+					return -1;
 				}
 				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
 				if (attackedToDeath) {
 					System.out.println("attacked to death");
-					bm.movePiece(oldX, oldY, newX, newY);
-					return true;
-				}
-
-				return true;
+					return 3;
+				} return 1;
 			}
-		}
-
-		bm.movePiece(oldX, oldY, newX, newY);
-		return true;
+		} return 2;
 	}
 
 	/**
@@ -86,16 +77,19 @@ public class CommandSender {
 	public void giveUp() {
 
 	}
-
-	public void startNewClassicGame() {
-		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
-		this.bu = new BoardUpdater(bm);
-	}
-
-	public void startNewSuperGame() {
-		bm = new SuperBoardManager();
-		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+  
+	/**
+	 * @param classic true if the game played is a classic game
+	 */
+	public void startNewGame(boolean classic) {
+		if (classic) {
+			bm = new BoardManager();
+			gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		}
+		else {
+			bm = new SuperBoardManager();
+			gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		}
 		this.bu = new BoardUpdater(bm);
 	}
 

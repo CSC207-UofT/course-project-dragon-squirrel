@@ -26,31 +26,37 @@ king: one square any direction, castling
 
 ## Super Chess
 
-This has been (hopefully) implemented in phase 1.
+This has been implemented in phase 1.
 
-Each player can make a maximum of 3 moves during their turn. They may also forfeit their turn/move. Each modified piece 
-can only attack and move once per turn. Each modified piece corresponds to health points and an attack level. An attack 
-counts as one of the multiple moves made during a turn wherein the attacking piece does not actually move. The attacked
-piece must be in the attacker's line of defence: the attacker must be able to move to the attacked piece's position 
-according to its piece behaviours. This is so that when the piece is captured, the attacking piece can take its 
-position. A piece is captured when it's health points are depleted.
+Each player can make one move per turn. They may also forfeit their turn. Each modified piece corresponds to health 
+points and an attack level. An attack counts as one of the multiple moves made during a turn wherein the attacking piece 
+does not actually move. The attacked piece must be in the attacker's line of defence: the attacker must be able to move 
+to the attacked piece's position according to its piece behaviours. This is so that when the piece is captured, the 
+attacking piece can take its position. A piece is captured when it's health points are depleted.
 
 The game ends when the king is dead, a player gives up, or a player pauses the game.
 
 The board consists of rivers, some bridges, and home safe zones. 
-* **River**: Only the pawn can cross the river. All other pieces must use the bridge. The pawn is not *visible* in the 
-river because it is "submerged". 
-* **Bridges** are elevated. Therefore, pieces cannot attack a piece on the other side of the bridge. However, pieces can 
-attack a piece on the bridge. If a piece is on the bridge, due to the high altitude, it can attack all *visible* pieces.
-All pieces can use the bridge and thus a piece can move onto and over the bridge as it pleases.
-* **Home safe zones**: If a piece is in its own home safe zone, it cannot be attacked. However, it is still *visible* 
-from the bridge, therefore pieces in its own home safe zone can still be attacked by pieces on the bridge. If a piece is 
-in the opponent's home safe zone, it will be defenceless; opponent pieces can attack it, but it cannot attack opponent 
-pieces.
+* **River** (blue): Only the pawn can cross the river. All other pieces must use the bridge. However, the knight can jump over
+the river as long as it lands on a land type other than the river. The pawn is not *visible* in the river because it is 
+"submerged". 
+* **Bridges** (brown) are elevated. Therefore, pieces cannot attack a piece on the other side of the bridge. However, 
+pieces can attack a piece on the bridge. If a piece is on the bridge, due to the high altitude, it can attack all 
+*visible* pieces. All pieces can use the bridge and thus a piece can move onto and over the bridge as it pleases.
+* **Home safe zones** (green): If a piece is in its own home safe zone, it cannot be attacked. However, it is still 
+*visible* from the bridge, therefore pieces in its own home safe zone can still be attacked by pieces on the bridge. If 
+a piece is in the opponent's home safe zone, it will be defenceless; opponent pieces can attack it, but it cannot 
+attack opponent pieces.
 
-Below is a picture of the 13x10 board:
+Below is a picture of the 13x10 super chess board:  
+![](SuperChessBoard.png)
 
-*Picture of board (Chris' one on discord is pretty nice)
+Below is the health points and attack levels of pieces:  
+
+|Piece|Pawn|Knight|Bishop|Rook|Queen|King|
+|---|---|---|---|---|---|---|
+|Health points (Hp)|5|3|4|4|2|2|
+|Attack level      |6|5|1|1|2|7|
 
 ## Phase 1 Additional Functionalities
 
@@ -60,5 +66,5 @@ Players can undo. Each undo goes back by one move.
 
 * The game may be played with a timer. If players do not make their move(s) within the time limit, they automatically
 forfeit their turn. 
-* A GUI displays the board (probably try to get some of it done for phase 1 especially cause SuperChess would look nice with it)
+* A GUI displays the board
 * A hint on one of the best possible move can be given if the player asks.
