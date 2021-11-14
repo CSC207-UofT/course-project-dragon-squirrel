@@ -61,7 +61,10 @@ public class CommandSender {
 				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
 					return -1;
 				}
+				int pastHp = ((SuperBoardManager) bm).getHp(newX, newY);
 				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
+				System.out.println("Attacked piece -> " + "Past Hp: " + pastHp + "    " +
+						"New Hp: " + ((SuperBoardManager) bm).getHp(newX, newY));
 				if (attackedToDeath) {
 					System.out.println("attacked to death");
 					return 3;
