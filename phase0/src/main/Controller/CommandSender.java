@@ -77,7 +77,7 @@ public class CommandSender {
 	public void giveUp() {
 
 	}
-
+  
 	/**
 	 * @param classic true if the game played is a classic game
 	 */

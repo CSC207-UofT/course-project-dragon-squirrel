@@ -1,6 +1,7 @@
 package Command;
 
-import BoardManager.*;
+import BoardManager.BoardManager;
+import piece.Pawn;
 
 
 public class Move implements Command{
@@ -19,11 +20,18 @@ public class Move implements Command{
     @Override
     public void execute() {
         BM.getMR().add(CM);
+        
+        //        if (CM.getOldPieceName().contains("Pawn") ||
+//                CM.getOldPieceName().contains("Rook") ||
+//                CM.getOldPieceName().contains("King")  ){
+//            BM.getPieces().get(CM.getOldPieceName());
+//        }
+        
         if (CM.getMoveType() > 1) {
             BM.movePiece(CM.getOldCoordX(), CM.getOldCoordY(), CM.getNewCoordX(), CM.getNewCoordY());
         }
     }
-
+    
     @Override
     public void undo() {
         ChessMove lastMove = BM.getMR().get();
