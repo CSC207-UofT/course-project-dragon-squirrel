@@ -1,7 +1,6 @@
 package Command;
 
 import BoardManager.BoardManager;
-import piece.Pawn;
 
 
 public class Move implements Command{
