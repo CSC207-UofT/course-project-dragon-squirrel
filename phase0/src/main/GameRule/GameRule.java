@@ -41,14 +41,12 @@ public class GameRule {
 			return false;
 		}
 
-		if (!enPassant(oldX, oldY, newX, newY)){
-			System.out.println("invalid enPassant");
-			return false;
+		if (enPassant(oldX, oldY, newX, newY)){
+			return true;
 		}
 
-		if (!pawnCapture(oldX, oldY, newX, newY)){
-			System.out.println("not a pawn capture");
-			return false;
+		if (pawnCapture(oldX, oldY, newX, newY)){
+			return true;
 		}
 
 		String pieceName = board.getPiece(oldX, oldY);
@@ -174,30 +172,29 @@ public class GameRule {
 	}
 
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){
-		try {
-			ChessMove lastMove = MR.get();
-			PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
-			PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
-			if (!board.getPiece(oldX, oldY).contains("pawn")) {
-				return false;
-			}
-			if (!lastMove.getOldPieceName().contains("pawn")) {
-				return false;
-			}
-			if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2) {
-				return false;
-			}
-			if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX) {
-				return false;
-			}
-			if (lastMovePiece.hasSameColor(movingPiece)) {
-				return false;
-			}
-			if (movingPiece.getColor().equals(piece.Color.WHITE)) {
-				return newX == oldX - 1 && newY == lastMove.getNewCoordY();
-			} else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
-		} catch (NoSuchElementException e) {
-			return true;
+		if (MR.isEmpty()){
+			return false;
+		}
+		ChessMove lastMove = MR.get();
+		PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
+		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
+		if (!board.getPiece(oldX, oldY).contains("pawn")){
+			return false;
+		}
+		if (!lastMove.getOldPieceName().contains("pawn")){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
+			return false;
+		}
+		if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX){
+			return false;
+		}
+		if (lastMovePiece.hasSameColor(movingPiece)){
+			return false;
+		}
+		if (movingPiece.getColor().equals(piece.Color.WHITE)){
+			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
 		}
 	}
 

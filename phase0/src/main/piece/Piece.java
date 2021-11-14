@@ -4,11 +4,13 @@ public abstract class Piece implements PieceInterface {
     protected String name;  // ex: "w_pawn_1"
     protected Color color;    // Black or White (BLACK/WHITE)
     protected boolean status;     // This tells whether this piece has been moved during the turn
+    public boolean hasNotMovedDuringGame;
 
     public Piece(String name, Color color) {
         this.name = name;
         this.color = color;
         this.status = false;
+        hasNotMovedDuringGame = true;
     }
 
     public String getName() { return name; }

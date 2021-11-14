@@ -2,11 +2,8 @@ package piece;
 
 public class Pawn extends Piece{
 
-    public boolean hasNotMovedDuringGame;
-
     public Pawn(String name, Color color){
         super(name, color);
-        hasNotMovedDuringGame = true;
     }
 
     @Override
