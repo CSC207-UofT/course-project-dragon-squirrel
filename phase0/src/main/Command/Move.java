@@ -20,7 +20,7 @@ public class Move implements Command{
     public void execute() {
         BM.getMR().add(CM);
         
-        //        if (CM.getOldPieceName().contains("Pawn") ||
+//        if (CM.getOldPieceName().contains("Pawn") ||
 //                CM.getOldPieceName().contains("Rook") ||
 //                CM.getOldPieceName().contains("King")  ){
 //            BM.getPieces().get(CM.getOldPieceName());
