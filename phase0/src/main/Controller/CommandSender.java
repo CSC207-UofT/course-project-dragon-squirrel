@@ -95,7 +95,7 @@ public class CommandSender {
 
 	public void startNewSuperGame() {
 		bm = new SuperBoardManager();
-		gl = new SuperGameRule(bm.getBoard(), bm.getPieces());
+		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		this.bu = new BoardUpdater(bm);
 	}
 
