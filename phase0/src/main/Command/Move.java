@@ -1,7 +1,7 @@
 package Command;
 
 import BoardManager.BoardManager;
-
+import BoardManager.SuperBoardManager;
 
 public class Move implements Command{
     BoardManager BM;

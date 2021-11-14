@@ -196,6 +196,7 @@ public class GameRule {
 		if (movingPiece.getColor().equals(piece.Color.WHITE)){
 			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
 		}
+		return false;
 	}
 
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){

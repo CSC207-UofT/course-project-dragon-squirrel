@@ -77,7 +77,6 @@ public class CommandSender {
 	public void giveUp() {
 
 	}
-<<<<<<< HEAD
 
 	public void startNewClassicGame() {
 		bm = new BoardManager();
@@ -88,8 +87,7 @@ public class CommandSender {
 	public void startNewSuperGame() {
 		bm = new SuperBoardManager();
 		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
-=======
-  
+	}
 	/**
 	 * @param classic true if the game played is a classic game
 	 */
@@ -102,7 +100,6 @@ public class CommandSender {
 			bm = new SuperBoardManager();
 			gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
 		}
->>>>>>> b5918e2e5e6d78fd6611a98c4307b5b8985d275e
 		this.bu = new BoardUpdater(bm);
 	}
 
