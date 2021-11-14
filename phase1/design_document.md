@@ -113,7 +113,7 @@ Due to some technical issues, this part is not yet implemented.
 
 ## Progress Report
 ### Contribution 
-<span style="color:green">plans to work on next in green</span>
+*plans to work on next in italics*
 
 - Jin
     - ...
@@ -124,7 +124,7 @@ Due to some technical issues, this part is not yet implemented.
     - Brief Description of Packaging Strategy
     - Implementation of SuperChess
       - subclasses: SuperBoard, SuperBoardManager, SuperGameRule
-    - <span style="color:green"> GUI with chessboard </span>
+    - *GUI with chessboard*
 - Future
     - ...
 - Tingzhou
