@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 
+import java.awt.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -14,7 +16,7 @@ public class TestBoard {
     Board b;
 
     @Before
-    public void setup(){
+    public void before(){
         b = new Board(8, 8);
     }
 
@@ -25,6 +27,7 @@ public class TestBoard {
 
     @Test(timeout = 50)
     public void TestgetBoard(){
+
         String[][] board = new String[8][8];
 
         // initialize white pieces
@@ -74,15 +77,18 @@ public class TestBoard {
     }
 
     @Test(timeout = 50)
+    public void TestgetBoundaries(){
+        assertEquals(b.getBoundaries(), new Point(8, 8));
+    }
+
+    @Test(timeout = 50)
     public void TestaddPiece(){
-        assertEquals("vacant", b.getBoard()[5][0]);
         b.addPiece("w_pawn", 5, 0);
         assertEquals("w_pawn", b.getBoard()[5][0]);
     }
 
     @Test(timeout = 50)
     public void TestremovePiece(){
-        assertEquals("w_pawn_0", b.getPiece(6, 0));
         b.removePiece(6, 0);
         assertEquals("vacant", b.getPiece(6, 0));
     }
@@ -90,7 +96,6 @@ public class TestBoard {
     @Test(timeout = 50)
     public void TestisPositionVacant(){
         assertTrue(b.isPositionVacant(5, 0));
-        assertFalse(b.isPositionVacant(6, 0));
     }
 
     @Test(timeout = 50)
@@ -145,7 +150,6 @@ public class TestBoard {
             }
         }
 
-        b.reset();
         assertEquals(board, b.getBoard());
     }
 

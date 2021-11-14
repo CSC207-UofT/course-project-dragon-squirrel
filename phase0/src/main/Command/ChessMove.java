@@ -8,8 +8,14 @@ public class ChessMove {
     private BoardManager BM;
     private final String oldPieceName;
     private final String newPieceName;
+    private int moveType;
 
-    public ChessMove(BoardManager newBM, int oldX, int oldY, int newX, int newY){
+    /**
+     * @param typeOfMove   1 if it is an attack <P>
+     *                     2 if it is a move
+     *                     3 if it is a move after a successful attack
+     */
+    public ChessMove(BoardManager newBM, int oldX, int oldY, int newX, int newY, int typeOfMove){
         BM = newBM;
         oldPosition[0] = oldX;
         oldPosition[1] = oldY;
@@ -17,6 +23,7 @@ public class ChessMove {
         newPosition[1] = newY;
         oldPieceName = newBM.getBoard().getPiece(oldX, oldY);
         newPieceName = newBM.getBoard().getPiece(newX, newY);
+        moveType = typeOfMove;
     }
 
     public int getOldCoordX(){
@@ -41,5 +48,14 @@ public class ChessMove {
 
     public String getNewPieceName(){
         return newPieceName;
+    }
+
+    /**
+     * @return  1 if it is an attack <P>
+     *          2 if it is a move <P>
+     *          3 if it is a move after a successful attack
+     */
+    public int getMoveType() {
+        return moveType;
     }
 }

@@ -19,4 +19,8 @@ public class MoveRecord {
     public void remove(){
         record.removeFirst();
     }
+
+    public boolean isEmpty(){
+        return record.isEmpty();
+    }
 }

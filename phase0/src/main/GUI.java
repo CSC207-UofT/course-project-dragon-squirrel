@@ -1,3 +1,4 @@
+import Command.ChessMove;
 import Controller.BoardUpdater;
 import Controller.CommandSender;
 
@@ -13,6 +14,7 @@ public class GUI extends JFrame{
 	private JButton moveBtn;
 	private JLabel startPositionLabel1;
 	private JLabel startPositionLabel2;
+	private JButton startSuperGameBtn;
 	private JTable board;
 
 	private CommandSender cs;
@@ -36,12 +38,13 @@ public class GUI extends JFrame{
 	private void addActionListeners() {
 
 		startGameBtn.addActionListener(e -> {
-			cs = new CommandSender();
+			cs = new CommandSender(true);
+			bu = cs.getBoardUpdater();
+			bu.display();
+		});
 
-			// Do either
-//			cs.startNewClassicGame();
-			cs.startNewSuperGame();
-
+		startSuperGameBtn.addActionListener(e -> {
+			cs = new CommandSender(false);
 			bu = cs.getBoardUpdater();
 			bu.display();
 		});
@@ -51,12 +54,12 @@ public class GUI extends JFrame{
 			int startY = Integer.parseInt(startYtf.getText());
 			int targetX = Integer.parseInt(targetXtf.getText());
 			int targetY = Integer.parseInt(targetYtf.getText());
-			boolean moveSuccess = cs.makeMove(startX, startY, targetX, targetY);
-			if (moveSuccess) {
+			ChessMove chessMove = cs.creatNewChessMove(startX, startY, targetX, targetY);
+			if (chessMove != null) {
+				cs.pressMove(chessMove);
 				bu.display();
 			}
 		});
-
 	}
 
 	private void refreshBoard() {

@@ -35,6 +35,9 @@ public class SuperGameRule extends GameRule {
         return true;
     }
 
+    /**
+     * @return whether target coordinates harbors an opponent's piece
+     */
     public boolean isAttackAvailable(int oldX, int oldY, int newX, int newY) {
         SuperBoard superBoard = (SuperBoard) super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
@@ -45,30 +48,25 @@ public class SuperGameRule extends GameRule {
         return targetPiece!=null && !pieceToMove.hasSameColor(targetPiece);
     }
 
-    // Check whether attack is possible and valid
+    /**
+     * @return whether the attack is valid given super chess game rules
+     */
     public boolean isAttackValid(int oldX, int oldY, int newX, int newY) {
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        String targetPieceName = superBoard.getPiece(newX, newY);
         String land = superBoard.getLandType(oldX, oldY);
 
-        if (targetPieceName.equals("vacant")) {
+        if (land.equals("bridge") && !validFromBridgeAttack(oldX, oldY, newX, newY)){
             return false;
-        } else {
-            if (land.equals("bridge") && !validFromBridgeAttack(oldX, oldY, newX, newY)){
-                return false;
-            }
-
-            if (!land.equals("bridge") && !validFromElsewhereAttack(oldX, oldY, newX, newY)){
-                return false;
-            }
         }
-        return true;
+
+        return land.equals("bridge") || validFromElsewhereAttack(oldX, oldY, newX, newY);
     }
 
-    // If an attack/move is made from the bridge and the piece is...
-    // a pawn: it can move to all positions
-    // not a pawn: it can move to all positions except for the river
+    /**
+     * If an attack is made from the bridge and the piece is not a pawn, it can only attack pieces on land types
+     * besides the river. A pawn on the bridge can attack pieces on all land types.
+     * @return whether the attack made from a bridge is valid
+     */
     public boolean validFromBridgeAttack(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
@@ -78,11 +76,13 @@ public class SuperGameRule extends GameRule {
         return true;
     }
 
-    // Presupposes that a target piece exists.
-    // if an attack is made from a land type that is not the bridge, it needs to...
-    // Check: pieces besides the knight cannot attack over the bridge
-    // Check: pieces cannot attack pawns "submerged" in the river
-    // Check: pieces cannot attack an opponent piece resting in its safe zone but can move into the opponent's safe zone
+    /**
+     * If an attack is made from a land type that is not the bridge, it needs to...
+     * <P> Check: pieces besides the knight cannot attack over the bridge
+     * <P> Check: pieces besides the pawn cannot attack pawns "submerged" in the river
+     * <P> Check: pieces cannot attack an opponent piece resting in its safe zone
+     * @return whether the attack made from a land type besides the river is valid
+     */
     public boolean validFromElsewhereAttack(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
@@ -91,19 +91,19 @@ public class SuperGameRule extends GameRule {
         PieceInterface targetPiece = targetPieceName.equals("vacant") ? null : super.getPiecesDict().get(targetPieceName);
         String targetLand = superBoard.getLandType(newX, newY);
 
-        // Check: pieces besides the knight cannot move/attack over the bridge
-        if (!pieceName.contains("knight") && !isPathClearOfBridge(oldX, oldY, newX, newY)) {
+        // Check: pieces cannot attack over the bridge
+        if (!isPathClearOfBridge(oldX, oldY, newX, newY)) {
             System.out.println("invalid attack over bridge");
             return false;
         }
 
-        //Check: pieces cannot attack pawns "submerged" in the river or move into the river if it is not a pawn
+        // Check: pieces besides the pawn cannot attack pawns "submerged" in the river
         if (!pieceName.contains("pawn") && targetLand.equals("river")){
             System.out.println("invalid attack into river");
             return false;
         }
 
-        // Check: pieces cannot attack an opponent piece resting in its safe zone but can move into the opponent's safe zone
+        // Check: pieces cannot attack an opponent piece resting in its safe zone
         if (targetPiece != null && !pieceToMove.hasSameColor(targetPiece) &&
                 targetLand.contains(targetPiece.getColor().toString().toLowerCase())){
             System.out.println("invalid attack on piece in safe zone");
@@ -113,7 +113,10 @@ public class SuperGameRule extends GameRule {
         return true;
     }
 
-    // checks if path is clear of bridges because pieces not on bridges can't attack over bridges
+    /**
+     * Pieces cannot attack over bridges.
+     * @return whether path between (oldX, oldY) and (newX, newY) is clear of bridges
+     */
     public boolean isPathClearOfBridge(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
 
@@ -126,6 +129,10 @@ public class SuperGameRule extends GameRule {
         return true;
     }
 
+    /**
+     * Pieces besides the knight cannot cross over and into bridges.
+     * @return whether path between (oldX, oldY) and (newX, newY) is clear of river
+     */
     public boolean isPathClearOfRiver(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
 
