@@ -10,6 +10,13 @@ public class SuperBoardManager extends BoardManager{
         super(13, 10);
     }
 
+    public int getHp(int X, int Y){
+        Board superBoard = super.getBoard();
+        String pieceName = superBoard.getPiece(X, Y);
+        SuperPieceDecorator piece = (SuperPieceDecorator) getPieces().get(pieceName);
+        return piece.getHp();
+    }
+
     public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
         Board superBoard = super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
