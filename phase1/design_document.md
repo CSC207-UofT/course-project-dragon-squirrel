@@ -124,6 +124,7 @@ Due to some technical issues, this part is not yet implemented.
     - Brief Description of Packaging Strategy
     - Implementation of SuperChess
       - subclasses: SuperBoard, SuperBoardManager, SuperGameRule
+    - add undo and start new super game to GUI
     - *GUI with chessboard*
 - Future
     - ...
