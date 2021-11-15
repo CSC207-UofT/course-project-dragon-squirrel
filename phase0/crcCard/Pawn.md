@@ -1,7 +1,7 @@
 [
   {
     "name": "Pawn(entity)",
-    "superclasses": "Piece",
+    "superclasses": "piece",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [

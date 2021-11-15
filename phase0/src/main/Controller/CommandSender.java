@@ -86,7 +86,17 @@ public class CommandSender {
 	public void giveUp() {
 
 	}
-  
+
+	public void startNewClassicGame() {
+		bm = new BoardManager();
+		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		this.bu = new BoardUpdater(bm);
+	}
+
+	public void startNewSuperGame() {
+		bm = new SuperBoardManager();
+		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+	}
 	/**
 	 * @param classic true if the game played is a classic game
 	 */

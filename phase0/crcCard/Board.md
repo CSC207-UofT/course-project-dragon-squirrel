@@ -15,7 +15,7 @@
       ""
     ],
     "collaborators": [
-      "Piece; BoardManager.BoardManager"
+      "piece; BoardManager.BoardManager"
     ]
   }
 ]

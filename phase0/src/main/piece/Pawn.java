@@ -1,9 +1,17 @@
 package piece;
 
+import Board.Board;
+
+import java.awt.*;
+import java.util.List;
+
 public class Pawn extends Piece{
+
+    private boolean hasNotMovedDuringGame;
 
     public Pawn(String name, Color color){
         super(name, color);
+        hasNotMovedDuringGame = true;
     }
 
     @Override
@@ -28,5 +36,10 @@ public class Pawn extends Piece{
         }
 
         return solution;
+    }
+
+    @Override
+    public List<Point> GetValidMoves(Board b, int x, int y) {
+        return null;
     }
 }

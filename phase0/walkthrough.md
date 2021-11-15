@@ -7,7 +7,7 @@ The GUI pops up a window and allows player to move a piece, the Controller.Board
 
 Once the player decides to move a piece (click buttons in GUI), the Controller.CommandSender class is called, and it checks 
 whether the player's move is valid by calling methods in GameRule.GameRule class. GameRule.GameRule will further call Board.Board class and
-Piece class to check the route of the move, and whether it's allowed according to the type of pieces.
+piece class to check the route of the move, and whether it's allowed according to the type of pieces.
 
 If the move is invalid, Controller.CommandSender returns false to GUI class, and player can make another move.
 If the move is valid, Controller.CommandSender will send commands (call methods) to BoardManager.BoardManager class to actually move the piece 

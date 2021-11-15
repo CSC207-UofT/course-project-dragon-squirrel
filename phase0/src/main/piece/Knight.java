@@ -1,5 +1,10 @@
 package piece;
 
+import Board.Board;
+
+import java.awt.*;
+import java.util.List;
+
 public class Knight extends Piece{
 
     public Knight(String name, Color color){
@@ -11,5 +16,10 @@ public class Knight extends Piece{
         int X = Math.abs(oldCoorX - newCoorX);
         int Y = Math.abs(oldCoorY - newCoorY);
         return (X == 2 && Y == 1) || (X == 1 && Y == 2);
+    }
+
+    @Override
+    public List<Point> GetValidMoves(Board b, int x, int y) {
+        return null;
     }
 }
