@@ -4,10 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import piece.Color;
 import piece.Pawn;
-<<<<<<< HEAD
 import piece.PieceInterface;
-=======
->>>>>>> a5a31fb857b75446c790367325c4cfc536882f43
 import piece.Rook;
 
 import static org.junit.Assert.assertEquals;
@@ -16,15 +13,9 @@ import static org.junit.Assert.assertTrue;
 
 public class TestPieceDecorator {
 
-<<<<<<< HEAD
     PieceInterface p;
     PieceInterface r1;
     PieceInterface r2;
-=======
-    Pawn p;
-    Rook r1;
-    Rook r2;
->>>>>>> a5a31fb857b75446c790367325c4cfc536882f43
 
     @Before
     public void before(){
