@@ -15,7 +15,7 @@ A player wins when checkmate occurs: the opponent's king is under attack and no 
 to help the king escape. The game can also end if there is a stalemate, a player gives up, or a player pauses the game
 to return to it at a later time.
 
-### Piece Specific Behaviours
+### piece Specific Behaviours
 pawn: 1 square directly forward, optional 2 squares directly forward if not yet moved, promotion if reach other end.  
 rook: horizontal/vertical straight line  
 bishop: diagonal straight line  

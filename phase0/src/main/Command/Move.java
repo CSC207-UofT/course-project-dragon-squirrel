@@ -2,7 +2,6 @@ package Command;
 
 import BoardManager.*;
 
-
 public class Move implements Command{
     BoardManager BM;
     ChessMove CM;

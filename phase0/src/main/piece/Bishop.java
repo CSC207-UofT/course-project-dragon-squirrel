@@ -1,4 +1,10 @@
 package piece;
+
+import Board.Board;
+
+import java.awt.*;
+import java.util.List;
+
 public class Bishop extends Piece{
 
     public Bishop(String name, Color color){
@@ -8,5 +14,10 @@ public class Bishop extends Piece{
     @Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
+    }
+
+    @Override
+    public List<Point> GetValidMoves(Board b, int x, int y) {
+        return null;
     }
 }

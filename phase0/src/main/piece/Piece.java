@@ -1,8 +1,8 @@
+package piece;
+
 import java.util.List;
 import java.awt.*;
 import Board.Board;
-
-package piece;
 
 public abstract class Piece implements PieceInterface {
     protected String name;  // ex: "w_pawn_1"

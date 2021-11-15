@@ -7,7 +7,7 @@
     "responsibilities": [
       "\\\\ control the board",
       "Board.Board board",
-      "Map<String, Piece> piecesDict",
+      "Map<String, piece> piecesDict",
       "Player.Player p1",
       "Player.Player p2",
       "Player.Player activePlayer",

@@ -1,3 +1,5 @@
+package TestPlayer;
+
 import Player.Player;
 import org.junit.Before;
 

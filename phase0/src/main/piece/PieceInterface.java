@@ -1,9 +1,9 @@
+package piece;
+
 import java.awt.Point;
 import java.util.List;
 
 import Board.Board;
-
-package piece;
 
 public interface PieceInterface {
     String getName();

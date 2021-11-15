@@ -87,7 +87,7 @@ Enter move using (row, column) start and end coordinates.
 
 - Jin 
   - original CRC card
-  - Piece (King, Queen, Rook, etc.)
+  - piece (King, Queen, Rook, etc.)
 - Jennifer
   - Specification
   - Redid/restructure all.md CRC card and update Jin's separate CRC cards
@@ -101,6 +101,9 @@ Enter move using (row, column) start and end coordinates.
   - Progress report
 - Christopher 
   - unittests
+  - piece and board getters and setters
+  - piece interface
+  - superchess design/rules/layout
 - Dylan 
   - quality improvement
 
