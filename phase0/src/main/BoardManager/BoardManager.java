@@ -11,9 +11,6 @@ import java.util.Map;
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know
- * Perhaps we can separate controller and presenter to 2 classes
- *
- * Not sure how to design this part yet
  */
 public class BoardManager {
 
@@ -70,6 +67,9 @@ public class BoardManager {
         this.activePlayer = player;
     }
 
+    /**
+     * Puts pieceName (key) and the piece instance (value) into the pieces Map.
+     */
     public void setPieces(String pieceName, PieceInterface piece){
         pieces.put(pieceName, piece);
     }

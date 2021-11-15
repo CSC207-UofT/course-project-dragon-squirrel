@@ -10,6 +10,9 @@ public class SuperBoardManager extends BoardManager{
         super(13, 10);
     }
 
+    /**
+     * @return Hp of piece at board[X][Y]
+     */
     public int getHp(int X, int Y){
         Board superBoard = super.getBoard();
         String pieceName = superBoard.getPiece(X, Y);
@@ -17,6 +20,13 @@ public class SuperBoardManager extends BoardManager{
         return piece.getHp();
     }
 
+    /**
+     * If deduct is true, subtract the hp of the attacked piece at board[newX][newY] by the attack level of the piece at
+     * board [oldX][oldY]. If the hp of the attacked piece becomes less than 1, set its hp as 0. <p>
+     *
+     * If deduct is false, add the hp of the attacked piece by the attack level of the attacking piece. This is used in
+     * undo.
+     */
     public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
         Board superBoard = super.getBoard();
         String pieceName = superBoard.getPiece(oldX, oldY);
