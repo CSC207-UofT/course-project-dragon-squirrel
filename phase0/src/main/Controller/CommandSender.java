@@ -22,7 +22,11 @@ public class CommandSender {
 		return this.bu;
 	}
 
-	public ChessMove creatNewChessMove(int oldX, int oldY, int newX, int newY){
+	public BoardManager getBoardManager(){
+		return this.bm;
+	}
+
+	public ChessMove createNewChessMove(int oldX, int oldY, int newX, int newY){
 		int moveType = moveType(oldX, oldY, newX, newY);
 		if (moveType > 0){
 			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);

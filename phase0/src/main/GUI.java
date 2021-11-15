@@ -60,7 +60,7 @@ public class GUI extends JFrame{
 			int startY = Integer.parseInt(startYtf.getText());
 			int targetX = Integer.parseInt(targetXtf.getText());
 			int targetY = Integer.parseInt(targetYtf.getText());
-			ChessMove chessMove = cs.creatNewChessMove(startX, startY, targetX, targetY);
+			ChessMove chessMove = cs.createNewChessMove(startX, startY, targetX, targetY);
 			if (chessMove != null) {
 				cs.pressMove(chessMove);
 				bu.display();

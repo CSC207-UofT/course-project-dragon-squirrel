@@ -58,4 +58,9 @@ public class ChessMove {
     public int getMoveType() {
         return moveType;
     }
+
+    public BoardManager getBM(){
+        return this.BM;
+    }
+
 }
