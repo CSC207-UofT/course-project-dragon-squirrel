@@ -6,7 +6,8 @@ Highlight of the additional functionality: The updated rules and features of Sup
 Players are also able to undo. 
 
 ## Class Diagram
-*Class diagram picture to be updated
+- [Simple-structured diagram](Class_Diagram%20Mermaid.md)
+- [UML Diagram](class%20diagram.uml)
 
 ## Major Design Decisions + Explanation
 ### Valid move checks
@@ -133,7 +134,7 @@ Due to some technical issues, this part is not yet implemented.
     - *AI implementation*
 - Tingzhou
     - Class Diagram
-    - *GUI with chessboard*
+    - *GUI with chessboard: Graphical Visualization*
 - Christopher
     - Testing
     - *Testing*
