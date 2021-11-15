@@ -4,6 +4,11 @@ import Board.Board;
 import BoardManager.BoardManager;
 import org.junit.Before;
 import org.junit.Test;
+import piece.*;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,11 +23,10 @@ public class TestBoardManager {
         b = new Board(8, 8);
     }
 
-//    @Test(timeout = 50)
-//    public void TestgetBoard(){
-//        assertTrue(Arrays.equals(b.getBoard(), bm.getCurrentBoard()));
-//    }
-    // TODO: fix this ^
+    @Test(timeout = 50)
+    public void TestgetBoard(){
+        assertEquals(b.getBoard(), bm.getCurrentBoard());
+    }
 
     @Test(timeout = 50)
     public void TestgetCurrentBoard(){
@@ -32,7 +36,8 @@ public class TestBoardManager {
 //    @Test(timeout = 50)
 //    public void TestgetPieces(){
 //
-//        HashMap<String, PieceInterface> testMap = new HashMap<String, PieceInterface>();
+//        Map<String, PieceInterface> testMap;
+//        testMap = new HashMap<>();
 //
 //        testMap.put("w_rook_l", new Rook("w_rook_l", Color.WHITE));
 //        testMap.put("w_knight_l", new Knight("w_knight_l", Color.WHITE));
@@ -65,14 +70,8 @@ public class TestBoardManager {
 //        System.out.println(testMap);
 //        System.out.println(bm.getPieces());
 //        assertTrue(testMap.equals(bm.getPieces()));
-//
 //    }
-    // TODO: compare hashmaps where object addresses do not matter
-
-//    @Test(timeout = 50)
-//    public void TestgetActivePlayer(){
-//        assertEquals(bm.getP1(), bm.getActivePlayer());
-//    }
+    // TODO: how to check equality while ignoring object id's?
 
     @Test(timeout = 50)
     public void TestmovePiece(){

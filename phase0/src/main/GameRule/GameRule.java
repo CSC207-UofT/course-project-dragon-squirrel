@@ -9,6 +9,7 @@ import piece.PieceInterface;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * Verifies whether move is valid according to game rules.

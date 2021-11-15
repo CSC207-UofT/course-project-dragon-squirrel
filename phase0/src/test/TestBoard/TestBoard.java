@@ -72,7 +72,6 @@ public class TestBoard {
                 board[i][j] = "vacant";
             }
         }
-
         assertEquals(board, b.getBoard());
     }
 

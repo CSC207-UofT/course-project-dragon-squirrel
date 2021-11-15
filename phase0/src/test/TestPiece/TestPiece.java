@@ -6,7 +6,7 @@ import piece.Color;
 import piece.Pawn;
 import piece.Rook;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TestPiece {
     Pawn p1;
@@ -35,6 +35,13 @@ public class TestPiece {
     @Test(timeout = 50)
     public void TestgetStatus(){
         assertEquals(false, p1.getStatus());
+    }
+
+    @Test(timeout = 50)
+    public void TestsetStatus(){
+        assertFalse(p1.getStatus());
+        p1.setStatus(true);
+        assertTrue(p1.getStatus());
     }
 
     @Test(timeout = 50)
