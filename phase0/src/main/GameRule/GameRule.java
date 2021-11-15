@@ -9,11 +9,9 @@ import piece.PieceInterface;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 /**
- * This contains one set of game rules.
- * Since the game has two sets of rule, we can easily make subclass of it to describe the second rule
+ * Verifies whether move is valid according to game rules.
  */
 public class GameRule {
 
@@ -78,7 +76,7 @@ public class GameRule {
 	}
 
 	/**
-	 * Check: old and new coordinates are not same
+	 * Check: old and new coordinates are not same and that
 	 *        new coordinate is within the board
 	 */
 	public boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
@@ -140,14 +138,6 @@ public class GameRule {
 
 	public boolean isCoordinateVacant(int X, int Y) {
 		return false;
-	}
-
-	/**
-	 * The only pieces interaction scenario I can think of is that one attacks another
-	 * Let's design some game rules together! (maybe after this phase)
-	 */
-	public void piecesInteraction(PieceInterface attacker, PieceInterface defender) {
-		// Maybe use board.DeductPieceHp()
 	}
 
 	/**

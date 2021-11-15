@@ -113,6 +113,15 @@ Additionally, observer pattern helps deliver the information while bypassing the
 Due to some technical issues, this part is not yet implemented.
 
 ## Progress Report
+
+### Open Questions
+
+In which class should getAvailableMoves() be put in? It is ideal to put it in the piece classes themselves to avoid 
+class GameRule having to ask instanceOf for each piece. But generating available moves requires the piece coordinates
+which is held by the Board. It is not ideal to have methods in an entity depend on a use case. Would it be alright if
+a method getPossibleMoves() in piece classes returned ALL possible moves (even those without clear paths, etc.) then
+have a method getAvailableMoves() in Board sort through these coordinates and return only the possible ones?
+
 ### Contribution 
 *plans to work on next in italics*
 
