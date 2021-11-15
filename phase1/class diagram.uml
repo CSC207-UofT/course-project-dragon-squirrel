@@ -3,916 +3,966 @@
   <ID>JAVA</ID>
   <OriginalElement>/Users/gutingzhou/Desktop/Year 2/CSC207/course-project-dragon-squirrel/phase0/src/main</OriginalElement>
   <nodes>
-    <node x="1750.6458333333333" y="1258.0">BoardManager.BoardManager</node>
-    <node x="2479.653501157404" y="1730.0">BoardManager.SuperBoardManager</node>
-    <node x="1974.9035011574042" y="956.5">Player.Player</node>
-    <node x="2896.903501157404" y="240.5">Player.SuperPlayer</node>
-    <node x="3553.903501157404" y="978.5">piece.Queen</node>
-    <node x="3833.903501157404" y="978.5">piece.Knight</node>
-    <node x="880.9035011574042" y="532.0">Command.ChessMove</node>
-    <node x="4292.653501157403" y="1402.5">Player.Human</node>
-    <node x="2987.903501157404" y="978.5">piece.Bishop</node>
-    <node x="1615.6458333333333" y="901.0">BoardManager.GameStatus</node>
-    <node x="906.4275173611104" y="240.5">piece.PieceInterface</node>
-    <node x="0.0" y="1686.0">GameRule.SuperGameRule</node>
-    <node x="1078.4444926697531" y="933.5">Board.SuperBoard</node>
-    <node x="1382.573350694444" y="207.0">Board.Board</node>
-    <node x="2101.895833333333" y="1358.0">piece.SuperPieceDecorator</node>
-    <node x="1531.1951678240707" y="2565.0">GUI</node>
-    <node x="2740.403501157404" y="576.0">piece.Piece</node>
-    <node x="4113.903501157403" y="967.0">piece.Rook</node>
-    <node x="1253.6535011574042" y="2191.0">Controller.CommandSender</node>
-    <node x="858.8958333333335" y="1752.5">Command.Command</node>
-    <node x="2664.903501157404" y="1950.0">Controller.BoardUpdater</node>
-    <node x="4128.139660493824" y="1402.5">Player.AI</node>
-    <node x="2136.903501157404" y="922.5">piece.PieceDecorator</node>
-    <node x="2448.903501157404" y="967.0">piece.King</node>
-    <node x="265.5625" y="1258.0">GameRule.GameRule</node>
-    <node x="3267.903501157404" y="967.0">piece.Pawn</node>
-    <node x="791.7291666666665" y="1950.0">Command.Move</node>
-    <node x="2432.506992669753" y="0.0">piece.Color</node>
-    <node x="1318.4444926697531" y="945.0">Command.MoveRecord</node>
+    <node x="2253.824954710145" y="1310.0">BoardManager.BoardManager</node>
+    <node x="2137.406204710144" y="1781.0">BoardManager.SuperBoardManager</node>
+    <node x="2152.083333333333" y="938.5">Player.Player</node>
+    <node x="1489.2168478260855" y="960.5">piece.Queen</node>
+    <node x="4223.3334692028975" y="240.5">Player.SuperPlayer</node>
+    <node x="633.2168478260855" y="960.5">piece.Knight</node>
+    <node x="3144.946014492752" y="532.0">Command.ChessMove</node>
+    <node x="1068.9062047101438" y="1454.5">Player.Human</node>
+    <node x="2487.324954710145" y="883.0">BoardManager.GameStatus</node>
+    <node x="353.21684782608554" y="960.5">piece.Bishop</node>
+    <node x="3408.8230978260863" y="240.5">piece.PieceInterface</node>
+    <node x="3199.1147644927532" y="1748.0">GameRule.SuperGameRule</node>
+    <node x="2654.8855978260863" y="207.0">Board.Board</node>
+    <node x="2734.324954710145" y="915.5">Board.SuperBoard</node>
+    <node x="380.12513586956356" y="1410.0">piece.SuperPieceDecorator</node>
+    <node x="2975.6543478260855" y="2657.0">GUI</node>
+    <node x="10.5" y="575.5">piece.Piece</node>
+    <node x="1209.2168478260855" y="960.5">piece.Rook</node>
+    <node x="3760.770833333333" y="2273.0">Controller.CommandSender</node>
+    <node x="3016.9897644927532" y="1814.5">Command.Command</node>
+    <node x="1926.1562047101438" y="2032.0">Controller.BoardUpdater</node>
+    <node x="1291.4062047101438" y="1454.5">Player.AI</node>
+    <node x="41.21684782608554" y="904.5">piece.PieceDecorator</node>
+    <node x="929.2168478260855" y="960.5">piece.King</node>
+    <node x="3688.1147644927532" y="1310.0">GameRule.GameRule</node>
+    <node x="1770.2168478260855" y="960.5">piece.Pawn</node>
+    <node x="2849.770833333333" y="2032.0">Command.Move</node>
+    <node x="890.8439311594198" y="0.0">piece.Color</node>
+    <node x="3189.7397644927532" y="915.5">Command.MoveRecord</node>
   </nodes>
   <notes />
   <edges>
     <edge source="Command.ChessMove" target="BoardManager.BoardManager" relationship="DEPENDENCY">
-      <point x="0.0" y="127.5" />
-      <point x="1038.9035011574042" y="849.0" />
-      <point x="991.2368344907375" y="849.0" />
-      <point x="991.2368344907375" y="869.0" />
-      <point x="1605.1458333333333" y="869.0" />
-      <point x="1605.1458333333333" y="1166.0" />
-      <point x="1892.6458333333333" y="1166.0" />
+      <point x="0.0" y="138.5" />
+      <point x="3314.446014492752" y="841.0" />
+      <point x="3265.9375" y="841.0" />
+      <point x="3265.9375" y="851.0" />
+      <point x="2723.824954710145" y="851.0" />
+      <point x="2723.824954710145" y="1148.0" />
+      <point x="2395.824954710145" y="1148.0" />
       <point x="0.0" y="-172.0" />
     </edge>
-    <edge source="GameRule.SuperGameRule" target="Board.Board" relationship="DEPENDENCY">
-      <point x="-95.75" y="-105.0" />
-      <point x="95.75" y="1664.0" />
-      <point x="145.5525173611104" y="1664.0" />
-      <point x="145.5525173611104" y="480.0" />
-      <point x="681.3194926697533" y="480.0" />
-      <point x="681.3194926697533" y="460.0" />
-      <point x="1414.198350694444" y="460.0" />
-      <point x="-94.875" y="105.5" />
-    </edge>
     <edge source="piece.Knight" target="piece.Color" relationship="DEPENDENCY">
-      <point x="65.00000000000045" y="-39.0" />
-      <point x="4028.9035011574047" y="859.0" />
-      <point x="3986.149643132714" y="859.0" />
-      <point x="3986.149643132714" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="-65.0" y="-39.0" />
+      <point x="698.2168478260855" y="841.0" />
+      <point x="618.2168478260855" y="841.0" />
+      <point x="618.2168478260855" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
+    </edge>
+    <edge source="GameRule.SuperGameRule" target="Board.Board" relationship="DEPENDENCY">
+      <point x="-117.0" y="-105.0" />
+      <point x="3316.1147644927532" y="1726.0" />
+      <point x="3445.9375" y="1726.0" />
+      <point x="3445.9375" y="1686.0" />
+      <point x="3499.3647644927532" y="1686.0" />
+      <point x="3499.3647644927532" y="490.0" />
+      <point x="2975.5105978260863" y="490.0" />
+      <point x="2975.5105978260863" y="450.0" />
+      <point x="2813.0105978260863" y="450.0" />
+      <point x="31.625" y="105.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Color" relationship="DEPENDENCY">
       <point x="0.0" y="-172.0" />
-      <point x="1892.6458333333333" y="1166.0" />
-      <point x="1964.4035011574042" y="1166.0" />
-      <point x="1964.4035011574042" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="2395.824954710145" y="1148.0" />
+      <point x="2303.583333333333" y="1148.0" />
+      <point x="2303.583333333333" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="Controller.CommandSender" target="Controller.BoardUpdater" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="2711.0701678240707" y="2139.0" />
-      <point x="-92.33333333333348" y="83.5" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="2156.9895380434773" y="2221.0" />
+      <point x="92.33333333333348" y="83.5" />
     </edge>
     <edge source="Command.Move" target="Command.Command" relationship="REALIZATION">
       <point x="0.0" y="-83.5" />
-      <point x="924.2291666666665" y="1928.0" />
-      <point x="928.3958333333335" y="1928.0" />
+      <point x="2982.270833333333" y="2000.0" />
+      <point x="3086.4897644927532" y="2000.0" />
       <point x="0.0" y="38.5" />
     </edge>
     <edge source="GameRule.GameRule" target="Command.MoveRecord" relationship="TO_ONE">
-      <point x="107.75" y="-172.0" />
-      <point x="588.8125" y="1236.0" />
-      <point x="491.5625" y="1236.0" />
-      <point x="491.5625" y="1226.0" />
-      <point x="1440.9444926697531" y="1226.0" />
-      <point x="0.0" y="72.5" />
+      <point x="-107.75" y="-172.0" />
+      <point x="3795.8647644927532" y="1288.0" />
+      <point x="4030.406204710144" y="1288.0" />
+      <point x="4030.406204710144" y="1238.0" />
+      <point x="3317.408288043478" y="1238.0" />
+      <point x="3317.408288043478" y="1228.0" />
+      <point x="3312.2397644927532" y="1228.0" />
+      <point x="0.0" y="84.0" />
     </edge>
     <edge source="GameRule.GameRule" target="piece.Color" relationship="DEPENDENCY">
-      <point x="-107.75" y="-172.0" />
-      <point x="373.3125" y="1236.0" />
-      <point x="470.5625" y="1236.0" />
-      <point x="470.5625" y="1196.0" />
-      <point x="390.5525173611104" y="1196.0" />
-      <point x="390.5525173611104" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="107.75" y="-172.0" />
+      <point x="4011.3647644927532" y="1278.0" />
+      <point x="4041.406204710144" y="1278.0" />
+      <point x="4041.406204710144" y="1258.0" />
+      <point x="4212.8334692028975" y="1258.0" />
+      <point x="4212.8334692028975" y="176.0" />
+      <point x="1713.552264492753" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
-    <edge source="BoardManager.BoardManager" target="BoardManager.GameStatus" relationship="TO_ONE">
-      <point x="-94.66666666666674" y="-172.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1507.6944926697531" y="1226.0" />
-      <point x="1672.1458333333333" y="1226.0" />
-      <point x="-56.5" y="116.5" />
-    </edge>
     <edge source="BoardManager.BoardManager" target="piece.Queen" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1206.0" />
-      <point x="3683.903501157404" y="1206.0" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1218.0" />
+      <point x="1619.2168478260855" y="1218.0" />
       <point x="0.0" y="39.0" />
     </edge>
-    <edge source="piece.Knight" target="piece.Piece" relationship="GENERALIZATION">
-      <point x="-64.99999999999955" y="-39.0" />
-      <point x="3898.9035011574047" y="869.0" />
-      <point x="3333.631992669753" y="869.0" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
+    <edge source="BoardManager.BoardManager" target="BoardManager.GameStatus" relationship="TO_ONE">
+      <point x="94.66666666666697" y="-172.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2866.770833333333" y="1138.0" />
+      <point x="2656.824954710145" y="1138.0" />
+      <point x="56.5" y="116.5" />
     </edge>
-    <edge source="Command.Move" target="Command.ChessMove" relationship="DEPENDENCY">
-      <point x="-88.33333333333326" y="-83.5" />
-      <point x="835.8958333333333" y="1928.0" />
-      <point x="838.1458333333335" y="1928.0" />
-      <point x="838.1458333333335" y="1918.0" />
-      <point x="827.8958333333335" y="1918.0" />
-      <point x="827.8958333333335" y="869.0" />
-      <point x="991.2368344907375" y="869.0" />
-      <point x="991.2368344907375" y="849.0" />
-      <point x="1038.9035011574042" y="849.0" />
-      <point x="0.0" y="127.5" />
+    <edge source="piece.Knight" target="piece.Piece" relationship="GENERALIZATION">
+      <point x="65.0" y="-39.0" />
+      <point x="828.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
     </edge>
     <edge source="piece.Piece" target="piece.Color" relationship="TO_ONE">
-      <point x="0.0" y="-83.5" />
-      <point x="2886.403501157404" y="186.0" />
-      <point x="2391.92365933642" y="186.0" />
-      <point x="2391.92365933642" y="166.0" />
-      <point x="2478.506992669753" y="166.0" />
+      <point x="-97.33333333333348" y="-95.0" />
+      <point x="59.166666666666515" y="500.0" />
+      <point x="179.03328804347802" y="500.0" />
+      <point x="179.03328804347802" y="186.0" />
+      <point x="205.17726449275324" y="186.0" />
+      <point x="205.17726449275324" y="166.0" />
+      <point x="936.8439311594198" y="166.0" />
       <point x="-46.0" y="72.5" />
     </edge>
+    <edge source="Command.Move" target="Command.ChessMove" relationship="DEPENDENCY">
+      <point x="-88.33333333333303" y="-83.5" />
+      <point x="2893.9375" y="2010.0" />
+      <point x="2901.1875" y="2010.0" />
+      <point x="2901.1875" y="1980.0" />
+      <point x="3006.4897644927532" y="1980.0" />
+      <point x="3006.4897644927532" y="851.0" />
+      <point x="3265.9375" y="851.0" />
+      <point x="3265.9375" y="841.0" />
+      <point x="3314.446014492752" y="841.0" />
+      <point x="0.0" y="138.5" />
+    </edge>
     <edge source="Command.ChessMove" target="Board.Board" relationship="DEPENDENCY">
-      <point x="0.0" y="-127.5" />
-      <point x="1038.9035011574042" y="480.0" />
-      <point x="681.3194926697533" y="480.0" />
-      <point x="681.3194926697533" y="460.0" />
-      <point x="1414.198350694444" y="460.0" />
-      <point x="-94.875" y="105.5" />
+      <point x="0.0" y="-138.5" />
+      <point x="3314.446014492752" y="490.0" />
+      <point x="2975.5105978260863" y="490.0" />
+      <point x="2975.5105978260863" y="450.0" />
+      <point x="2813.0105978260863" y="450.0" />
+      <point x="31.625" y="105.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.King" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1166.0" />
-      <point x="2578.903501157404" y="1166.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1178.0" />
+      <point x="1059.2168478260855" y="1178.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="Controller.CommandSender" target="BoardManager.BoardManager" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="1762.6535011574042" y="2139.0" />
-      <point x="1762.6535011574042" y="1634.0" />
-      <point x="1786.1458333333333" y="1634.0" />
-      <point x="-106.5" y="172.0" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="2480.906204710144" y="2221.0" />
+      <point x="2480.906204710144" y="1686.0" />
+      <point x="2431.324954710145" y="1686.0" />
+      <point x="35.5" y="172.0" />
     </edge>
     <edge source="piece.PieceInterface" target="piece.Color" relationship="DEPENDENCY">
       <point x="0.0" y="-72.0" />
-      <point x="1052.4275173611104" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="3554.8230978260863" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Player.Player" relationship="TO_ONE">
-      <point x="-94.66666666666674" y="-172.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1507.6944926697531" y="1226.0" />
-      <point x="1998.4035011574042" y="1226.0" />
-      <point x="-47.0" y="61.0" />
+      <point x="94.66666666666697" y="-172.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2866.770833333333" y="1138.0" />
+      <point x="2269.583333333333" y="1138.0" />
+      <point x="47.0" y="61.0" />
     </edge>
     <edge source="Command.Move" target="BoardManager.BoardManager" relationship="TO_ONE">
-      <point x="88.33333333333337" y="-83.5" />
-      <point x="1012.5624999999999" y="1928.0" />
-      <point x="1015.1944926697532" y="1928.0" />
-      <point x="1015.1944926697532" y="1644.0" />
-      <point x="1894.3958333333333" y="1644.0" />
-      <point x="1894.3958333333333" y="1634.0" />
-      <point x="1928.1458333333333" y="1634.0" />
-      <point x="35.5" y="172.0" />
+      <point x="88.33333333333348" y="-83.5" />
+      <point x="3070.6041666666665" y="2010.0" />
+      <point x="3171.7397644927532" y="2010.0" />
+      <point x="3171.7397644927532" y="2000.0" />
+      <point x="3166.4897644927532" y="2000.0" />
+      <point x="3166.4897644927532" y="1686.0" />
+      <point x="2502.324954710145" y="1686.0" />
+      <point x="106.5" y="172.0" />
     </edge>
     <edge source="piece.PieceDecorator" target="piece.Piece" relationship="TO_ONE">
-      <point x="97.33333333333348" y="-95.0" />
-      <point x="2380.2368344907377" y="839.0" />
-      <point x="2886.403501157404" y="839.0" />
-      <point x="0.0" y="83.5" />
+      <point x="-97.33333333333348" y="-95.0" />
+      <point x="89.88351449275206" y="841.0" />
+      <point x="59.166666666666515" y="841.0" />
+      <point x="-97.33333333333348" y="95.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Command.MoveRecord" relationship="TO_ONE">
-      <point x="-94.66666666666674" y="-172.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1507.6944926697531" y="1216.0" />
-      <point x="1440.9444926697531" y="1216.0" />
-      <point x="0.0" y="72.5" />
+      <point x="94.66666666666697" y="-172.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2866.770833333333" y="1258.0" />
+      <point x="3317.408288043478" y="1258.0" />
+      <point x="3317.408288043478" y="1228.0" />
+      <point x="3312.2397644927532" y="1228.0" />
+      <point x="0.0" y="84.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.Queen" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="3683.903501157404" y="1624.0" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="1593.9062047101438" y="1716.0" />
+      <point x="1593.9062047101438" y="1208.0" />
+      <point x="1619.2168478260855" y="1208.0" />
       <point x="0.0" y="39.0" />
     </edge>
     <edge source="GUI" target="Controller.BoardUpdater" relationship="TO_ONE">
-      <point x="0.0" y="-204.5" />
-      <point x="1641.6951678240707" y="2534.0" />
-      <point x="2844.0701678240707" y="2534.0" />
-      <point x="2844.0701678240707" y="2149.0" />
-      <point x="2803.403501157404" y="2149.0" />
-      <point x="0.0" y="83.5" />
+      <point x="-112.5" y="0.0" />
+      <point x="2049.656204710144" y="2883.5" />
+      <point x="-15.0" y="83.5" />
     </edge>
     <edge source="Player.Player" target="piece.Color" relationship="DEPENDENCY">
       <point x="35.25" y="-61.0" />
-      <point x="2080.653501157404" y="819.0" />
-      <point x="2050.903501157404" y="819.0" />
-      <point x="2050.903501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="2257.833333333333" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="GUI" target="Controller.CommandSender" relationship="CREATE">
-      <point x="-73.66666666666674" y="-204.5" />
-      <point x="1568.0285011574042" y="2544.0" />
-      <point x="1341.4035011574042" y="2544.0" />
-      <point x="-87.75" y="161.0" />
+      <point x="0.0" y="-226.5" />
+      <point x="3088.1543478260855" y="2434.0" />
+      <point x="-175.5" y="0.0" />
     </edge>
     <edge source="Player.SuperPlayer" target="piece.Color" relationship="DEPENDENCY">
       <point x="0.0" y="-72.0" />
-      <point x="2989.403501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="4315.8334692028975" y="176.0" />
+      <point x="1713.552264492753" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Player.Player" relationship="DEPENDENCY">
       <point x="0.0" y="-172.0" />
-      <point x="1892.6458333333333" y="1166.0" />
-      <point x="2045.4035011574042" y="1166.0" />
+      <point x="2395.824954710145" y="1148.0" />
+      <point x="2222.583333333333" y="1148.0" />
       <point x="0.0" y="61.0" />
     </edge>
     <edge source="GameRule.GameRule" target="Command.MoveRecord" relationship="DEPENDENCY">
-      <point x="-107.75" y="-172.0" />
-      <point x="373.3125" y="1236.0" />
-      <point x="470.5625" y="1236.0" />
-      <point x="470.5625" y="1206.0" />
-      <point x="848.3958333333335" y="1206.0" />
-      <point x="848.3958333333335" y="1166.0" />
-      <point x="1359.2778260030864" y="1166.0" />
-      <point x="-81.66666666666674" y="72.5" />
+      <point x="107.75" y="-172.0" />
+      <point x="4011.3647644927532" y="1278.0" />
+      <point x="4041.406204710144" y="1278.0" />
+      <point x="4041.406204710144" y="1228.0" />
+      <point x="3432.6147644927532" y="1228.0" />
+      <point x="3432.6147644927532" y="1218.0" />
+      <point x="3393.9064311594198" y="1218.0" />
+      <point x="81.66666666666697" y="84.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Command.MoveRecord" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1176.0" />
-      <point x="1522.6111593364199" y="1176.0" />
-      <point x="81.66666666666674" y="72.5" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1248.0" />
+      <point x="3230.5730978260863" y="1248.0" />
+      <point x="-81.66666666666697" y="84.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Board.SuperBoard" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1176.0" />
-      <point x="1243.4444926697531" y="1176.0" />
-      <point x="55.0" y="84.0" />
-    </edge>
-    <edge source="Command.MoveRecord" target="Command.ChessMove" relationship="TO_MANY">
-      <point x="61.25" y="-72.5" />
-      <point x="1502.1944926697531" y="879.0" />
-      <point x="1391.260850694444" y="879.0" />
-      <point x="1391.260850694444" y="849.0" />
-      <point x="1144.2368344907375" y="849.0" />
-      <point x="105.33333333333326" y="127.5" />
-    </edge>
-    <edge source="GameRule.SuperGameRule" target="Board.SuperBoard" relationship="DEPENDENCY">
-      <point x="-95.75" y="-105.0" />
-      <point x="95.75" y="1664.0" />
-      <point x="145.5525173611104" y="1664.0" />
-      <point x="145.5525173611104" y="1216.0" />
-      <point x="1133.4444926697531" y="1216.0" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1248.0" />
+      <point x="2789.324954710145" y="1248.0" />
       <point x="-55.0" y="84.0" />
     </edge>
+    <edge source="Command.MoveRecord" target="Command.ChessMove" relationship="TO_MANY">
+      <point x="-61.25" y="-84.0" />
+      <point x="3250.9897644927532" y="861.0" />
+      <point x="3222.281204710144" y="861.0" />
+      <point x="3222.281204710144" y="841.0" />
+      <point x="3201.446014492752" y="841.0" />
+      <point x="-113.0" y="138.5" />
+    </edge>
+    <edge source="GameRule.SuperGameRule" target="Board.SuperBoard" relationship="DEPENDENCY">
+      <point x="-117.0" y="-105.0" />
+      <point x="3316.1147644927532" y="1726.0" />
+      <point x="3445.9375" y="1726.0" />
+      <point x="3445.9375" y="1686.0" />
+      <point x="3307.408288043478" y="1686.0" />
+      <point x="3307.408288043478" y="1238.0" />
+      <point x="2899.324954710145" y="1238.0" />
+      <point x="55.0" y="84.0" />
+    </edge>
     <edge source="GameRule.SuperGameRule" target="piece.PieceInterface" relationship="DEPENDENCY">
-      <point x="-95.75" y="-105.0" />
-      <point x="95.75" y="1664.0" />
-      <point x="145.5525173611104" y="1664.0" />
-      <point x="145.5525173611104" y="490.0" />
-      <point x="514.6944926697533" y="490.0" />
-      <point x="514.6944926697533" y="470.0" />
-      <point x="955.0941840277769" y="470.0" />
-      <point x="-97.33333333333337" y="72.0" />
+      <point x="-117.0" y="-105.0" />
+      <point x="3316.1147644927532" y="1726.0" />
+      <point x="3445.9375" y="1726.0" />
+      <point x="3445.9375" y="1686.0" />
+      <point x="3499.3647644927532" y="1686.0" />
+      <point x="3499.3647644927532" y="1248.0" />
+      <point x="3852.031204710144" y="1248.0" />
+      <point x="3852.031204710144" y="480.0" />
+      <point x="3924.6147644927532" y="480.0" />
+      <point x="3924.6147644927532" y="470.0" />
+      <point x="3652.1564311594198" y="470.0" />
+      <point x="97.33333333333303" y="72.0" />
     </edge>
     <edge source="Command.Move" target="Command.ChessMove" relationship="TO_ONE">
-      <point x="88.33333333333337" y="-83.5" />
-      <point x="1012.5624999999999" y="1928.0" />
-      <point x="1015.1944926697532" y="1928.0" />
-      <point x="1015.1944926697532" y="879.0" />
-      <point x="1391.260850694444" y="879.0" />
-      <point x="1391.260850694444" y="849.0" />
-      <point x="1144.2368344907375" y="849.0" />
-      <point x="105.33333333333326" y="127.5" />
+      <point x="88.33333333333348" y="-83.5" />
+      <point x="3070.6041666666665" y="2010.0" />
+      <point x="3171.7397644927532" y="2010.0" />
+      <point x="3171.7397644927532" y="2000.0" />
+      <point x="3176.9897644927532" y="2000.0" />
+      <point x="3176.9897644927532" y="861.0" />
+      <point x="3222.281204710144" y="861.0" />
+      <point x="3222.281204710144" y="841.0" />
+      <point x="3201.446014492752" y="841.0" />
+      <point x="-113.0" y="138.5" />
     </edge>
     <edge source="Command.Move" target="Command.MoveRecord" relationship="DEPENDENCY">
-      <point x="-88.33333333333326" y="-83.5" />
-      <point x="835.8958333333333" y="1928.0" />
-      <point x="838.1458333333335" y="1928.0" />
-      <point x="838.1458333333335" y="1918.0" />
-      <point x="848.3958333333335" y="1918.0" />
-      <point x="848.3958333333335" y="1166.0" />
-      <point x="1359.2778260030864" y="1166.0" />
-      <point x="-81.66666666666674" y="72.5" />
+      <point x="-88.33333333333303" y="-83.5" />
+      <point x="2893.9375" y="2010.0" />
+      <point x="2901.1875" y="2010.0" />
+      <point x="2901.1875" y="1980.0" />
+      <point x="3006.4897644927532" y="1980.0" />
+      <point x="3006.4897644927532" y="1268.0" />
+      <point x="3432.6147644927532" y="1268.0" />
+      <point x="3432.6147644927532" y="1218.0" />
+      <point x="3393.9064311594198" y="1218.0" />
+      <point x="81.66666666666697" y="84.0" />
     </edge>
     <edge source="piece.Piece" target="piece.Color" relationship="DEPENDENCY">
-      <point x="97.33333333333348" y="-83.5" />
-      <point x="2983.7368344907377" y="470.0" />
-      <point x="3092.403501157404" y="470.0" />
-      <point x="3092.403501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="0.0" y="-95.0" />
+      <point x="156.5" y="510.0" />
+      <point x="190.03328804347802" y="510.0" />
+      <point x="190.03328804347802" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="Controller.CommandSender" target="Controller.BoardUpdater" relationship="TO_ONE">
-      <point x="87.75" y="-161.0" />
-      <point x="1516.9035011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="2159.0" />
-      <point x="2844.0701678240707" y="2159.0" />
-      <point x="2844.0701678240707" y="2149.0" />
-      <point x="2803.403501157404" y="2149.0" />
+      <point x="0.0" y="-161.0" />
+      <point x="3936.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2231.0" />
+      <point x="2064.656204710144" y="2231.0" />
       <point x="0.0" y="83.5" />
     </edge>
     <edge source="piece.Bishop" target="piece.Piece" relationship="GENERALIZATION">
       <point x="65.0" y="-39.0" />
-      <point x="3182.903501157404" y="869.0" />
-      <point x="3333.631992669753" y="869.0" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
+      <point x="548.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
+    </edge>
+    <edge source="Command.Move" target="BoardManager.SuperBoardManager" relationship="DEPENDENCY">
+      <point x="-88.33333333333303" y="-83.5" />
+      <point x="2893.9375" y="2010.0" />
+      <point x="2901.1875" y="2010.0" />
+      <point x="2901.1875" y="1990.0" />
+      <point x="2308.906204710144" y="1990.0" />
+      <point x="2308.906204710144" y="1980.0" />
+      <point x="2387.156204710144" y="1980.0" />
+      <point x="83.25" y="72.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.Rook" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="4282.153501157403" y="1624.0" />
-      <point x="4282.153501157403" y="1216.0" />
-      <point x="4243.903501157403" y="1216.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="1280.9062047101438" y="1716.0" />
+      <point x="1280.9062047101438" y="1278.0" />
+      <point x="1339.2168478260855" y="1278.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="piece.Pawn" target="piece.Piece" relationship="GENERALIZATION">
-      <point x="-66.5" y="-50.5" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
+      <point x="-65.0" y="-39.0" />
+      <point x="1835.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.PieceInterface" relationship="DEPENDENCY">
       <point x="0.0" y="-172.0" />
-      <point x="1892.6458333333333" y="1166.0" />
-      <point x="1852.1458333333333" y="1166.0" />
-      <point x="1852.1458333333333" y="490.0" />
-      <point x="514.6944926697533" y="490.0" />
-      <point x="514.6944926697533" y="470.0" />
-      <point x="955.0941840277769" y="470.0" />
-      <point x="-97.33333333333337" y="72.0" />
+      <point x="2395.824954710145" y="1148.0" />
+      <point x="2476.824954710145" y="1148.0" />
+      <point x="2476.824954710145" y="480.0" />
+      <point x="3924.6147644927532" y="480.0" />
+      <point x="3924.6147644927532" y="470.0" />
+      <point x="3652.1564311594198" y="470.0" />
+      <point x="97.33333333333303" y="72.0" />
     </edge>
     <edge source="piece.Rook" target="piece.Color" relationship="DEPENDENCY">
-      <point x="65.0" y="-50.5" />
-      <point x="4308.903501157403" y="879.0" />
-      <point x="4248.903501157403" y="879.0" />
-      <point x="4248.903501157403" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="65.0" y="-39.0" />
+      <point x="1404.2168478260855" y="841.0" />
+      <point x="1395.8022644927532" y="841.0" />
+      <point x="1395.8022644927532" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Bishop" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1186.0" />
-      <point x="3117.903501157404" y="1186.0" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1198.0" />
+      <point x="483.21684782608554" y="1198.0" />
       <point x="0.0" y="39.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Pawn" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1196.0" />
-      <point x="3400.903501157404" y="1196.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1228.0" />
+      <point x="1900.2168478260855" y="1228.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="GUI" target="Command.ChessMove" relationship="DEPENDENCY">
+      <point x="112.5" y="0.0" />
+      <point x="4230.8334692028975" y="2883.5" />
+      <point x="4230.8334692028975" y="670.5" />
+      <point x="169.5" y="0.0" />
     </edge>
     <edge source="GUI" target="Controller.BoardUpdater" relationship="DEPENDENCY">
-      <point x="73.66666666666674" y="-204.5" />
-      <point x="1715.3618344907377" y="2544.0" />
-      <point x="2855.0701678240707" y="2544.0" />
-      <point x="2855.0701678240707" y="2169.0" />
-      <point x="2895.7368344907377" y="2169.0" />
-      <point x="92.33333333333348" y="83.5" />
+      <point x="-112.5" y="15.0" />
+      <point x="2034.6562047101438" y="2898.5" />
+      <point x="-30.0" y="83.5" />
     </edge>
     <edge source="Board.SuperBoard" target="Board.Board" relationship="GENERALIZATION">
       <point x="0.0" y="-84.0" />
-      <point x="1188.4444926697531" y="859.0" />
-      <point x="1229.135850694444" y="859.0" />
-      <point x="1229.135850694444" y="470.0" />
-      <point x="1540.698350694444" y="470.0" />
-      <point x="31.625" y="105.5" />
+      <point x="2844.324954710145" y="470.0" />
+      <point x="2749.7605978260863" y="470.0" />
+      <point x="-31.625" y="105.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Piece" relationship="DEPENDENCY">
       <point x="0.0" y="-172.0" />
-      <point x="1892.6458333333333" y="1166.0" />
-      <point x="1964.4035011574042" y="1166.0" />
-      <point x="1964.4035011574042" y="829.0" />
-      <point x="2719.403501157404" y="829.0" />
-      <point x="2719.403501157404" y="809.0" />
-      <point x="2789.0701678240707" y="809.0" />
-      <point x="-97.33333333333348" y="83.5" />
+      <point x="2395.824954710145" y="1148.0" />
+      <point x="2141.583333333333" y="1148.0" />
+      <point x="2141.583333333333" y="851.0" />
+      <point x="156.5" y="851.0" />
+      <point x="0.0" y="95.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.Knight" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="3963.903501157404" y="1624.0" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="369.62513586956356" y="1716.0" />
+      <point x="369.62513586956356" y="1288.0" />
+      <point x="763.2168478260855" y="1288.0" />
       <point x="0.0" y="39.0" />
     </edge>
     <edge source="piece.PieceDecorator" target="piece.PieceInterface" relationship="REALIZATION">
-      <point x="-97.33333333333348" y="-95.0" />
-      <point x="2185.5701678240707" y="819.0" />
-      <point x="2208.7329764660467" y="819.0" />
-      <point x="2208.7329764660467" y="450.0" />
-      <point x="1149.7608506944437" y="450.0" />
-      <point x="97.33333333333326" y="72.0" />
+      <point x="97.33333333333348" y="-95.0" />
+      <point x="284.550181159419" y="841.0" />
+      <point x="372.17726449275324" y="841.0" />
+      <point x="372.17726449275324" y="510.0" />
+      <point x="256.01059782608627" y="510.0" />
+      <point x="256.01059782608627" y="460.0" />
+      <point x="3457.4897644927532" y="460.0" />
+      <point x="-97.33333333333348" y="72.0" />
     </edge>
     <edge source="Player.AI" target="Player.Player" relationship="GENERALIZATION">
       <point x="0.0" y="-27.5" />
-      <point x="4184.139660493824" y="1236.0" />
-      <point x="4290.153501157403" y="1236.0" />
-      <point x="4290.153501157403" y="1156.0" />
-      <point x="2092.403501157404" y="1156.0" />
-      <point x="47.0" y="61.0" />
+      <point x="1347.4062047101438" y="1288.0" />
+      <point x="1214.5522644927532" y="1288.0" />
+      <point x="1214.5522644927532" y="1158.0" />
+      <point x="2175.583333333333" y="1158.0" />
+      <point x="-47.0" y="61.0" />
     </edge>
     <edge source="Controller.CommandSender" target="BoardManager.BoardManager" relationship="TO_ONE">
-      <point x="87.75" y="-161.0" />
-      <point x="1516.9035011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="1644.0" />
-      <point x="1894.3958333333333" y="1644.0" />
-      <point x="1894.3958333333333" y="1634.0" />
-      <point x="1928.1458333333333" y="1634.0" />
-      <point x="35.5" y="172.0" />
+      <point x="0.0" y="-161.0" />
+      <point x="3936.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2241.0" />
+      <point x="4016.6147644927532" y="2241.0" />
+      <point x="4016.6147644927532" y="1696.0" />
+      <point x="3166.4897644927532" y="1696.0" />
+      <point x="3166.4897644927532" y="1686.0" />
+      <point x="2502.324954710145" y="1686.0" />
+      <point x="106.5" y="172.0" />
     </edge>
     <edge source="piece.Queen" target="piece.Color" relationship="DEPENDENCY">
       <point x="65.0" y="-39.0" />
-      <point x="3748.903501157404" y="859.0" />
-      <point x="3706.149643132713" y="859.0" />
-      <point x="3706.149643132713" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="1684.2168478260855" y="841.0" />
+      <point x="1655.7416213768115" y="841.0" />
+      <point x="1655.7416213768115" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.Pawn" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="3400.903501157404" y="1624.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="1663.9062047101438" y="1716.0" />
+      <point x="1663.9062047101438" y="1238.0" />
+      <point x="1900.2168478260855" y="1238.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="piece.SuperPieceDecorator" target="piece.PieceDecorator" relationship="GENERALIZATION">
-      <point x="-68.75" y="-72.0" />
-      <point x="2170.645833333333" y="1226.0" />
-      <point x="2282.903501157404" y="1226.0" />
+      <point x="68.75" y="-72.0" />
+      <point x="586.3751358695636" y="1258.0" />
+      <point x="187.21684782608554" y="1258.0" />
       <point x="0.0" y="95.0" />
     </edge>
     <edge source="GameRule.GameRule" target="piece.PieceInterface" relationship="DEPENDENCY">
-      <point x="-107.75" y="-172.0" />
-      <point x="373.3125" y="1236.0" />
-      <point x="470.5625" y="1236.0" />
-      <point x="470.5625" y="1196.0" />
-      <point x="458.8025173611104" y="1196.0" />
-      <point x="458.8025173611104" y="490.0" />
-      <point x="514.6944926697533" y="490.0" />
-      <point x="514.6944926697533" y="470.0" />
-      <point x="955.0941840277769" y="470.0" />
-      <point x="-97.33333333333337" y="72.0" />
+      <point x="107.75" y="-172.0" />
+      <point x="4011.3647644927532" y="1278.0" />
+      <point x="4041.406204710144" y="1278.0" />
+      <point x="4041.406204710144" y="1258.0" />
+      <point x="4140.0834692028975" y="1258.0" />
+      <point x="4140.0834692028975" y="480.0" />
+      <point x="3924.6147644927532" y="480.0" />
+      <point x="3924.6147644927532" y="470.0" />
+      <point x="3652.1564311594198" y="470.0" />
+      <point x="97.33333333333303" y="72.0" />
     </edge>
     <edge source="piece.King" target="piece.Piece" relationship="GENERALIZATION">
-      <point x="65.0" y="-50.5" />
-      <point x="2643.903501157404" y="869.0" />
-      <point x="3333.631992669753" y="869.0" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
+      <point x="65.0" y="-39.0" />
+      <point x="1124.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
     </edge>
     <edge source="Controller.CommandSender" target="GameRule.GameRule" relationship="TO_ONE">
-      <point x="87.75" y="-161.0" />
-      <point x="1516.9035011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="2169.0" />
-      <point x="1795.1535011574042" y="2149.0" />
-      <point x="1784.1535011574042" y="2149.0" />
-      <point x="1784.1535011574042" y="1624.0" />
-      <point x="624.7291666666665" y="1624.0" />
-      <point x="143.66666666666663" y="172.0" />
+      <point x="0.0" y="-161.0" />
+      <point x="3936.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2251.0" />
+      <point x="3989.270833333333" y="2241.0" />
+      <point x="4016.6147644927532" y="2241.0" />
+      <point x="4016.6147644927532" y="1686.0" />
+      <point x="4047.2814311594198" y="1686.0" />
+      <point x="143.66666666666652" y="172.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="BoardManager.BoardManager" relationship="GENERALIZATION">
-      <point x="-113.33333333333348" y="-61.0" />
-      <point x="2536.3201678240707" y="1634.0" />
-      <point x="1999.1458333333333" y="1634.0" />
-      <point x="106.5" y="172.0" />
+      <point x="111.0" y="-72.0" />
+      <point x="2414.906204710144" y="1686.0" />
+      <point x="2360.324954710145" y="1686.0" />
+      <point x="-35.5" y="172.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Knight" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1216.0" />
-      <point x="3963.903501157404" y="1216.0" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1188.0" />
+      <point x="763.2168478260855" y="1188.0" />
       <point x="0.0" y="39.0" />
     </edge>
+    <edge source="Controller.CommandSender" target="Command.MoveRecord" relationship="DEPENDENCY">
+      <point x="117.0" y="-161.0" />
+      <point x="4053.270833333333" y="2251.0" />
+      <point x="4129.614764492753" y="2251.0" />
+      <point x="4129.614764492753" y="1268.0" />
+      <point x="3432.6147644927532" y="1268.0" />
+      <point x="3432.6147644927532" y="1218.0" />
+      <point x="3393.9064311594198" y="1218.0" />
+      <point x="81.66666666666697" y="84.0" />
+    </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.King" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="2466.645833333333" y="1624.0" />
-      <point x="2466.645833333333" y="1216.0" />
-      <point x="2578.903501157404" y="1216.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1288.0" />
+      <point x="1059.2168478260855" y="1288.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="BoardManager.GameStatus" relationship="DEPENDENCY">
       <point x="0.0" y="-172.0" />
-      <point x="1892.6458333333333" y="1166.0" />
-      <point x="1785.1458333333333" y="1166.0" />
-      <point x="56.5" y="116.5" />
+      <point x="2395.824954710145" y="1148.0" />
+      <point x="2543.824954710145" y="1148.0" />
+      <point x="-56.5" y="116.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Board.Board" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1176.0" />
-      <point x="2126.403501157404" y="1176.0" />
-      <point x="2126.403501157404" y="470.0" />
-      <point x="1603.948350694444" y="470.0" />
-      <point x="94.875" y="105.5" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1248.0" />
+      <point x="2103.3022644927532" y="1248.0" />
+      <point x="2103.3022644927532" y="470.0" />
+      <point x="2686.5105978260863" y="470.0" />
+      <point x="-94.875" y="105.5" />
     </edge>
     <edge source="Controller.CommandSender" target="GameRule.SuperGameRule" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="191.5" y="2139.0" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="3433.1147644927532" y="2221.0" />
       <point x="0.0" y="105.0" />
     </edge>
     <edge source="GameRule.GameRule" target="piece.PieceInterface" relationship="TO_MANY">
-      <point x="107.75" y="-172.0" />
-      <point x="588.8125" y="1236.0" />
-      <point x="491.5625" y="1236.0" />
-      <point x="491.5625" y="1196.0" />
-      <point x="481.5625" y="1196.0" />
-      <point x="481.5625" y="510.0" />
-      <point x="1052.4275173611104" y="510.0" />
+      <point x="-107.75" y="-172.0" />
+      <point x="3795.8647644927532" y="1288.0" />
+      <point x="4030.406204710144" y="1288.0" />
+      <point x="4030.406204710144" y="500.0" />
+      <point x="3554.8230978260863" y="500.0" />
       <point x="0.0" y="72.0" />
     </edge>
     <edge source="piece.King" target="piece.Color" relationship="DEPENDENCY">
-      <point x="-65.0" y="-50.5" />
-      <point x="2513.903501157404" y="849.0" />
-      <point x="3102.903501157404" y="849.0" />
-      <point x="3102.903501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="-65.0" y="-39.0" />
+      <point x="994.2168478260855" y="841.0" />
+      <point x="817.0833333333333" y="841.0" />
+      <point x="817.0833333333333" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="piece.PieceDecorator" target="piece.Color" relationship="DEPENDENCY">
       <point x="0.0" y="-95.0" />
-      <point x="2282.903501157404" y="879.0" />
-      <point x="2729.903501157404" y="879.0" />
-      <point x="2729.903501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="187.21684782608554" y="861.0" />
+      <point x="156.5" y="861.0" />
+      <point x="156.5" y="831.0" />
+      <point x="0.0" y="831.0" />
+      <point x="0.0" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="Player.Player" target="piece.Color" relationship="TO_ONE">
       <point x="-35.25" y="-61.0" />
-      <point x="2010.1535011574042" y="819.0" />
-      <point x="2039.9035011574042" y="819.0" />
-      <point x="2039.9035011574042" y="186.0" />
-      <point x="2391.92365933642" y="186.0" />
-      <point x="2391.92365933642" y="166.0" />
-      <point x="2478.506992669753" y="166.0" />
+      <point x="2187.333333333333" y="861.0" />
+      <point x="2246.833333333333" y="861.0" />
+      <point x="2246.833333333333" y="186.0" />
+      <point x="205.17726449275324" y="186.0" />
+      <point x="205.17726449275324" y="166.0" />
+      <point x="936.8439311594198" y="166.0" />
       <point x="-46.0" y="72.5" />
     </edge>
     <edge source="Controller.BoardUpdater" target="BoardManager.BoardManager" relationship="DEPENDENCY">
       <point x="-69.25" y="-83.5" />
-      <point x="2734.153501157404" y="1928.0" />
-      <point x="2782.403501157404" y="1928.0" />
-      <point x="2782.403501157404" y="1918.0" />
-      <point x="2830.153501157404" y="1918.0" />
-      <point x="2830.153501157404" y="1654.0" />
-      <point x="1861.6458333333333" y="1654.0" />
-      <point x="1861.6458333333333" y="1634.0" />
-      <point x="1857.1458333333333" y="1634.0" />
-      <point x="-35.5" y="172.0" />
+      <point x="1995.4062047101438" y="2010.0" />
+      <point x="2054.156204710144" y="2010.0" />
+      <point x="2054.156204710144" y="1706.0" />
+      <point x="2380.824954710145" y="1706.0" />
+      <point x="2380.824954710145" y="1676.0" />
+      <point x="2289.324954710145" y="1676.0" />
+      <point x="-106.5" y="172.0" />
     </edge>
     <edge source="piece.SuperPieceDecorator" target="piece.Piece" relationship="DEPENDENCY">
-      <point x="68.75" y="-72.0" />
-      <point x="2308.145833333333" y="1226.0" />
-      <point x="2719.403501157404" y="1226.0" />
-      <point x="2719.403501157404" y="809.0" />
-      <point x="2789.0701678240707" y="809.0" />
-      <point x="-97.33333333333348" y="83.5" />
+      <point x="-68.75" y="-72.0" />
+      <point x="448.87513586956356" y="1268.0" />
+      <point x="8.156204710144266" y="1268.0" />
+      <point x="8.156204710144266" y="851.0" />
+      <point x="156.5" y="851.0" />
+      <point x="0.0" y="95.0" />
     </edge>
     <edge source="Controller.CommandSender" target="Command.ChessMove" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="1067.9444926697531" y="2139.0" />
-      <point x="1067.9444926697531" y="859.0" />
-      <point x="933.5701678240707" y="859.0" />
-      <point x="-105.33333333333337" y="127.5" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="3677.6147644927532" y="2221.0" />
+      <point x="3677.6147644927532" y="1258.0" />
+      <point x="3965.781204710144" y="1258.0" />
+      <point x="3965.781204710144" y="841.0" />
+      <point x="3427.446014492752" y="841.0" />
+      <point x="113.0" y="138.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="Board.Board" relationship="TO_ONE">
-      <point x="-94.66666666666674" y="-172.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1507.6944926697531" y="1226.0" />
-      <point x="1594.1458333333333" y="1226.0" />
-      <point x="1594.1458333333333" y="500.0" />
-      <point x="1190.4236593364199" y="500.0" />
-      <point x="1190.4236593364199" y="440.0" />
-      <point x="1477.448350694444" y="440.0" />
-      <point x="-31.625" y="105.5" />
+      <point x="94.66666666666697" y="-172.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2866.770833333333" y="1138.0" />
+      <point x="2967.0730978260863" y="1138.0" />
+      <point x="2967.0730978260863" y="510.0" />
+      <point x="3461.645833333333" y="510.0" />
+      <point x="3461.645833333333" y="440.0" />
+      <point x="2876.2605978260863" y="440.0" />
+      <point x="94.875" y="105.5" />
     </edge>
     <edge source="Command.MoveRecord" target="Command.ChessMove" relationship="DEPENDENCY">
-      <point x="-61.25" y="-72.5" />
-      <point x="1379.6944926697531" y="869.0" />
-      <point x="991.2368344907375" y="869.0" />
-      <point x="991.2368344907375" y="849.0" />
-      <point x="1038.9035011574042" y="849.0" />
-      <point x="0.0" y="127.5" />
+      <point x="61.25" y="-84.0" />
+      <point x="3373.4897644927532" y="851.0" />
+      <point x="3265.9375" y="851.0" />
+      <point x="3265.9375" y="841.0" />
+      <point x="3314.446014492752" y="841.0" />
+      <point x="0.0" y="138.5" />
     </edge>
     <edge source="GameRule.SuperGameRule" target="GameRule.GameRule" relationship="GENERALIZATION">
-      <point x="95.75" y="-105.0" />
-      <point x="287.25" y="1664.0" />
-      <point x="337.3958333333335" y="1664.0" />
-      <point x="-143.66666666666663" y="172.0" />
+      <point x="117.0" y="-105.0" />
+      <point x="3550.1147644927532" y="1686.0" />
+      <point x="3759.9480978260867" y="1686.0" />
+      <point x="-143.66666666666652" y="172.0" />
     </edge>
     <edge source="piece.PieceDecorator" target="piece.Piece" relationship="DEPENDENCY">
       <point x="0.0" y="-95.0" />
-      <point x="2282.903501157404" y="879.0" />
-      <point x="2729.903501157404" y="879.0" />
-      <point x="2729.903501157404" y="819.0" />
-      <point x="2719.403501157404" y="819.0" />
-      <point x="2719.403501157404" y="809.0" />
-      <point x="2789.0701678240707" y="809.0" />
-      <point x="-97.33333333333348" y="83.5" />
+      <point x="187.21684782608554" y="861.0" />
+      <point x="156.5" y="861.0" />
+      <point x="0.0" y="95.0" />
     </edge>
     <edge source="GameRule.GameRule" target="Board.Board" relationship="TO_ONE">
-      <point x="107.75" y="-172.0" />
-      <point x="588.8125" y="1236.0" />
-      <point x="491.5625" y="1236.0" />
-      <point x="491.5625" y="500.0" />
-      <point x="1190.4236593364199" y="500.0" />
-      <point x="1190.4236593364199" y="440.0" />
-      <point x="1477.448350694444" y="440.0" />
-      <point x="-31.625" y="105.5" />
+      <point x="-107.75" y="-172.0" />
+      <point x="3795.8647644927532" y="1288.0" />
+      <point x="4030.406204710144" y="1288.0" />
+      <point x="4030.406204710144" y="510.0" />
+      <point x="3461.645833333333" y="510.0" />
+      <point x="3461.645833333333" y="440.0" />
+      <point x="2876.2605978260863" y="440.0" />
+      <point x="94.875" y="105.5" />
     </edge>
     <edge source="Controller.BoardUpdater" target="BoardManager.SuperBoardManager" relationship="DEPENDENCY">
       <point x="-69.25" y="-83.5" />
-      <point x="2734.153501157404" y="1928.0" />
-      <point x="2782.403501157404" y="1928.0" />
-      <point x="2782.403501157404" y="1918.0" />
-      <point x="2734.653501157404" y="1918.0" />
-      <point x="85.0" y="61.0" />
+      <point x="1995.4062047101438" y="2010.0" />
+      <point x="2054.156204710144" y="2010.0" />
+      <point x="2054.156204710144" y="2000.0" />
+      <point x="2308.906204710144" y="2000.0" />
+      <point x="2308.906204710144" y="1980.0" />
+      <point x="2387.156204710144" y="1980.0" />
+      <point x="83.25" y="72.0" />
     </edge>
     <edge source="Controller.CommandSender" target="Command.Move" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="924.2291666666665" y="2139.0" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="2982.270833333333" y="2221.0" />
       <point x="0.0" y="83.5" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.Color" relationship="DEPENDENCY">
-      <point x="113.33333333333348" y="-61.0" />
-      <point x="2762.9868344907377" y="1634.0" />
-      <point x="4447.153501157403" y="1634.0" />
-      <point x="4447.153501157403" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="0.0" y="-72.0" />
+      <point x="2303.906204710144" y="1716.0" />
+      <point x="2064.656204710144" y="1716.0" />
+      <point x="2064.656204710144" y="1696.0" />
+      <point x="1759.7168478260855" y="1696.0" />
+      <point x="1759.7168478260855" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="piece.Rook" target="piece.Piece" relationship="GENERALIZATION">
-      <point x="-65.0" y="-50.5" />
-      <point x="4178.903501157403" y="869.0" />
-      <point x="3333.631992669753" y="869.0" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
+      <point x="-65.0" y="-39.0" />
+      <point x="1274.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
     </edge>
     <edge source="piece.Pawn" target="piece.Color" relationship="DEPENDENCY">
-      <point x="66.5" y="-50.5" />
-      <point x="3467.403501157404" y="859.0" />
-      <point x="3421.899643132713" y="859.0" />
-      <point x="3421.899643132713" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="65.0" y="-39.0" />
+      <point x="1965.2168478260855" y="841.0" />
+      <point x="1936.7416213768115" y="841.0" />
+      <point x="1936.7416213768115" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.PieceInterface" relationship="TO_MANY">
-      <point x="-94.66666666666674" y="-172.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1507.6944926697531" y="1226.0" />
-      <point x="1573.9444926697531" y="1226.0" />
-      <point x="1573.9444926697531" y="510.0" />
-      <point x="1052.4275173611104" y="510.0" />
+      <point x="94.66666666666697" y="-172.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2866.770833333333" y="1138.0" />
+      <point x="2972.0730978260863" y="1138.0" />
+      <point x="2972.0730978260863" y="500.0" />
+      <point x="3554.8230978260863" y="500.0" />
       <point x="0.0" y="72.0" />
     </edge>
     <edge source="GUI" target="Controller.CommandSender" relationship="TO_ONE">
-      <point x="0.0" y="-204.5" />
-      <point x="1641.6951678240707" y="2534.0" />
-      <point x="1516.9035011574042" y="2534.0" />
-      <point x="87.75" y="161.0" />
+      <point x="15.0" y="-226.5" />
+      <point x="3103.1543478260855" y="2449.0" />
+      <point x="-175.5" y="15.0" />
     </edge>
     <edge source="BoardManager.BoardManager" target="piece.Rook" relationship="CREATE">
-      <point x="94.66666666666674" y="-172.0" />
-      <point x="1987.3125" y="1236.0" />
-      <point x="2968.1358506944434" y="1236.0" />
-      <point x="2968.1358506944434" y="1226.0" />
-      <point x="4243.903501157403" y="1226.0" />
-      <point x="0.0" y="50.5" />
+      <point x="-94.66666666666697" y="-172.0" />
+      <point x="2301.158288043478" y="1288.0" />
+      <point x="1604.4062047101438" y="1288.0" />
+      <point x="1604.4062047101438" y="1168.0" />
+      <point x="1339.2168478260855" y="1168.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="Controller.CommandSender" target="BoardManager.SuperBoardManager" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="1773.1535011574042" y="2139.0" />
-      <point x="1773.1535011574042" y="1928.0" />
-      <point x="2564.653501157404" y="1928.0" />
-      <point x="-85.0" y="61.0" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="2298.906204710144" y="2221.0" />
+      <point x="2298.906204710144" y="1990.0" />
+      <point x="2220.656204710144" y="1990.0" />
+      <point x="-83.25" y="72.0" />
     </edge>
     <edge source="Player.Human" target="Player.Player" relationship="GENERALIZATION">
       <point x="0.0" y="-27.5" />
-      <point x="4364.653501157403" y="1236.0" />
-      <point x="4290.153501157403" y="1236.0" />
-      <point x="4290.153501157403" y="1156.0" />
-      <point x="2092.403501157404" y="1156.0" />
-      <point x="47.0" y="61.0" />
+      <point x="1140.9062047101438" y="1288.0" />
+      <point x="1214.5522644927532" y="1288.0" />
+      <point x="1214.5522644927532" y="1158.0" />
+      <point x="2175.583333333333" y="1158.0" />
+      <point x="-47.0" y="61.0" />
     </edge>
     <edge source="GameRule.GameRule" target="Board.Board" relationship="DEPENDENCY">
-      <point x="-107.75" y="-172.0" />
-      <point x="373.3125" y="1236.0" />
-      <point x="470.5625" y="1236.0" />
-      <point x="470.5625" y="480.0" />
-      <point x="681.3194926697533" y="480.0" />
-      <point x="681.3194926697533" y="460.0" />
-      <point x="1414.198350694444" y="460.0" />
-      <point x="-94.875" y="105.5" />
+      <point x="107.75" y="-172.0" />
+      <point x="4011.3647644927532" y="1278.0" />
+      <point x="4041.406204710144" y="1278.0" />
+      <point x="4041.406204710144" y="490.0" />
+      <point x="2975.5105978260863" y="490.0" />
+      <point x="2975.5105978260863" y="450.0" />
+      <point x="2813.0105978260863" y="450.0" />
+      <point x="31.625" y="105.5" />
     </edge>
     <edge source="piece.Queen" target="piece.Piece" relationship="GENERALIZATION">
       <point x="-65.0" y="-39.0" />
-      <point x="3618.903501157404" y="869.0" />
-      <point x="3333.631992669753" y="869.0" />
-      <point x="3333.631992669753" y="839.0" />
-      <point x="2983.7368344907377" y="839.0" />
-      <point x="97.33333333333348" y="83.5" />
-    </edge>
-    <edge source="BoardManager.SuperBoardManager" target="piece.Bishop" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="3123.153501157404" y="1624.0" />
-      <point x="3123.153501157404" y="1176.0" />
-      <point x="3117.903501157404" y="1176.0" />
-      <point x="0.0" y="39.0" />
+      <point x="1554.2168478260855" y="861.0" />
+      <point x="1250.8022644927532" y="861.0" />
+      <point x="1250.8022644927532" y="831.0" />
+      <point x="253.83333333333348" y="831.0" />
+      <point x="97.33333333333348" y="95.0" />
     </edge>
     <edge source="Command.Move" target="BoardManager.BoardManager" relationship="DEPENDENCY">
-      <point x="-88.33333333333326" y="-83.5" />
-      <point x="835.8958333333333" y="1928.0" />
-      <point x="838.1458333333335" y="1928.0" />
-      <point x="838.1458333333335" y="1918.0" />
-      <point x="848.3958333333335" y="1918.0" />
-      <point x="848.3958333333335" y="1654.0" />
-      <point x="1861.6458333333333" y="1654.0" />
-      <point x="1861.6458333333333" y="1634.0" />
-      <point x="1857.1458333333333" y="1634.0" />
-      <point x="-35.5" y="172.0" />
+      <point x="-88.33333333333303" y="-83.5" />
+      <point x="2893.9375" y="2010.0" />
+      <point x="2901.1875" y="2010.0" />
+      <point x="2901.1875" y="1980.0" />
+      <point x="2491.906204710144" y="1980.0" />
+      <point x="2491.906204710144" y="1706.0" />
+      <point x="2380.824954710145" y="1706.0" />
+      <point x="2380.824954710145" y="1676.0" />
+      <point x="2289.324954710145" y="1676.0" />
+      <point x="-106.5" y="172.0" />
+    </edge>
+    <edge source="BoardManager.SuperBoardManager" target="piece.Bishop" relationship="CREATE">
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="229.62513586956356" y="1716.0" />
+      <point x="229.62513586956356" y="1278.0" />
+      <point x="483.21684782608554" y="1278.0" />
+      <point x="0.0" y="39.0" />
     </edge>
     <edge source="piece.Bishop" target="piece.Color" relationship="DEPENDENCY">
       <point x="-65.0" y="-39.0" />
-      <point x="3052.903501157404" y="859.0" />
-      <point x="3112.903501157404" y="859.0" />
-      <point x="3112.903501157404" y="176.0" />
-      <point x="3021.9653260030864" y="176.0" />
-      <point x="3021.9653260030864" y="166.0" />
-      <point x="2570.506992669753" y="166.0" />
+      <point x="418.21684782608554" y="841.0" />
+      <point x="520.7416213768115" y="841.0" />
+      <point x="520.7416213768115" y="176.0" />
+      <point x="1713.5522644927532" y="176.0" />
+      <point x="1713.5522644927532" y="166.0" />
+      <point x="1028.8439311594198" y="166.0" />
       <point x="46.0" y="72.5" />
     </edge>
+    <edge source="GameRule.SuperGameRule" target="Command.MoveRecord" relationship="DEPENDENCY">
+      <point x="-117.0" y="-105.0" />
+      <point x="3316.1147644927532" y="1726.0" />
+      <point x="3445.9375" y="1726.0" />
+      <point x="3445.9375" y="1686.0" />
+      <point x="3432.6147644927532" y="1686.0" />
+      <point x="3432.6147644927532" y="1218.0" />
+      <point x="3393.9064311594198" y="1218.0" />
+      <point x="81.66666666666697" y="84.0" />
+    </edge>
     <edge source="Command.ChessMove" target="BoardManager.BoardManager" relationship="TO_ONE">
-      <point x="105.33333333333326" y="127.5" />
-      <point x="1144.2368344907375" y="849.0" />
-      <point x="1391.260850694444" y="849.0" />
-      <point x="1391.260850694444" y="879.0" />
-      <point x="1573.9444926697531" y="879.0" />
-      <point x="1573.9444926697531" y="1226.0" />
-      <point x="1507.6944926697531" y="1226.0" />
-      <point x="1507.6944926697531" y="1236.0" />
-      <point x="1797.9791666666665" y="1236.0" />
-      <point x="-94.66666666666674" y="-172.0" />
+      <point x="-113.0" y="138.5" />
+      <point x="3201.446014492752" y="841.0" />
+      <point x="3222.281204710144" y="841.0" />
+      <point x="3222.281204710144" y="861.0" />
+      <point x="2972.0730978260863" y="861.0" />
+      <point x="2972.0730978260863" y="1138.0" />
+      <point x="2866.770833333333" y="1138.0" />
+      <point x="2866.770833333333" y="1288.0" />
+      <point x="2490.4916213768115" y="1288.0" />
+      <point x="94.66666666666697" y="-172.0" />
     </edge>
     <edge source="piece.Piece" target="piece.PieceInterface" relationship="REALIZATION">
-      <point x="-97.33333333333348" y="-83.5" />
-      <point x="2789.0701678240707" y="470.0" />
-      <point x="2208.7329764660467" y="470.0" />
-      <point x="2208.7329764660467" y="450.0" />
-      <point x="1149.7608506944437" y="450.0" />
-      <point x="97.33333333333326" y="72.0" />
+      <point x="97.33333333333348" y="-95.0" />
+      <point x="253.83333333333348" y="510.0" />
+      <point x="256.01059782608627" y="510.0" />
+      <point x="256.01059782608627" y="460.0" />
+      <point x="3457.4897644927532" y="460.0" />
+      <point x="-97.33333333333348" y="72.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="piece.SuperPieceDecorator" relationship="CREATE">
-      <point x="0.0" y="-61.0" />
-      <point x="2649.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1664.0" />
-      <point x="2755.653501157404" y="1624.0" />
-      <point x="2239.395833333333" y="1624.0" />
+      <point x="-111.0" y="-72.0" />
+      <point x="2192.906204710144" y="1726.0" />
+      <point x="1039.1562047101438" y="1726.0" />
+      <point x="1039.1562047101438" y="1716.0" />
+      <point x="517.6251358695636" y="1716.0" />
       <point x="0.0" y="72.0" />
     </edge>
     <edge source="BoardManager.SuperBoardManager" target="Board.Board" relationship="DEPENDENCY">
-      <point x="113.33333333333348" y="-61.0" />
-      <point x="2762.9868344907377" y="1634.0" />
-      <point x="4447.153501157403" y="1634.0" />
-      <point x="4447.153501157403" y="480.0" />
-      <point x="681.3194926697533" y="480.0" />
-      <point x="681.3194926697533" y="460.0" />
-      <point x="1414.198350694444" y="460.0" />
-      <point x="-94.875" y="105.5" />
+      <point x="0.0" y="-72.0" />
+      <point x="2303.906204710144" y="1716.0" />
+      <point x="2064.656204710144" y="1716.0" />
+      <point x="2064.656204710144" y="1696.0" />
+      <point x="2040.7168478260855" y="1696.0" />
+      <point x="2040.7168478260855" y="490.0" />
+      <point x="2975.5105978260863" y="490.0" />
+      <point x="2975.5105978260863" y="450.0" />
+      <point x="2813.0105978260863" y="450.0" />
+      <point x="31.625" y="105.5" />
     </edge>
     <edge source="Controller.CommandSender" target="GameRule.GameRule" relationship="CREATE">
-      <point x="-87.75" y="-161.0" />
-      <point x="1341.4035011574042" y="2169.0" />
-      <point x="970.4035011574041" y="2169.0" />
-      <point x="970.4035011574041" y="2139.0" />
-      <point x="414.4791666666665" y="2139.0" />
-      <point x="414.4791666666665" y="1664.0" />
-      <point x="481.0625" y="1664.0" />
+      <point x="-117.0" y="-161.0" />
+      <point x="3819.270833333333" y="2251.0" />
+      <point x="3129.906204710144" y="2251.0" />
+      <point x="3129.906204710144" y="2221.0" />
+      <point x="3939.283288043478" y="2221.0" />
+      <point x="3939.283288043478" y="1686.0" />
+      <point x="3903.6147644927532" y="1686.0" />
       <point x="0.0" y="172.0" />
     </edge>
     <edge source="Command.Move" target="Board.Board" relationship="DEPENDENCY">
-      <point x="-88.33333333333326" y="-83.5" />
-      <point x="835.8958333333333" y="1928.0" />
-      <point x="838.1458333333335" y="1928.0" />
-      <point x="838.1458333333335" y="1918.0" />
-      <point x="707.0625" y="1918.0" />
-      <point x="707.0625" y="480.0" />
-      <point x="681.3194926697533" y="480.0" />
-      <point x="681.3194926697533" y="460.0" />
-      <point x="1414.198350694444" y="460.0" />
-      <point x="-94.875" y="105.5" />
+      <point x="-88.33333333333303" y="-83.5" />
+      <point x="2893.9375" y="2010.0" />
+      <point x="2901.1875" y="2010.0" />
+      <point x="2901.1875" y="1980.0" />
+      <point x="3006.4897644927532" y="1980.0" />
+      <point x="3006.4897644927532" y="490.0" />
+      <point x="2975.5105978260863" y="490.0" />
+      <point x="2975.5105978260863" y="450.0" />
+      <point x="2813.0105978260863" y="450.0" />
+      <point x="31.625" y="105.5" />
     </edge>
     <edge source="Controller.BoardUpdater" target="BoardManager.BoardManager" relationship="TO_ONE">
       <point x="69.25" y="-83.5" />
-      <point x="2872.653501157404" y="1928.0" />
-      <point x="2856.653501157404" y="1928.0" />
-      <point x="2856.653501157404" y="1644.0" />
-      <point x="1894.3958333333333" y="1644.0" />
-      <point x="1894.3958333333333" y="1634.0" />
-      <point x="1928.1458333333333" y="1634.0" />
-      <point x="35.5" y="172.0" />
+      <point x="2133.906204710144" y="1990.0" />
+      <point x="2075.156204710144" y="1990.0" />
+      <point x="2075.156204710144" y="1696.0" />
+      <point x="3166.489764492753" y="1696.0" />
+      <point x="3166.4897644927532" y="1686.0" />
+      <point x="2502.324954710145" y="1686.0" />
+      <point x="106.5" y="172.0" />
     </edge>
     <edge source="GameRule.GameRule" target="Command.ChessMove" relationship="DEPENDENCY">
-      <point x="-107.75" y="-172.0" />
-      <point x="373.3125" y="1236.0" />
-      <point x="470.5625" y="1236.0" />
-      <point x="470.5625" y="869.0" />
-      <point x="991.2368344907375" y="869.0" />
-      <point x="991.2368344907375" y="849.0" />
-      <point x="1038.9035011574042" y="849.0" />
-      <point x="0.0" y="127.5" />
+      <point x="107.75" y="-172.0" />
+      <point x="4011.3647644927532" y="1278.0" />
+      <point x="4041.406204710144" y="1278.0" />
+      <point x="4041.406204710144" y="851.0" />
+      <point x="3265.9375" y="851.0" />
+      <point x="3265.9375" y="841.0" />
+      <point x="3314.446014492752" y="841.0" />
+      <point x="0.0" y="138.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.3243061772605193" showDependencies="true" x="2223.9999999999995" y="1487.0" />
+  <settings layout="Hierarchic" zoom="0.31789137380191695" showDependencies="true" x="2204.5" y="1555.0" />
   <SelectedNodes>
     <node>GUI</node>
   </SelectedNodes>
