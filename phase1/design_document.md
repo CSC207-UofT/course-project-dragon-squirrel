@@ -116,7 +116,7 @@ Due to some technical issues, this part is not yet implemented.
 *plans to work on next in italics*
 
 - Jin
-    - ...
+    - Command design pattern
 - Jennifer
     - Updated Specification
     - Decorator design pattern
@@ -127,10 +127,16 @@ Due to some technical issues, this part is not yet implemented.
     - add undo and start new super game to GUI
     - *GUI with chessboard*
 - Future
-    - ...
+    - Major design decisions + Explanation
+    - Summary of Present/Future Design Patterns
+    - Brief Description of Clean Architecture
+    - *Observer design pattern*
+    - *AI implementation*
 - Tingzhou
-    - ...
+    - Class Diagram
+    - *GUI with chessboard*
 - Christopher
-    - ...
+    - Testing
+    - *Testing*
 - Dylan
-    - ...
+    - getAvailableMoves()
