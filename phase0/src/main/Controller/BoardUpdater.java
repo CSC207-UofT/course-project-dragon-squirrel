@@ -18,6 +18,10 @@ public class BoardUpdater {
 		boardImage = new String[13][10];
 	}
 
+	public String[][] getBoardImage(){
+		return this.boardImage;
+	}
+
 	private void updateBoardImage() {
 		boardImage = bm.getCurrentBoard();
 	}
