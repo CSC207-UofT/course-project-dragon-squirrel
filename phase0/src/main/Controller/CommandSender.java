@@ -39,6 +39,12 @@ public class CommandSender {
 			System.out.println("Invalid Move");
 		}
 	}
+
+	public void undoMove(){
+		Move move = new Move(bm, bm.getMR().get());
+		move.undo();
+	}
+
 	/**
 	 * @return 	-1 if move or attack is invalid <P>
 	 * 			1 if attack is valid <P>
@@ -55,7 +61,10 @@ public class CommandSender {
 				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
 					return -1;
 				}
+				int pastHp = ((SuperBoardManager) bm).getHp(newX, newY);
 				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
+				System.out.println("Attacked piece -> " + "Past Hp: " + pastHp + "    " +
+						"New Hp: " + ((SuperBoardManager) bm).getHp(newX, newY));
 				if (attackedToDeath) {
 					System.out.println("attacked to death");
 					return 3;
@@ -77,7 +86,17 @@ public class CommandSender {
 	public void giveUp() {
 
 	}
-  
+
+	public void startNewClassicGame() {
+		bm = new BoardManager();
+		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		this.bu = new BoardUpdater(bm);
+	}
+
+	public void startNewSuperGame() {
+		bm = new SuperBoardManager();
+		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+	}
 	/**
 	 * @param classic true if the game played is a classic game
 	 */

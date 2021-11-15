@@ -1,6 +1,11 @@
 package piece;
 
-public class PieceDecorator implements PieceInterface {
+import java.awt.Point;
+import java.util.List;
+
+import Board.Board;
+
+public abstract class PieceDecorator implements PieceInterface {
     private Piece piece;
 
     public PieceDecorator(Piece piece) {
@@ -32,6 +37,10 @@ public class PieceDecorator implements PieceInterface {
         return piece.validMove(oldX, oldY, newX, newY);
     }
 
+    @Override
+	public List<Point> GetValidMoves(Board b, int x, int y){
+    	return piece.GetValidMoves(b, x, y);
+    }
 
     @Override
     public boolean hasSameColor(PieceInterface targetPiece) {

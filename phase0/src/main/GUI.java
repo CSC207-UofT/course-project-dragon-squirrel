@@ -6,15 +6,16 @@ import javax.swing.*;
 
 public class GUI extends JFrame{
 	private JButton startGameBtn;
+	private JButton startSuperGameBtn;
 	private JPanel rootPanel;
 	private JTextField startXtf;
 	private JTextField startYtf;
 	private JTextField targetXtf;
 	private JTextField targetYtf;
 	private JButton moveBtn;
+	private JButton undoMoveBtn;
 	private JLabel startPositionLabel1;
 	private JLabel startPositionLabel2;
-	private JButton startSuperGameBtn;
 	private JTable board;
 
 	private CommandSender cs;
@@ -46,6 +47,11 @@ public class GUI extends JFrame{
 		startSuperGameBtn.addActionListener(e -> {
 			cs = new CommandSender(false);
 			bu = cs.getBoardUpdater();
+			bu.display();
+		});
+
+		undoMoveBtn.addActionListener(e -> {
+			cs.undoMove();
 			bu.display();
 		});
 

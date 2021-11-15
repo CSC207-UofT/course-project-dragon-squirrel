@@ -1,5 +1,10 @@
 package piece;
 
+import Board.Board;
+
+import java.awt.*;
+import java.util.List;
+
 public class SuperPieceDecorator extends PieceDecorator{
     int hp;
     int atk;
@@ -32,6 +37,10 @@ public class SuperPieceDecorator extends PieceDecorator{
 
     public void setHp(int hp) {this.hp = hp;}
 
+    @Override
+    public List<Point> GetValidMoves(Board b, int x, int y) {
+        return null;
+    }
 }
 
 // This is what we'd write in SuperBoardManager to instantiate the superPieces

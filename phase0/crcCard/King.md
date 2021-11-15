@@ -1,7 +1,7 @@
 [
   {
     "name": "King(entity)",
-    "superclasses": "Piece",
+    "superclasses": "piece",
     "subclasses": "",
     "type": "Normal",
     "responsibilities": [

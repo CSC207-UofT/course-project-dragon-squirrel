@@ -29,7 +29,7 @@
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Piece Start Position"/>
+          <text value="piece Start Position"/>
         </properties>
       </component>
       <component id="fa8aa" class="javax.swing.JLabel" binding="startPositionLabel2">
@@ -58,7 +58,7 @@
       </component>
       <component id="1188f" class="javax.swing.JButton" binding="moveBtn">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Make Move"/>
@@ -78,6 +78,14 @@
         </constraints>
         <properties>
           <text value="Start New Super Game"/>
+        </properties>
+      </component>
+      <component id="ddf6d" class="javax.swing.JButton" binding="undoMoveBtn">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Undo Move"/>
         </properties>
       </component>
     </children>

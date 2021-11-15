@@ -26,6 +26,9 @@ public class Board {
         board[X][Y] = pieceName;
     }
 
+    /**
+     * Remove piece from board[X][Y] and replace with "vacant"
+     */
     public String removePiece(int X, int Y) {
         String piece = board[X][Y];
         board[X][Y] = "vacant";

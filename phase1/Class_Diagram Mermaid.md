@@ -19,20 +19,20 @@ classDiagram
     AI : String ID
     
     
-    Piece <-- King : implement
-    Piece <-- Queen : implement
-    Piece <-- Rook : implement
-    Piece <-- Bishop : implement
-    Piece <-- Knight : implement
-    Piece <-- Pawn : implement
+    piece <-- King : implement
+    piece <-- Queen : implement
+    piece <-- Rook : implement
+    piece <-- Bishop : implement
+    piece <-- Knight : implement
+    piece <-- Pawn : implement
     
-    Piece : String name
-    Piece : Color color
-    Piece : boolean status
-    Piece : getName()
-    Piece : getColor()
-    Piece : getStatus()
-    Piece : validMove()
+    piece : String name
+    piece : Color color
+    piece : boolean status
+    piece : getName()
+    piece : getColor()
+    piece : getStatus()
+    piece : validMove()
     
     King : String name
     King : Color 
@@ -65,14 +65,14 @@ classDiagram
     Pawn : boolean status
     Pawn : validmove()
     
-    ModifiedPiece --> Piece
+    ModifiedPiece --> piece
     ModifiedPiece : int hp
     ModifiedPiece : int atk
     ModifiedPiece : getHp()
     ModifiedPiece : getAtk()
     
     
-    Board <--> Piece : Collaborators
+    Board <--> piece : Collaborators
     Board : String [][] board
     Board : addPiece()
     Board : removePiece()
@@ -83,10 +83,10 @@ classDiagram
     ModifiedBoard --> Board : implement
     
     
-    GameRule --> Piece : collaborator
+    GameRule --> piece : collaborator
     GameRule --> Board : collaborator
     GameRule : Board board
-    GameRule : Map<String, Piece> piecesDict 
+    GameRule : Map<String, piece> piecesDict 
     GameRule : isMoveValid()
     GameRule : isPathClear()
     GameRule : isCoordinateVacant()
@@ -95,10 +95,10 @@ classDiagram
     GameRule : isPlayerWinning()
     GameRule : getAvailableMoves()
     
-    BoardManager --> Piece : Collaborator
+    BoardManager --> piece : Collaborator
     BoardManager <--> Board : Collaborator
     BoardManager : Board board
-    BoardManager : Map<String, Piece> pieces
+    BoardManager : Map<String, piece> pieces
     BoardManager : Player p1
     BoardManager : Player p2
     BoardManager : Player activePlayer

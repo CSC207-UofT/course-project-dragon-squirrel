@@ -1,14 +1,16 @@
-import Player.Human;
+package TestPlayer;
+
+import Player.AI;
 import org.junit.Before;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestHuman {
-    Human h;
+public class TestAI {
+    AI ai;
 
     @Before
     public void setup(){
-        h = new Human("Player.Human Player.Player");
+        ai = new AI("Computer Player.Player");
     }
 
 }
