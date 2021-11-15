@@ -14,6 +14,12 @@ public class SuperGameRule extends GameRule {
         super(superBoard, superPiecesDict, MR);
     }
 
+    /**
+     * Check:   pieces move according to classic chess game rules.
+     *          pieces beside pawns can not move into the river.
+     *          pieces besides knights and pawns can not move over the river.
+     * @return true if move is valid according to super chess game rules, false otherwise.
+     */
     @Override
     public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
         if (!super.isMoveValid(oldX, oldY, newX, newY)){
@@ -27,7 +33,8 @@ public class SuperGameRule extends GameRule {
             return false;
         }
 
-        if (!pieceName.contains("knight") && !isPathClearOfRiver(oldX, oldY, newX, newY)){
+        if (!pieceName.contains("knight") && !pieceName.contains("pawn")
+                && !isPathClearOfRiver(oldX, oldY, newX, newY)){
             System.out.println("invalid move over river");
             return false;
         }
@@ -130,7 +137,7 @@ public class SuperGameRule extends GameRule {
     }
 
     /**
-     * Pieces besides the knight cannot cross over and into bridges.
+     * Pieces besides the knight and pawn cannot cross over and into bridges.
      * @return whether path between (oldX, oldY) and (newX, newY) is clear of river
      */
     public boolean isPathClearOfRiver(int oldX, int oldY, int newX, int newY){
