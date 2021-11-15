@@ -9,7 +9,6 @@ import piece.PieceInterface;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 /**
  * Verifies whether move is valid according to game rules.
@@ -187,16 +186,10 @@ public class GameRule {
 		if (movingPiece.getColor().equals(piece.Color.WHITE)){
 			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
 		}
-		return false;
+		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
 	}
 
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
-		try {
-			MR.get();
-		} catch (NoSuchElementException e) {
-			return true;
-		}
-
 		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
 		PieceInterface capturedPiece = piecesDict.get(board.getPiece(newX, newY));
 		if (!board.getPiece(oldX, oldY).contains("pawn")){

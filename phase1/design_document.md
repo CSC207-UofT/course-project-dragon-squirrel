@@ -134,6 +134,7 @@ have a method getAvailableMoves() in Board sort through these coordinates and re
     - Brief Description of Packaging Strategy
     - Implementation of SuperChess
       - subclasses: SuperBoard, SuperBoardManager, SuperGameRule
+    - add undo and start new super game to GUI
     - *GUI with chessboard*
 - Future
     - Major design decisions + Explanation
