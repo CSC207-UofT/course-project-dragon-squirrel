@@ -101,6 +101,9 @@ Enter move using (row, column) start and end coordinates.
   - Progress report
 - Christopher 
   - unittests
+  - piece and board getters and setters
+  - piece interface
+  - superchess design/rules/layout
 - Dylan 
   - quality improvement
 
