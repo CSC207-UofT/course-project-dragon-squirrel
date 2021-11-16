@@ -10,10 +10,9 @@ public class SuperBoard extends Board{
         superSetLand();
     }
 
-    public String[][] getSuperBoardLand() {
-        return superBoardLand;
-    }
-
+    /**
+     * @return river, bridge, black_zone, or white_zone according to land type at superBoardLand[X][Y]
+     */
     public String getLandType(int X, int Y) {return superBoardLand[X][Y];}
 
     @Override
