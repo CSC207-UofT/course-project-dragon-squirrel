@@ -39,7 +39,7 @@ public class SuperPieceDecorator extends PieceDecorator{
 
     @Override
     public List<Point> GetValidMoves(Board b, int x, int y) {
-        return null;
+        return super.GetValidMoves(b, x, y);
     }
 }
 
