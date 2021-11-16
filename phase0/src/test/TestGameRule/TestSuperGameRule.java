@@ -28,7 +28,4 @@ public class TestSuperGameRule {
         sgr = new SuperGameRule(superBoard, superPiecesDict, mr);
     }
 
-    @Test
-    public void Test
-
 }
