@@ -1,10 +1,18 @@
 package CommandFuture;
 
-import BoardManager.BoardManager;
+import Board.Board;
 
+/**
+ *
+ *
+ * PLACEHOLDER
+ *
+ * we might or might not need it
+ *
+ */
 public class CastlingMove extends Move{
-	public CastlingMove(BoardManager newBM, int oldX, int oldY, int newX, int newY) {
-		super(newBM, oldX, oldY, newX, newY);
+	public CastlingMove(Board board, int oldX, int oldY, int newX, int newY) {
+		super(board, oldX, oldY, newX, newY);
 	}
 
 	@Override

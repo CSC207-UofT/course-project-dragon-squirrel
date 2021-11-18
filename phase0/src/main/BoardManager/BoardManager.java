@@ -39,25 +39,29 @@ public class BoardManager {
         return this.board;
     }
 
-    public MoveRecord getMR(){
-        return MR;
+    public String[][] getBoardAsString() {
+        return board.getBoard();
     }
 
-    public String[][] getCurrentBoard() {
-        return board.getBoard();
+    public MoveRecord getMR(){
+        return MR;
     }
 
     public Map<String, PieceInterface> getPieces() {
         return pieces;
     }
 
-//    public Player.Player getP1() {
-//        return this.p1;
-//    }
-//
-//    public Player.Player getP2() {
-//        return this.p2;
-//    }
+    public PieceInterface getPiece(int x, int y) {
+        String pieceName = board.getPiece(x, y);
+        PieceInterface result = pieces.get(pieceName);
+
+        if (result == null) {
+            throw new NullPointerException("Cannot find piece");
+        }
+
+        return result;
+    }
+
 
     public Player getActivePlayer() {
         return activePlayer;

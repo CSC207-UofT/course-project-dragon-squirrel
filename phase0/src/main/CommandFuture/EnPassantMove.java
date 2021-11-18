@@ -1,10 +1,19 @@
 package CommandFuture;
 
-import BoardManager.BoardManager;
+import Board.Board;
 
+/**
+ *
+ *
+ * PLACEHOLDER
+ *
+ * we might or might not need it
+ * we probably need
+ *
+ */
 public class EnPassantMove extends Move{
-	public EnPassantMove(BoardManager newBM, int oldX, int oldY, int newX, int newY) {
-		super(newBM, oldX, oldY, newX, newY);
+	public EnPassantMove(Board board, int oldX, int oldY, int newX, int newY) {
+		super(board, oldX, oldY, newX, newY);
 	}
 
 	@Override
