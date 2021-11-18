@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.awt.*;
-import Board.Board;
+import Board.BoardInterface;
 
 
 public class Bishop extends Piece{
@@ -19,7 +19,7 @@ public class Bishop extends Piece{
     }
     
     @Override
-    public List<Point> GetValidMoves(Board b, int x, int y) 
+    public List<Point> getValidMoves(BoardInterface b, int x, int y)
     {
 		List<Point> moves = new ArrayList<Point>();
 
@@ -28,7 +28,7 @@ public class Bishop extends Piece{
 		for(int i = 1; i < b.getBoundaries().x; i++) {
 			if((x+i) < b.getBoundaries().x && (y+i) < b.getBoundaries().y) {
 				
-				if(b.isPositionVacant(x+i, y+i) == false) {
+				if(!b.isPositionVacant(x + i, y + i)) {
 				
 					if((b.getPiece(x+i, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y+i).charAt(0) == 'w' && color == Color.BLACK))
 						moves.add(new Point(x+i,y+i));	

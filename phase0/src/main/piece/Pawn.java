@@ -3,7 +3,7 @@ package piece;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
-import Board.Board;
+import Board.BoardInterface;
 
 
 public class Pawn extends Piece{
@@ -39,8 +39,8 @@ public class Pawn extends Piece{
         return solution;
     }
     
-	public List<Point> GetValidMoves(Board b, int x, int y) {
-		List<Point> moves = new ArrayList<Point>();
+	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
+		List<Point> moves = new ArrayList<>();
 		
 		//pawn moves forward , not backward so checking for white and black separately
 		if(color == Color.WHITE) {
@@ -51,6 +51,7 @@ public class Pawn extends Piece{
 			if(x+1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y+1) && ((b.getPiece(x+1, y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y+1).charAt(0) == 'w' && color == Color.BLACK))) {
 				moves.add(new Point(x+1,y+1));
 			}
+
 			if(x-1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y+1) && ((b.getPiece(x-1, y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y+1).charAt(0) == 'w' && color == Color.BLACK))) {
 				moves.add(new Point(x-1,y+1));
 			}
@@ -63,6 +64,7 @@ public class Pawn extends Piece{
 			if(x+1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y-1) && ((b.getPiece(x+1, y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y-1).charAt(0) == 'w' && color == Color.BLACK))) {
 				moves.add(new Point(x+1,y-1));
 			}
+
 			if(x-1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y-1) && ((b.getPiece(x-1, y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y-1).charAt(0) == 'w' && color == Color.BLACK))) {
 				moves.add(new Point(x-1,y-1));
 			}

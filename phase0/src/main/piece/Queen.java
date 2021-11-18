@@ -3,7 +3,7 @@ package piece;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
-import Board.Board;
+import Board.BoardInterface;
 
 
 public class Queen extends Piece{
@@ -18,7 +18,7 @@ public class Queen extends Piece{
     }
     
     @Override
-    public List<Point> GetValidMoves(Board b, int x, int y) {
+    public List<Point> getValidMoves(BoardInterface b, int x, int y) {
 		List<Point> moves = new ArrayList<Point>();
 		
 		//Queen can move in any direction any number of spaces

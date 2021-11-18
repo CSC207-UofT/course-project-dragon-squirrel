@@ -2,7 +2,7 @@ package piece;
 
 import java.util.List;
 import java.awt.*;
-import Board.Board;
+import Board.BoardInterface;
 
 
 public abstract class Piece implements PieceInterface {
@@ -32,5 +32,5 @@ public abstract class Piece implements PieceInterface {
         return this.color == targetPiece.getColor();
     }
 
-	public abstract List<Point> GetValidMoves(Board b, int x, int y);
+	public abstract List<Point> getValidMoves(BoardInterface b, int x, int y);
 }

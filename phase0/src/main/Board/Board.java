@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Entity
  */
-public class Board {
+public class Board implements BoardInterface{
 
     private String[][] board;   // Each cell can be the name/ID of a piece
     Point boundaries;
