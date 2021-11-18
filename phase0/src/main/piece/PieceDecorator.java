@@ -5,7 +5,8 @@ import java.util.List;
 
 import Board.Board;
 
-public abstract class PieceDecorator implements PieceInterface {
+
+public class PieceDecorator implements PieceInterface {
     private Piece piece;
 
     public PieceDecorator(Piece piece) {

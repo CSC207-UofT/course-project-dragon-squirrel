@@ -5,6 +5,7 @@ import java.util.List;
 
 import Board.Board;
 
+
 public interface PieceInterface {
     String getName();
     Color getColor();
