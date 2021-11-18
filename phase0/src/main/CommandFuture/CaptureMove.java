@@ -4,12 +4,6 @@ import Board.*;
 import piece.PieceInterface;
 import piece.SuperPieceDecorator;
 
-/**
- *
- *
- * IN PROGRESS
- *
- */
 public class CaptureMove extends Move{
 
 	protected final PieceInterface targetPiece;
@@ -19,7 +13,11 @@ public class CaptureMove extends Move{
 		super(board, oldX, oldY, newX, newY);
 		targetPiece = board.getPiece(newX, newY);
 
-		// TODO calculate hpDeduction somehow
+		try {
+			hpDeduction = ((SuperPieceDecorator) actionPiece).getAtk();
+		} catch (ClassCastException e) {
+			hpDeduction = 0;
+		}
 	}
 
 	public PieceInterface getTargetPiece(){

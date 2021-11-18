@@ -1,20 +1,13 @@
 package CommandFuture;
 
 import Board.Board;
-import BoardManager.SuperBoardManager;
 import piece.PieceInterface;
 import piece.SuperPieceDecorator;
 
-/**
- *
- *
- * IN PROGRESS
- *
- */
 public class AttackMove extends Move{
 
 	protected final PieceInterface targetPiece;
-	protected int hpDeduction;
+	protected final int hpDeduction;
 
 	public AttackMove(Board board, int oldX, int oldY, int newX, int newY) {
 		super(board, oldX, oldY, newX, newY);

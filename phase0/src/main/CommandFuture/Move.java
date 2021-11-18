@@ -10,7 +10,7 @@ public abstract class Move implements Command {
 
     protected final Point oldPosition;
     protected final Point newPosition;
-    protected Board board;
+    protected final Board board;
     protected final PieceInterface actionPiece;
 
     public Move(Board board, int oldX, int oldY, int newX, int newY){
