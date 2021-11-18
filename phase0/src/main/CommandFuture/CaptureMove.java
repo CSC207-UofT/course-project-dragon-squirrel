@@ -1,7 +1,8 @@
 package CommandFuture;
 
-import Board.Board;
-import BoardManager.SuperBoardManager;
+import Board.*;
+import piece.PieceInterface;
+import piece.SuperPieceDecorator;
 
 /**
  *
@@ -11,14 +12,17 @@ import BoardManager.SuperBoardManager;
  */
 public class CaptureMove extends Move{
 
-	protected final String targetPiece;
+	protected final PieceInterface targetPiece;
+	protected int hpDeduction;
 
 	public CaptureMove(Board board, int oldX, int oldY, int newX, int newY) {
 		super(board, oldX, oldY, newX, newY);
 		targetPiece = board.getPiece(newX, newY);
+
+		// TODO calculate hpDeduction somehow
 	}
 
-	public String getTargetPiece(){
+	public PieceInterface getTargetPiece(){
 		return targetPiece;
 	}
 
@@ -26,7 +30,10 @@ public class CaptureMove extends Move{
 	public void execute() {
 		board.addPiece(actionPiece, newPosition.x, newPosition.y);
 		board.removePiece(oldPosition.x, oldPosition.y);
-		// TODO Perhaps also deduct hp
+
+		if (hpDeduction != 0) {
+			((SuperPieceDecorator) targetPiece).modifyHp(-hpDeduction);
+		}
 	}
 
 	@Override
@@ -35,9 +42,9 @@ public class CaptureMove extends Move{
 		board.addPiece(actionPiece, oldPosition.x, oldPosition.y);
 		board.addPiece(targetPiece, newPosition.x, newPosition.y);
 
-		// Restore hp
-		((SuperBoardManager) boardManager).deductOrAddHp(oldPosition[0], oldPosition[1],
-				newPosition[0], newPosition[1], false);
+		if (hpDeduction != 0) {
+			((SuperPieceDecorator) targetPiece).modifyHp(hpDeduction);
+		}
 	}
 
 }

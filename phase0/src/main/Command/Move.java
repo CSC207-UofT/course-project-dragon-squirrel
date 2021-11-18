@@ -42,7 +42,7 @@ public class Move implements Command{
         } // move is a move: put pieces back in place
         else {
             BM.movePiece(lastMove.getNewCoordX(), lastMove.getNewCoordY(), lastMove.getOldCoordX(), lastMove.getOldCoordY());
-            BM.getBoard().addPiece(lastMove.getNewPieceName(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
+            BM.getBoard().addPiece(lastMove.getNewPiece(), lastMove.getNewCoordX(), lastMove.getNewCoordY());
         } // move is a move after a successful attack: put pieces back in place and add back health points
         if (lastMove.getMoveType() == 3) {
             ((SuperBoardManager) BM).deductOrAddHp(lastMove.getOldCoordX(), lastMove.getOldCoordY(),

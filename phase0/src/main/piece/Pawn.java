@@ -48,11 +48,11 @@ public class Pawn extends Piece{
 				moves.add(new Point(x,y+1));
 			}
 
-			if(x+1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y+1) && ((b.getPiece(x+1, y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y+1).charAt(0) == 'w' && color == Color.BLACK))) {
+			if(x+1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y+1) && ((b.getPiece(x+1, y+1).isBlack() && color == Color.WHITE) || !(b.getPiece(x+1, y+1).isBlack() && color == Color.BLACK))) {
 				moves.add(new Point(x+1,y+1));
 			}
 
-			if(x-1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y+1) && ((b.getPiece(x-1, y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y+1).charAt(0) == 'w' && color == Color.BLACK))) {
+			if(x-1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y+1) && ((b.getPiece(x-1, y+1).isBlack() && color == Color.WHITE) || !(b.getPiece(x-1, y+1).isBlack() && color == Color.BLACK))) {
 				moves.add(new Point(x-1,y+1));
 			}
 		}
@@ -61,11 +61,11 @@ public class Pawn extends Piece{
 				moves.add(new Point(x,y-1));
 			}
 
-			if(x+1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y-1) && ((b.getPiece(x+1, y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y-1).charAt(0) == 'w' && color == Color.BLACK))) {
+			if(x+1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y-1) && ((b.getPiece(x+1, y-1).isBlack() && color == Color.WHITE) || !(b.getPiece(x+1, y-1).isBlack() && color == Color.BLACK))) {
 				moves.add(new Point(x+1,y-1));
 			}
 
-			if(x-1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y-1) && ((b.getPiece(x-1, y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y-1).charAt(0) == 'w' && color == Color.BLACK))) {
+			if(x-1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y-1) && ((b.getPiece(x-1, y-1).isBlack() && color == Color.WHITE) || !(b.getPiece(x-1, y-1).isBlack() && color == Color.BLACK))) {
 				moves.add(new Point(x-1,y-1));
 			}
 		}

@@ -1,5 +1,7 @@
 package Board;
 
+import piece.PieceInterface;
+
 import java.awt.Point;
 
 /**
@@ -10,5 +12,5 @@ import java.awt.Point;
 public interface BoardInterface {
 	Point getBoundaries();
 	boolean isPositionVacant(int X, int Y);
-	String getPiece(int X, int Y);
+	PieceInterface getPiece(int X, int Y);
 }

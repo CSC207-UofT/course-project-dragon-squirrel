@@ -20,6 +20,9 @@ public abstract class Piece implements PieceInterface {
 
     public Color getColor() { return color; }
 
+    // This could be more handy than previous one
+    public boolean isBlack() { return color == Color.BLACK; }
+
     public boolean getStatus() { return status; }
 
     public void setStatus(boolean status){

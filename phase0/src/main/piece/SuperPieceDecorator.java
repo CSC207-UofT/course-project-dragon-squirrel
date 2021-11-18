@@ -37,6 +37,8 @@ public class SuperPieceDecorator extends PieceDecorator{
 
     public void setHp(int hp) {this.hp = hp;}
 
+    public void modifyHp(int value) { this.hp += value; }
+
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
         return super.getValidMoves(b, x, y);
