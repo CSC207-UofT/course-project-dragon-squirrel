@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class SuperGameRule extends GameRule {
 
-    public SuperGameRule(Board superBoard, Map<String, PieceInterface> superPiecesDict, MoveRecord MR) {
-        super(superBoard, superPiecesDict, MR);
+    public SuperGameRule(Board superBoard, MoveRecord MR) {
+        super(superBoard, MR);
     }
 
     /**
@@ -27,13 +27,13 @@ public class SuperGameRule extends GameRule {
         }
 
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        if (!pieceName.contains("pawn") && superBoard.getLandType(newX, newY).equals("river")) {
+        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
+        if (!(pieceToMove.getName().contains("pawn")) && superBoard.getLandType(newX, newY).equals("river")) {
             System.out.println("invalid move into river");
             return false;
         }
 
-        if (!pieceName.contains("knight") && !pieceName.contains("pawn")
+        if (!pieceToMove.getName().contains("knight") && !pieceToMove.getName().contains("pawn")
                 && !isPathClearOfRiver(oldX, oldY, newX, newY)){
             System.out.println("invalid move over river");
             return false;
@@ -47,10 +47,8 @@ public class SuperGameRule extends GameRule {
      */
     public boolean isAttackAvailable(int oldX, int oldY, int newX, int newY) {
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        String targetPieceName = superBoard.getPiece(newX, newY);
-        PieceInterface pieceToMove = super.getPiecesDict().get(pieceName);
-        PieceInterface targetPiece = targetPieceName.equals("vacant") ? null : super.getPiecesDict().get(targetPieceName);
+        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
+        PieceInterface targetPiece = superBoard.getPiece(newX, newY);
 
         return targetPiece!=null && !pieceToMove.hasSameColor(targetPiece);
     }
@@ -76,8 +74,8 @@ public class SuperGameRule extends GameRule {
      */
     public boolean validFromBridgeAttack(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        if (!pieceName.contains("pawn")) {
+        PieceInterface pieceName = superBoard.getPiece(oldX, oldY);
+        if (!pieceName.getName().contains("pawn")) {
             return !superBoard.getLandType(newX, newY).equals("river");
         }
         return true;
@@ -92,10 +90,8 @@ public class SuperGameRule extends GameRule {
      */
     public boolean validFromElsewhereAttack(int oldX, int oldY, int newX, int newY){
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        String targetPieceName = superBoard.getPiece(newX, newY);
-        PieceInterface pieceToMove = super.getPiecesDict().get(pieceName);
-        PieceInterface targetPiece = targetPieceName.equals("vacant") ? null : super.getPiecesDict().get(targetPieceName);
+        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
+        PieceInterface targetPiece = superBoard.getPiece(newX, newY);
         String targetLand = superBoard.getLandType(newX, newY);
 
         // Check: pieces cannot attack over the bridge
@@ -105,7 +101,7 @@ public class SuperGameRule extends GameRule {
         }
 
         // Check: pieces besides the pawn cannot attack pawns "submerged" in the river
-        if (!pieceName.contains("pawn") && targetLand.equals("river")){
+        if (!pieceToMove.getName().contains("pawn") && targetLand.equals("river")){
             System.out.println("invalid attack into river");
             return false;
         }

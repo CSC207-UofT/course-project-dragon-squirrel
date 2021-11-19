@@ -1,14 +1,15 @@
 package Command;
 
 import BoardManager.BoardManager;
+import piece.PieceInterface;
 
 public class ChessMove {
     private final int[] oldPosition = new int[2];
     private final int[] newPosition = new int[2];
     private BoardManager BM;
-    private final String oldPieceName;
-    private final String newPieceName;
-    private int moveType;
+    private final PieceInterface oldPiece;
+    private final PieceInterface newPiece;
+    private final int moveType;
 
     /**
      * @param typeOfMove   1 if it is an attack <P>
@@ -21,8 +22,8 @@ public class ChessMove {
         oldPosition[1] = oldY;
         newPosition[0] = newX;
         newPosition[1] = newY;
-        oldPieceName = newBM.getBoard().getPiece(oldX, oldY);
-        newPieceName = newBM.getBoard().getPiece(newX, newY);
+        oldPiece = newBM.getBoard().getPiece(oldX, oldY);
+        newPiece = newBM.getBoard().getPiece(newX, newY);
         moveType = typeOfMove;
     }
 
@@ -42,12 +43,12 @@ public class ChessMove {
         return newPosition[1];
     }
 
-    public String getOldPieceName(){
-        return oldPieceName;
+    public PieceInterface getOldPiece(){
+        return oldPiece;
     }
 
-    public String getNewPieceName(){
-        return newPieceName;
+    public PieceInterface getNewPiece(){
+        return newPiece;
     }
 
     /**

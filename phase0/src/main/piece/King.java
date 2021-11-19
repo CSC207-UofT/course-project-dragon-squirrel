@@ -2,9 +2,8 @@ package piece;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.*;
-import Board.Board;
-
+import java.awt.Point;
+import Board.BoardInterface;
 
 public class King extends Piece{
 
@@ -21,61 +20,38 @@ public class King extends Piece{
         //TODO: what if we are castling
     }
     
-	public List<Point> GetValidMoves(Board b, int x, int y) {
-		List<Point> moves = new ArrayList<Point>();
-		
+	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
+		List<Point> moves = new ArrayList<>();
+
 		//checking in all directions
 		//The king can move one space in any direction
-		
-		if((x-1) < b.getBoundaries().x && (y-1) < b.getBoundaries().y && (b.isPositionVacant(x-1,y-1) || (!b.isPositionVacant(x-1,y-1) && (b.getPiece(x-1,y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y-1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-1,y-1));
-		}
-		
-		if((x+1) < b.getBoundaries().x && (y) < b.getBoundaries().y && (b.isPositionVacant(x+1,y) || (!b.isPositionVacant(x+1,y) && (b.getPiece(x+1,y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+1,y));
-		}
-		
-		if((x+1) < b.getBoundaries().x && (y-1) < b.getBoundaries().y && (b.isPositionVacant(x+1,y-1) || (!b.isPositionVacant(x+1,y-1) && (b.getPiece(x+1,y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y-1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+1,y-1));
-		}
 
-		if((x+1) < b.getBoundaries().x && (y+1) < b.getBoundaries().y && (b.isPositionVacant(x+1, y+1) || (!b.isPositionVacant(x+1,y+1) && (b.getPiece(x+1,y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y+1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+1,y+1));
-		}
-
-		if(x < b.getBoundaries().x && (y-1) < b.getBoundaries().y && (b.isPositionVacant(x,y-1) || (!b.isPositionVacant(x,y-1) && (b.getPiece(x,y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y-1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x,y-1));
-		}
-		
-		if((x-1) < b.getBoundaries().x && (y) < b.getBoundaries().y && (b.isPositionVacant(x-1,y) || (!b.isPositionVacant(x-1,y) && (b.getPiece(x-1,y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-1,y));
-		}
-
-		if((x-1) < b.getBoundaries().x && (y+1) < b.getBoundaries().y && (b.isPositionVacant(x-1,y+1) || (!b.isPositionVacant(x-1,y+1) && (b.getPiece(x-1,y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1, y+1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-1,y+1));
-		}
-		
-		if((x) < b.getBoundaries().x && (y+1) < b.getBoundaries().y && (b.isPositionVacant(x,y+1) || (!b.isPositionVacant(x,y+1) && (b.getPiece(x,y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y+1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x,y+1));
+		for (int i = x-1; i <= x+1; i++) {
+			for (int j = y-1; j <= y+1; j++) {
+				if ((i == x && j == y) || !withinBoundary(i, j, b))
+					continue;
+				if (b.isPositionVacant(i, j) || isOpponentPiece(i, j, b))
+					moves.add(new Point(i, j));
+			}
 		}
 	
 		if(color == Color.WHITE) {			
-			if(this.hasMovedDuringGame == false && x == 4 && y == 0) {
-				if(b.isPositionVacant(5, 0) && b.isPositionVacant(6, 0) && !b.isPositionVacant(7, 1-1) && b.getPiece(7, 1-1).charAt(2) == 'r'){
+			if (!this.hasMovedDuringGame && x == 4 && y == 0) {
+				if(b.isPositionVacant(5, 0) && b.isPositionVacant(6, 0) && !b.isPositionVacant(7, 1-1) && b.getPiece(7, 1-1) instanceof Rook){
 					moves.add(new Point(x+2,y));
-				}	
-						
+				}
 			}
 			else 
 				this.hasMovedDuringGame = true;
 		}
 		else { 
-			if(!this.hasMovedDuringGame && x == 4 && y == 7) {
+			if (!this.hasMovedDuringGame && x == 4 && y == 7) {
 				
 			}
 			else 
 				this.hasMovedDuringGame = true;
-		}		
+		}
+
 		return moves;
 	}
 

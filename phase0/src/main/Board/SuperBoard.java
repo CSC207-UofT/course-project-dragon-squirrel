@@ -1,5 +1,7 @@
 package Board;
 
+import piece.PieceInterface;
+
 public class SuperBoard extends Board{
 
     public static String[][] superBoardLand; // Each cell contains the name of the type of land
@@ -16,49 +18,9 @@ public class SuperBoard extends Board{
     public String getLandType(int X, int Y) {return superBoardLand[X][Y];}
 
     @Override
-    public void reset() {
-        String[][] board = super.getBoard();
-        // initialize white pieces
-        super.addPiece("w_rook_l", 12, 0);
-        super.addPiece("w_knight_l", 12, 2);
-        super.addPiece("w_bishop_l", 12, 3);
-        super.addPiece("w_queen", 12, 4);
-        super.addPiece("w_king", 12, 5);
-        super.addPiece("w_bishop_r", 12, 6);
-        super.addPiece("w_knight_r", 12, 7);
-        super.addPiece("w_rook_r", 12, 9);
-
-        // initialize white pawns
-        for (int i = 0; i < 10; i++) {
-            super.addPiece("w_pawn_" + i, 11, i);
-        }
-
-        // initialize black pieces
-        super.addPiece("b_rook_l", 0, 0);
-        super.addPiece("b_knight_l", 0, 2);
-        super.addPiece("b_bishop_l", 0, 3);
-        super.addPiece("b_queen", 0, 4);
-        super.addPiece("b_king", 0, 5);
-        super.addPiece("b_bishop_r", 0, 6);
-        super.addPiece("b_knight_r", 0, 7);
-        super.addPiece("b_rook_r", 0, 9);
-
-        // initialize black pawns
-        for (int i = 0; i < 10; i++) {
-            super.addPiece("b_pawn_" + i, 1, i);
-        }
-
-        // initialize remaining board with no pieces
-        for (int i = 2; i < 11; i++) {
-            for (int j = 0; j < 10; j++) {
-                super.addPiece("vacant", i, j);
-            }
-        }
-
-        super.addPiece("vacant", 0, 1);
-        super.addPiece("vacant", 0, 8);
-        super.addPiece("vacant", 12, 1);
-        super.addPiece("vacant", 12, 8);
+    public void reset(PieceInterface[][] board)
+    {
+        super.board = board;
     }
 
     public void superSetLand() {

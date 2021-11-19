@@ -4,6 +4,8 @@ import Board.Board;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+import piece.Color;
+import piece.Pawn;
 
 import java.awt.*;
 
@@ -82,8 +84,8 @@ public class TestBoard {
 
     @Test(timeout = 50)
     public void TestaddPiece(){
-        b.addPiece("w_pawn", 5, 0);
-        assertEquals("w_pawn", b.getBoard()[5][0]);
+        b.addPiece(new Pawn("pawn", Color.WHITE), 5, 0);
+        assertEquals("pawn", b.getBoard()[5][0].getName());
     }
 
     @Test(timeout = 50)
