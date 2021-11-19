@@ -3,6 +3,7 @@ package Controller;
 import BoardManager.*;
 import Command.ChessMove;
 import Command.Move;
+import CommandFuture.*;
 import GameRule.*;
 
 /**
@@ -45,32 +46,60 @@ public class CommandSender {
 		move.undo();
 	}
 
+//	/**
+//	 * @return 	-1 if move or attack is invalid <P>
+//	 * 			1 if attack is valid <P>
+//	 * 			2 if move is valid <P>
+//	 * 			3 if move is valid after a successful attack
+//	 */
+//	public int moveType(int oldX, int oldY, int newX, int newY) {
+//		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
+//			return -1;
+//		}
+//		// if there is an attack: target coordinate has an opponent's piece
+//		if (gl instanceof SuperGameRule && bm instanceof SuperBoardManager){
+//			if (((SuperGameRule) gl).isAttackAvailable(oldX, oldY, newX, newY)){
+//				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
+//					return -1;
+//				}
+//				int pastHp = ((SuperBoardManager) bm).getHp(newX, newY);
+//				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
+//				System.out.println("Attacked piece -> " + "Past Hp: " + pastHp + "    " +
+//						"New Hp: " + ((SuperBoardManager) bm).getHp(newX, newY));
+//				if (attackedToDeath) {
+//					System.out.println("attacked to death");
+//					return 3;
+//				} return 1;
+//			}
+//		} return 2;
+//	}
+
 	/**
-	 * @return 	-1 if move or attack is invalid <P>
-	 * 			1 if attack is valid <P>
-	 * 			2 if move is valid <P>
-	 * 			3 if move is valid after a successful attack
+	 * @return Move command
 	 */
-	public int moveType(int oldX, int oldY, int newX, int newY) {
-		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
-			return -1;
+	public CommandFuture.Move sendMove(int oldX, int oldY, int newX, int newY) {
+		MoveType moveType = gl.isMoveValid(oldX, oldY, newX, newY);
+
+		if (moveType == MoveType.REGULAR) {
+			return new RegularMove(bm.getBoard(), oldX, oldY, newX, newY);
 		}
-		// if there is an attack: target coordinate has an opponent's piece
-		if (gl instanceof SuperGameRule && bm instanceof SuperBoardManager){
-			if (((SuperGameRule) gl).isAttackAvailable(oldX, oldY, newX, newY)){
-				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
-					return -1;
-				}
-				int pastHp = ((SuperBoardManager) bm).getHp(newX, newY);
-				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
-				System.out.println("Attacked piece -> " + "Past Hp: " + pastHp + "    " +
-						"New Hp: " + ((SuperBoardManager) bm).getHp(newX, newY));
-				if (attackedToDeath) {
-					System.out.println("attacked to death");
-					return 3;
-				} return 1;
-			}
-		} return 2;
+
+		if (moveType == MoveType.ATTACK) {
+			return new AttackMove(bm.getBoard(), oldX, oldY, newX, newY);
+		}
+
+		if (moveType == MoveType.CAPTURE) {
+			return new CaptureMove(bm.getBoard(), oldX, oldY, newX, newY);
+		}
+
+		if (moveType == MoveType.ENPASSANT) {
+			return new EnPassantMove(bm.getBoard(), oldX, oldY, newX, newY);
+		}
+
+		if (moveType == MoveType.CASTLING) {
+			return new CastlingMove(bm.getBoard(), oldX, oldY, newX, newY);
+		}
+		return null;
 	}
 
 	/**
@@ -87,16 +116,6 @@ public class CommandSender {
 
 	}
 
-	public void startNewClassicGame() {
-		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getMR());
-		this.bu = new BoardUpdater(bm);
-	}
-
-	public void startNewSuperGame() {
-		bm = new SuperBoardManager();
-		gl = new SuperGameRule(bm.getBoard(), bm.getMR());
-	}
 	/**
 	 * @param classic true if the game played is a classic game
 	 */

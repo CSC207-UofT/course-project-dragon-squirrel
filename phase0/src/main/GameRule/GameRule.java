@@ -3,6 +3,7 @@ package GameRule;
 import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
+import CommandFuture.MoveType;
 import piece.Color;
 import piece.Knight;
 import piece.Pawn;
@@ -28,22 +29,67 @@ public class GameRule {
 
 	public Board getBoard(){return board;}
 
+//	/**
+//	 * @return whether move is valid according to classic chess game rules
+//	 */
+//	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+//
+//		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
+//			System.out.println("Coordinate invalid");
+//			return false;
+//		}
+//
+//		if (enPassant(oldX, oldY, newX, newY)){
+//			return true;
+//		}
+//
+//		if (pawnCapture(oldX, oldY, newX, newY)){
+//			return true;
+//		}
+//
+//		PieceInterface actionPiece = board.getPiece(oldX, oldY);
+//		PieceInterface targetPiece = board.getPiece(newX, newY);
+//
+//		if (actionPiece == null) {
+//			System.out.println("Piece not found");
+//			return false;
+//		}
+//
+//		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
+//			System.out.println("Invalid capture");
+//			return false;
+//		}
+//
+//		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
+//			System.out.println("Invalid Move");
+//			return false;
+//		}
+//
+//		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
+//			System.out.println("Path not clear");
+//			return false;
+//		}
+//
+//		return true;
+//	}
+
 	/**
-	 * @return whether move is valid according to classic chess game rules
+	 * Check whether move is valid according to classic chess game rules
+	 * @return type of move (INVALID, ENPASSANT, CAPTURE, REGULAR)
 	 */
-	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
 			System.out.println("Coordinate invalid");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (enPassant(oldX, oldY, newX, newY)){
-			return true;
+			return MoveType.ENPASSANT;
 		}
 
 		if (pawnCapture(oldX, oldY, newX, newY)){
-			return true;
+			return MoveType.CAPTURE;
 		}
 
 		PieceInterface actionPiece = board.getPiece(oldX, oldY);
@@ -51,25 +97,29 @@ public class GameRule {
 
 		if (actionPiece == null) {
 			System.out.println("Piece not found");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
 			System.out.println("Invalid capture");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
 			System.out.println("Invalid Move");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
-			return false;
+			return MoveType.INVALID;
 		}
 
-		return true;
+		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
+			return MoveType.CAPTURE;
+		}
+
+		return MoveType.REGULAR;
 	}
 
 	/**
