@@ -30,7 +30,7 @@ public class Bishop extends Piece{
 				
 				if(!b.isPositionVacant(x + i, y + i)) {
 				
-					if((b.getPiece(x+i, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y+i).charAt(0) == 'w' && color == Color.BLACK))
+					if((b.getPiece(x+i, y+i).isBlack() && color == Color.WHITE) || (b.getPiece(x+i, y+i).isWhite() && color == Color.BLACK))
 						moves.add(new Point(x+i,y+i));	
 					
 					break;
@@ -45,7 +45,7 @@ public class Bishop extends Piece{
 				
 				if(!b.isPositionVacant(x-i, y+i)) {
 				
-					if((b.getPiece(x-i, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y+i).charAt(0) == 'w' && color == Color.BLACK))
+					if((b.getPiece(x-i, y+i).isBlack() && color == Color.WHITE) || (b.getPiece(x-i, y+i).isWhite() && color == Color.BLACK))
 						moves.add(new Point(x-i,y+i));	
 					
 					break;
@@ -60,7 +60,7 @@ public class Bishop extends Piece{
 				
 				if(!b.isPositionVacant(x+i, y-i)) {
 				
-					if((b.getPiece(x+i, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y-i).charAt(0) == 'w' && color == Color.BLACK))
+					if((b.getPiece(x+i, y-i).isBlack() && color == Color.WHITE) || (b.getPiece(x+i, y-i).isWhite() && color == Color.BLACK))
 						moves.add(new Point(x+i,y-i));	
 					
 					break;
@@ -76,7 +76,7 @@ public class Bishop extends Piece{
 				
 				if(!b.isPositionVacant(x-i, y-i)) {
 
-					if((b.getPiece(x-i, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y-i).charAt(0) == 'w' && color == Color.BLACK))
+					if((b.getPiece(x-i, y-i).isBlack() && color == Color.WHITE) || (b.getPiece(x-i, y-i).isWhite() && color == Color.BLACK))
 						moves.add(new Point(x-i,y-i));	
 					
 					break;

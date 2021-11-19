@@ -9,7 +9,8 @@ import Board.BoardInterface;
 public interface PieceInterface {
     String getName();
     Color getColor();
-    public boolean isBlack();
+    boolean isBlack();
+    boolean isWhite();
     boolean getStatus();
     void setStatus(boolean status);
     boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);

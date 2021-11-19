@@ -23,6 +23,8 @@ public abstract class Piece implements PieceInterface {
     // This could be more handy than previous one
     public boolean isBlack() { return color == Color.BLACK; }
 
+    public boolean isWhite() { return color == Color.WHITE; }
+
     public boolean getStatus() { return status; }
 
     public void setStatus(boolean status){
@@ -36,4 +38,19 @@ public abstract class Piece implements PieceInterface {
     }
 
 	public abstract List<Point> getValidMoves(BoardInterface b, int x, int y);
+
+    /**
+     * Return true if (x,y) is within boundary of Board b
+     */
+    protected boolean withinBoundary(int x, int y, BoardInterface b) {
+        return x < b.getBoundaries().x && y < b.getBoundaries().y;
+    }
+
+    /**
+     * Assume b[x][y] is a piece (not vacant)
+     * Return true if b[x][y] has different color than this piece
+     */
+    protected boolean isOpponentPiece(int x, int y, BoardInterface b) {
+        return b.getPiece(x, y).getColor() != this.color;
+    }
 }

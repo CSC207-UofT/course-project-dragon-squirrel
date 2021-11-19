@@ -5,9 +5,6 @@ import Command.MoveRecord;
 import Player.*;
 import piece.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know

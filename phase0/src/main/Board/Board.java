@@ -11,7 +11,7 @@ import java.awt.Point;
  */
 public class Board implements BoardInterface{
 
-    private PieceInterface[][] board;   // Each cell can be the name/ID of a piece
+    protected PieceInterface[][] board;   // Each cell can be the name/ID of a piece
     Point boundaries;
 
     public Board(int column, int row) {

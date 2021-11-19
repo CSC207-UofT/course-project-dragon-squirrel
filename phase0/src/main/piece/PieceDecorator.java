@@ -24,6 +24,16 @@ public class PieceDecorator implements PieceInterface {
     }
 
     @Override
+    public boolean isBlack() {
+        return piece.isBlack();
+    }
+
+    @Override
+    public boolean isWhite() {
+        return piece.isWhite();
+    }
+
+    @Override
     public boolean getStatus() {
         return piece.getStatus();
     }
