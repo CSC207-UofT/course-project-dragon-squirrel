@@ -14,6 +14,7 @@ public interface PieceInterface {
     boolean getStatus();
     void setStatus(boolean status);
     boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY);
+    Piece deepCopy();
     boolean hasSameColor(PieceInterface targetPiece);
     List<Point> getValidMoves(BoardInterface b, int x, int y);
 

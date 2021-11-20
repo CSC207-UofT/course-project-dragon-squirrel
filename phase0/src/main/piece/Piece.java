@@ -39,6 +39,11 @@ public abstract class Piece implements PieceInterface {
 
 	public abstract List<Point> getValidMoves(BoardInterface b, int x, int y);
 
+    // TODO implement it
+    public Piece deepCopy() {
+        return null;
+    }
+
     /**
      * Return true if (x,y) is within boundary of Board b
      */
