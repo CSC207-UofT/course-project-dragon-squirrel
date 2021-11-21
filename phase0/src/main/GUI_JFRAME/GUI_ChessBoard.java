@@ -1,9 +1,13 @@
 package GUI_JFRAME;
 
+import CommandFuture.Move;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Board extends JFrame {
+public class GUI_ChessBoard extends JFrame {
+    // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
+    // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
     private PieceIcon[] icons = new PieceIcon[]{
             // white
@@ -34,7 +38,9 @@ public class Board extends JFrame {
             new PieceIcon("\u265C")
     };
 
-    public Board(){}
+    // TODO: Probably will change some code below, as we need to have operation on the board
+
+    public GUI_ChessBoard(){}
 
     void display(){
         setTitle("Chess board");
@@ -59,4 +65,9 @@ public class Board extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
+    // TODO: Allow pieces to move by interacting with other code, idea: by change the array of icons.
+
+    // Here should be some code.
+
 }
