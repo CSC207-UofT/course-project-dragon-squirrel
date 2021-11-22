@@ -23,7 +23,7 @@ public class BoardUpdater {
 	}
 
 	private void updateBoardImage() {
-		boardImage = bm.getCurrentBoard();
+		boardImage = bm.getBoardAsString();
 	}
 
 	public void display() {

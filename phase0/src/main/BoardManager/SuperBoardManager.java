@@ -1,8 +1,6 @@
 package BoardManager;
 
-import Board.*;
 import piece.*;
-import piece.SuperPieceDecorator;
 
 public class SuperBoardManager extends BoardManager{
 
@@ -14,9 +12,7 @@ public class SuperBoardManager extends BoardManager{
      * @return Hp of piece at board[X][Y]
      */
     public int getHp(int X, int Y){
-        Board superBoard = super.getBoard();
-        String pieceName = superBoard.getPiece(X, Y);
-        SuperPieceDecorator piece = (SuperPieceDecorator) getPieces().get(pieceName);
+        SuperPieceDecorator piece = (SuperPieceDecorator) board.getPiece(X, Y);
         return piece.getHp();
     }
 
@@ -28,11 +24,9 @@ public class SuperBoardManager extends BoardManager{
      * undo.
      */
     public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
-        Board superBoard = super.getBoard();
-        String pieceName = superBoard.getPiece(oldX, oldY);
-        String pieceToModifyName = superBoard.getPiece(newX, newY);
-        SuperPieceDecorator piece = (SuperPieceDecorator) getPieces().get(pieceName);
-        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) getPieces().get(pieceToModifyName);
+        SuperPieceDecorator piece = (SuperPieceDecorator) board.getPiece(oldX, oldY);
+        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) board.getPiece(newX, newY);
+
         int atkLevel = piece.getAtk();
         int newHp;
 
@@ -54,44 +48,59 @@ public class SuperBoardManager extends BoardManager{
      */
     public boolean attackToDeath(int oldX, int oldY, int newX, int newY){
         deductOrAddHp(oldX, oldY, newX, newY, true);
-
-        Board superBoard = super.getBoard();
-        String pieceToModifyName = superBoard.getPiece(newX, newY);
-        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) getPieces().get(pieceToModifyName);
+        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) board.getPiece(newX, newY);
 
         return pieceToModify.getHp() < 1;
     }
 
     @Override
-    public void resetMap() {
-        // instantiate white pieces and put into Map: write in health point and attack level
-        super.setPieces("w_rook_l", new SuperPieceDecorator(new Rook("w_rook_l", Color.WHITE), 4, 1));
-        super.setPieces("w_knight_l", new SuperPieceDecorator(new Knight("w_knight_l", Color.WHITE), 3, 5));
-        super.setPieces("w_bishop_l", new SuperPieceDecorator(new Bishop("w_bishop_l", Color.WHITE), 4, 1));
-        super.setPieces("w_queen", new SuperPieceDecorator(new Queen("w_queen", Color.WHITE), 2, 2));
-        super.setPieces("w_king", new SuperPieceDecorator(new King("w_king", Color.WHITE), 2, 7));
-        super.setPieces("w_bishop_r", new SuperPieceDecorator(new Bishop("w_bishop_r", Color.WHITE), 4, 1));
-        super.setPieces("w_knight_r", new SuperPieceDecorator(new Knight("w_knight_r", Color.WHITE), 3, 5));
-        super.setPieces("w_rook_r", new SuperPieceDecorator(new Rook("w_rook_r", Color.WHITE), 4, 1));
+    public void resetBoard() {
+        SuperPieceDecorator[][] Piece2dArray = new SuperPieceDecorator[13][10];
 
+        // initialize white pieces
+        Piece2dArray[12][0] = new SuperPieceDecorator(new Rook("rook_l", Color.WHITE), 4, 1);
+        Piece2dArray[12][2] = new SuperPieceDecorator(new Knight("knight_l", Color.WHITE), 3, 5);
+        Piece2dArray[12][3] = new SuperPieceDecorator(new Bishop("bishop_l", Color.WHITE), 4, 1);
+        Piece2dArray[12][4] = new SuperPieceDecorator(new Queen("queen", Color.WHITE), 2, 2);
+        Piece2dArray[12][5] = new SuperPieceDecorator(new King("king", Color.WHITE), 2, 7);
+        Piece2dArray[12][6] = new SuperPieceDecorator(new Bishop("bishop_r", Color.WHITE), 4, 1);
+        Piece2dArray[12][7] = new SuperPieceDecorator(new Knight("knight_r", Color.WHITE), 3, 5);
+        Piece2dArray[12][9] = new SuperPieceDecorator(new Rook("rook_r", Color.WHITE), 4, 1);
+
+        // initialize white pawns
         for (int i = 0; i < 10; i++) {
-            String name = "w_pawn_" + i;
-            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.WHITE), 5, 6));
+            String name = "pawn_" + i;
+            Piece2dArray[11][i] = new SuperPieceDecorator(new Pawn(name, Color.WHITE), 5, 6);
         }
 
-        // instantiate black pieces and put into Map: write in health point and attack level
-        super.setPieces("b_rook_l", new SuperPieceDecorator(new Rook("b_rook_l", Color.BLACK), 4, 1));
-        super.setPieces("b_knight_l", new SuperPieceDecorator(new Knight("b_knight_l", Color.BLACK), 3, 5));
-        super.setPieces("b_bishop_l", new SuperPieceDecorator(new Bishop("b_bishop_l", Color.BLACK), 4, 1));
-        super.setPieces("b_queen", new SuperPieceDecorator(new Queen("b_queen", Color.BLACK), 2, 2));
-        super.setPieces("b_king", new SuperPieceDecorator(new King("b_king", Color.BLACK), 2, 7));
-        super.setPieces("b_bishop_r", new SuperPieceDecorator(new Bishop("b_bishop_r", Color.BLACK), 4, 1));
-        super.setPieces("b_knight_r", new SuperPieceDecorator(new Knight("b_knight_r", Color.BLACK), 3, 5));
-        super.setPieces("b_rook_r", new SuperPieceDecorator(new Rook("b_rook_r", Color.BLACK), 4, 1));
+        // initialize black pieces
+        Piece2dArray[0][0] = new SuperPieceDecorator(new Rook("rook_l", Color.BLACK), 4, 1);
+        Piece2dArray[0][2] = new SuperPieceDecorator(new Knight("knight_l", Color.BLACK), 3, 5);
+        Piece2dArray[0][3] = new SuperPieceDecorator(new Bishop("bishop_l", Color.BLACK), 4, 1);
+        Piece2dArray[0][4] = new SuperPieceDecorator(new Queen("queen", Color.BLACK), 2, 2);
+        Piece2dArray[0][5] = new SuperPieceDecorator(new King("king", Color.BLACK), 2, 7);
+        Piece2dArray[0][6] = new SuperPieceDecorator(new Bishop("bishop_r", Color.BLACK), 4, 1);
+        Piece2dArray[0][7] = new SuperPieceDecorator(new Knight("knight_r", Color.BLACK), 3, 5);
+        Piece2dArray[0][9] = new SuperPieceDecorator(new Rook("rook_r", Color.BLACK), 4, 1);
 
+        // initialize black pawns
         for (int i = 0; i < 10; i++) {
-            String name = "b_pawn_" + i;
-            super.setPieces(name, new SuperPieceDecorator(new Pawn(name, Color.BLACK), 5, 6));
+            String name = "pawn_" + i;
+            Piece2dArray[1][i] = new SuperPieceDecorator(new Pawn(name, Color.BLACK), 5, 6);
         }
+
+        // initialize remaining board with no pieces
+        for (int i = 2; i < 11; i++) {
+            for (int j = 0; j < 10; j++) {
+                Piece2dArray[i][i] = null;
+            }
+        }
+
+        Piece2dArray[0][1] = null;
+        Piece2dArray[0][8] = null;
+        Piece2dArray[12][1] = null;
+        Piece2dArray[12][8] = null;
+
+        board.reset(Piece2dArray);
     }
 }

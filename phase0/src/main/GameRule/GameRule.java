@@ -4,11 +4,12 @@ import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
 import piece.Color;
+import piece.Knight;
+import piece.Pawn;
 import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Verifies whether move is valid according to game rules.
@@ -16,18 +17,16 @@ import java.util.Map;
 public class GameRule {
 
 	private Board board;
-	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
+//	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
 	private MoveRecord MR;
 
-	public GameRule(Board board, Map<String, PieceInterface> piecesDict, MoveRecord MR) {
+	public GameRule(Board board, MoveRecord MR) {
 		this.board = board;
-		this.piecesDict = piecesDict;
+//		this.piecesDict = piecesDict;
 		this.MR = MR;
 	}
 
 	public Board getBoard(){return board;}
-
-	public Map<String, PieceInterface> getPiecesDict(){return piecesDict;}
 
 	/**
 	 * @return whether move is valid according to classic chess game rules
@@ -47,27 +46,25 @@ public class GameRule {
 			return true;
 		}
 
-		String pieceName = board.getPiece(oldX, oldY);
-		String targetPieceName = board.getPiece(newX, newY);
-		PieceInterface pieceToMove = piecesDict.get(pieceName);
-		PieceInterface targetPiece = targetPieceName.equals("vacant") ? null : piecesDict.get(targetPieceName);
+		PieceInterface actionPiece = board.getPiece(oldX, oldY);
+		PieceInterface targetPiece = board.getPiece(newX, newY);
 
-		if (pieceToMove == null) {
+		if (actionPiece == null) {
 			System.out.println("Piece not found");
 			return false;
 		}
 
-		if (targetPiece != null && pieceToMove.hasSameColor(targetPiece)) {
+		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
 			System.out.println("Invalid capture");
 			return false;
 		}
 
-		if (!pieceToMove.validMove(oldX, oldY, newX , newY)) {
+		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
 			System.out.println("Invalid Move");
 			return false;
 		}
 
-		if (!pieceName.contains("knight") && !isPathClear(oldX, oldY, newX , newY)) {
+		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
 			return false;
 		}
@@ -166,12 +163,12 @@ public class GameRule {
 			return false;
 		}
 		ChessMove lastMove = MR.get();
-		PieceInterface lastMovePiece = piecesDict.get(lastMove.getOldPieceName());
-		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
-		if (!board.getPiece(oldX, oldY).contains("pawn")){
+		PieceInterface lastMovePiece = lastMove.getOldPiece();
+		PieceInterface movingPiece = board.getPiece(oldX, oldY);
+		if (!(movingPiece instanceof Pawn)){
 			return false;
 		}
-		if (!lastMove.getOldPieceName().contains("pawn")){
+		if (!(lastMovePiece instanceof Pawn)){
 			return false;
 		}
 		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
@@ -190,9 +187,9 @@ public class GameRule {
 	}
 
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
-		PieceInterface movingPiece = piecesDict.get(board.getPiece(oldX, oldY));
-		PieceInterface capturedPiece = piecesDict.get(board.getPiece(newX, newY));
-		if (!board.getPiece(oldX, oldY).contains("pawn")){
+		PieceInterface movingPiece = board.getPiece(oldX, oldY);
+		PieceInterface capturedPiece = board.getPiece(newX, newY);
+		if (!(board.getPiece(oldX, oldY) instanceof Pawn)){
 			return false;
 		}
 		if (capturedPiece == null){

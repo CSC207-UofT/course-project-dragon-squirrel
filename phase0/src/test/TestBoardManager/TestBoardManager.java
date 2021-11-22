@@ -4,11 +4,6 @@ import Board.Board;
 import BoardManager.BoardManager;
 import org.junit.Before;
 import org.junit.Test;
-import piece.*;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,12 +20,12 @@ public class TestBoardManager {
 
     @Test(timeout = 50)
     public void TestgetBoard(){
-        assertEquals(b.getBoard(), bm.getCurrentBoard());
+        assertEquals(b.getBoard(), bm.getBoardAsString());
     }
 
     @Test(timeout = 50)
     public void TestgetCurrentBoard(){
-        assertEquals(b.getBoard(), bm.getCurrentBoard());
+        assertEquals(b.getBoard(), bm.getBoardAsString());
     }
 
 //    @Test(timeout = 50)

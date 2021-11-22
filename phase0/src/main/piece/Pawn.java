@@ -1,13 +1,14 @@
 package piece;
 
-import Board.Board;
-
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.awt.*;
+import Board.BoardInterface;
+
 
 public class Pawn extends Piece{
 
-    private boolean hasNotMovedDuringGame;
+    public boolean hasNotMovedDuringGame;
 
     public Pawn(String name, Color color){
         super(name, color);
@@ -37,9 +38,39 @@ public class Pawn extends Piece{
 
         return solution;
     }
+    
+	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
+		List<Point> moves = new ArrayList<>();
+		
+		//pawn moves forward , not backward so checking for white and black separately
+		if(color == Color.WHITE) {
+			if(x < b.getBoundaries().x && (y+1) < b.getBoundaries().y && b.isPositionVacant(x, y+1)) {
+				moves.add(new Point(x,y+1));
+			}
 
-    @Override
-    public List<Point> GetValidMoves(Board b, int x, int y) {
-        return null;
-    }
+			if(x+1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y+1) && ((b.getPiece(x+1, y+1).isBlack() && color == Color.WHITE) || !(b.getPiece(x+1, y+1).isBlack() && color == Color.BLACK))) {
+				moves.add(new Point(x+1,y+1));
+			}
+
+			if(x-1 < b.getBoundaries().x && (y+1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y+1) && ((b.getPiece(x-1, y+1).isBlack() && color == Color.WHITE) || !(b.getPiece(x-1, y+1).isBlack() && color == Color.BLACK))) {
+				moves.add(new Point(x-1,y+1));
+			}
+		}
+		else {
+			if(x < b.getBoundaries().x && (y-1) < b.getBoundaries().y && b.isPositionVacant(x, y-1)) {
+				moves.add(new Point(x,y-1));
+			}
+
+			if(x+1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x+1, y-1) && ((b.getPiece(x+1, y-1).isBlack() && color == Color.WHITE) || !(b.getPiece(x+1, y-1).isBlack() && color == Color.BLACK))) {
+				moves.add(new Point(x+1,y-1));
+			}
+
+			if(x-1 < b.getBoundaries().x && (y-1) < b.getBoundaries().y && !b.isPositionVacant(x-1, y-1) && ((b.getPiece(x-1, y-1).isBlack() && color == Color.WHITE) || !(b.getPiece(x-1, y-1).isBlack() && color == Color.BLACK))) {
+				moves.add(new Point(x-1,y-1));
+			}
+		}
+		
+		return moves;
+	}
+	
 }

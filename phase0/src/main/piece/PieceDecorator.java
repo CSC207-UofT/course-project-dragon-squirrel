@@ -3,9 +3,10 @@ package piece;
 import java.awt.Point;
 import java.util.List;
 
-import Board.Board;
+import Board.BoardInterface;
 
-public abstract class PieceDecorator implements PieceInterface {
+
+public class PieceDecorator implements PieceInterface {
     private Piece piece;
 
     public PieceDecorator(Piece piece) {
@@ -20,6 +21,16 @@ public abstract class PieceDecorator implements PieceInterface {
     @Override
     public Color getColor() {
         return piece.getColor();
+    }
+
+    @Override
+    public boolean isBlack() {
+        return piece.isBlack();
+    }
+
+    @Override
+    public boolean isWhite() {
+        return piece.isWhite();
     }
 
     @Override
@@ -38,8 +49,8 @@ public abstract class PieceDecorator implements PieceInterface {
     }
 
     @Override
-	public List<Point> GetValidMoves(Board b, int x, int y){
-    	return piece.GetValidMoves(b, x, y);
+	public List<Point> getValidMoves(BoardInterface b, int x, int y){
+    	return piece.getValidMoves(b, x, y);
     }
 
     @Override

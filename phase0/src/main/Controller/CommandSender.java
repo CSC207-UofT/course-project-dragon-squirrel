@@ -93,13 +93,13 @@ public class CommandSender {
 
 	public void startNewClassicGame() {
 		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		gl = new GameRule(bm.getBoard(), bm.getMR());
 		this.bu = new BoardUpdater(bm);
 	}
 
 	public void startNewSuperGame() {
 		bm = new SuperBoardManager();
-		gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+		gl = new SuperGameRule(bm.getBoard(), bm.getMR());
 	}
 	/**
 	 * @param classic true if the game played is a classic game
@@ -107,11 +107,11 @@ public class CommandSender {
 	public void startNewGame(boolean classic) {
 		if (classic) {
 			bm = new BoardManager();
-			gl = new GameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+			gl = new GameRule(bm.getBoard(), bm.getMR());
 		}
 		else {
 			bm = new SuperBoardManager();
-			gl = new SuperGameRule(bm.getBoard(), bm.getPieces(), bm.getMR());
+			gl = new SuperGameRule(bm.getBoard(), bm.getMR());
 		}
 		this.bu = new BoardUpdater(bm);
 	}

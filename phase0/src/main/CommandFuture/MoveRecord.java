@@ -1,19 +1,18 @@
-package Command;
+package CommandFuture;
 
 import java.util.LinkedList;
 
 public class MoveRecord {
-    LinkedList<ChessMove> record;
-
+    LinkedList<Move> record;
     public MoveRecord(){
-        record = new LinkedList<ChessMove>();
+        record = new LinkedList<Move>();
     }
 
-    public void add(ChessMove newChessRuleMove){
+    public void add(Move newChessRuleMove){
         record.addFirst(newChessRuleMove);
     }
 
-    public ChessMove get(){
+    public Move get(){
         return record.getFirst();
     }
 
