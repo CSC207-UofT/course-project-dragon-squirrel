@@ -12,7 +12,12 @@ public class Knight extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return KNIGHT_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         int X = Math.abs(oldCoorX - newCoorX);
         int Y = Math.abs(oldCoorY - newCoorY);

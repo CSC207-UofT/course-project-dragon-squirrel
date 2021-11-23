@@ -16,13 +16,11 @@ import java.util.ArrayList;
  */
 public class GameRule {
 
-	private Board board;
-//	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
-	private MoveRecord MR;
+	private final Board board;
+	private final MoveRecord MR;
 
 	public GameRule(Board board, MoveRecord MR) {
 		this.board = board;
-//		this.piecesDict = piecesDict;
 		this.MR = MR;
 	}
 

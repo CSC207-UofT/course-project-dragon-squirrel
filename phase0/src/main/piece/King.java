@@ -13,7 +13,12 @@ public class King extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return KING_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) <= 1 && Math.abs(oldCoorY - newCoorY) <= 1;
 

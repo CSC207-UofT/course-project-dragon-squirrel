@@ -1,17 +1,46 @@
 package chessAI;
 
-import java.util.ArrayList;
+import BoardManager.BoardManager;
+import piece.PieceInterface;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Engine {
 	private State startingState;
-	private ArrayList<State> states;
+	private State bestState;
+	private Queue<State> searchStates = new LinkedList<>();
+	State currentState;
 
-	public Engine() {
-		states = new ArrayList<>();
+	private int bestScore = -PieceInterface.KING_VALUE;
+	private int worstScore = PieceInterface.KING_VALUE;
+
+	public Engine(BoardManager bm) {
+
+		// TODO initialize states
+		startingState = new State(bm.getBoard(), null);
+
 	}
 
-	public void generateStates() {
-		// TODO
-		// Ask startingState to generate next states, and store them in arrayList
+	public int search(int depth) {
+
+		if (depth == 0) {
+			return currentState.getScore();
+		}
+
+		while (!searchStates.isEmpty()) {
+			currentState = searchStates.remove();
+			int score = search(depth - 1);
+
+
+			if (currentState.getPlayer() == startingState.getPlayer() && score > bestScore) {
+				bestScore = score;
+				bestState = currentState;
+			} else if (currentState.getPlayer() != startingState.getPlayer() && score < worstScore) {
+				bestScore = score;
+				bestState = currentState;
+			}
+		}
+
+		return 0;   //TODO
 	}
 }

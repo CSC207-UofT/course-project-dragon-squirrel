@@ -77,7 +77,7 @@ public class Board implements BoardInterface{
 
         for (int i = 0; i < boundaries.x; i++) {
             for (int j = 0; j < boundaries.y; j++) {
-                piece2dArray[i][j] = board[i][j].deepCopy();
+                piece2dArray[i][j] = board[i][j].deepCopy();    //TODO requires Piece.deepCopy() work properly
             }
         }
 

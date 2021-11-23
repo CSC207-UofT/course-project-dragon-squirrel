@@ -43,7 +43,6 @@ public class BoardManager {
 
     public PieceInterface getPiece(int x, int y) {
         PieceInterface piece = board.getPiece(x, y);
-
         return piece;
     }
 
