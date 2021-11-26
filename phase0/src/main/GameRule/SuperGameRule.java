@@ -2,13 +2,12 @@ package GameRule;
 
 import Board.*;
 import Command.MoveRecord;
-import CommandFuture.MoveType;
+import Command.MoveType;
 import piece.PieceInterface;
 import piece.SuperPieceDecorator;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SuperGameRule extends GameRule {
 
@@ -16,36 +15,8 @@ public class SuperGameRule extends GameRule {
         super(superBoard, MR);
     }
 
-//    /**
-//     * Check:   pieces move according to classic chess game rules.
-//     *          pieces beside pawns can not move into the river.
-//     *          pieces besides knights and pawns can not move over the river.
-//     * @return true if move is valid according to super chess game rules, false otherwise.
-//     */
-//    @Override
-//    public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
-//        if (!super.isMoveValid(oldX, oldY, newX, newY)){
-//            return false;
-//        }
-//
-//        SuperBoard superBoard = (SuperBoard) super.getBoard();
-//        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
-//        if (!(pieceToMove.getName().contains("pawn")) && superBoard.getLandType(newX, newY).equals("river")) {
-//            System.out.println("invalid move into river");
-//            return false;
-//        }
-//
-//        if (!pieceToMove.getName().contains("knight") && !pieceToMove.getName().contains("pawn")
-//                && !isPathClearOfRiver(oldX, oldY, newX, newY)){
-//            System.out.println("invalid move over river");
-//            return false;
-//        }
-//
-//        return true;
-//    }
-
     /**
-     * Check:   pieces move according to classic chess game rules.
+     * Check:   pieces move according to classic chess game rules (this includes attack validity).
      *          pieces beside pawns can not move into the river.
      *          pieces besides knights and pawns can not move over the river.
      * @return type of move
@@ -85,17 +56,6 @@ public class SuperGameRule extends GameRule {
         return MoveType.REGULAR;
     }
 
-
-    /**
-     * @return whether target coordinates harbors an opponent's piece
-     */
-    public boolean isAttackAvailable(int oldX, int oldY, int newX, int newY) {
-        SuperBoard superBoard = (SuperBoard) super.getBoard();
-        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
-        PieceInterface targetPiece = superBoard.getPiece(newX, newY);
-
-        return targetPiece!=null && !pieceToMove.hasSameColor(targetPiece);
-    }
 
     /**
      * @return whether the attack is successful in that the target piece has died

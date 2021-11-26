@@ -1,4 +1,4 @@
-package CommandFuture;
+package Command;
 
 public enum MoveType {
     INVALID,
