@@ -90,8 +90,8 @@ public class SuperBoardManager extends BoardManager{
         }
 
         // initialize remaining board with no pieces
-        for (int i = 2; i < 11; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 2; i < 10; i++) {
+            for (int j = 0; j < 11; j++) {
                 Piece2dArray[i][i] = null;
             }
         }
