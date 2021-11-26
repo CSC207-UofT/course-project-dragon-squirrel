@@ -2,11 +2,12 @@ package GameRule;
 
 import Board.*;
 import Command.MoveRecord;
+import Command.MoveType;
 import piece.PieceInterface;
+import piece.SuperPieceDecorator;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SuperGameRule extends GameRule {
 
@@ -15,43 +16,58 @@ public class SuperGameRule extends GameRule {
     }
 
     /**
-     * Check:   pieces move according to classic chess game rules.
+     * Check:   pieces move according to classic chess game rules (this includes attack validity).
      *          pieces beside pawns can not move into the river.
      *          pieces besides knights and pawns can not move over the river.
-     * @return true if move is valid according to super chess game rules, false otherwise.
+     * @return type of move
      */
     @Override
-    public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
-        if (!super.isMoveValid(oldX, oldY, newX, newY)){
-            return false;
+    public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
+        MoveType moveType = super.isMoveValid(oldX, oldY, newX, newY);
+
+        if (moveType == MoveType.INVALID) {
+            return MoveType.INVALID;
         }
 
-        SuperBoard superBoard = (SuperBoard) super.getBoard();
-        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
-        if (!(pieceToMove.getName().contains("pawn")) && superBoard.getLandType(newX, newY).equals("river")) {
-            System.out.println("invalid move into river");
-            return false;
+        if (moveType == MoveType.REGULAR) {
+            SuperBoard superBoard = (SuperBoard) super.getBoard();
+            PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
+            if (!(pieceToMove.getName().contains("pawn")) && superBoard.getLandType(newX, newY).equals("river")) {
+                System.out.println("invalid move into river");
+                return MoveType.INVALID;
+            }
+            if (!pieceToMove.getName().contains("knight") && !pieceToMove.getName().contains("pawn")
+                    && !isPathClearOfRiver(oldX, oldY, newX, newY)) {
+                System.out.println("invalid move over river");
+                return MoveType.INVALID;
+            }
         }
 
-        if (!pieceToMove.getName().contains("knight") && !pieceToMove.getName().contains("pawn")
-                && !isPathClearOfRiver(oldX, oldY, newX, newY)){
-            System.out.println("invalid move over river");
-            return false;
+        if (moveType == MoveType.ENPASSANT || moveType == MoveType.CAPTURE) {
+            if (!isAttackValid(oldX, oldY, newX, newY)) {
+                return MoveType.INVALID;
+            }
+            if (isAttackSuccessful(oldX, oldY, newX, newY)) {
+                if (moveType == MoveType.ENPASSANT) {
+                    return MoveType.ENPASSANT;
+                } return MoveType.CAPTURE;
+            } return MoveType.ATTACK;
         }
-
-        return true;
+        return MoveType.REGULAR;
     }
+
 
     /**
-     * @return whether target coordinates harbors an opponent's piece
+     * @return whether the attack is successful in that the target piece has died
      */
-    public boolean isAttackAvailable(int oldX, int oldY, int newX, int newY) {
+    public boolean isAttackSuccessful(int oldX, int oldY, int newX, int newY) {
         SuperBoard superBoard = (SuperBoard) super.getBoard();
-        PieceInterface pieceToMove = superBoard.getPiece(oldX, oldY);
-        PieceInterface targetPiece = superBoard.getPiece(newX, newY);
+        SuperPieceDecorator pieceToMove = (SuperPieceDecorator) superBoard.getPiece(oldX, oldY);
+        SuperPieceDecorator targetPiece = (SuperPieceDecorator) superBoard.getPiece(newX, newY);
 
-        return targetPiece!=null && !pieceToMove.hasSameColor(targetPiece);
+        return pieceToMove.getAtk() >= targetPiece.getHp();
     }
+
 
     /**
      * @return whether the attack is valid given super chess game rules

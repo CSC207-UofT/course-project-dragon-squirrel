@@ -34,7 +34,7 @@ public class BoardManager {
     }
 
     public String[][] getBoardAsString() {
-        return board.to2dStringArray();
+        return board.to2dStringArray(board.getBoundaries().x, board.getBoundaries().y);
     }
 
     public MoveRecord getMR(){
@@ -42,8 +42,7 @@ public class BoardManager {
     }
 
     public PieceInterface getPiece(int x, int y) {
-        PieceInterface piece = board.getPiece(x, y);
-        return piece;
+        return board.getPiece(x, y);
     }
 
     public Player getActivePlayer() {
@@ -85,7 +84,7 @@ public class BoardManager {
         Piece2dArray[7][3] = new Queen("queen", Color.WHITE);
         Piece2dArray[7][4] = new King("king", Color.WHITE);
         Piece2dArray[7][5] = new Bishop("bishop_r", Color.WHITE);
-        Piece2dArray[7][6] = new Knight("knight_r", Color.WHITE);;
+        Piece2dArray[7][6] = new Knight("knight_r", Color.WHITE);
         Piece2dArray[7][7] = new Rook("rook_r", Color.WHITE);
 
         for (int i = 0; i < 8; i++) {
