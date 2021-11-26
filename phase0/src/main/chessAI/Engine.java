@@ -8,10 +8,15 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/**
+ * Search algorithm for AI goes here
+ *
+ * We will likely implement a few different algorithms, they change AI's chess skill
+ */
 public abstract class Engine {
 	protected State startingState;
 	protected State bestState;
-	protected Queue<State> searchingQueue;
+	protected PriorityQueue<State> searchingQueue;
 	protected State currentState;
 
 	protected int bestScore = -PieceInterface.KING_VALUE;

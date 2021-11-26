@@ -1,6 +1,5 @@
 package chessAI;
 
-import BoardManager.BoardManager;
 import Controller.*;
 import Command.*;
 
@@ -11,11 +10,14 @@ public class Agent {
 	private Engine engine;
 	private final CommandSender cs;
 
-	public Agent(CommandSender cs, BoardManager bm) {
+	public Agent(CommandSender cs, Engine engine) {
 		this.cs = cs;
-		engine = new GreedyButStupid(bm);
+		this.engine = engine;
 	}
 
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
 
 	public void makeMove() {
 		Point[] decision = engine.makeDecision();

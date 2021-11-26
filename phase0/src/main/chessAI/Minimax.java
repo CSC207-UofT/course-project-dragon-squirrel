@@ -6,6 +6,11 @@ import java.awt.*;
 
 /**
  * IN PROGRESS
+ *
+ * Minimax is a more comprehensive adversarial searching algorithm, it can look several steps forward and choose the
+ * best move (assuming the opponent will always choose the best move)
+ *
+ * this is hard
  */
 public class Minimax extends Engine{
 

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A state containing all information of the game at a specific time.
+ * Usually we need to search through a tree of states to make a wise move.
+ *
  * This only works in classical piece yet
  */
 public class State {
@@ -38,6 +41,12 @@ public class State {
 		return prevMove;
 	}
 
+	/**
+	 * Apply all available moves to current state to generate all possible next states.
+	 * Used to explore the state tree and search through.
+	 *
+	 * @return  A list containing all possible next states by moving 1 step
+	 */
 	public List<State> generateNextState() {
 
 		List<State> nextStates = new ArrayList<>();
@@ -73,9 +82,9 @@ public class State {
 		return nextStates;
 	}
 
-
-
-
+	/**
+	 * Evaluate this state and give a score. Higher the better.
+	 */
 	private void evaluateScore() {
 		int col = board.getBoundaries().x;
 		int row = board.getBoundaries().y;
