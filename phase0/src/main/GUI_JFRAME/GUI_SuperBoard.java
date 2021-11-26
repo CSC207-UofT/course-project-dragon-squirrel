@@ -2,10 +2,10 @@ package GUI_JFRAME;
 
 import javax.swing.*;
 
-public class SuperBoard {
+public class GUI_SuperBoard {
     JFrame frame = new JFrame();
 
-    SuperBoard(){
+    GUI_SuperBoard(){
         frame.setSize(800, 800);
         frame.setVisible(true);
         frame.setTitle("not developed yet");
