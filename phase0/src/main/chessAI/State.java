@@ -4,7 +4,7 @@ import Board.Board;
 import piece.Color;
 import piece.PieceInterface;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 

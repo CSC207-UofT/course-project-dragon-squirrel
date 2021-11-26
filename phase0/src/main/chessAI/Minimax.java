@@ -2,7 +2,7 @@ package chessAI;
 
 import BoardManager.BoardManager;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * IN PROGRESS

@@ -12,7 +12,6 @@ import java.awt.Point;
 public class GreedyButStupid extends Engine{
 
 	public GreedyButStupid(BoardManager bm) {
-
 		super(bm);
 	}
 

@@ -1,7 +1,6 @@
 package chessAI;
 
 import Controller.*;
-import Command.*;
 
 import java.awt.Point;
 
@@ -21,7 +20,6 @@ public class Agent {
 
 	public void makeMove() {
 		Point[] decision = engine.makeDecision();
-		ChessMove newChessMove = cs.creatNewChessMove(decision[0].x, decision[0].y, decision[1].x, decision[1].y);
-		cs.pressMove(newChessMove);
+		cs.pressMove(decision[0].x, decision[0].y, decision[1].x, decision[1].y);
 	}
 }
