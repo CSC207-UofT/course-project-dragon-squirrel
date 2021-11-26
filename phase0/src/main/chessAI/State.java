@@ -13,15 +13,16 @@ import java.util.List;
  */
 public class State {
 
-	private State prev;
-	private Board board;
-	private Color activePlayer;
+	private final Board board;
+	private final Color activePlayer;
 	private int score;
+	private final Point[] prevMove;
 
-	public State(Board board, State prev) {
+	public State(Board board, Color prevPlayer, Point[] prevMove) {
+
 		this.board = board;
-		this.prev = prev;
-		activePlayer = (prev.activePlayer == Color.WHITE ? Color.BLACK : Color.WHITE);
+		this.prevMove = prevMove;
+		activePlayer = (prevPlayer == Color.WHITE ? Color.BLACK : Color.WHITE);
 		evaluateScore();
 	}
 
@@ -31,6 +32,10 @@ public class State {
 
 	public Color getPlayer() {
 		return activePlayer;
+	}
+
+	public Point[] getPrevMove() {
+		return prevMove;
 	}
 
 	public List<State> generateNextState() {
@@ -56,13 +61,18 @@ public class State {
 					PieceInterface actionPiece = boardCopy.removePiece(i, j);
 					boardCopy.addPiece(actionPiece, p.x, p.y);
 
-					nextStates.add(new State(boardCopy, this));
+					Point[] prevMove = new Point[2];
+					prevMove[0] = new Point(i, j);
+					prevMove[1] = new Point(p.x, p.y);
+
+					nextStates.add(new State(boardCopy, activePlayer, prevMove));
 				}
 			}
 		}
 
 		return nextStates;
 	}
+
 
 
 

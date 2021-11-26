@@ -2,45 +2,27 @@ package chessAI;
 
 import BoardManager.BoardManager;
 import piece.PieceInterface;
-import java.util.LinkedList;
+
+import java.awt.Point;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Engine {
-	private State startingState;
-	private State bestState;
-	private Queue<State> searchStates = new LinkedList<>();
-	State currentState;
+public abstract class Engine {
+	protected State startingState;
+	protected State bestState;
+	protected Queue<State> searchingQueue;
+	protected State currentState;
 
-	private int bestScore = -PieceInterface.KING_VALUE;
-	private int worstScore = PieceInterface.KING_VALUE;
+	protected int bestScore = -PieceInterface.KING_VALUE;
+	protected int worstScore = PieceInterface.KING_VALUE;
 
 	public Engine(BoardManager bm) {
 
 		// TODO initialize states
-		startingState = new State(bm.getBoard(), null);
-
+		startingState = new State(bm.getBoard(), bm.getActivePlayer().getColor(), null);
+		searchingQueue = new PriorityQueue<>(Comparator.comparingInt(State::getScore));
 	}
 
-	public int search(int depth) {
-
-		if (depth == 0) {
-			return currentState.getScore();
-		}
-
-		while (!searchStates.isEmpty()) {
-			currentState = searchStates.remove();
-			int score = search(depth - 1);
-
-
-			if (currentState.getPlayer() == startingState.getPlayer() && score > bestScore) {
-				bestScore = score;
-				bestState = currentState;
-			} else if (currentState.getPlayer() != startingState.getPlayer() && score < worstScore) {
-				bestScore = score;
-				bestState = currentState;
-			}
-		}
-
-		return 0;   //TODO
-	}
+	public abstract Point[] makeDecision();
 }
