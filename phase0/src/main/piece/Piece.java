@@ -20,6 +20,8 @@ public abstract class Piece implements PieceInterface {
 
     public Color getColor() { return color; }
 
+    public abstract int getValue();
+
     // This could be more handy than previous one
     public boolean isBlack() { return color == Color.BLACK; }
 
@@ -38,6 +40,11 @@ public abstract class Piece implements PieceInterface {
     }
 
 	public abstract List<Point> getValidMoves(BoardInterface b, int x, int y);
+
+    // TODO implement it
+    public Piece deepCopy() {
+        return null;
+    }
 
     /**
      * Return true if (x,y) is within boundary of Board b

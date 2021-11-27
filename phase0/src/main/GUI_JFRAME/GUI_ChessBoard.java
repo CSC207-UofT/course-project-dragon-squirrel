@@ -1,6 +1,6 @@
 package GUI_JFRAME;
 
-import CommandFuture.Move;
+import Command.Move;
 
 import javax.swing.*;
 import java.awt.*;
