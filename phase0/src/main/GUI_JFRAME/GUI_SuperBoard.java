@@ -5,7 +5,10 @@ import javax.swing.*;
 public class GUI_SuperBoard {
     JFrame frame = new JFrame();
 
-    GUI_SuperBoard(){
+    public GUI_SuperBoard(){ }
+
+    public void display(){
+
         frame.setSize(800, 800);
         frame.setVisible(true);
         frame.setTitle("not developed yet");

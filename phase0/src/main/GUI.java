@@ -1,6 +1,6 @@
 import Command.ChessMove;
-import Controller.BoardUpdater;
-import Controller.CommandSender;
+import Controller.*;
+import GUI_JFRAME.*;
 
 import javax.swing.*;
 
@@ -20,12 +20,15 @@ public class GUI extends JFrame{
 
 	private CommandSender cs;
 	private BoardUpdater bu;
+	GUI_ChessBoard board_gui = new GUI_ChessBoard();
+	GUI_SuperBoard superBoard_gui = new GUI_SuperBoard();
+
 
 	public GUI() {
 		setTitle("Chess");
 		setSize(800, 200);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		add(rootPanel);
 		createUIComponents();
@@ -42,12 +45,15 @@ public class GUI extends JFrame{
 			cs = new CommandSender(true);
 			bu = cs.getBoardUpdater();
 			bu.display();
+			board_gui.ini();
 		});
 
 		startSuperGameBtn.addActionListener(e -> {
 			cs = new CommandSender(false);
 			bu = cs.getBoardUpdater();
 			bu.display();
+
+			superBoard_gui.display();
 		});
 
 		undoMoveBtn.addActionListener(e -> {
@@ -65,6 +71,7 @@ public class GUI extends JFrame{
 			boolean moveSuccess = cs.pressMove(startX, startY, targetX, targetY);
 			if (moveSuccess) {
 				bu.display();
+
 			}
 		});
 	}
@@ -76,6 +83,6 @@ public class GUI extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		JFrame window = new GUI();
+		JFrame controller = new GUI();
 	}
 }

@@ -3,10 +3,6 @@ package GUI_JFRAME;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.reflect.MalformedParameterizedTypeException;
-import java.util.Map;
 
 public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
@@ -42,43 +38,8 @@ public class GUI_ChessBoard extends JFrame {
             new PieceIcon("\u265C")
     };
 
-
-    // TODO: Probably will change some code below, as we need to have operation on the board
-    JButton[] coords_button = new JButton[]{
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-            new JButton(), new JButton(), new JButton(), new JButton(),
-    };
-
-
-    String[] coords = new String[]{
-            "00", "01", "02", "03", "04", "05", "06", "07",
-            "10", "11", "12", "13", "14", "15", "16", "17",
-            "20", "21", "22", "23", "24", "25", "26", "27",
-            "30", "31", "32", "33", "34", "35", "36", "37",
-            "40", "41", "42", "43", "44", "45", "46", "47",
-            "50", "51", "52", "53", "54", "55", "56", "57",
-            "60", "61", "62", "63", "64", "65", "66", "67",
-            "70", "71", "72", "73", "74", "75", "76", "77",
-    };
-
-    public GUI_ChessBoard() {
-    }
-
-    void display() {
+    //initialize the board
+    public void ini(){
         setTitle("Chess board");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,43 +49,36 @@ public class GUI_ChessBoard extends JFrame {
         GridLayout gridLayout = new GridLayout(8, 8);
 
         contentPane.setLayout(gridLayout);
+        add_piece();
 
-        int r = -1;
-        for (int j = 0; j < coords_button.length; j++) {
-            if (j % 8 == 0) r++;
-            coords_button[j].setBounds(j, r, contentPane.getWidth(), contentPane.getHeight());
-            coords_button[j].setOpaque(false);
-            coords_button[j].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    for (int w = 0; w < coords_button.length; w++) {
-                        if (e.getSource() == coords_button[w]) {
-                            // this set up the action listener for each button, but in a for loop
-                            // can add the action listeners to buttons before line 92,
-                            System.out.println(coords[w]); // test
+        setSize(800, 800);
+        setVisible(true);
+    }
 
-                        }
-                    }
-                }
-            });
-            contentPane.add(coords_button[j]);
-
-        /*
-        # This uses the PieceIcon for the layout
+    //the method that adds piece lable to the panel
+    void add_piece(){
+        Container contentPane = getContentPane();
         int row = -1;
         for (int i = 0; i < icons.length; i++) {
             if (i % 8 == 0) row++; // increment row number
             icons[i].set(i, row);
             contentPane.add(icons[i]);
         }
-        */
-        setSize(800, 800);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        }
-
-        // TODO: Allow pieces to move by interacting with other code, idea: by change the array of icons.
-
-        // Here should be some code.
     }
+    //switch pieces position by changing the Icon array
+    public void sw_piece(int startX, int startY, int targetX, int targetY){
+        Container contentPane = getContentPane();
+        int start = startY * 8 + startX;
+        int target = targetY * 8 + targetX;
+        contentPane.removeAll();
+        PieceIcon target_piece = icons[target];
+        icons[target] = icons[start];
+        icons[start] = target_piece;
+        add_piece();
+    }
+
+    //undo visualization
+    public void undo(){
+    }
+
 }

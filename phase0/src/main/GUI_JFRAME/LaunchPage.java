@@ -38,7 +38,7 @@ public class LaunchPage implements ActionListener {
         //Set the Action of clicking Chess Button, jump to GUI_ChessBoard
         if(e.getSource()==chess) {
             GUI_ChessBoard chess = new GUI_ChessBoard();
-            chess.display();
+            chess.ini();
             frame.setVisible(false);
         }
         //Set the action of clicking Super_Chess Button, jump to Super_Board.
