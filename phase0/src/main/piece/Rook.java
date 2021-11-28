@@ -12,7 +12,12 @@ public class Rook extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return ROOK_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == 0 || Math.abs(oldCoorY - newCoorY) == 0;
     }

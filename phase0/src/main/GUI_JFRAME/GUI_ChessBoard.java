@@ -1,6 +1,5 @@
 package GUI_JFRAME;
 
-
 import javax.swing.*;
 import java.awt.*;
 
