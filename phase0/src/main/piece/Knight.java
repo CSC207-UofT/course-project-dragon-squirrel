@@ -3,6 +3,7 @@ package piece;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import Board.Board;
 import Board.BoardInterface;
 
 
@@ -12,54 +13,36 @@ public class Knight extends Piece{
         super(name, color);
     }
 
-	@Override
-	public int getValue() {
-		return KNIGHT_VALUE;
-	}
-
-	@Override
+    @Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         int X = Math.abs(oldCoorX - newCoorX);
         int Y = Math.abs(oldCoorY - newCoorY);
         return (X == 2 && Y == 1) || (X == 1 && Y == 2);
     }
     
+    public boolean isEmptyOrValid(int x, int y, BoardInterface b) {
+    	return (b.isPositionVacant(x,y) || (!b.isPositionVacant(x,y) && isOpponentPiece(x, y, b)));
+    }
+    
+    
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y){
     	List<Point> moves = new ArrayList<Point>();
 		
 		// Knight move in L-shaped
-		if((x+1) < b.getBoundaries().x && (y+2) < b.getBoundaries().y && (b.isPositionVacant(x+1,y+2) || (!b.isPositionVacant(x+1,y+2) && (b.getPiece(x+1,y+2).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1,y+2).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+1,y+2));
-		}
 		
-		if((x+2) < b.getBoundaries().x && (y+1) < b.getBoundaries().y && (b.isPositionVacant(x+2,y+1) || (!b.isPositionVacant(x+2,y+1) && (b.getPiece(x+2,y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+2,y+1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+2,y+1));
-		}
-		
-		if((x+2) < b.getBoundaries().x && (y-1) < b.getBoundaries().y && (b.isPositionVacant(x+2,y-1) || (!b.isPositionVacant(x+2,y-1) && (b.getPiece(x+2,y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+2,y-1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+2,y-1));
-		}
+    	for(int i=-2; i <= 2; i++) {
+			if(i == 0)
+				continue;
+			int j = (x == 2 || x == -2) ? 1 : 2;
+			if(withinBoundary(x+i, y+j, b) && isEmptyOrValid(x+i, y+j, b)) {
+				moves.add(new Point(x+1,y+2));
+			}
 
-		if((x+1) < b.getBoundaries().x && (y-2) < b.getBoundaries().y && (b.isPositionVacant(x+1, y-2) || (!b.isPositionVacant(x+1, y-2) && (b.getPiece(x+1, y-2).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+1, y-2).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x+1, y-2));
-		}
-
-		if(x-1 < b.getBoundaries().x && (y-2) < b.getBoundaries().y && (b.isPositionVacant(x-1,y-2) || (!b.isPositionVacant(x-1,y-2) && (b.getPiece(x-1,y-2).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1,y-2).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-1,y-2));
-		}
-		
-		if((x-2) < b.getBoundaries().x && (y-1) < b.getBoundaries().y && (b.isPositionVacant(x-2,y-1) || (!b.isPositionVacant(x-2,y-1) && (b.getPiece(x-2,y-1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-2,y-1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-2,y-1));
-		}
-
-		if((x-2) < b.getBoundaries().x && (y+1) < b.getBoundaries().y && (b.isPositionVacant(x-2,y+1) || (!b.isPositionVacant(x-2,y+1) && (b.getPiece(x-2,y+1).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-2,y+1).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-2,y+1));
-		}
-		
-		if((x-1) < b.getBoundaries().x && (y+2) < b.getBoundaries().y && (b.isPositionVacant(x-1,y+2) || (!b.isPositionVacant(x-1,y+2) && (b.getPiece(x-1,y+2).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-1,y+2).charAt(0) == 'w' && color == Color.BLACK)))) {
-			moves.add(new Point(x-1,y+2));
-		}
+			if(withinBoundary(x+i, y-j, b) && isEmptyOrValid(x+1, y-j, b)) {
+				moves.add(new Point(x+1, y-2));
+			}		
+		}	
 	
 		return moves;
     }
