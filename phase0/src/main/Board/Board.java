@@ -70,4 +70,26 @@ public class Board implements BoardInterface{
         }
         return boardAsString;
     }
+
+    // TODO need to test it actually works, hopefully it does
+    public Board deepCopy() {
+        if (board == null) {
+            return null;
+        }
+
+        // Deep copy the 2d array
+        PieceInterface[][] piece2dArray = new PieceInterface[boundaries.x][boundaries.y];
+
+        for (int i = 0; i < boundaries.x; i++) {
+            for (int j = 0; j < boundaries.y; j++) {
+                piece2dArray[i][j] = board[i][j].deepCopy();    //TODO requires Piece.deepCopy() work properly
+            }
+        }
+
+        // Put 2d array copy into new board
+        Board boardCopy = new Board(boundaries.x, boundaries.y);
+        boardCopy.board = piece2dArray;
+
+        return boardCopy;
+    }
 }

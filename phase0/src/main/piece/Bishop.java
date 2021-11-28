@@ -10,10 +10,15 @@ import Board.BoardInterface;
 public class Bishop extends Piece{
 
     public Bishop(String name, Color color){
-        super(name, color);
-    }
+		super(name, color);
+	}
 
-    @Override
+	@Override
+	public int getValue() {
+		return BISHOP_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
     }
@@ -21,7 +26,7 @@ public class Bishop extends Piece{
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y)
     {
-		List<Point> moves = new ArrayList<Point>();
+		List<Point> moves = new ArrayList<>();
 
 		//Bishop can move in diagonals
 		

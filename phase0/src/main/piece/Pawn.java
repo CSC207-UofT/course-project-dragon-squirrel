@@ -15,7 +15,12 @@ public class Pawn extends Piece{
         hasNotMovedDuringGame = true;
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return PAWN_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         boolean solution;
         if (color == Color.WHITE) {

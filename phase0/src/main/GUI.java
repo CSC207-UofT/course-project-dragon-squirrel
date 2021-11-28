@@ -16,12 +16,12 @@ public class GUI extends JFrame{
 	private JButton undoMoveBtn;
 	private JLabel startPositionLabel1;
 	private JLabel startPositionLabel2;
+	private JButton saveButton;
+	private JButton reloadButton;
 	private JTable board;
 
 	private CommandSender cs;
 	private BoardUpdater bu;
-	GUI_ChessBoard board_gui = new GUI_ChessBoard();
-	GUI_SuperBoard superBoard_gui = new GUI_SuperBoard();
 
 
 	public GUI() {
@@ -45,15 +45,12 @@ public class GUI extends JFrame{
 			cs = new CommandSender(true);
 			bu = cs.getBoardUpdater();
 			bu.display();
-			board_gui.ini();
 		});
 
 		startSuperGameBtn.addActionListener(e -> {
 			cs = new CommandSender(false);
 			bu = cs.getBoardUpdater();
 			bu.display();
-
-			superBoard_gui.display();
 		});
 
 		undoMoveBtn.addActionListener(e -> {
@@ -71,8 +68,16 @@ public class GUI extends JFrame{
 			boolean moveSuccess = cs.pressMove(startX, startY, targetX, targetY);
 			if (moveSuccess) {
 				bu.display();
-
 			}
+		});
+
+		saveButton.addActionListener(e -> {
+			//serialization goes here
+
+		});
+
+		reloadButton.addActionListener(e -> {
+			// reload goes here
 		});
 	}
 
