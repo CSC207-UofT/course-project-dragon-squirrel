@@ -8,14 +8,13 @@ import Board.Board;
 
 import Board.BoardInterface;
 
-public class PieceDecorator implements PieceInterface {
-    private Piece piece;
+public abstract class PieceDecorator implements PieceInterface {
+    protected Piece piece;
 
     public PieceDecorator(Piece piece) {
         this.piece = piece;
     }
 
-    @Override
     public String getName() {
         return piece.getName();
     }
@@ -36,6 +35,11 @@ public class PieceDecorator implements PieceInterface {
     }
 
     @Override
+    public int getValue() {
+        return piece.getValue();
+    }
+
+    @Override
     public boolean validMove(int oldX, int oldY, int newX, int newY) {
         return piece.validMove(oldX, oldY, newX, newY);
     }
@@ -44,7 +48,10 @@ public class PieceDecorator implements PieceInterface {
 	public List<Point> getValidMoves(BoardInterface b, int x, int y){
     	return piece.getValidMoves(b, x, y);
     }
-    
+
+    @Override
+    public abstract SuperPieceDecorator deepCopy();
+
     @Override
     public boolean withinBoundary(int x, int y, BoardInterface b) {
     	return piece.withinBoundary(x, y, b);

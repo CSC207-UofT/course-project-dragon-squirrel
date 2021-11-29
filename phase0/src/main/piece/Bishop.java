@@ -3,8 +3,7 @@ package piece;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.awt.*;
-import Board.Board;
+import java.awt.Point;
 import Board.BoardInterface;
 
 
@@ -14,7 +13,12 @@ public class Bishop extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return BISHOP_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
     }
@@ -26,7 +30,7 @@ public class Bishop extends Piece{
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) 
     {
-		List<Point> moves = new ArrayList<Point>();
+		List<Point> moves = new ArrayList<>();
 
 		//Bishop can move in diagonals
 		boolean SW = true;
@@ -36,7 +40,7 @@ public class Bishop extends Piece{
 		
 		for(int i = 1; i < b.getBoundaries().x; i++) {
 			if(withinBoundary(x+i, y+i, b) && SW) {				
-				if(b.isPositionVacant(x+i, y+i) == false) {
+				if(!b.isPositionVacant(x + i, y + i)) {
 					if(canReplace(b, x+i, y+i))
 						moves.add(new Point(x+i,y+i));	
 					SW = false;
@@ -76,6 +80,13 @@ public class Bishop extends Piece{
 			}
 		}
 		return moves;
+	}
+
+	@Override
+	public Piece deepCopy() {
+		Bishop newPiece = new Bishop(name, color);
+		newPiece.status = this.status;
+		return newPiece;
 	}
 
 }
