@@ -3,6 +3,7 @@ package GameRule;
 import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
+import Command.MoveType;
 import piece.Color;
 import piece.Knight;
 import piece.Pawn;
@@ -17,33 +18,32 @@ import java.util.ArrayList;
 public class GameRule {
 
 	private Board board;
-//	private Map<String, PieceInterface> piecesDict;   // key: ID, value: Piece
 	private MoveRecord MR;
 
 	public GameRule(Board board, MoveRecord MR) {
 		this.board = board;
-//		this.piecesDict = piecesDict;
 		this.MR = MR;
 	}
 
 	public Board getBoard(){return board;}
 
 	/**
-	 * @return whether move is valid according to classic chess game rules
+	 * Check whether move is valid according to classic chess game rules
+	 * @return type of move (INVALID, ENPASSANT, CAPTURE, REGULAR)
 	 */
-	public boolean isMoveValid(int oldX, int oldY, int newX, int newY) {
+	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
 			System.out.println("Coordinate invalid");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (enPassant(oldX, oldY, newX, newY)){
-			return true;
+			return MoveType.ENPASSANT;
 		}
 
 		if (pawnCapture(oldX, oldY, newX, newY)){
-			return true;
+			return MoveType.CAPTURE;
 		}
 
 		PieceInterface actionPiece = board.getPiece(oldX, oldY);
@@ -51,25 +51,29 @@ public class GameRule {
 
 		if (actionPiece == null) {
 			System.out.println("Piece not found");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
 			System.out.println("Invalid capture");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
 			System.out.println("Invalid Move");
-			return false;
+			return MoveType.INVALID;
 		}
 
 		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
-			return false;
+			return MoveType.INVALID;
 		}
 
-		return true;
+		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
+			return MoveType.CAPTURE;
+		}
+
+		return MoveType.REGULAR;
 	}
 
 	/**
@@ -79,7 +83,7 @@ public class GameRule {
 	public boolean isCoordinateValid(int oldX, int oldY, int newX, int newY) {
 		int xBoundary = board.getBoundaries().x;
 		int yBoundary = board.getBoundaries().y;
-		return newX >= 0 & newX < xBoundary + 1 & newY >= 0 & newY < yBoundary + 1 & (oldX != newX || oldY != newY);
+		return newX >= 0 && newX < xBoundary && newY >= 0 && newY < yBoundary && (oldX != newX || oldY != newY);
 	}
 
 	/**
@@ -171,19 +175,19 @@ public class GameRule {
 		if (!(lastMovePiece instanceof Pawn)){
 			return false;
 		}
-		if (Math.abs(lastMove.getNewCoordX() - lastMove.getOldCoordX()) != 2){
+		if (Math.abs(lastMove.getNewX() - lastMove.getOldX()) != 2){
 			return false;
 		}
-		if (Math.abs(lastMove.getNewCoordY() - oldY) != 1 || lastMove.getNewCoordX() != oldX){
+		if (Math.abs(lastMove.getNewY() - oldY) != 1 || lastMove.getNewX() != oldX){
 			return false;
 		}
 		if (lastMovePiece.hasSameColor(movingPiece)){
 			return false;
 		}
 		if (movingPiece.getColor().equals(piece.Color.WHITE)){
-			return newX == oldX - 1 && newY == lastMove.getNewCoordY();
+			return newX == oldX - 1 && newY == lastMove.getNewY();
 		}
-		else return newX == oldX + 1 && newY == lastMove.getNewCoordY();
+		else return newX == oldX + 1 && newY == lastMove.getNewY();
 	}
 
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){

@@ -1,9 +1,10 @@
 package piece;
 
-import Board.BoardInterface;
+import Board.Board;
 
 import java.awt.*;
 import java.util.List;
+import Board.BoardInterface;
 
 public class SuperPieceDecorator extends PieceDecorator{
     int hp;
@@ -36,8 +37,6 @@ public class SuperPieceDecorator extends PieceDecorator{
      }
 
     public void setHp(int hp) {this.hp = hp;}
-
-    public void modifyHp(int value) { this.hp += value; }
 
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {

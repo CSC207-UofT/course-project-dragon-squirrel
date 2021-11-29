@@ -1,9 +1,10 @@
 package Controller;
 
 import BoardManager.*;
-import Command.ChessMove;
-import Command.Move;
+import Command.*;
 import GameRule.*;
+
+import java.util.NoSuchElementException;
 
 /**
  * Like it said, sends commands from player
@@ -22,59 +23,80 @@ public class CommandSender {
 		return this.bu;
 	}
 
-	public BoardManager getBoardManager(){
-		return this.bm;
-	}
-
+	/**
+	 * @return ChessMove, null if MoveType is INVALID
+	 */
 	public ChessMove createNewChessMove(int oldX, int oldY, int newX, int newY){
-		int moveType = moveType(oldX, oldY, newX, newY);
-		if (moveType > 0){
+		MoveType moveType = gl.isMoveValid(oldX, oldY, newX, newY);
+
+		if (moveType != MoveType.INVALID) {
 			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
-		} else {
-			return null;
 		}
-	}
-
-	public void pressMove(ChessMove newChessMove){
-		Move newMove = new Move(bm, newChessMove);
-		try {
-			newMove.execute();
-		}catch (NullPointerException e){
-			System.out.println("Invalid Move");
-		}
-	}
-
-	public void undoMove(){
-		Move move = new Move(bm, bm.getMR().get());
-		move.undo();
+		return null;
 	}
 
 	/**
-	 * @return 	-1 if move or attack is invalid <P>
-	 * 			1 if attack is valid <P>
-	 * 			2 if move is valid <P>
-	 * 			3 if move is valid after a successful attack
+	 * Looks at the type of move in ChessMove and creates a corresponding Move.
+	 * @return Move (RegularMove, AttackMove, CaptureMove, EnPassantMove, CastlingMove) or null
 	 */
-	public int moveType(int oldX, int oldY, int newX, int newY) {
-		if (!gl.isMoveValid(oldX, oldY, newX, newY)) {
-			return -1;
-		}
-		// if there is an attack: target coordinate has an opponent's piece
-		if (gl instanceof SuperGameRule && bm instanceof SuperBoardManager){
-			if (((SuperGameRule) gl).isAttackAvailable(oldX, oldY, newX, newY)){
-				if (!((SuperGameRule) gl).isAttackValid(oldX, oldY, newX, newY)){
-					return -1;
-				}
-				int pastHp = ((SuperBoardManager) bm).getHp(newX, newY);
-				boolean attackedToDeath = ((SuperBoardManager) bm).attackToDeath(oldX, oldY, newX, newY);
-				System.out.println("Attacked piece -> " + "Past Hp: " + pastHp + "    " +
-						"New Hp: " + ((SuperBoardManager) bm).getHp(newX, newY));
-				if (attackedToDeath) {
-					System.out.println("attacked to death");
-					return 3;
-				} return 1;
+	public Move createNewMove(BoardManager bm, ChessMove newChessMove){
+
+		try {
+			MoveType moveType = newChessMove.getMoveType();
+
+			if (moveType == MoveType.REGULAR) {
+				return new RegularMove(bm, newChessMove);
 			}
-		} return 2;
+
+			if (moveType == MoveType.ATTACK) {
+				return new AttackMove(bm, newChessMove);
+			}
+
+			if (moveType == MoveType.CAPTURE) {
+				return new CaptureMove(bm, newChessMove);
+			}
+
+			if (moveType == MoveType.ENPASSANT) {
+				return new EnPassantMove(bm, newChessMove);
+			}
+
+			if (moveType == MoveType.CASTLING) {
+				return new CastlingMove(bm, newChessMove);
+			}
+		}
+		catch (NullPointerException e) {
+			return null;
+		}
+		return null;
+	}
+
+	/**
+	 * @return true if Move was executed, false otherwise.
+	 */
+	public boolean pressMove(int oldX, int oldY, int newX, int newY){
+		Move newMove = createNewMove(bm, createNewChessMove(oldX, oldY, newX, newY));
+		try {
+			newMove.execute();
+			return true;
+		}catch (NullPointerException e){
+			return false;
+		}
+	}
+
+	/**
+	 * Undo move or attack.
+	 * @return true if undo success, false otherwise
+	 */
+	public boolean undoMove(){
+		try {
+			Move move = createNewMove(bm, bm.getMR().get());
+			move.undo();
+			return true;
+		}
+		catch (NoSuchElementException e){
+			System.out.println("cannot undo any further");
+			return false;
+		}
 	}
 
 	/**
@@ -91,16 +113,6 @@ public class CommandSender {
 
 	}
 
-	public void startNewClassicGame() {
-		bm = new BoardManager();
-		gl = new GameRule(bm.getBoard(), bm.getMR());
-		this.bu = new BoardUpdater(bm);
-	}
-
-	public void startNewSuperGame() {
-		bm = new SuperBoardManager();
-		gl = new SuperGameRule(bm.getBoard(), bm.getMR());
-	}
 	/**
 	 * @param classic true if the game played is a classic game
 	 */

@@ -1,9 +1,10 @@
 package piece;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.awt.*;
+import Board.Board;
 import Board.BoardInterface;
-
 public class Rook extends Piece{
 
     public boolean hasMovedDuringGame;
@@ -21,53 +22,49 @@ public class Rook extends Piece{
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
 		List<Point> moves = new ArrayList<Point>();
 		//Rooks move up and down the rank and file of the chessboard, and can move any number of spaces
-
+		
+		boolean right = true;
+		boolean left = true;
+		boolean up = true;
+		boolean down = true;
+		
 		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x < b.getBoundaries().x && (y+i) < b.getBoundaries().y) {
+			
+			if(withinBoundary(x, y+i, b) && right) {		//right
 				if(b.isPositionVacant(x, y+i) == false) {
-					if((b.getPiece(x, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y+i).charAt(0) == 'w' && color == Color.BLACK))
-						moves.add(new Point(x,y+i));	
-					
-					break;
+					if(isOpponentPiece(x, y+i, b))
+						moves.add(new Point(x,y+i));						
+					right = false;
 				}
 				else
 					moves.add(new Point(x,y+i));	
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x < b.getBoundaries().x && (y-i) < b.getBoundaries().y) {
+			
+			if(withinBoundary(x, y-i, b) && left) {			//left
 				if(b.isPositionVacant(x, y-i) == false) {
-					if((b.getPiece(x, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y-i).charAt(0) == 'w' && color == Color.BLACK))
+					if(isOpponentPiece(x, y-i, b))
 						moves.add(new Point(x,y-i));	
-					
-					break;
+					left = false;
 				}
 				else
 					moves.add(new Point(x,y-i));	
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x+i < b.getBoundaries().x && y < b.getBoundaries().y) {
+			
+			if(withinBoundary(x+i, y, b) && down) {			//down
 				if(b.isPositionVacant(x+i, y) == false) {
-					if((b.getPiece(x+i, y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y).charAt(0) == 'w' && color == Color.BLACK))
+					if(isOpponentPiece(x+i, y, b))
 						moves.add(new Point(x+i,y));	
-					
-					break;
+					down = false;
 				}
 				else
 					moves.add(new Point(x+i,y));	
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x-i < b.getBoundaries().x && y < b.getBoundaries().y) {
+			
+			if(withinBoundary(x-i, y, b) && up) {			//up
 				if(b.isPositionVacant(x-i, y) == false) {
-					if((b.getPiece(x-i, y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y).charAt(0) == 'w' && color == Color.BLACK))
+					if(isOpponentPiece(x-i, y, b))
 						moves.add(new Point(x-i,y));	
-					
-					break;
+					up = false;
 				}
 				else
 					moves.add(new Point(x-i,y));	

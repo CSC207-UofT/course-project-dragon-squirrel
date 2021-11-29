@@ -51,8 +51,10 @@ public class GUI extends JFrame{
 		});
 
 		undoMoveBtn.addActionListener(e -> {
-			cs.undoMove();
-			bu.display();
+			boolean undoSuccess = cs.undoMove();
+			if (undoSuccess){
+				bu.display();
+			}
 		});
 
 		moveBtn.addActionListener(e -> {
@@ -60,9 +62,8 @@ public class GUI extends JFrame{
 			int startY = Integer.parseInt(startYtf.getText());
 			int targetX = Integer.parseInt(targetXtf.getText());
 			int targetY = Integer.parseInt(targetYtf.getText());
-			ChessMove chessMove = cs.createNewChessMove(startX, startY, targetX, targetY);
-			if (chessMove != null) {
-				cs.pressMove(chessMove);
+			boolean moveSuccess = cs.pressMove(startX, startY, targetX, targetY);
+			if (moveSuccess) {
 				bu.display();
 			}
 		});

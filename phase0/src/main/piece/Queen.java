@@ -3,8 +3,8 @@ package piece;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
+import Board.Board;
 import Board.BoardInterface;
-
 
 public class Queen extends Piece{
 
@@ -22,140 +22,121 @@ public class Queen extends Piece{
 		List<Point> moves = new ArrayList<Point>();
 		
 		//Queen can move in any direction any number of spaces
+		boolean right = true;
+		boolean left = true;
+		boolean up = true;
+		boolean down = true;
+		boolean NE = true;
+		boolean SE = true;
+		boolean SW = true;
+		boolean NW = true;
 		
 		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x < b.getBoundaries().x && (y+i) < b.getBoundaries().y) {
 
+			if(withinBoundary(x, y+i, b) && right) {		//check in right direction
 				if(b.isPositionVacant(x, y+i) == false) {
-					if((b.getPiece(x, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y+i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x, y+i, b)) {
 						moves.add(new Point(x,y+i));		
-					}
-					
-					break;
+					}		
+					right = false;
 				}
 				else {
 					moves.add(new Point(x,y+i));	
 				}
 
 			}
-		}
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x < b.getBoundaries().x && (y-i) < b.getBoundaries().y) {
-
+			
+			if(withinBoundary(x, y-i, b) && left) {				//check in left direction
 				if(b.isPositionVacant(x, y-i) == false) {
-					if((b.getPiece(x, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x, y-i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x, y-i, b)) {
 						moves.add(new Point(x,y-i));		
 					}
-					
-					break;
+					left = false;
 				}
 				else {
 					moves.add(new Point(x,y-i));	
 				}
 
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if((x-i) < b.getBoundaries().x && (y) < b.getBoundaries().y) {
 
+			if(withinBoundary(x-i, y, b) && up) {				//check in up direction
 				if(b.isPositionVacant(x-i, y) == false) {
-					if((b.getPiece(x-i, y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x-i, y, b)) {
 						moves.add(new Point(x-i,y));		
 					}
-					
-					break;
+					up = false;
 				}
 				else {
 					moves.add(new Point(x-i,y));	
 				}
 
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x+i < b.getBoundaries().x && (y) < b.getBoundaries().y) {
-
+			
+			if(withinBoundary(x+i, y, b) && down) {					//check in down direction
 				if(b.isPositionVacant(x+i, y) == false) {
-					if((b.getPiece(x+i, y).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x+i, y, b)) {
 						moves.add(new Point(x+i,y));		
 					}
-					
-					break;
+					down = false;
 				}
 				else {
 					moves.add(new Point(x+i,y));	
 				}
 
 			}
-		}
 
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x+i < b.getBoundaries().x && (y+i) < b.getBoundaries().y) {
-
+			if(withinBoundary(x+i, y+i, b) && SW) {							//check in south west diagonal
 				if(b.isPositionVacant(x+i, y+i) == false) {
-					if((b.getPiece(x+i, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y+i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x+i, y+i, b)) {
 						moves.add(new Point(x+i,y+i));		
-					}
-					
-					break;
+					}		
+					SW = false;
 				}
 				else {
 					moves.add(new Point(x+i,y+i));	
 				}
 
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x-i < b.getBoundaries().x && (y+i) < b.getBoundaries().y) {
 
+			if(withinBoundary(x-i, y+i, b) && NW) {					//check in north west diagonal
 				if(b.isPositionVacant(x-i, y+i) == false) {
-					if((b.getPiece(x-i, y+i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y+i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x-i, y+i, b)) {
 						moves.add(new Point(x-i,y+i));		
 					}
-					
-					break;
+					NW = false;
 				}
 				else {
 					moves.add(new Point(x-i,y+i));	
 				}
 
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x+i < b.getBoundaries().x && (y-i) < b.getBoundaries().y) {
 
+			if(withinBoundary(x+i, y-i, b) && SE) {					//check in south east diagonal
 				if(b.isPositionVacant(x+i, y-i) == false) {
-					if((b.getPiece(x+i, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x+i, y-i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x+i, y-i, b)) {
 						moves.add(new Point(x+i,y-i));		
 					}
-					
-					break;
+					SE = false;
 				}
 				else {
 					moves.add(new Point(x+i,y-i));	
 				}
 
 			}
-		}
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			if(x-i < b.getBoundaries().x && (y-i) < b.getBoundaries().y) {
 
+			if(withinBoundary(x-i, y-i, b) && NE) {				//check in north east diagonal
 				if(b.isPositionVacant(x-i, y-i) == false) {
-					if((b.getPiece(x-i, y-i).charAt(0) == 'b' && color == Color.WHITE) || (b.getPiece(x-i, y-i).charAt(0) == 'w' && color == Color.BLACK)) {
+					if(isOpponentPiece(x-i, y-i, b)) {
 						moves.add(new Point(x-i,y-i));		
-					}
-					
-					break;
+					}		
+					NE = false;
 				}
 				else {
 					moves.add(new Point(x-i,y-i));	
 				}
 
 			}
+
 		}
 
 		return moves;
