@@ -8,6 +8,8 @@ public class LaunchPage implements ActionListener {
     JFrame frame = new JFrame();
     JButton chess = new JButton("Chess");
     JButton SuperChess = new JButton("SuperChess");
+    JFrame user = new JFrame();
+    JButton user_button = new JButton();
 
     LaunchPage(){
         chess.setBounds(150,160, 200, 40);
@@ -25,19 +27,23 @@ public class LaunchPage implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+
+        // TODO: Add something to input User ID
+
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //Set the Action of clicking Chess Button, jump to GUI_ChessBoard
         if(e.getSource()==chess) {
             GUI_ChessBoard chess = new GUI_ChessBoard();
-            chess.display();
+            chess.ini();
             frame.setVisible(false);
         }
         //Set the action of clicking Super_Chess Button, jump to Super_Board.
         if(e.getSource()==SuperChess) {
-            SuperBoard SuperChess = new SuperBoard();
+            GUI_SuperBoard SuperChess = new GUI_SuperBoard();
             frame.setVisible(false);
         }
     }

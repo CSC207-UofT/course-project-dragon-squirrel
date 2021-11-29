@@ -1,6 +1,6 @@
 import Command.ChessMove;
-import Controller.BoardUpdater;
-import Controller.CommandSender;
+import Controller.*;
+import GUI_JFRAME.*;
 
 import javax.swing.*;
 
@@ -16,16 +16,19 @@ public class GUI extends JFrame{
 	private JButton undoMoveBtn;
 	private JLabel startPositionLabel1;
 	private JLabel startPositionLabel2;
+	private JButton saveButton;
+	private JButton reloadButton;
 	private JTable board;
 
 	private CommandSender cs;
 	private BoardUpdater bu;
 
+
 	public GUI() {
 		setTitle("Chess");
 		setSize(800, 200);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		add(rootPanel);
 		createUIComponents();
@@ -67,6 +70,15 @@ public class GUI extends JFrame{
 				bu.display();
 			}
 		});
+
+		saveButton.addActionListener(e -> {
+			//serialization goes here
+
+		});
+
+		reloadButton.addActionListener(e -> {
+			// reload goes here
+		});
 	}
 
 	private void refreshBoard() {
@@ -76,6 +88,6 @@ public class GUI extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		JFrame window = new GUI();
+		JFrame controller = new GUI();
 	}
 }
