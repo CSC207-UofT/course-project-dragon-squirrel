@@ -1,7 +1,5 @@
 package GUI_JFRAME;
 
-import piece.Piece;
-
 public class IconUpdater {
     private static final PieceIcon wr = new PieceIcon("\u2656");
     private static final PieceIcon wkn = new PieceIcon("\u2568");
@@ -34,7 +32,8 @@ public class IconUpdater {
     }
 
     public static PieceIcon[] reload(){
-        return new PieceIcon[0];
+        return null;
+        //return the store stage of the previous game;
     }
 
 
