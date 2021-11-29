@@ -50,8 +50,8 @@ public class Pawn extends Piece{
 		
 		//pawn moves forward , not backward so checking for white and black separately
 		if(color == Color.WHITE) {
-			if(withinBoundary(x, y+1, b) && b.isPositionVacant(x, y+1)) {
-				moves.add(new Point(x,y+1));
+			if(withinBoundary(x-1, y, b) && b.isPositionVacant(x-1, y)) {
+				moves.add(new Point(x-1,y));
 			}
 
 			if(withinBoundary(x+1, y+1, b) && !b.isPositionVacant(x+1, y+1) && isOpponentPiece(x+1, y+1, b)) {

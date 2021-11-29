@@ -11,14 +11,15 @@ import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Verifies whether move is valid according to game rules.
  */
 public class GameRule {
 
-	private Board board;
-	private MoveRecord MR;
+	private final Board board;
+	private final MoveRecord MR;
 
 	public GameRule(Board board, MoveRecord MR) {
 		this.board = board;
@@ -150,16 +151,13 @@ public class GameRule {
 
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an Player.AI player make thoughtful decisions (involves decision tree etc.)
-	 * We don't need to worry about it now
+	 * This is VERY important if we want an AI player make thoughtful decisions (involves decision tree etc.)
 	 *
-	 * @param p The piece that moves (we want to know which kind of piece it is)
-	 * @param X Current X coordinate
-	 * @param Y Current Y coordinate
+	 * @param p The position of the piece
 	 * @return  An array of coordinates, each is a valid position to move
 	 */
-	public int[][] getAvailableMoves(PieceInterface p, int X, int Y) {
-		return null;
+	public List<Point> getAvailableMoves(Point p) {
+		return board.getBoard()[p.x][p.y].getValidMoves(board, p.x, p.y);
 	}
 
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){

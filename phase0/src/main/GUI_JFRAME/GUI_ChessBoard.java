@@ -1,9 +1,12 @@
 package GUI_JFRAME;
 
-import Command.Move;
+import Controller.CommandSender;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
 
 public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
@@ -38,9 +41,56 @@ public class GUI_ChessBoard extends JFrame {
             new PieceIcon("\u265C")
     };
 
+    private CommandSender cs;
+    private Point prevSelected;
+
     // TODO: Probably will change some code below, as we need to have operation on the board
 
-    public GUI_ChessBoard(){}
+    public GUI_ChessBoard(){
+
+        cs = new CommandSender(true);
+
+        // Add listener to every PieceIcon
+        for (int i = 0; i < icons.length; i++) {
+            int finalI = i;
+            icons[i].addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    unselectAll();
+                    icons[finalI].setSelected(true);
+
+                    if (icons[finalI].getText().equals(" "))
+                        return;
+
+                    Point selected = indexToCoordinate(finalI);
+                    showValidMove(selected.x, selected.y);
+
+                    prevSelected = selected;
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+
+                }
+            });
+
+        }
+    }
 
     void display(){
         setTitle("Chess board");
@@ -64,6 +114,38 @@ public class GUI_ChessBoard extends JFrame {
         setSize(800, 800);
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    private void unselectAll() {
+        for (PieceIcon icon: icons) {
+            icon.unselect();
+        }
+    }
+
+    private void unHighlightAll() {
+        for (PieceIcon icon: icons) {
+            icon.setHighlighted(false);
+        }
+    }
+
+    private Point indexToCoordinate(int index) {
+        int row = index / 8;
+        int col = index % 8;
+
+        return new Point(row, col);
+    }
+
+    private int coordinateToIndex(Point p) {
+        return p.x * 8 + p.y;
+    }
+
+    private void showValidMove(int x, int y) {
+
+        unHighlightAll();
+        List<Point> validMoves = cs.passValidMove(new Point(x, y));
+        for (Point position: validMoves) {
+            icons[coordinateToIndex(position)].setHighlighted(true);
+        }
     }
 
     // TODO: Allow pieces to move by interacting with other code, idea: by change the array of icons.
