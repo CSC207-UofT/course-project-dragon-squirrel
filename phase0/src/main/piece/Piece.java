@@ -2,8 +2,7 @@ package piece;
 
 import java.util.List;
 
-import java.awt.*;
-import Board.Board;
+import java.awt.Point;
 import Board.BoardInterface;
 
 
@@ -21,6 +20,8 @@ public abstract class Piece implements PieceInterface {
     public String getName() { return name; }
 
     public Color getColor() { return color; }
+
+    public abstract int getValue();
 
     public boolean getStatus() { return status; }
 
@@ -47,4 +48,6 @@ public abstract class Piece implements PieceInterface {
     }
 
 	public abstract List<Point> getValidMoves(BoardInterface b, int x, int y);
+
+    public abstract Piece deepCopy();
 }

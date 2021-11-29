@@ -1,8 +1,7 @@
 package GUI_JFRAME;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class LaunchPage implements ActionListener {
     JFrame frame = new JFrame();
@@ -35,9 +34,10 @@ public class LaunchPage implements ActionListener {
             chess.display();
             frame.setVisible(false);
         }
+
         //Set the action of clicking Super_Chess Button, jump to Super_Board.
         if(e.getSource()==SuperChess) {
-            SuperBoard SuperChess = new SuperBoard();
+            SuperBoard superChess = new SuperBoard();
             frame.setVisible(false);
         }
     }

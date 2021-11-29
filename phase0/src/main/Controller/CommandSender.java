@@ -4,6 +4,8 @@ import BoardManager.*;
 import Command.*;
 import GameRule.*;
 
+import java.awt.Point;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -12,7 +14,7 @@ import java.util.NoSuchElementException;
 public class CommandSender {
 
 	private BoardManager bm;
-	private GameRule gl;    // A set of rules that determines valid move and piece interactions
+	private GameRule gr;    // A set of rules that determines valid move and piece interactions
 	private BoardUpdater bu;
 
 	public CommandSender(boolean classic) {
@@ -27,7 +29,7 @@ public class CommandSender {
 	 * @return ChessMove, null if MoveType is INVALID
 	 */
 	public ChessMove createNewChessMove(int oldX, int oldY, int newX, int newY){
-		MoveType moveType = gl.isMoveValid(oldX, oldY, newX, newY);
+		MoveType moveType = gr.isMoveValid(oldX, oldY, newX, newY);
 
 		if (moveType != MoveType.INVALID) {
 			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
@@ -119,13 +121,17 @@ public class CommandSender {
 	public void startNewGame(boolean classic) {
 		if (classic) {
 			bm = new BoardManager();
-			gl = new GameRule(bm.getBoard(), bm.getMR());
+			gr = new GameRule(bm.getBoard(), bm.getMR());
 		}
 		else {
 			bm = new SuperBoardManager();
-			gl = new SuperGameRule(bm.getBoard(), bm.getMR());
+			gr = new SuperGameRule(bm.getBoard(), bm.getMR());
 		}
 		this.bu = new BoardUpdater(bm);
+	}
+
+	public List<Point> passValidMove(Point p) {
+		return gr.getAvailableMoves(p);
 	}
 
 	/**
