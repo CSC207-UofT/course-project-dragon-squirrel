@@ -2,8 +2,7 @@ package piece;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.awt.*;
-import Board.Board;
+import java.awt.Point;
 import Board.BoardInterface;
 public class Rook extends Piece{
 
@@ -13,14 +12,19 @@ public class Rook extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return ROOK_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == 0 || Math.abs(oldCoorY - newCoorY) == 0;
     }
     
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
-		List<Point> moves = new ArrayList<Point>();
+		List<Point> moves = new ArrayList<>();
 		//Rooks move up and down the rank and file of the chessboard, and can move any number of spaces
 		
 		boolean right = true;
@@ -31,7 +35,7 @@ public class Rook extends Piece{
 		for(int i = 1; i < b.getBoundaries().x; i++) {
 			
 			if(withinBoundary(x, y+i, b) && right) {		//right
-				if(b.isPositionVacant(x, y+i) == false) {
+				if(!b.isPositionVacant(x, y + i)) {
 					if(isOpponentPiece(x, y+i, b))
 						moves.add(new Point(x,y+i));						
 					right = false;
@@ -41,7 +45,7 @@ public class Rook extends Piece{
 			}
 			
 			if(withinBoundary(x, y-i, b) && left) {			//left
-				if(b.isPositionVacant(x, y-i) == false) {
+				if(!b.isPositionVacant(x, y - i)) {
 					if(isOpponentPiece(x, y-i, b))
 						moves.add(new Point(x,y-i));	
 					left = false;
@@ -51,7 +55,7 @@ public class Rook extends Piece{
 			}
 			
 			if(withinBoundary(x+i, y, b) && down) {			//down
-				if(b.isPositionVacant(x+i, y) == false) {
+				if(!b.isPositionVacant(x + i, y)) {
 					if(isOpponentPiece(x+i, y, b))
 						moves.add(new Point(x+i,y));	
 					down = false;
@@ -61,7 +65,7 @@ public class Rook extends Piece{
 			}
 			
 			if(withinBoundary(x-i, y, b) && up) {			//up
-				if(b.isPositionVacant(x-i, y) == false) {
+				if(!b.isPositionVacant(x - i, y)) {
 					if(isOpponentPiece(x-i, y, b))
 						moves.add(new Point(x-i,y));	
 					up = false;
@@ -72,6 +76,13 @@ public class Rook extends Piece{
 		}
 		
 		return moves;
+	}
+
+	@Override
+	public Piece deepCopy() {
+		Rook newPiece = new Rook(name, color);
+		newPiece.status = this.status;
+		return newPiece;
 	}
 
 }

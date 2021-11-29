@@ -2,8 +2,7 @@ package piece;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.*;
-import Board.Board;
+import java.awt.Point;
 import Board.BoardInterface;
 
 
@@ -16,7 +15,12 @@ public class Pawn extends Piece{
         hasNotMovedDuringGame = true;
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return PAWN_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         boolean solution;
         if (color == Color.WHITE) {
@@ -42,7 +46,7 @@ public class Pawn extends Piece{
     
     @Override
 	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
-		List<Point> moves = new ArrayList<Point>();
+		List<Point> moves = new ArrayList<>();
 		
 		//pawn moves forward , not backward so checking for white and black separately
 		if(color == Color.WHITE) {
@@ -74,5 +78,13 @@ public class Pawn extends Piece{
 		
 		return moves;
 	}
-	
+
+	@Override
+	public Piece deepCopy() {
+		Pawn newPiece = new Pawn(name, color);
+		newPiece.status = this.status;
+		newPiece.hasNotMovedDuringGame = this.hasNotMovedDuringGame;
+		return newPiece;
+	}
+
 }

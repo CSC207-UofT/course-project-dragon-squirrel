@@ -2,8 +2,7 @@ package piece;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.*;
-import Board.Board;
+import java.awt.Point;
 import Board.BoardInterface;
 
 public class Queen extends Piece{
@@ -12,14 +11,19 @@ public class Queen extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return QUEEN_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY) || (Math.abs(oldCoorX - newCoorX) == 0 || Math.abs(oldCoorY - newCoorY) == 0);
     }
     
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
-		List<Point> moves = new ArrayList<Point>();
+		List<Point> moves = new ArrayList<>();
 		
 		//Queen can move in any direction any number of spaces
 		boolean right = true;
@@ -34,7 +38,7 @@ public class Queen extends Piece{
 		for(int i = 1; i < b.getBoundaries().x; i++) {
 
 			if(withinBoundary(x, y+i, b) && right) {		//check in right direction
-				if(b.isPositionVacant(x, y+i) == false) {
+				if(!b.isPositionVacant(x, y + i)) {
 					if(isOpponentPiece(x, y+i, b)) {
 						moves.add(new Point(x,y+i));		
 					}		
@@ -47,7 +51,7 @@ public class Queen extends Piece{
 			}
 			
 			if(withinBoundary(x, y-i, b) && left) {				//check in left direction
-				if(b.isPositionVacant(x, y-i) == false) {
+				if(!b.isPositionVacant(x, y - i)) {
 					if(isOpponentPiece(x, y-i, b)) {
 						moves.add(new Point(x,y-i));		
 					}
@@ -60,7 +64,7 @@ public class Queen extends Piece{
 			}
 
 			if(withinBoundary(x-i, y, b) && up) {				//check in up direction
-				if(b.isPositionVacant(x-i, y) == false) {
+				if(!b.isPositionVacant(x - i, y)) {
 					if(isOpponentPiece(x-i, y, b)) {
 						moves.add(new Point(x-i,y));		
 					}
@@ -73,7 +77,7 @@ public class Queen extends Piece{
 			}
 			
 			if(withinBoundary(x+i, y, b) && down) {					//check in down direction
-				if(b.isPositionVacant(x+i, y) == false) {
+				if(!b.isPositionVacant(x + i, y)) {
 					if(isOpponentPiece(x+i, y, b)) {
 						moves.add(new Point(x+i,y));		
 					}
@@ -86,7 +90,7 @@ public class Queen extends Piece{
 			}
 
 			if(withinBoundary(x+i, y+i, b) && SW) {							//check in south west diagonal
-				if(b.isPositionVacant(x+i, y+i) == false) {
+				if(!b.isPositionVacant(x + i, y + i)) {
 					if(isOpponentPiece(x+i, y+i, b)) {
 						moves.add(new Point(x+i,y+i));		
 					}		
@@ -99,7 +103,7 @@ public class Queen extends Piece{
 			}
 
 			if(withinBoundary(x-i, y+i, b) && NW) {					//check in north west diagonal
-				if(b.isPositionVacant(x-i, y+i) == false) {
+				if(!b.isPositionVacant(x - i, y + i)) {
 					if(isOpponentPiece(x-i, y+i, b)) {
 						moves.add(new Point(x-i,y+i));		
 					}
@@ -112,7 +116,7 @@ public class Queen extends Piece{
 			}
 
 			if(withinBoundary(x+i, y-i, b) && SE) {					//check in south east diagonal
-				if(b.isPositionVacant(x+i, y-i) == false) {
+				if(!b.isPositionVacant(x + i, y - i)) {
 					if(isOpponentPiece(x+i, y-i, b)) {
 						moves.add(new Point(x+i,y-i));		
 					}
@@ -125,7 +129,7 @@ public class Queen extends Piece{
 			}
 
 			if(withinBoundary(x-i, y-i, b) && NE) {				//check in north east diagonal
-				if(b.isPositionVacant(x-i, y-i) == false) {
+				if(!b.isPositionVacant(x - i, y - i)) {
 					if(isOpponentPiece(x-i, y-i, b)) {
 						moves.add(new Point(x-i,y-i));		
 					}		
@@ -140,6 +144,13 @@ public class Queen extends Piece{
 		}
 
 		return moves;
+	}
+
+	@Override
+	public Piece deepCopy() {
+		Queen newPiece = new Queen(name, color);
+		newPiece.status = this.status;
+		return newPiece;
 	}
 
 }

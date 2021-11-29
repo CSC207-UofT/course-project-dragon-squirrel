@@ -3,7 +3,6 @@ package piece;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-import Board.Board;
 import Board.BoardInterface;
 
 
@@ -13,7 +12,12 @@ public class Knight extends Piece{
         super(name, color);
     }
 
-    @Override
+	@Override
+	public int getValue() {
+		return KNIGHT_VALUE;
+	}
+
+	@Override
     public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         int X = Math.abs(oldCoorX - newCoorX);
         int Y = Math.abs(oldCoorY - newCoorY);
@@ -27,7 +31,7 @@ public class Knight extends Piece{
     
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y){
-    	List<Point> moves = new ArrayList<Point>();
+    	List<Point> moves = new ArrayList<>();
 		
 		// Knight move in L-shaped
 		
@@ -46,4 +50,11 @@ public class Knight extends Piece{
 	
 		return moves;
     }
+
+	@Override
+	public Piece deepCopy() {
+		Knight newPiece = new Knight(name, color);
+		newPiece.status = this.status;
+		return newPiece;
+	}
 }
