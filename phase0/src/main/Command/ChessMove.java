@@ -8,6 +8,7 @@ import java.awt.*;
 public class ChessMove {
     private final Point oldPosition;
     private final Point newPosition;
+    private final Point otherPiecePosition;
     private BoardManager BM;
     private final PieceInterface oldPiece;
     private final PieceInterface newPiece;
@@ -36,11 +37,13 @@ public class ChessMove {
         moveType = typeOfMove;
 
         if (typeOfMove == MoveType.EN_PASSANT) {
-            otherPiece = BM.getPiece(oldX, newY);
+            otherPiecePosition = new Point(oldX, newY);
+            otherPiece = BM.getPiece(otherPiecePosition.x, otherPiecePosition.y);
         }
         else if (typeOfMove == MoveType.CASTLING) {
-            otherPiece = BM.getPiece(newX, (newY == 6)? 7 : 0);
-        } else {otherPiece = null;}
+            otherPiecePosition = new Point(newX, (newY == 6)? 7 : 0);
+            otherPiece = BM.getPiece(otherPiecePosition.x, otherPiecePosition.y);
+        } else {otherPiece = null; otherPiecePosition = null;}
     }
 
     /**
@@ -69,6 +72,13 @@ public class ChessMove {
      */
     public int getNewY(){
         return newPosition.y;
+    }
+
+    /**
+     * @return the coordinate of the other piece (captured pawn in en passant or the implicated rook in castling)
+     */
+    public Point getOtherPiecePosition(){
+        return otherPiecePosition;
     }
 
     /**

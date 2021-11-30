@@ -61,7 +61,7 @@ public class GUI_ChessBoard extends JFrame {
                     Point selected = indexToCoordinate(finalI);
 
                     if (icons[finalI].highlighted) {
-                        cs.pressMove(prevSelected.x, prevSelected.y, selected.x, selected.y);
+                        Point otherPoint = cs.pressMove(prevSelected.x, prevSelected.y, selected.x, selected.y);
 
                         // Move piece by changing JLabel's text
                         // TODO this is just temporary code for testing
@@ -69,6 +69,20 @@ public class GUI_ChessBoard extends JFrame {
                         String actionPiece = icons[coordinateToIndex(prevSelected)].getText();
                         icons[coordinateToIndex(prevSelected)].setText(" ");
                         icons[coordinateToIndex(selected)].setText(actionPiece);
+
+                        // for castling or en passant
+                        if (otherPoint != null) {
+                            // castling
+                            if (otherPoint.x == 0 || otherPoint.x == 7) {
+                                String otherPiece = icons[coordinateToIndex(otherPoint)].getText();
+                                icons[coordinateToIndex(otherPoint)].setText(" ");
+                                icons[coordinateToIndex(new Point(prevSelected.x,
+                                        (selected.y == 6) ? 5 : 3))].setText(otherPiece);
+                            }
+                            else { // en passant, delete the captured pawn
+                                icons[coordinateToIndex(otherPoint)].setText(" ");
+                            }
+                        }
                     }
 
                     if (icons[finalI].getText().equals(" "))
