@@ -39,7 +39,8 @@ public class King extends Piece{
 					moves.add(new Point(i, j));
 			}
 		}
-	
+
+		// TODO this block of code need some fix
 		if(color == Color.WHITE) {			
 			if (!this.hasMovedDuringGame && x == 4 && y == 0) {
 				if(b.isPositionVacant(5, 0) && b.isPositionVacant(6, 0) && !b.isPositionVacant(7, 1-1) && b.getPiece(7, 1-1) instanceof Rook){

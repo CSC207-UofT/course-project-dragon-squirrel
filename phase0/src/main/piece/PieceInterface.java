@@ -2,8 +2,6 @@ package piece;
 
 import java.awt.Point;
 import java.util.List;
-
-import Board.Board;
 import Board.BoardInterface;
 
 public interface PieceInterface {
@@ -26,7 +24,7 @@ public interface PieceInterface {
     boolean hasSameColor(PieceInterface targetPiece);
     List<Point> getValidMoves(BoardInterface b, int x, int y);
     PieceInterface deepCopy();
-    boolean withinBoundary(int x, int y, BoardInterface b);
-    boolean isOpponentPiece(int x, int y, BoardInterface b);
+//    boolean withinBoundary(int x, int y, BoardInterface b);
+//    boolean isOpponentPiece(int x, int y, BoardInterface b);
     
 }
