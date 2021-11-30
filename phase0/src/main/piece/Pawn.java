@@ -60,12 +60,13 @@ public class Pawn extends Piece{
 	    int direction = (color == Color.WHITE) ? -1 : 1;  // This is indicator, can either be 1 or -1
 
 	    int oneStepForward = x + direction;
+	    int twoStepsForward = x + direction * 2;
 
 	    if (canMoveTo(oneStepForward, y, b)) {
 		    moves.add(new Point(oneStepForward,y));
 	    }
 
-	    if (canMoveTo(x + direction * 2, y, b) && hasNotMovedDuringGame) {
+	    if (canMoveTo(twoStepsForward, y, b) && hasNotMovedDuringGame) {
 		    moves.add(new Point(x + direction * 2,y));
 	    }
 
