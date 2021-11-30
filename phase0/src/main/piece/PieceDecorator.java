@@ -52,15 +52,14 @@ public abstract class PieceDecorator implements PieceInterface {
     @Override
     public abstract SuperPieceDecorator deepCopy();
 
-    @Override
     public boolean withinBoundary(int x, int y, BoardInterface b) {
     	return piece.withinBoundary(x, y, b);
     }
-    
-    @Override
+
     public boolean isOpponentPiece(int x, int y, BoardInterface b) {
     	return piece.isOpponentPiece(x, y, b);
     }
+
     @Override
     public boolean isBlack() {
         return piece.isBlack();
@@ -71,7 +70,6 @@ public abstract class PieceDecorator implements PieceInterface {
         return piece.isWhite();
     }
 
-    @Override
     public boolean hasSameColor(PieceInterface targetPiece) {
         return piece.hasSameColor(targetPiece);
     }
