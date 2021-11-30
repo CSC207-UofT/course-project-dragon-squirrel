@@ -8,7 +8,7 @@ import Board.BoardInterface;
 
 public class Pawn extends Piece{
 
-    private boolean hasNotMovedDuringGame;
+    public boolean hasNotMovedDuringGame;
 
     public Pawn(String name, Color color){
         super(name, color);
@@ -39,23 +39,23 @@ public class Pawn extends Piece{
 	 * @return true if move is valid according to pawn behaviour, false otherwise.
 	 */
 	@Override
-    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
         boolean solution;
         if (color == Color.WHITE) {
-            solution = ((newX - oldX == -1 && newY - oldY == 0));
+            solution = ((newCoorX - oldCoorX == -1 && newCoorY - oldCoorY == 0));
         }
         else {
-            solution = ((newX - oldX == 1 && newY - oldY == 0));
+            solution = ((newCoorX - oldCoorX == 1 && newCoorY - oldCoorY == 0));
         }
         if (solution) {
             return true;
         }
         if (hasNotMovedDuringGame) {
             if (color == Color.WHITE) {
-                solution = (newX - oldX == -2 && newY - oldY == 0);
+                solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
             }
             else {
-                solution = (newX - oldX == 2 && newY - oldY == 0);
+                solution = (newCoorX - oldCoorX == 2 && newCoorY - oldCoorY == 0);
             }
         }
 
@@ -63,42 +63,48 @@ public class Pawn extends Piece{
     }
 
 	/**
-	 * @return a List<Point> of the valid coordinates the pawn can move to given piece behaviour, game rules, and
-	 * present board state.
+	 * Pawn moves forward, not backward
+	 * black and white pawn moves to different direction
+	 * Caution, this does NOT check en passant
+	 *
+	 * @param b The board
+	 * @param x starting position x
+	 * @param y starting position x
+	 * @return  All the valid moves
 	 */
     @Override
 	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
-		List<Point> moves = new ArrayList<>();
-		
-		//pawn moves forward , not backward so checking for white and black separately
-		if(color == Color.WHITE) {
-			if(withinBoundary(x-1, y, b) && b.isPositionVacant(x-1, y)) {
-				moves.add(new Point(x-1,y));
-			}
+	    List<Point> moves = new ArrayList<>();
+	    int direction = (color == Color.WHITE) ? -1 : 1;  // This is indicator, can either be 1 or -1
 
-			if(withinBoundary(x+1, y+1, b) && !b.isPositionVacant(x+1, y+1) && isOpponentPiece(x+1, y+1, b)) {
-				moves.add(new Point(x+1,y+1));
-			}
+	    int oneStepForward = x + direction;
+	    int twoStepsForward = x + direction * 2;
 
-			if(withinBoundary(x-1, y+1, b) && !b.isPositionVacant(x-1, y+1) && isOpponentPiece(x-1, y+1, b)) {
-				moves.add(new Point(x-1,y+1));
-			}
-		}
-		else {
-			if(withinBoundary(x, y-1, b) && b.isPositionVacant(x, y-1)) {
-				moves.add(new Point(x,y-1));
-			}
+	    if (canMoveTo(oneStepForward, y, b)) {
+		    moves.add(new Point(oneStepForward,y));
+	    }
 
-			if(withinBoundary(x+1, y-1, b) && !b.isPositionVacant(x+1, y-1) && isOpponentPiece(x+1, y-1, b)) {
-				moves.add(new Point(x+1,y-1));
-			}
-			
-			if(withinBoundary(x-1, y-1, b) && !b.isPositionVacant(x-1, y-1) && isOpponentPiece(x-1, y-1, b)) {
-				moves.add(new Point(x-1,y-1));
-			}
-		}
-		
-		return moves;
+	    if (canMoveTo(twoStepsForward, y, b) && hasNotMovedDuringGame) {
+		    moves.add(new Point(x + direction * 2,y));
+	    }
+
+	    if(canCapture(oneStepForward, y+1, b)) {
+		    moves.add(new Point(oneStepForward,y+1));
+	    }
+
+	    if(canCapture(oneStepForward, y-1, b)) {
+		    moves.add(new Point(oneStepForward,y-1));
+	    }
+
+	    return moves;
+	}
+
+	private boolean canCapture(int x, int y, BoardInterface b) {
+		return withinBoundary(x, y, b) && !b.isPositionVacant(x, y) && isOpponentPiece(x, y, b);
+	}
+
+	private boolean canMoveTo(int x, int y, BoardInterface b) {
+		return withinBoundary(x, y, b) && b.isPositionVacant(x, y);
 	}
 
 	@Override

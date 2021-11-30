@@ -58,11 +58,22 @@ public class GUI_ChessBoard extends JFrame {
                 public void mouseClicked(MouseEvent e) {
                     unselectAll();
                     icons[finalI].setSelected(true);
+                    Point selected = indexToCoordinate(finalI);
+
+                    if (icons[finalI].highlighted) {
+                        cs.pressMove(prevSelected.x, prevSelected.y, selected.x, selected.y);
+
+                        // Move piece by changing JLabel's text
+                        // TODO this is just temporary code for testing
+                        // TODO try implement it in a nicer way (e.x. use BoardUpdater)
+                        String actionPiece = icons[coordinateToIndex(prevSelected)].getText();
+                        icons[coordinateToIndex(prevSelected)].setText(" ");
+                        icons[coordinateToIndex(selected)].setText(actionPiece);
+                    }
 
                     if (icons[finalI].getText().equals(" "))
                         return;
 
-                    Point selected = indexToCoordinate(finalI);
                     showValidMove(selected.x, selected.y);
 
                     prevSelected = selected;

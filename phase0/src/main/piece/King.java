@@ -41,15 +41,13 @@ public class King extends Piece{
     public boolean validMove(int oldX, int oldY, int newX, int newY) {
         if (hasMovedDuringGame) {
 			return Math.abs(oldX - newX) <= 1 && Math.abs(oldY - newY) <= 1;
-		} else {
+		} else { //Castling
 			if (getColor() == Color.BLACK){
 				return oldX == 0 && oldY == 4 && newX == 0 && (newY == 2 || newY == 6);
 			} else {
 				return oldX == 7 && oldY == 4 && newX == 7 && (newY == 2 || newY == 6);
 			}
 		}
-
-        //TODO: what if we are castling
     }
 
 	/**
@@ -60,18 +58,17 @@ public class King extends Piece{
 	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
 		List<Point> moves = new ArrayList<>();
 
-		//checking in all directions
 		//The king can move one space in any direction
-
 		for (int i = x-1; i <= x+1; i++) {
 			for (int j = y-1; j <= y+1; j++) {
-				if ((i == x && j == y) || !withinBoundary(i, j, b))
+				if (i == x && j == y)
 					continue;
-				if (b.isPositionVacant(i, j) || isOpponentPiece(i, j, b))
+				if (isValidToMove(i, j, b))
 					moves.add(new Point(i, j));
 			}
 		}
-	
+
+		// TODO this block of code need some fix
 		if(color == Color.WHITE) {			
 			if (!this.hasMovedDuringGame && x == 4 && y == 0) {
 				if(b.isPositionVacant(5, 0) && b.isPositionVacant(6, 0) && !b.isPositionVacant(7, 1-1) && b.getPiece(7, 1-1) instanceof Rook){

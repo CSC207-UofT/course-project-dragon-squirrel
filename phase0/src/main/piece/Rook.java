@@ -46,58 +46,8 @@ public class Rook extends Piece{
 	 */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
-		List<Point> moves = new ArrayList<>();
 		//Rooks move up and down the rank and file of the chessboard, and can move any number of spaces
-		
-		boolean right = true;
-		boolean left = true;
-		boolean up = true;
-		boolean down = true;
-		
-		for(int i = 1; i < b.getBoundaries().x; i++) {
-			
-			if(withinBoundary(x, y+i, b) && right) {		//right
-				if(!b.isPositionVacant(x, y + i)) {
-					if(isOpponentPiece(x, y+i, b))
-						moves.add(new Point(x,y+i));						
-					right = false;
-				}
-				else
-					moves.add(new Point(x,y+i));	
-			}
-			
-			if(withinBoundary(x, y-i, b) && left) {			//left
-				if(!b.isPositionVacant(x, y - i)) {
-					if(isOpponentPiece(x, y-i, b))
-						moves.add(new Point(x,y-i));	
-					left = false;
-				}
-				else
-					moves.add(new Point(x,y-i));	
-			}
-			
-			if(withinBoundary(x+i, y, b) && down) {			//down
-				if(!b.isPositionVacant(x + i, y)) {
-					if(isOpponentPiece(x+i, y, b))
-						moves.add(new Point(x+i,y));	
-					down = false;
-				}
-				else
-					moves.add(new Point(x+i,y));	
-			}
-			
-			if(withinBoundary(x-i, y, b) && up) {			//up
-				if(!b.isPositionVacant(x - i, y)) {
-					if(isOpponentPiece(x-i, y, b))
-						moves.add(new Point(x-i,y));	
-					up = false;
-				}
-				else
-					moves.add(new Point(x-i,y));	
-			}
-		}
-		
-		return moves;
+	    return searchHorizontalAndVertically(b, x, y);
 	}
 
 	@Override
