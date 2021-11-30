@@ -13,11 +13,11 @@ public abstract class Move implements Command{
         this.BM = newBM;
     }
 
-    public Move(BoardManager newBM, ChessMove newChessRule){
+    public Move(BoardManager newBM, ChessMove newChessMove){
         this.BM = newBM;
-        this.CM = newChessRule;
-        this.actionPiece = newChessRule.getOldPiece();
-        this.targetPiece = newChessRule.getNewPiece();
+        this.CM = newChessMove;
+        this.actionPiece = newChessMove.getOldPiece();
+        this.targetPiece = newChessMove.getNewPiece();
     }
 
     @Override

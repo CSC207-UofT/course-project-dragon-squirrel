@@ -18,15 +18,23 @@ public class Bishop extends Piece{
 		return BISHOP_VALUE;
 	}
 
+	/**
+	 * Check: move is a straight diagonal line
+	 * @return true if move is valid according to bishop behaviour, false otherwise.
+	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        return Math.abs(oldX - newX) == Math.abs(oldY - newY);
     }
         
     public boolean canReplace(BoardInterface b, int x, int y) {			//it will check if a piece is already placed on that position and can bishop destroy it
     	return isOpponentPiece(x, y, b);
     }
-    
+
+	/**
+	 * @return a List<Point> of the valid coordinates the bishop can move to given piece behaviour, game rules, and
+	 * present board state.
+	 */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) 
     {

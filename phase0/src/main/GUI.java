@@ -1,4 +1,3 @@
-import Command.ChessMove;
 import Controller.BoardUpdater;
 import Controller.CommandSender;
 

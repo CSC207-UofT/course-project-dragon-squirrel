@@ -16,11 +16,19 @@ public class Queen extends Piece{
 		return QUEEN_VALUE;
 	}
 
+	/**
+	 * Check: move is a straight horizontal / vertical / diagonal line
+	 * @return true if move is valid according to queen behaviour, false otherwise.
+	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY) || (Math.abs(oldCoorX - newCoorX) == 0 || Math.abs(oldCoorY - newCoorY) == 0);
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        return Math.abs(oldX - newX) == Math.abs(oldY - newY) || (Math.abs(oldX - newX) == 0 || Math.abs(oldY - newY) == 0);
     }
-    
+
+	/**
+	 * @return a List<Point> of the valid coordinates the queen can move to given piece behaviour, game rules, and
+	 * present board state.
+	 */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
 		List<Point> moves = new ArrayList<>();
@@ -89,7 +97,7 @@ public class Queen extends Piece{
 
 			}
 
-			if(withinBoundary(x+i, y+i, b) && SW) {							//check in south west diagonal
+			if(withinBoundary(x+i, y+i, b) && SW) {							//check in south-west diagonal
 				if(!b.isPositionVacant(x + i, y + i)) {
 					if(isOpponentPiece(x+i, y+i, b)) {
 						moves.add(new Point(x+i,y+i));		
@@ -102,7 +110,7 @@ public class Queen extends Piece{
 
 			}
 
-			if(withinBoundary(x-i, y+i, b) && NW) {					//check in north west diagonal
+			if(withinBoundary(x-i, y+i, b) && NW) {					//check in north-west diagonal
 				if(!b.isPositionVacant(x - i, y + i)) {
 					if(isOpponentPiece(x-i, y+i, b)) {
 						moves.add(new Point(x-i,y+i));		
@@ -115,7 +123,7 @@ public class Queen extends Piece{
 
 			}
 
-			if(withinBoundary(x+i, y-i, b) && SE) {					//check in south east diagonal
+			if(withinBoundary(x+i, y-i, b) && SE) {					//check in south-east diagonal
 				if(!b.isPositionVacant(x + i, y - i)) {
 					if(isOpponentPiece(x+i, y-i, b)) {
 						moves.add(new Point(x+i,y-i));		
@@ -128,7 +136,7 @@ public class Queen extends Piece{
 
 			}
 
-			if(withinBoundary(x-i, y-i, b) && NE) {				//check in north east diagonal
+			if(withinBoundary(x-i, y-i, b) && NE) {				//check in north-east diagonal
 				if(!b.isPositionVacant(x - i, y - i)) {
 					if(isOpponentPiece(x-i, y-i, b)) {
 						moves.add(new Point(x-i,y-i));		

@@ -7,24 +7,56 @@ import Board.BoardInterface;
 
 public class King extends Piece{
 
-    public boolean hasMovedDuringGame;
+    private boolean hasMovedDuringGame;
 
     public King(String name, Color color){
         super(name, color);
     }
+
+	/**
+	 * @return true if King has moved during the game, false otherwise.
+	 */
+	public boolean getHasMovedDuringGame(){
+		return hasMovedDuringGame;
+	}
+
+	/**
+	 * Set hasMovedDuringGame as true or false depending on hasMoved.
+	 */
+	public void setHasMovedDuringGame(boolean hasMoved){
+		hasMovedDuringGame = hasMoved;
+	}
 
 	@Override
 	public int getValue() {
 		return KING_VALUE;
 	}
 
+	/**
+	 * Check: move is one square in any direction, or follows castling behaviour (two squares left or right given king
+	 * has not yet moved during the game)
+	 * @return true if move is valid according to king behaviour, false otherwise.
+	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        return Math.abs(oldCoorX - newCoorX) <= 1 && Math.abs(oldCoorY - newCoorY) <= 1;
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        if (hasMovedDuringGame) {
+			return Math.abs(oldX - newX) <= 1 && Math.abs(oldY - newY) <= 1;
+		} else {
+			if (getColor() == Color.BLACK){
+				return oldX == 0 && oldY == 4 && newX == 0 && (newY == 2 || newY == 6);
+			} else {
+				return oldX == 7 && oldY == 4 && newX == 7 && (newY == 2 || newY == 6);
+			}
+		}
 
         //TODO: what if we are castling
     }
-    
+
+	/**
+	 * @return a List<Point> of the valid coordinates the king can move to given piece behaviour, game rules, and
+	 * present board state.
+	 */
+	@Override
 	public List<Point> getValidMoves(BoardInterface b, int x, int y) {
 		List<Point> moves = new ArrayList<>();
 

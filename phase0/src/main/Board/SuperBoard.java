@@ -7,7 +7,7 @@ public class SuperBoard extends Board{
     public static String[][] superBoardLand; // Each cell contains the name of the type of land
 
     public SuperBoard(int column, int row) {
-        super(13, 10);
+        super(column, row);
         superBoardLand = new String[13][10];
         superSetLand();
     }
@@ -23,6 +23,10 @@ public class SuperBoard extends Board{
         super.board = board;
     }
 
+    /**
+     * Set superBoardLand such that each coordinate has their specified land type (river, bridge, black_zone,
+     * white_zone, and ground).
+     */
     public void superSetLand() {
         // river (r), bridge (b), black_zone (z), white_zone (x) ground (.)
 

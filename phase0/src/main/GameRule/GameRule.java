@@ -4,10 +4,8 @@ import Board.Board;
 import Command.ChessMove;
 import Command.MoveRecord;
 import Command.MoveType;
+import piece.*;
 import piece.Color;
-import piece.Knight;
-import piece.Pawn;
-import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,7 +28,7 @@ public class GameRule {
 
 	/**
 	 * Check whether move is valid according to classic chess game rules
-	 * @return type of move (INVALID, ENPASSANT, CAPTURE, REGULAR)
+	 * @return type of move (INVALID, EN_PASSANT, CASTLING, CAPTURE, REGULAR)
 	 */
 	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
@@ -38,15 +36,12 @@ public class GameRule {
 			System.out.println("Coordinate invalid");
 			return MoveType.INVALID;
 		}
-
 		if (enPassant(oldX, oldY, newX, newY)){
-			return MoveType.ENPASSANT;
+			return MoveType.EN_PASSANT;
 		}
-
 		if (pawnCapture(oldX, oldY, newX, newY)){
 			return MoveType.CAPTURE;
 		}
-
 		PieceInterface actionPiece = board.getPiece(oldX, oldY);
 		PieceInterface targetPiece = board.getPiece(newX, newY);
 
@@ -54,26 +49,24 @@ public class GameRule {
 			System.out.println("Piece not found");
 			return MoveType.INVALID;
 		}
-
 		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
 			System.out.println("Invalid capture");
 			return MoveType.INVALID;
 		}
-
 		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
 			System.out.println("Invalid Move");
 			return MoveType.INVALID;
 		}
-
 		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
 			return MoveType.INVALID;
 		}
-
 		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
 			return MoveType.CAPTURE;
 		}
-
+		if (Castling(oldX, oldY, newX, newY)) {
+			return MoveType.CASTLING;
+		}
 		return MoveType.REGULAR;
 	}
 
@@ -102,6 +95,7 @@ public class GameRule {
 	}
 
 	/**
+	 * Does not add coordinates old and new to the list.
 	 * @return a list of the coordinates in the path between (oldX, oldY) and (newX, newY)
 	 */
 	public ArrayList<Point> pathCoordinates(int oldX, int oldY, int newX, int newY) {
@@ -160,6 +154,9 @@ public class GameRule {
 		return board.getBoard()[p.x][p.y].getValidMoves(board, p.x, p.y);
 	}
 
+	/**
+	 * @return true if enPassant is applicable, false otherwise
+	 */
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){
 		if (MR.isEmpty()){
 			return false;
@@ -188,6 +185,9 @@ public class GameRule {
 		else return newX == oldX + 1 && newY == lastMove.getNewY();
 	}
 
+	/**
+	 * @return true if a pawnCapture is applicable, false otherwise
+	 */
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
 		PieceInterface movingPiece = board.getPiece(oldX, oldY);
 		PieceInterface capturedPiece = board.getPiece(newX, newY);
@@ -205,5 +205,39 @@ public class GameRule {
 		}
 		else return (newX - oldX == 1 && Math.abs(newY - oldY) == 1);
 
+	}
+
+	/**
+	 * Check: 	Moving King and implicated rook has not moved during the game.
+	 * 			King either moves two squares to the right or two to the left.
+	 * 			Path is clear between the king and the rook.
+	 * 			The current king position and king's path is not under checkmate.
+	 * @return true if Castling is applicable, false otherwise
+	 */
+	public boolean Castling(int oldX, int oldY, int newX, int newY) {
+		PieceInterface movingPiece = board.getPiece(oldX, oldY);
+		PieceInterface capturedPiece = board.getPiece(newX, newY);
+		PieceInterface rook = board.getPiece(newX, (newY == 6) ? 7 : 0);
+		if (!(movingPiece instanceof King)) {
+			return false;
+		}
+		if (((King) movingPiece).getHasMovedDuringGame()) {
+			return false;
+		}
+		if (capturedPiece != null) {
+			return false;
+		}
+		if (!((oldX == 0 && newX == 0 && (newY == 2 || newY == 6)) ||
+				(oldX == 7 && newX == 7 && (newY == 2 || newY == 6)))) {
+			return false;
+		}
+		if (!isPathClear(oldX, oldY, newX, (newY == 6) ? 7 : 0)) {
+			return false;
+		}
+		if (((Rook) rook).getHasMovedDuringGame()) {
+			return false;
+		}
+		// TODO: if statements need to check that the start coordinate and path that king will take is not in check.
+		return true;
 	}
 }
