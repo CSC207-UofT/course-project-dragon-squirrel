@@ -39,16 +39,16 @@ public class King extends Piece{
 	 */
 	@Override
     public boolean validMove(int oldX, int oldY, int newX, int newY) {
-        if (hasMovedDuringGame) {
-			return Math.abs(oldX - newX) <= 1 && Math.abs(oldY - newY) <= 1;
-		} else { //Castling
-			if (getColor() == Color.BLACK){
-				return oldX == 0 && oldY == 4 && newX == 0 && (newY == 2 || newY == 6);
-			} else {
-				return oldX == 7 && oldY == 4 && newX == 7 && (newY == 2 || newY == 6);
+		if (!hasMovedDuringGame) { //Castling
+			if (getColor() == Color.BLACK && oldX == 0 && oldY == 4 && newX == 0 && (newY == 2 || newY == 6)){
+				return true;
+			} if (getColor() == Color.WHITE && (oldX == 7 && oldY == 4 && newX == 7 && (newY == 2 || newY == 6))){
+				return true;
 			}
 		}
-    }
+		// regular movement
+		return Math.abs(oldX - newX) <= 1 && Math.abs(oldY - newY) <= 1;
+	}
 
 	/**
 	 * @return a List<Point> of the valid coordinates the king can move to given piece behaviour, game rules, and
@@ -68,22 +68,14 @@ public class King extends Piece{
 			}
 		}
 
-		// TODO this block of code need some fix
-		if(color == Color.WHITE) {			
-			if (!this.hasMovedDuringGame && x == 4 && y == 0) {
-				if(b.isPositionVacant(5, 0) && b.isPositionVacant(6, 0) && !b.isPositionVacant(7, 1-1) && b.getPiece(7, 1-1) instanceof Rook){
-					moves.add(new Point(x+2,y));
-				}
+		if (!hasMovedDuringGame) {
+			if (b.isPositionVacant(x, 5) && b.isPositionVacant(x, 6) && (b.getPiece(x, 7) instanceof Rook) &&
+					!((Rook) b.getPiece(x, 7)).getHasMovedDuringGame()) {
+				moves.add(new Point(x, 6));
+			} if (b.isPositionVacant(x, 3) && b.isPositionVacant(x, 2) && b.isPositionVacant(x, 1) &&
+					(b.getPiece(x, 0) instanceof Rook) && !((Rook) b.getPiece(x, 0)).getHasMovedDuringGame()) {
+				moves.add(new Point(x, 2));
 			}
-			else 
-				this.hasMovedDuringGame = true;
-		}
-		else { 
-			if (!this.hasMovedDuringGame && x == 4 && y == 7) {
-				
-			}
-			else 
-				this.hasMovedDuringGame = true;
 		}
 
 		return moves;

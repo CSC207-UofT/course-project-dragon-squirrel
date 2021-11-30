@@ -39,23 +39,23 @@ public class Pawn extends Piece{
 	 * @return true if move is valid according to pawn behaviour, false otherwise.
 	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
         boolean solution;
         if (color == Color.WHITE) {
-            solution = ((newCoorX - oldCoorX == -1 && newCoorY - oldCoorY == 0));
+            solution = ((newX - oldX == -1 && newY - oldY == 0));
         }
         else {
-            solution = ((newCoorX - oldCoorX == 1 && newCoorY - oldCoorY == 0));
+            solution = ((newX - oldX == 1 && newY - oldY == 0));
         }
         if (solution) {
             return true;
         }
         if (hasNotMovedDuringGame) {
             if (color == Color.WHITE) {
-                solution = (newCoorX - oldCoorX == -2 && newCoorY - oldCoorY == 0);
+                solution = (newX - oldX == -2 && newY - oldY == 0);
             }
             else {
-                solution = (newCoorX - oldCoorX == 2 && newCoorY - oldCoorY == 0);
+                solution = (newX - oldX == 2 && newY - oldY == 0);
             }
         }
 
