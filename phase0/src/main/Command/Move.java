@@ -1,6 +1,6 @@
 package Command;
 
-import BoardManager.*;
+import BoardManager.BoardManager;
 import piece.King;
 import piece.Pawn;
 import piece.PieceInterface;
@@ -27,6 +27,7 @@ public abstract class Move implements Command{
     public void execute() {
         if (actionPiece instanceof Pawn)
             ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+        // TODO also do it for King and Rook
     }
     
     @Override
