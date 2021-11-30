@@ -12,39 +12,32 @@ public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
-    private PieceIcon[] icons = new PieceIcon[]{
-            // white
-            new PieceIcon("\u2656"), new PieceIcon("\u2658"), new PieceIcon("\u2657"),
-            new PieceIcon("\u2655"), new PieceIcon("\u2654"), new PieceIcon("\u2657"),
-            new PieceIcon("\u2658"), new PieceIcon("\u2656"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"),
-            // empty
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
-            new PieceIcon(" "), new PieceIcon(" "),
-            // black
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265C"),
-            new PieceIcon("\u265E"), new PieceIcon("\u265D"), new PieceIcon("\u265B"),
-            new PieceIcon("\u265A"), new PieceIcon("\u265D"), new PieceIcon("\u265E"),
-            new PieceIcon("\u265C")
-    };
-
+    private PieceIcon[] icons;
     private CommandSender cs;
     private Point prevSelected;
+    private JMenuBar bar;
+    private final JMenuItem save = new JMenuItem("save");
+    private final JMenuItem reload = new JMenuItem("reload");
 
     // TODO: Probably will change some code below, as we need to have operation on the board
+
+    private void addBarItem(){
+        save.addActionListener(e -> {
+            // save feature goes here
+        });
+
+        reload.addActionListener(e -> {
+            // reload feature goes here
+        });
+
+        JPopupMenu file = new JPopupMenu("file");
+        file.add(save, reload);
+
+        file.setVisible(true);
+
+        bar.add(file);
+
+    }
 
     public GUI_ChessBoard(){
 
