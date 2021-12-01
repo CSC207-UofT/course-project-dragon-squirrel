@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Minimax extends Engine{
 
-	private int maxDepth;
+	private final int maxDepth;
 
 	public Minimax(BoardManager bm, int depth) {
 		super(bm);
@@ -24,7 +24,8 @@ public class Minimax extends Engine{
 
 	@Override
 	public Point[] makeDecision() {
-		return null;    // TODO
+		search(maxDepth, startingState, true);
+		return bestState.getPrevMove();
 	}
 
 	/**

@@ -45,7 +45,7 @@ public class LaunchPage implements ActionListener {
 
         //Set the Action of clicking Chess Button, jump to GUI_ChessBoard
         if(e.getSource()==chessWithAI) {
-            GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.EASY);
+            GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.MEDIUM);
             System.out.println("Now easy AI takes over black side");
             chess.display();
             frame.setVisible(false);
