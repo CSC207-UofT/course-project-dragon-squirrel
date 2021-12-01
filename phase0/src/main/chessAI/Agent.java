@@ -30,6 +30,7 @@ public class Agent {
 
 	public void makeMove() {
 		Point[] decision = engine.makeDecision();
+		System.out.println("AI decides to move from " + decision[0] + " to " + decision[1]);
 		cs.pressMove(decision[0].x, decision[0].y, decision[1].x, decision[1].y);
 	}
 }

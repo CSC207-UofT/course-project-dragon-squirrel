@@ -58,7 +58,6 @@ public class GUI_ChessBoard extends JFrame {
 
     private JMenuItem save = new JMenuItem("save");
     private JMenuItem reload = new JMenuItem("reload");
-    private JMenuItem addAI = new JMenuItem("AI Player");
 
     private void set_bar(){
         save.addActionListener(e -> {
@@ -75,13 +74,7 @@ public class GUI_ChessBoard extends JFrame {
 
         });
 
-        addAI.addActionListener(e -> {
-            System.out.println("Now AI takes over black side");
-            ai = new Agent(cs, Difficulty.EASY);
-        });
-
         file.add(save); file.add(reload);
-        pref.add(addAI);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);
@@ -91,10 +84,13 @@ public class GUI_ChessBoard extends JFrame {
 
     // TODO: Probably will change some code below, as we need to have operation on the board
 
-    public GUI_ChessBoard(){
+    public GUI_ChessBoard(Difficulty AISetting){
 
         cs = new CommandSender(true);
         bu = cs.getBoardUpdater();
+
+        if (AISetting != Difficulty.NONE)
+            ai = new Agent(cs, AISetting);
 
         set_bar();
         add(bar);
@@ -103,6 +99,7 @@ public class GUI_ChessBoard extends JFrame {
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;     // intelliJ suggests me to write this
             icons[i].addMouseListener(new MouseListener() {
+
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     Point clicked = indexToCoordinate(finalI);
@@ -134,9 +131,8 @@ public class GUI_ChessBoard extends JFrame {
                         unHighlightAll();
                         clickedIcon.setSelected(true);
                     }
-                    else {
+                    else
                         System.out.println("we re not expecting this");
-                    }
                 }
 
                 @Override
@@ -189,7 +185,7 @@ public class GUI_ChessBoard extends JFrame {
 
     private void unselectAll() {
         for (PieceIcon icon: icons) {
-            icon.unselect();
+            icon.setSelected(false);
         }
     }
 

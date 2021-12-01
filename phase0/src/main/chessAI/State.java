@@ -12,7 +12,7 @@ import java.util.List;
  * A state containing all information of the game at a specific time.
  * Usually we need to search through a tree of states to make a wise move.
  *
- * This only works in classical piece yet
+ * This only works in classic piece yet
  */
 public class State {
 
@@ -58,23 +58,23 @@ public class State {
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
 				PieceInterface piece = board.getPiece(i, j);
-				List<Point> validPositionsToMove = new ArrayList<>();
+				List<Point> validPositionsToMove;
 
 				if (piece != null && piece.getColor() == activePlayer) {
 					validPositionsToMove = piece.getValidMoves(board, i, j);
-				}
 
-				// Generate new board copy and apply move for each position
-				for (Point p: validPositionsToMove) {
-					Board boardCopy = board.deepCopy();
-					PieceInterface actionPiece = boardCopy.removePiece(i, j);
-					boardCopy.addPiece(actionPiece, p.x, p.y);
+					// Generate new board copy and apply move for each position
+					for (Point p: validPositionsToMove) {
+						Board boardCopy = board.deepCopy();
+						PieceInterface actionPiece = boardCopy.removePiece(i, j);
+						boardCopy.addPiece(actionPiece, p.x, p.y);
 
-					Point[] prevMove = new Point[2];
-					prevMove[0] = new Point(i, j);
-					prevMove[1] = new Point(p.x, p.y);
+						Point[] prevMove = new Point[2];
+						prevMove[0] = new Point(i, j);
+						prevMove[1] = new Point(p.x, p.y);
 
-					nextStates.add(new State(boardCopy, activePlayer, prevMove));
+						nextStates.add(new State(boardCopy, activePlayer, prevMove));
+					}
 				}
 			}
 		}
@@ -96,9 +96,9 @@ public class State {
 				PieceInterface piece = board.getPiece(i, j);
 
 				if (piece != null) {
-					// Player's piece add score, opponent's piece deduct score
+					// Assume AI is playing black, calculate score
 					int pieceValue = piece.getValue();
-					score += piece.getColor() == activePlayer ? pieceValue : -pieceValue;
+					score += (piece.getColor() == Color.BLACK ? pieceValue : -pieceValue);
 				}
 
 			}
