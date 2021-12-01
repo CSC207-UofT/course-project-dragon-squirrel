@@ -40,7 +40,7 @@ public class BoardManager {
      * @return 2d string array of board
      */
     public String[][] getBoardAsString() {
-        return board.to2dStringArray(board.getBoundaries().x, board.getBoundaries().y);
+        return board.to2dStringArray();
     }
 
     /**

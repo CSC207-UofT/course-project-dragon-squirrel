@@ -1,6 +1,7 @@
 package chessAI;
 
 import BoardManager.BoardManager;
+import piece.Color;
 import piece.PieceInterface;
 
 import java.awt.Point;
@@ -23,9 +24,9 @@ public abstract class Engine {
 
 	public Engine(BoardManager bm) {
 
-		// TODO initialize states
-		startingState = new State(bm.getBoard(), bm.getActivePlayer().getColor(), null);
-		searchingQueue = new PriorityQueue<>(Comparator.comparingInt(State::getScore));
+		// assume AI is always black, so previous player for starting state is always white
+		startingState = new State(bm.getBoard(), Color.WHITE, null);
+		searchingQueue = new PriorityQueue<>((o1, o2) -> o2.getScore() - o1.getScore());
 	}
 
 	public abstract Point[] makeDecision();

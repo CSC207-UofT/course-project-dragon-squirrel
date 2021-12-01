@@ -1,15 +1,18 @@
 package Board;
 
 import piece.*;
+import piece.Color;
+
 
 import java.awt.Point;
+import java.util.List;
 
 /**
  * Entity
  */
 public class Board implements BoardInterface{
 
-    protected PieceInterface[][] board;
+    protected PieceInterface[][] board;   // Each cell can be the name/ID of a piece
     protected Point boundaries;
 
     public Board(int column, int row) {
@@ -17,21 +20,12 @@ public class Board implements BoardInterface{
         boundaries = new Point(column, row);
     }
 
-    /**
-     * @return board with 2d array of piece in corresponding positions
-     */
     public PieceInterface[][] getBoard() {
         return board;
     }
 
-    /**
-     * @return Point (column, row) boundaries of the board
-     */
     public Point getBoundaries() {return boundaries;}
 
-    /**
-     * Place piece at board[X][Y]
-     */
     public void addPiece(PieceInterface piece, int X, int Y) {
         board[X][Y] = piece;
     }
@@ -45,37 +39,24 @@ public class Board implements BoardInterface{
         return piece;
     }
 
-    /**
-     * @return true if position at board[X][Y] is vacant (does not have a piece), false otherwise
-     */
     public boolean isPositionVacant(int X, int Y) {
         return board[X][Y] == null;
     }
 
-    /**
-     * @return the piece at board[X][Y], or null if there is no piece.
-     */
     public PieceInterface getPiece(int X, int Y) {
         return board[X][Y];
     }
 
-    /**
-     * Set board attribute in Board class as the board argument given.
-     */
     public void reset(PieceInterface[][] board)
     {
         this.board = board;
     }
 
-    /**
-     * Stored strings are piece names ("b_pawn", "w_rook", etc.) or "vacant"
-     * @return 2d string array of board.
-     */
-    public String[][] to2dStringArray(int x, int y) {
-        String[][] boardAsString = new String[x][y];
+    public String[][] to2dStringArray() {
+        String[][] boardAsString = new String[boundaries.x][boundaries.y];
 
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
+        for (int i = 0; i < boundaries.x; i++) {
+            for (int j = 0; j < boundaries.y; j++) {
                 try {
                     PieceInterface piece = board[i][j];
                     String color = piece.isBlack() ? "b_" : "w_";
@@ -102,7 +83,10 @@ public class Board implements BoardInterface{
 
         for (int i = 0; i < boundaries.x; i++) {
             for (int j = 0; j < boundaries.y; j++) {
-                piece2dArray[i][j] = board[i][j].deepCopy();    //TODO requires Piece.deepCopy() work properly
+                if (board[i][j] != null)
+                    piece2dArray[i][j] = board[i][j].deepCopy();
+                else
+                    piece2dArray[i][j] = null;
             }
         }
 

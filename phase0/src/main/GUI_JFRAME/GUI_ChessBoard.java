@@ -1,6 +1,9 @@
 package GUI_JFRAME;
 
+import Controller.BoardUpdater;
 import Controller.CommandSender;
+import chessAI.Agent;
+import chessAI.Difficulty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,17 +12,17 @@ import java.awt.event.MouseListener;
 import java.util.List;
 
 public class GUI_ChessBoard extends JFrame {
-    // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
+    // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
     private PieceIcon[] icons = new PieceIcon[]{
-            // white
-            new PieceIcon("\u2656"), new PieceIcon("\u2658"), new PieceIcon("\u2657"),
-            new PieceIcon("\u2655"), new PieceIcon("\u2654"), new PieceIcon("\u2657"),
-            new PieceIcon("\u2658"), new PieceIcon("\u2656"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
-            new PieceIcon("\u2659"),
+            //
+            new PieceIcon("\u265C"), new PieceIcon("\u265E"), new PieceIcon("\u265D"),
+            new PieceIcon("\u265B"), new PieceIcon("\u265A"), new PieceIcon("\u265D"),
+            new PieceIcon("\u265E"), new PieceIcon("\u265C"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"),
             // empty
             new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
             new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
@@ -32,65 +35,104 @@ public class GUI_ChessBoard extends JFrame {
             new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
             new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
             new PieceIcon(" "), new PieceIcon(" "),
-            // black
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
-            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265C"),
-            new PieceIcon("\u265E"), new PieceIcon("\u265D"), new PieceIcon("\u265B"),
-            new PieceIcon("\u265A"), new PieceIcon("\u265D"), new PieceIcon("\u265E"),
-            new PieceIcon("\u265C")
+            // white
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2656"), new PieceIcon("\u2658"), new PieceIcon("\u2657"),
+            new PieceIcon("\u2655"), new PieceIcon("\u2654"), new PieceIcon("\u2657"),
+            new PieceIcon("\u2658"), new PieceIcon("\u2656"),
     };
 
-    private CommandSender cs;
+    private final CommandSender cs;
+    private final BoardUpdater bu;
     private Point prevSelected;
+    private Agent ai;
+
+    private Container contentPane = new Container();
+
+    private JMenuBar bar = new JMenuBar();
+
+    private JMenu file = new JMenu("File");
+    private JMenu pref = new JMenu("Preference");
+
+    private JMenuItem save = new JMenuItem("save");
+    private JMenuItem reload = new JMenuItem("reload");
+
+    private void set_bar(){
+        save.addActionListener(e -> {
+            // save
+            System.out.println("Test save");
+
+
+        });
+
+        reload.addActionListener(e -> {
+            // reload
+            System.out.println("Test reload");
+
+
+        });
+
+        file.add(save); file.add(reload);
+
+        bar.add(file); bar.add(pref);
+        bar.setVisible(true);
+        bar.setBounds(0, 0, 800, 20);
+    }
+
 
     // TODO: Probably will change some code below, as we need to have operation on the board
 
-    public GUI_ChessBoard(){
+    public GUI_ChessBoard(Difficulty AISetting){
 
         cs = new CommandSender(true);
+        bu = cs.getBoardUpdater();
+
+        if (AISetting != Difficulty.NONE)
+            ai = new Agent(cs, AISetting);
+
+        set_bar();
+        add(bar);
 
         // Add listener to every PieceIcon
         for (int i = 0; i < icons.length; i++) {
-            int finalI = i;
+            int finalI = i;     // intelliJ suggests me to write this
             icons[i].addMouseListener(new MouseListener() {
+
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    unselectAll();
-                    icons[finalI].setSelected(true);
-                    Point selected = indexToCoordinate(finalI);
+                    Point clicked = indexToCoordinate(finalI);
+                    PieceIcon clickedIcon = icons[finalI];
 
-                    if (icons[finalI].highlighted) {
-                        Point otherPoint = cs.pressMove(prevSelected.x, prevSelected.y, selected.x, selected.y);
+                    // When clicked on a previously highlighted tile, make a move
+                    if (clickedIcon.highlighted) {
+                        unselectAll();
+                        unHighlightAll();
+                        cs.pressMove(prevSelected.x, prevSelected.y, clicked.x, clicked.y);
+                        updateBoardInfo(bu.getBoardImageAsUnicode());
 
-                        // Move piece by changing JLabel's text
-                        // TODO this is just temporary code for testing
-                        // TODO try implement it in a nicer way (e.x. use BoardUpdater)
-                        String actionPiece = icons[coordinateToIndex(prevSelected)].getText();
-                        icons[coordinateToIndex(prevSelected)].setText(" ");
-                        icons[coordinateToIndex(selected)].setText(actionPiece);
-
-                        // for castling or en passant
-                        if (otherPoint != null) {
-                            // castling
-                            if (otherPoint.x == 0 || otherPoint.x == 7) {
-                                String otherPiece = icons[coordinateToIndex(otherPoint)].getText();
-                                icons[coordinateToIndex(otherPoint)].setText(" ");
-                                icons[coordinateToIndex(new Point(prevSelected.x,
-                                        (selected.y == 6) ? 5 : 3))].setText(otherPiece);
-                            }
-                            else { // en passant, delete the captured pawn
-                                icons[coordinateToIndex(otherPoint)].setText(" ");
-                            }
+                        if (ai != null) {
+                            ai.makeMove();
+                            updateBoardInfo(bu.getBoardImageAsUnicode());
                         }
                     }
-
-                    if (icons[finalI].getText().equals(" "))
-                        return;
-
-                    showValidMove(selected.x, selected.y);
-
-                    prevSelected = selected;
+                    // Click on a piece, show available moves
+                    else if (!clickedIcon.getText().equals(" ")) {
+                        unselectAll();
+                        unHighlightAll();
+                        clickedIcon.setSelected(true);
+                        showValidMove(clicked.x, clicked.y);
+                        prevSelected = clicked;
+                    }
+                    // Clicking for fun, unselect and unhighlight everything else
+                    else if (clickedIcon.getText().equals(" ")) {
+                        unselectAll();
+                        unHighlightAll();
+                        clickedIcon.setSelected(true);
+                    }
+                    else
+                        System.out.println("we re not expecting this");
                 }
 
                 @Override
@@ -123,11 +165,10 @@ public class GUI_ChessBoard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        Container contentPane = getContentPane();
         GridLayout gridLayout = new GridLayout(8, 8);
 
         contentPane.setLayout(gridLayout);
-
+        contentPane.setBounds(0, 20, 800, 800);
         int row = -1;
         for (int i = 0; i < icons.length; i++)
         {
@@ -136,14 +177,15 @@ public class GUI_ChessBoard extends JFrame {
             contentPane.add(icons[i]);
         } // i
 
-        setSize(800, 800);
+        add(contentPane);
+        setSize(800, 820);
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
     private void unselectAll() {
         for (PieceIcon icon: icons) {
-            icon.unselect();
+            icon.setSelected(false);
         }
     }
 
@@ -170,6 +212,15 @@ public class GUI_ChessBoard extends JFrame {
         List<Point> validMoves = cs.passValidMove(new Point(x, y));
         for (Point position: validMoves) {
             icons[coordinateToIndex(position)].setHighlighted(true);
+        }
+    }
+
+    private void updateBoardInfo(String[][] unicode) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Point coordinate = new Point(i, j);
+                icons[coordinateToIndex(coordinate)].setText(unicode[i][j]);
+            }
         }
     }
 
