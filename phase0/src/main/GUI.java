@@ -65,10 +65,10 @@ public class GUI extends JFrame{
 			int startY = Integer.parseInt(startYtf.getText());
 			int targetX = Integer.parseInt(targetXtf.getText());
 			int targetY = Integer.parseInt(targetYtf.getText());
-//			boolean moveSuccess = cs.pressMove(startX, startY, targetX, targetY);
-//			if (moveSuccess) {
-//				bu.display();
-//			}
+			boolean moveSuccess = cs.pressMove(startX, startY, targetX, targetY);
+			if (moveSuccess) {
+				bu.display();
+			}
 		});
 
 		saveButton.addActionListener(e -> {

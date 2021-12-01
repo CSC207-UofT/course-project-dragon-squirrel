@@ -81,9 +81,9 @@ public class CommandSender {
 	 * Try to execute the move. If the moving piece is a pawn, rook, or king, switch its hasMovedDuringGame or
 	 * hasNotMovedDuringGame status to true or false, respectively.
 	 * Catch NullPointerException when new ChessMove is null because move is invalid.
-	 * @return the implicated piece in castling or en passant if applicable, otherwise return null
+	 * @return true if Move was executed, false otherwise.
 	 */
-	public Point pressMove(int oldX, int oldY, int newX, int newY){
+	public boolean pressMove(int oldX, int oldY, int newX, int newY){
 		ChessMove newChessMove = createNewChessMove(oldX, oldY, newX, newY);
 		Move newMove = createNewMove(bm, newChessMove);
 		try {
@@ -94,9 +94,9 @@ public class CommandSender {
 					bm.switchPieceHasMovedStatus(newChessMove.getOtherPiece(), true);
 				}
 			}
-			return newChessMove.getOtherPiecePosition();
+			return true;
 		}catch (NullPointerException e){
-			return null;
+			return false;
 		}
 	}
 
