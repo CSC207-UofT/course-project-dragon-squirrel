@@ -78,9 +78,7 @@ public class CommandSender {
 	}
 
 	/**
-	 * Try to execute the move. If the moving piece is a pawn, rook, or king, switch its hasMovedDuringGame or
-	 * hasNotMovedDuringGame status to true or false, respectively.
-	 * Catch NullPointerException when new ChessMove is null because move is invalid.
+	 * Try to execute the move. Catch NullPointerException when new ChessMove is null because move is invalid.
 	 * @return true if Move was executed, false otherwise.
 	 */
 	public boolean pressMove(int oldX, int oldY, int newX, int newY){
@@ -88,35 +86,20 @@ public class CommandSender {
 		Move newMove = createNewMove(bm, newChessMove);
 		try {
 			newMove.execute();
-			if (newChessMove.getFirstMoveStatus()) {
-				bm.switchPieceHasMovedStatus(newChessMove.getOldPiece(), true);
-				if (newMove instanceof CastlingMove) {
-					bm.switchPieceHasMovedStatus(newChessMove.getOtherPiece(), true);
-				}
-			}
 			return true;
-		}catch (NullPointerException e){
+		} catch (NullPointerException e){
 			return false;
 		}
 	}
 
 	/**
-	 * Try to undo move or attack. If move was the first move of the piece during the game, set its hasMovedDuringGame
-	 * or hasNotMovedDuringGame back to false or true, respectively, if applicable.
-	 * Catch NoSuchElementException when game can't be undone any further.
+	 * Try to undo move or attack. Catch NoSuchElementException when game can't be undone any further.
 	 * @return true if undo success, false otherwise
 	 */
 	public boolean undoMove(){
 		try {
-			ChessMove chessMove = bm.getMR().get();
-			Move move = createNewMove(bm, chessMove);
+			Move move = createNewMove(bm, bm.getMR().get());
 			move.undo();
-			if (chessMove.getFirstMoveStatus()){
-				bm.switchPieceHasMovedStatus(chessMove.getOldPiece(), false);
-				if (move instanceof CastlingMove){
-					bm.switchPieceHasMovedStatus(chessMove.getOtherPiece(), false);
-				}
-			}
 			return true;
 		}
 		catch (NoSuchElementException e){

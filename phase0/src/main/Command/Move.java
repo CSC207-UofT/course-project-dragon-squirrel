@@ -25,11 +25,14 @@ public abstract class Move implements Command{
 
     @Override
     public void execute() {
-//        if (actionPiece instanceof Pawn)
-//            ((Pawn) actionPiece).hasNotMovedDuringGame = false;
-//        // TODO also do it for King and Rook
+        if (actionPiece instanceof Pawn)
+            ((Pawn) actionPiece).hasNotMovedDuringGame = false;
     }
     
     @Override
-    public abstract void undo();
+    public void undo() {
+        if (CM.getFirstMoveStatus() && actionPiece instanceof Pawn) {
+            ((Pawn) actionPiece).hasNotMovedDuringGame = true;
+        }
+    }
 }

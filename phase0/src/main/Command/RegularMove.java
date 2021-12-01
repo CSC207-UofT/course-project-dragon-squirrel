@@ -12,7 +12,7 @@ public class RegularMove extends Move {
 	 * Executes a regular move. Add ChessMove to record in MoveRecord.
 	 */
 	public void execute() {
-//		super.execute();
+		super.execute();
 		BM.getMR().add(CM);
 		BM.getBoard().addPiece(actionPiece, CM.getNewX(), CM.getNewY());
 		BM.getBoard().removePiece(CM.getOldX(), CM.getOldY());
@@ -24,6 +24,7 @@ public class RegularMove extends Move {
 	 */
 	@Override
 	public void undo() {
+		super.execute();
 		BM.getMR().remove();
 
 		BM.getBoard().addPiece(actionPiece, CM.getOldX(), CM.getOldY());
