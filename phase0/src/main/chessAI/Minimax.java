@@ -3,6 +3,7 @@ package chessAI;
 import BoardManager.BoardManager;
 
 import java.awt.Point;
+import java.util.List;
 
 /**
  * IN PROGRESS
@@ -26,25 +27,49 @@ public class Minimax extends Engine{
 		return null;    // TODO
 	}
 
-	public int search(int depth) {
+	/**
+	 * Minimax searching algorithm
+	 * @param depth The searching depth, this heavily affects machine performance
+	 * @param curr  The current state
+	 * @param maxi  whether we are maxi of mini
+	 * @return  The highest/lowest score of this state
+	 */
+	public int search(int depth, State curr, boolean maxi) {
 
 		if (depth == 0) {
-			return currentState.getScore();
+			return curr.getScore();
 		}
 
-		while (!searchingQueue.isEmpty()) {
-			currentState = searchingQueue.remove();
-			int score = search(depth - 1);
+		List<State> nextStates = curr.generateNextState();
 
-			if (currentState.getPlayer() == startingState.getPlayer() && score > bestScore) {
-				bestScore = score;
-				bestState = currentState;
-			} else if (currentState.getPlayer() != startingState.getPlayer() && score < worstScore) {
-				bestScore = score;
-				bestState = currentState;
+		if (maxi) {     // Maxi time, return the highest score among next states
+			State bestState = null;
+
+			for (State state: nextStates) {
+				int currScore = search(depth - 1, state, false);
+
+				if (bestState == null || currScore > bestState.getScore()) {
+					bestState = state;
+					super.bestState = state;
+				}
 			}
-		}
 
-		return 0;   // TODO
+			assert bestState != null;
+			return bestState.getScore();
+		}
+		else {      // Mini time, return the lowest score among next states
+			State worstState = null;
+
+			for (State state: nextStates) {
+				int currScore = search(depth - 1, state, true);
+
+				if (worstState == null || currScore < worstState.getScore()) {
+					worstState = state;
+				}
+			}
+
+			assert worstState != null;
+			return worstState.getScore();
+		}
 	}
 }

@@ -5,7 +5,6 @@ import piece.Color;
 import piece.PieceInterface;
 
 import java.awt.Point;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -17,7 +16,6 @@ public abstract class Engine {
 	protected State startingState;
 	protected State bestState;
 	protected PriorityQueue<State> searchingQueue;
-	protected State currentState;
 
 	protected int bestScore = -PieceInterface.KING_VALUE;
 	protected int worstScore = PieceInterface.KING_VALUE;
