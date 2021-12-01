@@ -12,36 +12,87 @@ public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each pieces, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
-    private PieceIcon[] icons;
+    private PieceIcon[] icons = new PieceIcon[]{
+            //
+            new PieceIcon("\u265C"), new PieceIcon("\u265E"), new PieceIcon("\u265D"),
+            new PieceIcon("\u265B"), new PieceIcon("\u265A"), new PieceIcon("\u265D"),
+            new PieceIcon("\u265E"), new PieceIcon("\u265C"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"), new PieceIcon("\u265F"), new PieceIcon("\u265F"),
+            new PieceIcon("\u265F"),
+            // empty
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "), new PieceIcon(" "),
+            new PieceIcon(" "), new PieceIcon(" "),
+            // white
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2659"), new PieceIcon("\u2659"),
+            new PieceIcon("\u2656"), new PieceIcon("\u2658"), new PieceIcon("\u2657"),
+            new PieceIcon("\u2655"), new PieceIcon("\u2654"), new PieceIcon("\u2657"),
+            new PieceIcon("\u2658"), new PieceIcon("\u2656"),
+    };
+
     private CommandSender cs;
     private Point prevSelected;
-    private JMenuBar bar;
-    private final JMenuItem save = new JMenuItem("save");
-    private final JMenuItem reload = new JMenuItem("reload");
 
-    // TODO: Probably will change some code below, as we need to have operation on the board
+    private Container contentPane = new Container();
 
-    private void addBarItem(){
+    private JMenuBar bar = new JMenuBar();
+
+    private JMenu file = new JMenu("File");
+    private JMenu pref = new JMenu("Preference");
+
+    private JMenuItem save = new JMenuItem("save");
+    private JMenuItem reload = new JMenuItem("reload");
+    private JMenuItem addAI = new JMenuItem("AI Player");
+
+    private void set_bar(){
         save.addActionListener(e -> {
-            // save feature goes here
+            // save
+            System.out.println("Test save");
+
+
         });
 
         reload.addActionListener(e -> {
-            // reload feature goes here
+            // reload
+            System.out.println("Test reload");
+
+
         });
 
-        JPopupMenu file = new JPopupMenu("file");
-        file.add(save, reload);
+        addAI.addActionListener(e -> {
+            System.out.println("Test AI");
 
-        file.setVisible(true);
 
-        bar.add(file);
+        });
 
+        file.add(save); file.add(reload);
+        pref.add(addAI);
+
+        bar.add(file); bar.add(pref);
+        bar.setVisible(true);
+        bar.setBounds(0, 0, 800, 20);
     }
+
+
+    // TODO: Probably will change some code below, as we need to have operation on the board
 
     public GUI_ChessBoard(){
 
         cs = new CommandSender(true);
+
+        set_bar();
+        add(bar);
 
         // Add listener to every PieceIcon
         for (int i = 0; i < icons.length; i++) {
@@ -102,11 +153,10 @@ public class GUI_ChessBoard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        Container contentPane = getContentPane();
         GridLayout gridLayout = new GridLayout(8, 8);
 
         contentPane.setLayout(gridLayout);
-
+        contentPane.setBounds(0, 20, 800, 800);
         int row = -1;
         for (int i = 0; i < icons.length; i++)
         {
@@ -115,7 +165,8 @@ public class GUI_ChessBoard extends JFrame {
             contentPane.add(icons[i]);
         } // i
 
-        setSize(800, 800);
+        add(contentPane);
+        setSize(800, 820);
         setLocationRelativeTo(null);
         setVisible(true);
     }
