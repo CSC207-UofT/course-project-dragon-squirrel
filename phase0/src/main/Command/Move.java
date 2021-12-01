@@ -1,10 +1,8 @@
 package Command;
 
 import BoardManager.BoardManager;
-import piece.King;
 import piece.Pawn;
 import piece.PieceInterface;
-import piece.Rook;
 
 public abstract class Move implements Command{
     protected BoardManager BM;

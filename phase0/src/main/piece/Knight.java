@@ -23,9 +23,9 @@ public class Knight extends Piece{
 	 * @return true if move is valid according to knight behaviour, false otherwise.
 	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        int X = abs(oldCoorX - newCoorX);
-        int Y = abs(oldCoorY - newCoorY);
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        int X = abs(oldX - newX);
+        int Y = abs(oldY - newY);
         return (X == 2 && Y == 1) || (X == 1 && Y == 2);
     }
 

@@ -1,11 +1,9 @@
 package Board;
 
 import piece.*;
-import piece.Color;
 
 
 import java.awt.Point;
-import java.util.List;
 
 /**
  * Entity
