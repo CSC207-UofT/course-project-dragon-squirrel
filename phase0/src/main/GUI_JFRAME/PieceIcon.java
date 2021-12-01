@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 
 
 public class PieceIcon extends JLabel {
-    Font font = new Font("Ariel", 1, 45);
+    Font font = new Font("Ariel", Font.PLAIN, 45);
     Color W_background = new Color(222, 184, 135);
     Color B_background = new Color(90, 50, 10);
     boolean selected;
