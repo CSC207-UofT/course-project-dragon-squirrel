@@ -34,7 +34,7 @@ public class BoardManager {
     }
 
     public String[][] getBoardAsString() {
-        return board.to2dStringArray(board.getBoundaries().x, board.getBoundaries().y);
+        return board.to2dStringArray();
     }
 
     public MoveRecord getMR(){

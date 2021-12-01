@@ -25,6 +25,10 @@ public class CommandSender {
 		return this.bu;
 	}
 
+	public BoardManager getBm() {
+		return bm;
+	}
+
 	/**
 	 * @return ChessMove, null if MoveType is INVALID
 	 */
@@ -130,6 +134,9 @@ public class CommandSender {
 		this.bu = new BoardUpdater(bm);
 	}
 
+	/**
+	 * Ask GameRule for the valid moves
+	 */
 	public List<Point> passValidMove(Point p) {
 		return gr.getAvailableMoves(p);
 	}

@@ -9,15 +9,16 @@ import java.awt.Point;
  *
  * AI will look for a move that maximize its score for the next state only, very greedy and shortsighted.
  */
-public class GreedyButStupid extends Engine{
+public class GreedyButDumb extends Engine{
 
-	public GreedyButStupid(BoardManager bm) {
+	public GreedyButDumb(BoardManager bm) {
 		super(bm);
 	}
 
 	@Override
 	public Point[] makeDecision() {
 		search();
+		System.out.println("decision made");
 		return bestState.getPrevMove();
 	}
 

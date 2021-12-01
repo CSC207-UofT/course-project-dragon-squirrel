@@ -66,7 +66,7 @@ public class Pawn extends Piece{
 		    moves.add(new Point(oneStepForward,y));
 	    }
 
-	    if (canMoveTo(twoStepsForward, y, b) && hasNotMovedDuringGame) {
+	    if (canMoveTo(oneStepForward, y, b) && canMoveTo(twoStepsForward, y, b) && hasNotMovedDuringGame) {
 		    moves.add(new Point(x + direction * 2,y));
 	    }
 

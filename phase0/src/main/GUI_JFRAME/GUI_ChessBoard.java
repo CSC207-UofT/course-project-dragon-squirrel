@@ -1,6 +1,9 @@
 package GUI_JFRAME;
 
+import Controller.BoardUpdater;
 import Controller.CommandSender;
+import chessAI.Agent;
+import chessAI.Difficulty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,8 +44,10 @@ public class GUI_ChessBoard extends JFrame {
             new PieceIcon("\u2658"), new PieceIcon("\u2656"),
     };
 
-    private CommandSender cs;
+    private final CommandSender cs;
+    private final BoardUpdater bu;
     private Point prevSelected;
+    private Agent ai;
 
     private Container contentPane = new Container();
 
@@ -71,9 +76,8 @@ public class GUI_ChessBoard extends JFrame {
         });
 
         addAI.addActionListener(e -> {
-            System.out.println("Test AI");
-
-
+            System.out.println("Now AI takes over black side");
+            ai = new Agent(cs, Difficulty.EASY);
         });
 
         file.add(save); file.add(reload);
@@ -90,37 +94,49 @@ public class GUI_ChessBoard extends JFrame {
     public GUI_ChessBoard(){
 
         cs = new CommandSender(true);
+        bu = cs.getBoardUpdater();
 
         set_bar();
         add(bar);
 
         // Add listener to every PieceIcon
         for (int i = 0; i < icons.length; i++) {
-            int finalI = i;
+            int finalI = i;     // intelliJ suggests me to write this
             icons[i].addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    unselectAll();
-                    icons[finalI].setSelected(true);
-                    Point selected = indexToCoordinate(finalI);
+                    Point clicked = indexToCoordinate(finalI);
+                    PieceIcon clickedIcon = icons[finalI];
 
-                    if (icons[finalI].highlighted) {
-                        cs.pressMove(prevSelected.x, prevSelected.y, selected.x, selected.y);
+                    // When clicked on a previously highlighted tile, make a move
+                    if (clickedIcon.highlighted) {
+                        unselectAll();
+                        unHighlightAll();
+                        cs.pressMove(prevSelected.x, prevSelected.y, clicked.x, clicked.y);
+                        updateBoardInfo(bu.getBoardImageAsUnicode());
 
-                        // Move piece by changing JLabel's text
-                        // TODO this is just temporary code for testing
-                        // TODO try implement it in a nicer way (e.x. use BoardUpdater)
-                        String actionPiece = icons[coordinateToIndex(prevSelected)].getText();
-                        icons[coordinateToIndex(prevSelected)].setText(" ");
-                        icons[coordinateToIndex(selected)].setText(actionPiece);
+                        if (ai != null) {
+                            ai.makeMove();
+                            updateBoardInfo(bu.getBoardImageAsUnicode());
+                        }
                     }
-
-                    if (icons[finalI].getText().equals(" "))
-                        return;
-
-                    showValidMove(selected.x, selected.y);
-
-                    prevSelected = selected;
+                    // Click on a piece, show available moves
+                    else if (!clickedIcon.getText().equals(" ")) {
+                        unselectAll();
+                        unHighlightAll();
+                        clickedIcon.setSelected(true);
+                        showValidMove(clicked.x, clicked.y);
+                        prevSelected = clicked;
+                    }
+                    // Clicking for fun, unselect and unhighlight everything else
+                    else if (clickedIcon.getText().equals(" ")) {
+                        unselectAll();
+                        unHighlightAll();
+                        clickedIcon.setSelected(true);
+                    }
+                    else {
+                        System.out.println("we re not expecting this");
+                    }
                 }
 
                 @Override
@@ -200,6 +216,15 @@ public class GUI_ChessBoard extends JFrame {
         List<Point> validMoves = cs.passValidMove(new Point(x, y));
         for (Point position: validMoves) {
             icons[coordinateToIndex(position)].setHighlighted(true);
+        }
+    }
+
+    private void updateBoardInfo(String[][] unicode) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Point coordinate = new Point(i, j);
+                icons[coordinateToIndex(coordinate)].setText(unicode[i][j]);
+            }
         }
     }
 

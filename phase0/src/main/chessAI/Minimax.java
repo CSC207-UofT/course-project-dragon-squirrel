@@ -14,9 +14,11 @@ import java.awt.Point;
  */
 public class Minimax extends Engine{
 
-	public Minimax(BoardManager bm) {
-		super(bm);
+	private int maxDepth;
 
+	public Minimax(BoardManager bm, int depth) {
+		super(bm);
+		maxDepth = depth;
 	}
 
 	@Override
