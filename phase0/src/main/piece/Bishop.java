@@ -17,10 +17,14 @@ public class Bishop extends Piece{
 	}
 
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        return Math.abs(oldCoorX - newCoorX) == Math.abs(oldCoorY - newCoorY);
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        return Math.abs(oldX - newX) == Math.abs(oldY - newY);
     }
-    
+
+	/**
+	 * @return a List<Point> of the valid coordinates the bishop can move to given piece behaviour, game rules, and
+	 * present board state.
+	 */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) 
     {

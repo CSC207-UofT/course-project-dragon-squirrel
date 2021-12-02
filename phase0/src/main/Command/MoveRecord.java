@@ -9,18 +9,31 @@ public class MoveRecord {
         record = new LinkedList<ChessMove>();
     }
 
+    /**
+     * Add newChessRuleMove to the beginning of the LinkedList record.
+     */
     public void add(ChessMove newChessRuleMove){
         record.addFirst(newChessRuleMove);
     }
 
+    /**
+     * @return the ChessMove at the beginning of the LinkedList record, i.e. return the previous move made.
+     */
     public ChessMove get(){
         return record.getFirst();
     }
 
+    /**
+     * Remove the ChessMove at the beginning of the LinkedList record, i.e. remove the previous ChessMove made from
+     * record.
+     */
     public void remove(){
         record.removeFirst();
     }
 
+    /**
+     * @return true if record is empty, false otherwise.
+     */
     public boolean isEmpty(){
         return record.isEmpty();
     }

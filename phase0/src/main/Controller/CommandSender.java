@@ -36,7 +36,8 @@ public class CommandSender {
 		MoveType moveType = gr.isMoveValid(oldX, oldY, newX, newY);
 
 		if (moveType != MoveType.INVALID) {
-			return new ChessMove(bm, oldX, oldY, newX, newY, moveType);
+			boolean firstMove = !bm.getHasMovedStatus(bm.getPiece(oldX, oldY));
+			return new ChessMove(bm, oldX, oldY, newX, newY, firstMove, moveType);
 		}
 		return null;
 	}
@@ -62,7 +63,7 @@ public class CommandSender {
 				return new CaptureMove(bm, newChessMove);
 			}
 
-			if (moveType == MoveType.ENPASSANT) {
+			if (moveType == MoveType.EN_PASSANT) {
 				return new EnPassantMove(bm, newChessMove);
 			}
 
@@ -77,20 +78,22 @@ public class CommandSender {
 	}
 
 	/**
+	 * Try to execute the move. Catch NullPointerException when new ChessMove is null because move is invalid.
 	 * @return true if Move was executed, false otherwise.
 	 */
 	public boolean pressMove(int oldX, int oldY, int newX, int newY){
-		Move newMove = createNewMove(bm, createNewChessMove(oldX, oldY, newX, newY));
+		ChessMove newChessMove = createNewChessMove(oldX, oldY, newX, newY);
+		Move newMove = createNewMove(bm, newChessMove);
 		try {
 			newMove.execute();
 			return true;
-		}catch (NullPointerException e){
+		} catch (NullPointerException e){
 			return false;
 		}
 	}
 
 	/**
-	 * Undo move or attack.
+	 * Try to undo move or attack. Catch NoSuchElementException when game can't be undone any further.
 	 * @return true if undo success, false otherwise
 	 */
 	public boolean undoMove(){

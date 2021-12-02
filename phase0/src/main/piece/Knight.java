@@ -18,13 +18,21 @@ public class Knight extends Piece{
 		return KNIGHT_VALUE;
 	}
 
+	/**
+	 * Check: move is an L-shape
+	 * @return true if move is valid according to knight behaviour, false otherwise.
+	 */
 	@Override
-    public boolean validMove(int oldCoorX, int oldCoorY, int newCoorX, int newCoorY) {
-        int X = abs(oldCoorX - newCoorX);
-        int Y = abs(oldCoorY - newCoorY);
+    public boolean validMove(int oldX, int oldY, int newX, int newY) {
+        int X = abs(oldX - newX);
+        int Y = abs(oldY - newY);
         return (X == 2 && Y == 1) || (X == 1 && Y == 2);
     }
 
+	/**
+	 * @return a List<Point> of the valid coordinates the knight can move to given piece behaviour, game rules, and
+	 * present board state.
+	 */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y){
     	List<Point> moves = new ArrayList<>();

@@ -4,6 +4,7 @@ import BoardManager.BoardManager;
 import Command.ChessMove;
 import Command.Move;
 import Command.MoveRecord;
+import Command.MoveType;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -19,7 +20,7 @@ public class TestMoveRecord {
     @Before
     public void before(){
         bm = new BoardManager();
-        cm = new ChessMove(bm, 0, 0, 1, 1 ,1);
+        cm = new ChessMove(bm, 0, 0, 1, 1 , false, MoveType.REGULAR);
         mr = new MoveRecord();
     }
 
