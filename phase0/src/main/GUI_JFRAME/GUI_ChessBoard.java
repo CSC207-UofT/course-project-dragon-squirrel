@@ -58,6 +58,7 @@ public class GUI_ChessBoard extends JFrame {
 
     private JMenuItem save = new JMenuItem("save");
     private JMenuItem reload = new JMenuItem("reload");
+    private JMenuItem undo = new JMenuItem("undo");
 
     private void set_bar(){
         save.addActionListener(e -> {
@@ -74,7 +75,7 @@ public class GUI_ChessBoard extends JFrame {
 
         });
 
-        file.add(save); file.add(reload);
+        file.add(save); file.add(reload); file.add(undo);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);
@@ -94,6 +95,13 @@ public class GUI_ChessBoard extends JFrame {
 
         set_bar();
         add(bar);
+
+        undo.addActionListener(e -> {
+            boolean undoSuccess = cs.undoMove();
+            if (undoSuccess) {
+                updateBoardInfo(bu.getBoardImageAsUnicode());
+            }
+        });
 
         // Add listener to every PieceIcon
         for (int i = 0; i < icons.length; i++) {

@@ -24,7 +24,7 @@ public class RegularMove extends Move {
 	 */
 	@Override
 	public void undo() {
-		super.execute();
+		super.undo();
 		BM.getMR().remove();
 
 		BM.getBoard().addPiece(actionPiece, CM.getOldX(), CM.getOldY());
