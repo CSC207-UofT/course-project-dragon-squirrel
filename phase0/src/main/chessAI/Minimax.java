@@ -4,8 +4,6 @@ import BoardManager.BoardManager;
 import piece.PieceInterface;
 
 import java.awt.Point;
-import java.util.Comparator;
-import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -14,8 +12,8 @@ import java.util.PriorityQueue;
  */
 public class Minimax extends Engine{
 
-	private final int POS_INFINITY = PieceInterface.KING_VALUE * 10;
-	private final int NEG_INFINITY = -PieceInterface.KING_VALUE * 10;
+	private final int POS_INF = PieceInterface.KING_VALUE * 10;
+	private final int NEG_INF = -PieceInterface.KING_VALUE * 10;
 	private final int maxDepth;
 
 	public Minimax(BoardManager bm, int depth) {
@@ -26,7 +24,7 @@ public class Minimax extends Engine{
 	@Override
 	public Point[] makeDecision() {
 		bestState = null;
-		minimaxSearch(maxDepth, startingState, true, NEG_INFINITY, POS_INFINITY);
+		minimaxSearch(maxDepth, startingState, true, NEG_INF, POS_INF);
 		return bestState.getPrevMove();
 	}
 
@@ -48,7 +46,7 @@ public class Minimax extends Engine{
 
 		if (maxi) {     // AI's turn, maximizing score, return the highest score among next states
 			State bestState = null;
-			int bestScore = NEG_INFINITY;
+			int bestScore = NEG_INF;
 
 			for (State state: nextStates) {
 				int currScore = minimaxSearch(depth - 1, state, false, alpha, beta);
@@ -69,7 +67,7 @@ public class Minimax extends Engine{
 			return bestScore;
 		}
 		else {      // Player's turn, minimizing score, return the lowest score among next states
-			int worstScore = POS_INFINITY;
+			int worstScore = POS_INF;
 
 			for (State state: nextStates) {
 				int currScore = minimaxSearch(depth - 1, state, true, alpha, beta);
