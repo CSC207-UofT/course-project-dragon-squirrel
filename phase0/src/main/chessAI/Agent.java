@@ -20,7 +20,7 @@ public class Agent {
 				engine = new Minimax(cs.getBm(), 4);
 				break;
 			case HARD:
-				engine = new Minimax(cs.getBm(), 6);
+				engine = new Minimax(cs.getBm(), 5);
 		}
 	}
 
