@@ -82,6 +82,10 @@ public class State {
 		return nextStates;
 	}
 
+	public boolean isGameOver() {
+		return (board.findKing(Color.WHITE) == null && board.findKing(Color.BLACK) == null);
+	}
+
 	/**
 	 * Evaluate this state and give a score. Higher the better.
 	 */

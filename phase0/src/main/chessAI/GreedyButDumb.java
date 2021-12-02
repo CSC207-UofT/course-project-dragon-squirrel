@@ -4,6 +4,7 @@ import BoardManager.BoardManager;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -12,12 +13,17 @@ import java.util.Random;
  */
 public class GreedyButDumb extends Engine{
 
+	private final PriorityQueue<State> searchingQueue;
+
 	public GreedyButDumb(BoardManager bm) {
 		super(bm);
+		searchingQueue = new PriorityQueue<>((o1, o2) -> o2.getScore() - o1.getScore());
 	}
 
 	@Override
 	public Point[] makeDecision() {
+		bestState = null;
+		searchingQueue.clear();
 		search();
 		return bestState.getPrevMove();
 	}
@@ -47,7 +53,6 @@ public class GreedyButDumb extends Engine{
 
 		// Randomly choose one from candidates
 		bestState = candidates.get(ranGenerator.nextInt(candidates.size()));
-		searchingQueue.clear();
 	}
 
 }

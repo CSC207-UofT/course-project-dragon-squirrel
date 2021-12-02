@@ -32,6 +32,7 @@ public class LaunchPage implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     @Override
@@ -43,11 +44,9 @@ public class LaunchPage implements ActionListener {
             frame.setVisible(false);
         }
 
-        //Set the Action of clicking Chess Button, jump to GUI_ChessBoard
+        //Set the Action of clicking AI Button, jump to difficulty selection window
         if(e.getSource()==chessWithAI) {
-            GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.MEDIUM);
-            System.out.println("Now easy AI takes over black side");
-            chess.display();
+            JFrame popup = new PopUp();
             frame.setVisible(false);
         }
 
@@ -55,6 +54,50 @@ public class LaunchPage implements ActionListener {
         if(e.getSource()==SuperChess) {
             GUI_SuperBoard superChess = new GUI_SuperBoard();
             frame.setVisible(false);
+        }
+    }
+
+    static class PopUp extends JFrame{
+        JFrame frame = new JFrame();
+        JButton easy = new JButton("easy");
+        JButton medium = new JButton("medium");
+        JButton hard = new JButton("hard");
+
+        PopUp(){
+            easy.setBounds(150,110, 200, 40);
+            easy.setFocusable(false);
+            easy.addActionListener(e -> {
+                GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.EASY);
+                chess.display();
+                frame.setVisible(false);
+
+            });
+
+            medium.setBounds(150,160, 200, 40);
+            medium.setFocusable(false);
+            medium.addActionListener(e -> {
+                GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.MEDIUM);
+                chess.display();
+                frame.setVisible(false);
+            });
+
+            hard.setBounds(150, 210, 200, 40);
+            hard.setFocusable(false);
+            hard.addActionListener(e -> {
+                GUI_ChessBoard chess = new GUI_ChessBoard(Difficulty.HARD);
+                chess.display();
+                frame.setVisible(false);
+            });
+
+            frame.add(easy);
+            frame.add(medium);
+            frame.add(hard);
+            frame.setTitle("Select difficulty");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(500, 500);
+            frame.setLayout(null);
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
         }
     }
 }
