@@ -83,7 +83,7 @@ public class State {
 	}
 
 	public boolean isGameOver() {
-		return (board.findKing(Color.WHITE) == null && board.findKing(Color.BLACK) == null);
+		return (board.findKing(Color.WHITE) == null || board.findKing(Color.BLACK) == null);
 	}
 
 	/**
