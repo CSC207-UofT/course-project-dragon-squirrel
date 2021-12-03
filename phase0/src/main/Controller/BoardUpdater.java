@@ -17,7 +17,7 @@ public class BoardUpdater {
 
 	public BoardUpdater(SuperBoardManager bm) {
 		this.bm = bm;
-		boundary = new int[]{8, 8};
+		boundary = new int[]{13, 10};
 		boardImage = new String[13][10];
 	}
 
