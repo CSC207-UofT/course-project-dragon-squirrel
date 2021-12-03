@@ -129,12 +129,13 @@ public class CommandSender {
 		if (classic) {
 			bm = new BoardManager();
 			gr = new GameRule(bm.getBoard(), bm.getMR());
+			this.bu = new BoardUpdater(bm);
 		}
 		else {
 			bm = new SuperBoardManager();
 			gr = new SuperGameRule(bm.getBoard(), bm.getMR());
+			this.bu = new BoardUpdater((SuperBoardManager) bm);
 		}
-		this.bu = new BoardUpdater(bm);
 	}
 
 	/**

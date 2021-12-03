@@ -17,11 +17,16 @@ public class PieceIcon extends JLabel {
     }
 
     void set(int idx, int row){
-
         setOpaque(true);
         setFont(font);
 
         setBackground((idx+row)%2 == 0 ? B_background : W_background); // Board background Color
+        setHorizontalAlignment((SwingConstants.CENTER));
+    }
+
+    void setSuper(){
+        setOpaque(true);
+        setFont(font);
         setHorizontalAlignment((SwingConstants.CENTER));
     }
 

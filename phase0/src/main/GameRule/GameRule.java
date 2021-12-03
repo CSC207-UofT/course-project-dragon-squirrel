@@ -57,8 +57,9 @@ public class GameRule {
 			System.out.println("Invalid Move");
 			return MoveType.INVALID;
 		}
-		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
+		if (!(actionPiece.getName().contains("knight")) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
+			System.out.println(actionPiece.getName());
 			return MoveType.INVALID;
 		}
 		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
