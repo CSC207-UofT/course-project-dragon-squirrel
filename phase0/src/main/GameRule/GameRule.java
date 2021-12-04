@@ -33,7 +33,6 @@ public class GameRule {
 	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
 		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
-			System.out.println("Coordinate invalid");
 			return MoveType.INVALID;
 		}
 		if (enPassant(oldX, oldY, newX, newY)){
@@ -41,6 +40,9 @@ public class GameRule {
 		}
 		if (pawnCapture(oldX, oldY, newX, newY)){
 			return MoveType.CAPTURE;
+		}
+		if (Castling(oldX, oldY, newX, newY)) {
+			return MoveType.CASTLING;
 		}
 		PieceInterface actionPiece = board.getPiece(oldX, oldY);
 		PieceInterface targetPiece = board.getPiece(newX, newY);
@@ -62,12 +64,29 @@ public class GameRule {
 			System.out.println(actionPiece.getName());
 			return MoveType.INVALID;
 		}
+
+		if (MR.isEmpty()){
+			try {
+				if (board.getPiece(oldX,oldY).isBlack()){
+					return MoveType.INVALID;
+				}
+			}catch (NullPointerException e){
+				return MoveType.INVALID;
+			}
+		}else {
+			try {
+				if (MR.get().getOldPiece().hasSameColor(board.getPiece(oldX, oldY))){
+					return MoveType.INVALID;
+				}
+			}catch (NullPointerException e){
+				return MoveType.INVALID;
+			}
+		}
+
 		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
 			return MoveType.CAPTURE;
 		}
-		if (Castling(oldX, oldY, newX, newY)) {
-			return MoveType.CASTLING;
-		}
+
 		return MoveType.REGULAR;
 	}
 
@@ -209,6 +228,28 @@ public class GameRule {
 	}
 
 	/**
+	 *
+	 * @param X coordinate X of detected point
+	 * @param Y coordinate Y of detected point
+	 * @param color the player will be attacked.
+	 * @return true if Point(x,y) can be attacked by player controlling different colored pieces
+	 */
+	public boolean isAttackedStatus(int X, int Y, Color color){
+		ArrayList<Point> opponentPiece;
+		if (color.equals(Color.WHITE)){
+			opponentPiece = (ArrayList<Point>) board.getAllPiece(Color.BLACK);
+		}
+		else {opponentPiece = (ArrayList<Point>) board.getAllPiece(Color.WHITE);}
+		for (Point piece:opponentPiece){
+			Point newPoint = new Point(X, Y);
+			if (board.getPiece(piece.x, piece.y).getValidMoves(board, piece.x, piece.y).contains(newPoint)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Check: 	Moving King and implicated rook has not moved during the game.
 	 * 			King either moves two squares to the right or two to the left.
 	 * 			Path is clear between the king and the rook.
@@ -238,7 +279,22 @@ public class GameRule {
 		if (((Rook) rook).getHasMovedDuringGame()) {
 			return false;
 		}
-		// TODO: if statements need to check that the start coordinate and path that king will take is not in check.
+
+		ArrayList<Point> passingLocation = new ArrayList<>();
+		int start = Math.min(oldY, newY);
+		int end = Math.max(oldY, newY);
+		for (int i = start; i <= end; i++){
+			Point passingLoc = new Point();
+			passingLoc.x = oldX;
+			passingLoc.y = i;
+			passingLocation.add(passingLoc);
+		}
+		for (Point location: passingLocation){
+			if (isAttackedStatus(location.x, location.y, movingPiece.getColor())){
+				return false;
+			}
+		} // check that the king does not pass through a square that is attacked by an enemy piece.
+
 		return true;
 	}
 }
