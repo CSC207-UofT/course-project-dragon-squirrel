@@ -9,16 +9,17 @@ import static org.junit.Assert.assertEquals;
 
 public class TestSuperBoard {
 
+    int col;
+    int row;
+    String[][] superBoardLand;
     SuperBoard sb;
 
     @Before
     public void before(){
-        sb = new SuperBoard(13, 10);
-    }
-
-    @After
-    public void after(){
-        sb.reset();
+        col = 13;
+        row = 10;
+        superBoardLand = new String[col][row];
+        sb = new SuperBoard(col, row);
     }
 
     @Test(timeout = 50)

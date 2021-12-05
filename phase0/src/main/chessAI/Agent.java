@@ -1,9 +1,11 @@
 package chessAI;
 
 import Controller.*;
-
 import java.awt.Point;
 
+/**
+ * Represent an AI player, can make a chess move
+ */
 public class Agent {
 
 	private Engine engine;
@@ -28,6 +30,9 @@ public class Agent {
 		this.engine = engine;
 	}
 
+	/**
+	 * Send a make move command to controller
+	 */
 	public void makeMove() {
 		Point[] decision = engine.makeDecision();
 		System.out.println("AI decides to move from " + decision[0] + " to " + decision[1]);

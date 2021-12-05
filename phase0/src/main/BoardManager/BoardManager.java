@@ -1,9 +1,14 @@
 package BoardManager;
 
 import Board.*;
+import Chesstimer.ChessTimer;
 import Command.MoveRecord;
 import Player.*;
 import piece.*;
+import piece.Color;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * It should receive some input from players and send command to a Board.Board instance
@@ -15,11 +20,26 @@ public class BoardManager {
     protected Player activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
+    protected ChessTimer timer;
+    protected Player whitePlayer = new Player(Color.WHITE);
+    protected Player blackPlayer = new Player(Color.BLACK);
 
     public BoardManager() {
         this.board = new Board(8, 8);
         this.MR = new MoveRecord();
         resetBoard();
+        timer = new ChessTimer(600000, 600000);
+        activePlayer = whitePlayer;
+        timer.startTimer();
+    }
+
+    public BoardManager(int x, int y, PieceInterface piece){
+        board = new Board(8,8);
+        MR = new MoveRecord();
+        board.setPiece(x,y,piece);
+        timer = new ChessTimer(600000, 600000);
+        activePlayer = whitePlayer;
+        timer.startTimer();
     }
 
     public BoardManager(int column, int row) {
@@ -33,6 +53,10 @@ public class BoardManager {
      */
     public Board getBoard() {
         return this.board;
+    }
+
+    public ChessTimer getTimer(){
+        return timer;
     }
 
     /**
@@ -102,7 +126,11 @@ public class BoardManager {
      * Switch player status between
      */
     public void switchActivePlayer() {
-
+        if (activePlayer.getColor().equals(Color.WHITE)){
+            activePlayer = blackPlayer;
+        }else {
+            activePlayer = whitePlayer;
+        }
     }
 
     /**
@@ -174,5 +202,51 @@ public class BoardManager {
         }
 
         board.reset(Piece2dArray);
+    }
+
+    /**
+     * Switch timer at the end of every round.
+     */
+    public void switchChessTimer(){
+        timer.switchTimer();
+    }
+
+    /**
+     * check whether both king still stay at board. if not, change the game status. specifically, if white king lose,
+     * black player win; if black king lose, white player win.
+     */
+    public void gameStatus(){
+        boolean blackFlag = false;
+        boolean whiteFlag = false;
+        ArrayList<PieceInterface> blackPiece = new ArrayList<>();
+        ArrayList<PieceInterface> whitePiece = new ArrayList<>();
+        ArrayList<Point> blackPiecePosition = (ArrayList<Point>) board.getAllPiece(Color.BLACK);
+        ArrayList<Point> whitePiecePosition = (ArrayList<Point>) board.getAllPiece(Color.WHITE);
+        for (Point loc: blackPiecePosition){
+            PieceInterface piece = board.getPiece(loc.x, loc.y);
+            blackPiece.add(piece);
+        }
+        for (Point loc: whitePiecePosition){
+            PieceInterface piece = board.getPiece(loc.x, loc.y);
+            whitePiece.add(piece);
+        }
+        for (PieceInterface piece: blackPiece){
+            if (piece instanceof King) {
+                blackFlag = true;
+                break;
+            }
+        }
+        if (!blackFlag){
+            status = GameStatus.WHITE_WIN;
+        }
+        for (PieceInterface piece: whitePiece){
+            if (piece instanceof King) {
+                whiteFlag = true;
+                break;
+            }
+        }
+        if (!whiteFlag){
+            status = GameStatus.BLACK_WIN;
+        }
     }
 }

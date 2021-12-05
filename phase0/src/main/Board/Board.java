@@ -4,6 +4,8 @@ import piece.*;
 
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entity
@@ -105,5 +107,34 @@ public class Board implements BoardInterface{
         boardCopy.board = piece2dArray;
 
         return boardCopy;
+    }
+
+    /**
+     *
+     * @param color piece color
+     * @return all position of piece with same coloc.
+     */
+    public List<Point> getAllPiece(Color color){
+        ArrayList<Point> solution = new ArrayList<>();
+        for(int i = 0; i < board.length; i++){
+            for (int j =0; j < board[0].length; j++){
+                try {
+                    PieceInterface piece = getPiece(i, j);
+                    Point piecePosition = new Point();
+                    piecePosition.x = i;
+                    piecePosition.y = j;
+                    if (piece.getColor().equals(color)){
+                        solution.add(piecePosition);
+                    }
+                }
+                catch (NullPointerException ignored){
+                }
+            }
+        }
+        return solution;
+    }
+
+    public void setPiece(int x, int y, PieceInterface piece){
+        board[x][y] = piece;
     }
 }

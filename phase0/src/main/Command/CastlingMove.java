@@ -22,6 +22,9 @@ public class CastlingMove extends Move {
 	@Override
 	public void execute() {
 		BM.getMR().add(CM);
+		BM.switchChessTimer();
+		BM.gameStatus();
+		BM.switchActivePlayer();
 
 		BM.getBoard().addPiece(actionPiece, CM.getNewX(), CM.getNewY());
 		BM.getBoard().removePiece(CM.getOldX(), CM.getOldY());
@@ -39,6 +42,8 @@ public class CastlingMove extends Move {
 	@Override
 	public void undo() {
 		BM.getMR().remove();
+		BM.switchActivePlayer();
+		BM.switchChessTimer();
 
 		BM.getBoard().addPiece(CM.getOldPiece(), CM.getOldX(), CM.getOldY());
 		BM.getBoard().removePiece(CM.getNewX(), CM.getNewY());

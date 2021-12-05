@@ -1,14 +1,15 @@
-So this is the basic structure/vague idea of the project
+#READ ME
 
-Entity:                 Player.Player, Player.Human, Player.AI, piece, piece.ModifiedPiece
-Use Case:               Board.Board
-Controller/Presenter:   BoardManager.BoardManager
-Outer most layer:       UI
+##Start Game Guide
+If you want to have a try on our chess games, 
 
-It's just a framework yet, most of the details are not implemented
+We have a DEMO version GUI:
 
-We can definitely add more class to it, or separate a class into small pieces
+Go [phase0/src/main/GUI_JFRAME/Main.java](phase0/src/main/GUI_JFRAME/Main.java)
 
-I did not exactly follow the SOLID principle, but I feel this design is solid somehow
 
-Any suggestions and improvements are welcomed!
+Run Main.java, you will see the Launch Page of the Game
+
+Select the Game Type, we have Chess, Chess with AI, and Super Chess
+
+Now you can have fun! :)

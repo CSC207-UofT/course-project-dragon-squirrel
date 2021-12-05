@@ -24,6 +24,7 @@ public class BoardUpdater {
 	/**
 	 * Get the newest info from BoardManager, store them in boardImage
 	 */
+
 	private void updateBoardImage() {
 		boardImage = bm.getBoardAsString();
 	}

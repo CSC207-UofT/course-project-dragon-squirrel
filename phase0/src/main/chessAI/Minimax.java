@@ -14,7 +14,7 @@ public class Minimax extends Engine{
 
 	private final int POS_INF = PieceInterface.KING_VALUE * 10;
 	private final int NEG_INF = -PieceInterface.KING_VALUE * 10;
-	private final int maxDepth;
+	private final int maxDepth;     // The maximum search depth for minimax
 
 	public Minimax(BoardManager bm, int depth) {
 		super(bm);
@@ -44,10 +44,11 @@ public class Minimax extends Engine{
 
 		nextStates.addAll(curr.generateNextState());
 
-		if (maxi) {     // AI's turn, maximizing score, return the highest score among next states
+		if (maxi) {     // AI's turn, maximizing score
 			State bestState = null;
 			int bestScore = NEG_INF;
 
+			// Among the all possible next states, find the one with the highest score
 			for (State state: nextStates) {
 				int currScore = minimaxSearch(depth - 1, state, false, alpha, beta);
 				if (currScore > bestScore) {
@@ -66,9 +67,10 @@ public class Minimax extends Engine{
 
 			return bestScore;
 		}
-		else {      // Player's turn, minimizing score, return the lowest score among next states
+		else {      // Player's turn, minimizing score
 			int worstScore = POS_INF;
 
+			// Among the all possible next states, find the one with the lowest score
 			for (State state: nextStates) {
 				int currScore = minimaxSearch(depth - 1, state, true, alpha, beta);
 				if (currScore < worstScore)
