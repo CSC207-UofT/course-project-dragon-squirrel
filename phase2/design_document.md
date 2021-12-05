@@ -5,8 +5,9 @@ Refer to the "[UpdatedSpecification.md](UpdatedSpecification.md)".
 Highlight of the additional functionality: Good-looking GUI. Save and reload state. 
 
 ## Class Diagram
-- [Simple-structured diagram](Class_Diagram%20Mermaid.md)
-- [UML Diagram](class%20diagram.uml)
+- [Cleaner Class Diagram (no dependencies)](Class_Diagrams/class_diagram_all.png)
+- [Dependencies Class Diagram](Class_Diagrams/dependency_diagram.png) *(Huge)*
+- Separated Class Diagrams by packages located [phase2/Class_Diagrams/Separated Diagram]
 
 ## Major Design Decisions + Explanation
 ### Valid move checks
@@ -36,8 +37,8 @@ Use cases:\
 Controllers/Presenters:\
 BoardUpdater, CommandSender
 
-The outermost layer has only one class:\
-GUI
+The outermost layer (GUI):\
+Main, LaunchPage, GUI_ChessBoard, GUI_SuperBoard, PieceIcon, SuperChessInstruction
 
 The entity classes contain the essential information of a game play. The position of piece are stored in Board.
 BoardManager is responsible for generating move commands and for making changes to Board & Piece (i.e. move a piece).\
@@ -142,7 +143,10 @@ Refer to the "[accessibility.md](accessibility.md)".
     - Other style & bug fix and quality improvement
     - Update design pattern document
 - Tingzhou
-    - ...
+    - UI Structural design
+    - GUI_Chessboard develop
+    - PieceIcon class(unicode)
+    - Accessibility Document
 - Christopher
     - Unit Tests
     - SuperChess design/layout/rules
