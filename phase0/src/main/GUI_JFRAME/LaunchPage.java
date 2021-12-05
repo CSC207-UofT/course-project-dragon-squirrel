@@ -10,6 +10,7 @@ public class LaunchPage implements ActionListener {
     JButton chess = new JButton("Chess");
     JButton chessWithAI = new JButton("Chess With AI");
     JButton SuperChess = new JButton("SuperChess");
+    JButton superChessInstructions = new JButton("SuperChess Instructions");
 
     LaunchPage(){
         chess.setBounds(150,110, 200, 40);
@@ -24,9 +25,14 @@ public class LaunchPage implements ActionListener {
         SuperChess.setFocusable(false);
         SuperChess.addActionListener(this);
 
+        superChessInstructions.setBounds(150, 260, 200, 40);
+        superChessInstructions.setFocusable(false);
+        superChessInstructions.addActionListener(this);
+
         frame.add(chess);
         frame.add(SuperChess);
         frame.add(chessWithAI);
+        frame.add(superChessInstructions);
         frame.setTitle("Welcome!");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
@@ -55,6 +61,12 @@ public class LaunchPage implements ActionListener {
             GUI_SuperBoard superChess = new GUI_SuperBoard();
             superChess.display();
             frame.setVisible(false);
+        }
+
+        if(e.getSource()==superChessInstructions) {
+            SuperChessInstructions superChessInstructions = new SuperChessInstructions();
+            superChessInstructions.display();
+            frame.setVisible(true);
         }
     }
 

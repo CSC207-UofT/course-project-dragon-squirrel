@@ -2,7 +2,6 @@ package GUI_JFRAME;
 
 import Controller.BoardUpdater;
 import Controller.CommandSender;
-import chessAI.Agent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.util.List;
 
 public class GUI_SuperBoard extends JFrame{
-    private PieceIcon[] icons = new PieceIcon[]{
+    private final PieceIcon[] icons = new PieceIcon[]{
             //
             new PieceIcon("\u265C"), new PieceIcon(" "), new PieceIcon("\u265E"),
             new PieceIcon("\u265D"), new PieceIcon("\u265B"), new PieceIcon("\u265A"),
@@ -65,18 +64,19 @@ public class GUI_SuperBoard extends JFrame{
     private final CommandSender cs;
     private final BoardUpdater bu;
     private Point prevSelected;
-    private Agent ai;
 
-    private Container contentPane = new Container();
+    private final Container contentPane = new Container();
 
-    private JMenuBar bar = new JMenuBar();
+    private final JMenuBar bar = new JMenuBar();
 
-    private JMenu file = new JMenu("File");
-    private JMenu pref = new JMenu("Preference");
+    private final JMenu file = new JMenu("File");
+    private final JMenu pref = new JMenu("Preference");
 
-    private JMenuItem save = new JMenuItem("save");
-    private JMenuItem reload = new JMenuItem("reload");
-    private JMenuItem undo = new JMenuItem("undo");
+    private final JMenuItem save = new JMenuItem("save");
+    private final JMenuItem reload = new JMenuItem("reload");
+    private final JMenuItem undo = new JMenuItem("undo");
+    private final JMenuItem instructions = new JMenuItem("instructions");
+    private final JMenuItem attackAndHealthTable = new JMenuItem("hp and atk lvl");
 
     private void set_bar(){
         save.addActionListener(e -> {
@@ -93,7 +93,19 @@ public class GUI_SuperBoard extends JFrame{
 
         });
 
-        file.add(save); file.add(reload); file.add(undo);
+        instructions.addActionListener(e -> {
+            SuperChessInstructions superChessInstructions = new SuperChessInstructions();
+            superChessInstructions.display();
+            contentPane.setVisible(true);
+        });
+
+        attackAndHealthTable.addActionListener(e -> {
+            SuperChessInstructions superChessInstructions = new SuperChessInstructions();
+            superChessInstructions.displayTable();
+            contentPane.setVisible(true);
+        });
+
+        file.add(save); file.add(reload); file.add(undo); file.add(instructions); file.add(attackAndHealthTable);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);
@@ -136,10 +148,6 @@ public class GUI_SuperBoard extends JFrame{
                         cs.pressMove(prevSelected.x, prevSelected.y, clicked.x, clicked.y);
                         updateBoardInfo(bu.getBoardImageAsUnicode());
 
-                        if (ai != null) {
-                            ai.makeMove();
-                            updateBoardInfo(bu.getBoardImageAsUnicode());
-                        }
                     }
                     // Click on a piece, show available moves
                     else if (!clickedIcon.getText().equals(" ")) {
