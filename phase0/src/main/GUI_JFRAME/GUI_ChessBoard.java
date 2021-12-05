@@ -15,7 +15,7 @@ public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
-    private PieceIcon[] icons = new PieceIcon[]{
+    private final PieceIcon[] icons = new PieceIcon[]{
             //
             new PieceIcon("\u265C"), new PieceIcon("\u265E"), new PieceIcon("\u265D"),
             new PieceIcon("\u265B"), new PieceIcon("\u265A"), new PieceIcon("\u265D"),
@@ -49,16 +49,16 @@ public class GUI_ChessBoard extends JFrame {
     private Point prevSelected;
     private Agent ai;
 
-    private Container contentPane = new Container();
+    private final Container contentPane = new Container();
 
-    private JMenuBar bar = new JMenuBar();
+    private final JMenuBar bar = new JMenuBar();
 
-    private JMenu file = new JMenu("File");
-    private JMenu pref = new JMenu("Preference");
+    private final JMenu file = new JMenu("File");
+    private final JMenu pref = new JMenu("Preference");
 
-    private JMenuItem save = new JMenuItem("save");
-    private JMenuItem reload = new JMenuItem("reload");
-    private JMenuItem undo = new JMenuItem("undo");
+    private final JMenuItem save = new JMenuItem("save");
+    private final JMenuItem reload = new JMenuItem("reload");
+    private final JMenuItem undo = new JMenuItem("undo");
 
     private void set_bar(){
         save.addActionListener(e -> {
