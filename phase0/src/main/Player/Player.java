@@ -9,6 +9,8 @@ public class Player {
 
     public Player(String ID) { this.ID = ID; }
 
+    public Player(Color color) { this.color = color; }
+
     public String getID() {
         return ID;
     }
