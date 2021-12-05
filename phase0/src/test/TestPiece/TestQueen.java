@@ -8,6 +8,7 @@ import piece.Queen;
 import static org.junit.Assert.assertEquals;
 
 public class TestQueen {
+
     Queen q;
 
     @Before
@@ -16,11 +17,21 @@ public class TestQueen {
     }
 
     @Test(timeout = 50)
+    public void TestgetValue(){
+        assertEquals(900, q.getValue());
+    }
+
+    @Test(timeout = 50)
     public void TestvalidMove(){
         assertEquals(true, q.validMove(7, 3, 0, 3));
         assertEquals(true, q.validMove(7, 3, 7, 0));
         assertEquals(true, q.validMove(7, 3, 3, 7));
         assertEquals(false, q.validMove(7, 3, 0, 0));
+    }
+
+    @Test(timeout = 50)
+    public void TestdeepCopy(){
+        assertEquals(q.getName(), q.deepCopy().getName());
     }
 
 }
