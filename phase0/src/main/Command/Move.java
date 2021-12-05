@@ -1,6 +1,7 @@
 package Command;
 
-import BoardManager.*;
+import BoardManager.BoardManager;
+import piece.Pawn;
 import piece.PieceInterface;
 
 public abstract class Move implements Command{
@@ -13,16 +14,23 @@ public abstract class Move implements Command{
         this.BM = newBM;
     }
 
-    public Move(BoardManager newBM, ChessMove newChessRule){
+    public Move(BoardManager newBM, ChessMove newChessMove){
         this.BM = newBM;
-        this.CM = newChessRule;
-        this.actionPiece = newChessRule.getOldPiece();
-        this.targetPiece = newChessRule.getNewPiece();
+        this.CM = newChessMove;
+        this.actionPiece = newChessMove.getOldPiece();
+        this.targetPiece = newChessMove.getNewPiece();
     }
 
     @Override
-    public abstract void execute();
+    public void execute() {
+        if (actionPiece instanceof Pawn)
+            ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+    }
     
     @Override
-    public abstract void undo();
+    public void undo() {
+        if (CM.getFirstMoveStatus() && actionPiece instanceof Pawn) {
+            ((Pawn) actionPiece).hasNotMovedDuringGame = true;
+        }
+    }
 }

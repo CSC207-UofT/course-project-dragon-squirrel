@@ -18,11 +18,13 @@ public class CaptureMove extends Move {
 	}
 
 	/**
-	 * Executes a capture. Add ChessMove to record in MoveRecord.
+	 * Executes a capture. If action piece was a pawn's first move, set its hasNotMovedDuringGame to false.
 	 * If capture happened after an attack, set hp of captured piece to 0.
+	 * Add ChessMove to record in MoveRecord.
 	 */
 	@Override
 	public void execute() {
+		super.execute();
 		BM.getMR().add(CM);
 		BM.getBoard().addPiece(actionPiece, CM.getNewX(), CM.getNewY());
 		BM.getBoard().removePiece(CM.getOldX(), CM.getOldY());
@@ -33,11 +35,13 @@ public class CaptureMove extends Move {
 	}
 
 	/**
-	 * Undo a capture. Remove this ChessMove from record in MoveRecord.
+	 * Undo a capture. If move undone was a pawn's first move, set its hasNotMovedDuringGame back to true.
 	 * If capture happened after an attack, set hp of captured piece back to before it was captured.
+	 * Remove this ChessMove from record in MoveRecord.
 	 */
 	@Override
 	public void undo() {
+		super.undo();
 		BM.getMR().remove();
 		// Add piece back
 		BM.getBoard().addPiece(actionPiece, CM.getOldX(), CM.getOldY());

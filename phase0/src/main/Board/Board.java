@@ -1,7 +1,6 @@
 package Board;
 
 import piece.*;
-import piece.Color;
 
 
 import java.awt.Point;
@@ -51,11 +50,11 @@ public class Board implements BoardInterface{
         this.board = board;
     }
 
-    public String[][] to2dStringArray(int x, int y) {
-        String[][] boardAsString = new String[x][y];
+    public String[][] to2dStringArray() {
+        String[][] boardAsString = new String[boundaries.x][boundaries.y];
 
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
+        for (int i = 0; i < boundaries.x; i++) {
+            for (int j = 0; j < boundaries.y; j++) {
                 try {
                     PieceInterface piece = board[i][j];
                     String color = piece.isBlack() ? "b_" : "w_";
@@ -82,7 +81,10 @@ public class Board implements BoardInterface{
 
         for (int i = 0; i < boundaries.x; i++) {
             for (int j = 0; j < boundaries.y; j++) {
-                piece2dArray[i][j] = board[i][j].deepCopy();    //TODO requires Piece.deepCopy() work properly
+                if (board[i][j] != null)
+                    piece2dArray[i][j] = board[i][j].deepCopy();
+                else
+                    piece2dArray[i][j] = null;
             }
         }
 

@@ -11,7 +11,6 @@ import piece.*;
  */
 public class BoardManager {
 
-    // These are the variables we might need
     protected Board board;
     protected Player activePlayer;
     protected GameStatus status;
@@ -29,30 +28,70 @@ public class BoardManager {
         resetBoard();
     }
 
+    /**
+     * @return Board
+     */
     public Board getBoard() {
         return this.board;
     }
 
+    /**
+     * Stored strings are piece names ("b_pawn", "w_rook", etc.) or "vacant"
+     * @return 2d string array of board
+     */
     public String[][] getBoardAsString() {
-        return board.to2dStringArray(board.getBoundaries().x, board.getBoundaries().y);
+        return board.to2dStringArray();
     }
 
+    /**
+     * @return MoveRecord
+     */
     public MoveRecord getMR(){
         return MR;
     }
 
+    /**
+     * @return the piece at board[X][Y], or null if there is no piece.
+     */
     public PieceInterface getPiece(int x, int y) {
         return board.getPiece(x, y);
     }
 
+    /**
+     * @return the current active player
+     */
     public Player getActivePlayer() {
         return activePlayer;
     }
 
+    /**
+     * @return true if piece (Pawn, Rook, or King) has moved during game, false if piece has not moved or if
+     * piece is not an instance of the aforementioned piece types.
+     */
+    public boolean getHasMovedStatus(PieceInterface p) {
+        if (p instanceof Pawn){
+            return !((Pawn) p).getHasNotMovedDuringGame();
+        }
+        if (p instanceof Rook){
+            return ((Rook) p).getHasMovedDuringGame();
+        }
+        if (p instanceof King){
+            return ((King) p).getHasMovedDuringGame();
+        }
+        return false;
+    }
+
+    /**
+     * Set activePlayer as player
+     */
     public void setActivePlayer(Player player) {
         this.activePlayer = player;
     }
 
+    /**
+     * Move piece from board[oldX][oldY] to board[newX][newY] by removing piece from its old coordinate in board and
+     * adding it to the new coordinate in board.
+     */
     public void movePiece(int oldX, int oldY, int newX, int newY) {
         // Calls board.addPiece() and board.removePiece()
         PieceInterface pieceToMove = board.removePiece(oldX, oldY);
@@ -74,6 +113,26 @@ public class BoardManager {
 
     }
 
+    /**
+     * Switch piece's (Pawn, King, and Rook) status hasMovedDuringGame or hasNotMovedDuringGame to true or false
+     * depending on parameter hasMoved.
+     */
+    public void switchPieceHasMovedStatus(PieceInterface p, boolean hasMoved) {
+        if (p instanceof Pawn){
+            ((Pawn) p).setHasNotMovedDuringGame(!hasMoved);
+        }
+        if (p instanceof King) {
+            ((King) p).setHasMovedDuringGame(hasMoved);
+        }
+        if (p instanceof Rook){
+            ((Rook) p).setHasMovedDuringGame(hasMoved);
+        }
+    }
+
+    /**
+     * Instantiate the pieces and add them to their corresponding starting positions in the board (2d piece interface
+     * array) attribute held by Board.
+     */
     public void resetBoard() {
         Piece[][] Piece2dArray = new Piece[8][8];
 

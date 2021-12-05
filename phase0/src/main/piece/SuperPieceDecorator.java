@@ -1,8 +1,6 @@
 package piece;
 
-import Board.Board;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.List;
 import Board.BoardInterface;
 
@@ -20,30 +18,60 @@ public class SuperPieceDecorator extends PieceDecorator{
         this.hasNotAttacked = true;
     }
 
+    /**
+     * @return the hp of the super piece
+     */
     public int getHp() {
         return this.hp;
     }
 
+    /**
+     * @return attack level of the super piece
+     */
     public int getAtk() {
         return this.atk;
     }
 
+    /**
+     * @return true if piece has not moved, false if it has.
+     */
     public boolean getHasNotMoved() {
         return this.hasNotMoved;
      }
 
+    /**
+     * @return true if piece has not attacked, false if it has.
+     */
     public boolean getHasNotAttacked() {
         return this.hasNotAttacked;
      }
 
+    /**
+     * Set hp of piece as hp.
+     */
     public void setHp(int hp) {this.hp = hp;}
 
+    /**
+     * Modify hp by adding value to the current hp.
+     */
+    public void modifyHp(int value) {
+        hp += value;
+    }
+
+    /**
+     * @return a List of the valid points the pawn can move to given piece behaviour, game rules, and
+     * present board state.
+     */
     @Override
     public List<Point> getValidMoves(BoardInterface b, int x, int y) {
         return super.getValidMoves(b, x, y);
     }
-}
 
-// This is what we'd write in SuperBoardManager to instantiate the superPieces
-// SuperPieceDecorator yay = new SuperPieceDecorator(new King("b_king", Color.BLACK), 10, 11);
-//
+    @Override
+    public SuperPieceDecorator deepCopy() {
+        SuperPieceDecorator newPiece = new SuperPieceDecorator(piece, hp, atk);
+        newPiece.hasNotMoved = this.hasNotMoved;
+        newPiece.hasNotAttacked = this.hasNotAttacked;
+        return newPiece;
+    }
+}
