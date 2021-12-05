@@ -45,6 +45,18 @@ public class Board implements BoardInterface{
         return board[X][Y];
     }
 
+    public Point findKing(Color color) {
+        Point position = null;
+        for (int i = 0; i < boundaries.x; i++) {
+            for (int j = 0; j < boundaries.y; j++) {
+                if (board[i][j] instanceof King && board[i][j].getColor() == color)
+                    position = new Point(i, j);
+            }
+        }
+
+        return position;
+    }
+
     public void reset(PieceInterface[][] board)
     {
         this.board = board;
