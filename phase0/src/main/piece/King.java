@@ -11,6 +11,7 @@ public class King extends Piece{
 
     public King(String name, Color color){
         super(name, color);
+		hasMovedDuringGame = false;
     }
 
 	/**
