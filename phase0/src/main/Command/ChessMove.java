@@ -99,4 +99,9 @@ public class ChessMove {
     public MoveType getMoveType(){
         return moveType;
     }
+
+    public BoardManager getBM(){
+        return this.BM;
+    }
+
 }
