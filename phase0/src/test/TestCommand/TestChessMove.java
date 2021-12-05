@@ -39,18 +39,8 @@ public class TestChessMove {
     }
 
     @Test(timeout = 50)
-    public void TestgetOldPieceName(){
-        assertEquals("b_rook_l", cm.getOldPiece());
-    }
-
-    @Test(timeout = 50)
-    public void TestgetNewPieceName(){
-        assertEquals("b_pawn_1", cm.getNewPiece());
-    }
-
-    @Test(timeout = 50)
     public void TestgetMoveType(){
-        assertEquals(1, cm.getMoveType());
+        assertEquals(MoveType.REGULAR, cm.getMoveType());
     }
 
 }

@@ -16,16 +16,14 @@ import java.util.Map;
 public class TestSuperGameRule {
 
     Board superBoard;
-    Map<String, PieceInterface> superPiecesDict;
     MoveRecord mr;
     SuperGameRule sgr;
 
     @Before
     public void before(){
         superBoard = new Board(13, 10);
-        superPiecesDict = new HashMap<String, PieceInterface>();
         mr = new MoveRecord();
-        sgr = new SuperGameRule(superBoard, superPiecesDict, mr);
+        sgr = new SuperGameRule(superBoard, mr);
     }
 
 }

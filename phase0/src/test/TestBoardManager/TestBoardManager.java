@@ -9,15 +9,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import piece.*;
+import piece.Color;
+
+import java.awt.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class TestBoardManager {
 
     int col;
     int row;
-    Board b;
+    Point boundaries;
+    Board board;
     Player activePlayer;
     GameStatus gameStatus;
     MoveRecord MR;
@@ -27,49 +32,15 @@ public class TestBoardManager {
     public void before(){
         col = 8;
         row = 8;
-        b = new Board(col, row);
+        boundaries = new Point(col, row);
+        board = new Board(boundaries.x, boundaries.y);
         activePlayer = new Player("bob");
+        MR = new MoveRecord();
         bm = new BoardManager();
-        b = new Board(8, 8);
-    }
-
-    @After
-    public void after(){
-        b.reset(b.getBoard());
     }
 
     @Test(timeout = 50)
     public void TestgetBoard(){
-        assertEquals(b.to2dStringArray(col, row), bm.getBoardAsString());
-    }
-
-    @Test(timeout = 50)
-    public void TestgetPiece(){
-        assertEquals("w_pawn_0", bm.getPiece(6, 0).getName());
-    }
-
-    @Test(timeout = 50)
-    public void TestgetActivePlayer(){
-        assertEquals("bob", bm.getActivePlayer().getID());
-    }
-
-    @Test(timeout = 50)
-    public void TestsetActivePlayer(){
-        Player newPlayer = new Player("joe");
-        bm.setActivePlayer(newPlayer);
-        assertEquals("joe", bm.getActivePlayer().getID());
-    }
-
-    @Test(timeout = 50)
-    public void TestmovePiece(){
-        assertEquals("vacant", bm.getBoard().getPiece(5, 0));
-        bm.movePiece(6, 0, 5, 0);
-        assertEquals("w_pawn_0", bm.getBoard().getPiece(5, 0));
-    }
-
-    @Test(timeout = 50)
-    public void TestresetBoard(){
-        Board newBoard = new Board(col, row);
         Piece[][] Piece2dArray = new Piece[8][8];
 
         // initialize white pieces
@@ -108,10 +79,147 @@ public class TestBoardManager {
                 Piece2dArray[i][j] = null;
             }
         }
+        board.reset(Piece2dArray);
+        assertEquals(board.to2dStringArray(), bm.getBoard().to2dStringArray());
+    }
 
-        newBoard.reset(Piece2dArray);
+    @Test(timeout = 50)
+    public void TestgetBoardAsString(){
+        Piece[][] Piece2dArray = new Piece[8][8];
 
-        assertEquals(b, newBoard);
+        // initialize white pieces
+        Piece2dArray[7][0] = new Rook("rook_l", Color.WHITE);
+        Piece2dArray[7][1] = new Knight("knight_l", Color.WHITE);
+        Piece2dArray[7][2] = new Bishop("bishop_l", Color.WHITE);
+        Piece2dArray[7][3] = new Queen("queen", Color.WHITE);
+        Piece2dArray[7][4] = new King("king", Color.WHITE);
+        Piece2dArray[7][5] = new Bishop("bishop_r", Color.WHITE);
+        Piece2dArray[7][6] = new Knight("knight_r", Color.WHITE);
+        Piece2dArray[7][7] = new Rook("rook_r", Color.WHITE);
+
+        for (int i = 0; i < 8; i++) {
+            String name = "pawn_" + i;
+            Piece2dArray[6][i] = new Pawn(name, Color.WHITE);
+        }
+
+        // initialize black pieces
+        Piece2dArray[0][0] = new Rook("rook_l", Color.BLACK);
+        Piece2dArray[0][1] = new Knight("knight_l", Color.BLACK);
+        Piece2dArray[0][2] = new Bishop("bishop_l", Color.BLACK);
+        Piece2dArray[0][3] = new Queen("queen", Color.BLACK);
+        Piece2dArray[0][4] = new King("king", Color.BLACK);
+        Piece2dArray[0][5] = new Bishop("bishop_r", Color.BLACK);
+        Piece2dArray[0][6] = new Knight("knight_r", Color.BLACK);
+        Piece2dArray[0][7] = new Rook("rook_r", Color.BLACK);
+
+        for (int i = 0; i < 8; i++) {
+            String name = "pawn_" + i;
+            Piece2dArray[1][i] = new Pawn(name, Color.BLACK);
+        }
+
+        // initialize remaining board with no pieces
+        for (int i = 2; i < 6; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece2dArray[i][j] = null;
+            }
+        }
+        board.reset(Piece2dArray);
+        assertEquals(board.to2dStringArray(), bm.getBoardAsString());
+    }
+
+    @Test(timeout = 50)
+    public void TestgetMR(){
+        assertTrue(bm.getMR().isEmpty());
+    }
+
+    @Test(timeout = 50)
+    public void TestgetPiece(){
+        assertEquals("pawn_0", bm.getPiece(6, 0).getName());
+    }
+
+    @Test(timeout = 50)
+    public void TestgetActivePlayer(){
+        bm.setActivePlayer(activePlayer);
+        assertEquals("bob", bm.getActivePlayer().getID());
+    }
+
+    @Test(timeout = 50)
+    public void TestgetHasMovedStatus(){
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(0, 0)));
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(1, 0)));
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(0, 4)));
+    }
+
+    @Test(timeout = 50)
+    public void TestsetActivePlayer(){
+        Player newPlayer = new Player("joe");
+        bm.setActivePlayer(newPlayer);
+        assertEquals("joe", bm.getActivePlayer().getID());
+    }
+
+    @Test(timeout = 50)
+    public void TestmovePiece(){
+        assertEquals("pawn_0", bm.getBoard().getPiece(1, 0).getName());
+        assertEquals(null, bm.getBoard().getPiece(3, 0));
+        bm.movePiece(1, 0, 3, 0);
+        assertEquals("pawn_0", bm.getBoard().getPiece(3, 0).getName());
+    }
+
+    @Test(timeout = 50)
+    public void TestswitchPieceHasMovedStatus(){
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(0, 0)));
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(1, 0)));
+        assertFalse(bm.getHasMovedStatus(bm.getPiece(0, 4)));
+        bm.switchPieceHasMovedStatus(bm.getPiece(0, 0), true);
+        bm.switchPieceHasMovedStatus(bm.getPiece(1, 0), true);
+        bm.switchPieceHasMovedStatus(bm.getPiece(0, 4), true);
+        assertTrue(bm.getHasMovedStatus(bm.getPiece(0, 0)));
+        assertTrue(bm.getHasMovedStatus(bm.getPiece(1, 0)));
+        assertTrue(bm.getHasMovedStatus(bm.getPiece(0, 4)));
+    }
+
+    @Test(timeout = 50)
+    public void TestresetBoard(){
+        Piece[][] Piece2dArray = new Piece[8][8];
+
+        // initialize white pieces
+        Piece2dArray[7][0] = new Rook("rook_l", Color.WHITE);
+        Piece2dArray[7][1] = new Knight("knight_l", Color.WHITE);
+        Piece2dArray[7][2] = new Bishop("bishop_l", Color.WHITE);
+        Piece2dArray[7][3] = new Queen("queen", Color.WHITE);
+        Piece2dArray[7][4] = new King("king", Color.WHITE);
+        Piece2dArray[7][5] = new Bishop("bishop_r", Color.WHITE);
+        Piece2dArray[7][6] = new Knight("knight_r", Color.WHITE);
+        Piece2dArray[7][7] = new Rook("rook_r", Color.WHITE);
+
+        for (int i = 0; i < 8; i++) {
+            String name = "pawn_" + i;
+            Piece2dArray[6][i] = new Pawn(name, Color.WHITE);
+        }
+
+        // initialize black pieces
+        Piece2dArray[0][0] = new Rook("rook_l", Color.BLACK);
+        Piece2dArray[0][1] = new Knight("knight_l", Color.BLACK);
+        Piece2dArray[0][2] = new Bishop("bishop_l", Color.BLACK);
+        Piece2dArray[0][3] = new Queen("queen", Color.BLACK);
+        Piece2dArray[0][4] = new King("king", Color.BLACK);
+        Piece2dArray[0][5] = new Bishop("bishop_r", Color.BLACK);
+        Piece2dArray[0][6] = new Knight("knight_r", Color.BLACK);
+        Piece2dArray[0][7] = new Rook("rook_r", Color.BLACK);
+
+        for (int i = 0; i < 8; i++) {
+            String name = "pawn_" + i;
+            Piece2dArray[1][i] = new Pawn(name, Color.BLACK);
+        }
+
+        // initialize remaining board with no pieces
+        for (int i = 2; i < 6; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece2dArray[i][j] = null;
+            }
+        }
+        board.reset(Piece2dArray);
+        assertEquals(board.to2dStringArray(), bm.getBoard().to2dStringArray());
     }
 
 }

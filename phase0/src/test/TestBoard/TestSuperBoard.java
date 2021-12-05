@@ -32,10 +32,4 @@ public class TestSuperBoard {
         assertEquals(sb.getLandType(0, 0), "ground");
     }
 
-    @Test(timeout = 50)
-    public void Testreset(){
-        String[][] superBoard = new String[col][row];
-        assertEquals(superBoard, sb.to2dStringArray(col, row));
-    }
-
 }
