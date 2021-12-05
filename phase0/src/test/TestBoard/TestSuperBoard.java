@@ -22,11 +22,6 @@ public class TestSuperBoard {
         sb = new SuperBoard(col, row);
     }
 
-    @After
-    public void after(){
-        sb.reset(sb.getBoard());
-    }
-
     @Test(timeout = 50)
     public void TestgetLandType(){
         assertEquals(sb.getLandType(0, 0), "ground");
