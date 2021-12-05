@@ -98,18 +98,25 @@ SuperGameRule is in a GameRule package, etc.
 ###Command Pattern
 It makes perfect sense to package each move piece command into objects, as this allows us to add move history easily.
 A move history can further let us implement undo piece moves. \
-When designing a chess AI, it is important to let it generate its next available moves, then decide which move is 
-better. This can use the help from command pattern.
+All the code is written in package Command. The Command class is the interface, and Move class implements it, which has
+execute() and undo(). Controller.CommandSender creates and sends these commands. On execution, BoardManager as the receiver will perform
+some actions. We decided to break down the command pattern to several move types since our super chess with new
+mechanics will also use the command pattern: RegularMove, EnPassantMove, CastlingMove, CaptureMove and AttackMove are
+all subclasses of Move.
 
 ### Decorator Pattern
 Our classic chess and super chess have different rules about piece movement. The decorator pattern allows us to add new
-rules to classic pieces without creating subclasses for all different pieces, thus making the project more concise.
+rules to classic pieces without creating subclasses for all different pieces, thus making the project more concise. \
+(Someone familiar with this, please add more details about implementation)
 
-### Observer Pattern
-The information of pieces locations is stored in the entity class Board, the information need to reflect to other places
-like the GUI. Currently, there is only GUI that requires updates from Board, but we may have more in the future.
-Additionally, observer pattern helps deliver the information while bypassing the restrictions of clean architecture.\
-Due to some technical issues, this part is not yet implemented.
+### Strategy Pattern
+Our chess AI has three difficulty levels. The chess AI makes decisions by searching through the states in a game tree, 
+having more than one difficulty level usually means there will be multiple searching algorithms involved. By using the 
+strategy pattern, we can easily write each algorithm in separate classes, and load the one into AI as the player specified. \
+In package chessAI, Engine class acts like the interface of different behaviors and have method makeDecision(). Engine 
+has GreedyButDumb and Minimax as its subclasses, which are two algorithm implementations, they make the actual decisions in different ways. In GUI_JFRAME.LaunchPage, the
+Popup class let user choose the difficulty, and initializes AI with the corresponding algorithm. \
+If we decide to add more algorithms in the future, this will be very handy.
 
 ## Accessibility Document
 Refer to the "[accessibility.md](accessibility.md)".
@@ -128,7 +135,12 @@ Refer to the "[accessibility.md](accessibility.md)".
     - Add javadoc / check and fix team member's code 
     - Updating previous specification / SOLID description / Packaging Strategy description
 - Future
-    - ...
+    - Chess AI
+    - Redesign command pattern
+    - Rewrite getValidMoves() in Piece and its subclasses to fix bugs & improve readability
+    - Add MouseListener to GUI and connect it up with controller & presenter
+    - Other style & bug fix and quality improvement
+    - Update design pattern document
 - Tingzhou
     - ...
 - Christopher
