@@ -63,9 +63,14 @@ GameRule since we have to use instanceof to check which type the piece is.
 ## Adherence to SOLID Design Principles
 **S**: Class (Super)GameRule's sole responsibility is to check whether move is valid according to its game rules. 
 Controller classes are separated into BoardUpdater and CommandSender classes because they have different 
-responsibilities, thus avoiding low cohesion. Coordinates of the pieces are not stored in both the pieces themselves 
-and the Board class. Rather, it is stored only in a private String[][] board attribute in class Board. This way, code is
-not shared between actors.
+responsibilities, thus avoiding low cohesion. Moreover, we decided to separate different move types into their own 
+classes. This is because the implementation of methods execute() and undo() in Move classes are very different from each
+other. For example, a castling move requires a specific rook to be placed at a specific spot, whereas an attack move 
+requires the health point of a piece to be changed, whereas a regular move simply moves the action piece to its target 
+coordinate. If we were to put all these implementations into one main Move class, it would break this principle and 
+become overly complicated. Lastly, coordinates of the pieces are not stored in both the pieces themselves 
+and the Board class. Rather, it is stored only in a private PieceInterface[][] board attribute in class Board. This way, 
+code is not shared between actors.
 
 **O**: Both the abstract Piece class and PieceDecorator class implement PieceInterface. This interface sets 
 a skeleton outline of the necessary methods required to be implemented. Because piece classes (Bishop, Knight, etc.)
@@ -76,17 +81,20 @@ base component remains unchanged and behaviours are only added on top.
 **L**: In all the classic chess classes (Board, BoardManager, and GameRule) that are with a corresponding super chess 
 subclass, its methods and attributes are shared with the subclass. In other words, there does not exist a method in the 
 superclass that is irrelevant to its subclass. For example, the super chess game rules are all extensions of the classic
-chess game rules; super chess pieces acquire the exact same behaviours as those in classic chess. Thus, for example, 
-the overridden method isMoveValid() in SuperGameRule still calls the isMoveValid() in GameRule. 
+chess game rules; super chess pieces acquire the exact same behaviours as those in classic chess. 
 
 **I**: Because classic chess pieces and super chess pieces are different in that one has attacks and health points 
 while the other does not, PieceInterface does not specify methods related to health points and attacks. Rather, it only
 outlines methods that are required by both classic and super chess pieces. 
 
 **D**: High level classes such as GameRule depend on the methods outlined by the PieceInterface rather than 
-the low level modules such as the concrete piece classes themselves. However, it is worrisome that high level classes
-such as CommandSender depend on classes like GameRule and BoardManager which do not implement an interface. If these 
-two classes were to change, it may involve high coupling and become quite chaotic.
+the low level modules such as the concrete piece classes themselves. Furthermore, we created a board interface so that
+high level classes depend on the interface rather than the actual board class itself. We also have a command interface
+that outlines the necessary methods, i.e. execute() and undo() required in Move classes. Thus, the high level class
+CommandSender will depend on the interface rather than the Move classes themselves. However, it is still worrisome that 
+high level classes such as CommandSender depend on classes like GameRule and BoardManager which do not implement an 
+interface. If these two classes were to change or if we wanted to add another board game with different rules, 
+it may involve high coupling and become quite chaotic. 
 
 ## Packaging Strategies
 This is packaging by feature. At first, we put SuperChess and Chess classes into separate folders. However, this proved
@@ -100,15 +108,24 @@ SuperGameRule is in a GameRule package, etc.
 It makes perfect sense to package each move piece command into objects, as this allows us to add move history easily.
 A move history can further let us implement undo piece moves. \
 All the code is written in package Command. The Command class is the interface, and Move class implements it, which has
-execute() and undo(). Controller.CommandSender creates and sends these commands. On execution, BoardManager as the receiver will perform
-some actions. We decided to break down the command pattern to several move types since our super chess with new
-mechanics will also use the command pattern: RegularMove, EnPassantMove, CastlingMove, CaptureMove and AttackMove are
-all subclasses of Move.
+methods execute() and undo(). Controller.CommandSender creates and sends these commands. On execution, BoardManager as 
+the receiver will perform some actions. We decided to break down the command pattern to several move types since our 
+super chess with new mechanics will also use the command pattern: RegularMove, EnPassantMove, CastlingMove, CaptureMove 
+and AttackMove are all subclasses of Move.
 
 ### Decorator Pattern
-Our classic chess and super chess have different rules about piece movement. The decorator pattern allows us to add new
-rules to classic pieces without creating subclasses for all different pieces, thus making the project more concise. \
-(Someone familiar with this, please add more details about implementation)
+Our classic chess and super chess have different rules about piece movement. However, because super chess pieces use the
+basic behaviour of their corresponding classic chess pieces, it was unnecessary to create a separate class for each super
+chess piece. Thus, the decorator pattern allows us to add new features (attack level and health points) to classic 
+pieces without creating subclasses for all different pieces, thus making the project more concise. 
+
+Nevertheless, this proved a problem in phase 2. When we designed the program, we had SuperGameRule check the validity 
+of moves according to the additional super game rules. However, the GUI implemented in phase 2 uses getValidMoves() in 
+the piece classes to highlight available moves to the user. But piece classes only check their corresponding classic 
+piece behaviour. In other words, the GUI highlights available moves for the classic pieces even when you are playing 
+super chess. Therefore, when playing super chess, the GUI may highlight a coordinate as a possible move when it is 
+actually impossible. Thankfully, if you click on the supposedly possible coordinate, SuperGameRule will still stop the 
+move from happening. 
 
 ### Strategy Pattern
 Our chess AI has three difficulty levels. The chess AI makes decisions by searching through the states in a game tree, 
@@ -129,7 +146,7 @@ Refer to the "[accessibility.md](accessibility.md)".
 - Jin
     - ...
 - Jennifer
-    - SuperChess GUI
+    - SuperChess GUI + super chess instructions
     - Merge Future and Jin's implementations of command pattern 
       - Polish Future's execute() and undo() in Move classes
       - Polish CommandSender methods containing Move
