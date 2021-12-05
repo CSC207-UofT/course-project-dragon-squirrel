@@ -132,6 +132,9 @@ Refer to the "[accessibility.md](accessibility.md)".
 - Tingzhou
     - ...
 - Christopher
-    - ...
+    - Unit Tests
+    - SuperChess design/layout/rules
+    - Pieces, Boards, BoardManager getters and setters
+    - reset board method
 - Dylan
     - ...
