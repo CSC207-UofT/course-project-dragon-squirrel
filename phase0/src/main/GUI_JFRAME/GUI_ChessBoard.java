@@ -15,7 +15,7 @@ public class GUI_ChessBoard extends JFrame {
     // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
-    private PieceIcon[] icons = new PieceIcon[]{
+    private final PieceIcon[] icons = new PieceIcon[]{
             //
             new PieceIcon("\u265C"), new PieceIcon("\u265E"), new PieceIcon("\u265D"),
             new PieceIcon("\u265B"), new PieceIcon("\u265A"), new PieceIcon("\u265D"),
@@ -49,16 +49,16 @@ public class GUI_ChessBoard extends JFrame {
     private Point prevSelected;
     private Agent ai;
 
-    private Container contentPane = new Container();
+    private final Container contentPane = new Container();
 
-    private JMenuBar bar = new JMenuBar();
+    private final JMenuBar bar = new JMenuBar();
 
-    private JMenu file = new JMenu("File");
-    private JMenu pref = new JMenu("Preference");
+    private final JMenu file = new JMenu("File");
+    private final JMenu pref = new JMenu("Preference");
 
-    private JMenuItem save = new JMenuItem("save");
-    private JMenuItem reload = new JMenuItem("reload");
-    private JMenuItem undo = new JMenuItem("undo");
+    private final JMenuItem save = new JMenuItem("save");
+    private final JMenuItem reload = new JMenuItem("reload");
+    private final JMenuItem undo = new JMenuItem("undo");
 
     private void set_bar(){
         save.addActionListener(e -> {
@@ -81,9 +81,6 @@ public class GUI_ChessBoard extends JFrame {
         bar.setVisible(true);
         bar.setBounds(0, 0, 800, 20);
     }
-
-
-    // TODO: Probably will change some code below, as we need to have operation on the board
 
     public GUI_ChessBoard(Difficulty AISetting){
 
@@ -144,24 +141,16 @@ public class GUI_ChessBoard extends JFrame {
                 }
 
                 @Override
-                public void mousePressed(MouseEvent e) {
-
-                }
+                public void mousePressed(MouseEvent e) {}
 
                 @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
+                public void mouseReleased(MouseEvent e) {}
 
                 @Override
-                public void mouseEntered(MouseEvent e) {
-
-                }
+                public void mouseEntered(MouseEvent e) {}
 
                 @Override
-                public void mouseExited(MouseEvent e) {
-
-                }
+                public void mouseExited(MouseEvent e) {}
             });
 
         }
@@ -191,31 +180,42 @@ public class GUI_ChessBoard extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Unselect all tiles on the board
+     */
     private void unselectAll() {
         for (PieceIcon icon: icons) {
             icon.setSelected(false);
         }
     }
 
+    /**
+     * Unhighlight all tiles on the board
+     */
     private void unHighlightAll() {
         for (PieceIcon icon: icons) {
             icon.setHighlighted(false);
         }
     }
 
+    /**
+     * Convert array index to 2d array coordinate
+     */
     private Point indexToCoordinate(int index) {
-        int row = index / 8;
-        int col = index % 8;
-
-        return new Point(row, col);
+        return new Point(index / 8, index % 8);
     }
 
+    /**
+     * Convert 2d array coordinate to array index
+     */
     private int coordinateToIndex(Point p) {
         return p.x * 8 + p.y;
     }
 
+    /**
+     * Assume icons[x][y] is a piece, show its valid moves
+     */
     private void showValidMove(int x, int y) {
-
         unHighlightAll();
         List<Point> validMoves = cs.passValidMove(new Point(x, y));
         for (Point position: validMoves) {
@@ -223,6 +223,10 @@ public class GUI_ChessBoard extends JFrame {
         }
     }
 
+    /**
+     * Refresh the board in gui with the unicode info
+     * @param unicode   The unicode representation of board, provided by BoardUpdater
+     */
     private void updateBoardInfo(String[][] unicode) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -231,9 +235,4 @@ public class GUI_ChessBoard extends JFrame {
             }
         }
     }
-
-    // TODO: Allow pieces to move by interacting with other code, idea: by change the array of icons.
-
-    // Here should be some code.
-
 }

@@ -22,7 +22,6 @@ public class State {
 	private final Point[] prevMove;
 
 	public State(Board board, Color prevPlayer, Point[] prevMove) {
-
 		this.board = board;
 		this.prevMove = prevMove;
 		activePlayer = (prevPlayer == Color.WHITE ? Color.BLACK : Color.WHITE);
@@ -82,6 +81,9 @@ public class State {
 		return nextStates;
 	}
 
+	/**
+	 * A state is considered over when any King is missing
+	 */
 	public boolean isGameOver() {
 		return (board.findKing(Color.WHITE) == null || board.findKing(Color.BLACK) == null);
 	}
