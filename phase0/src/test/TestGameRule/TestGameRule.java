@@ -10,13 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import piece.Color;
 import piece.Pawn;
-import piece.PieceInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
 
 
 import static org.junit.Assert.assertEquals;
@@ -39,7 +35,7 @@ public class TestGameRule {
     }
 
     @Test(timeout = 50)
-    public void TestgetBoard(){
+    public void TestGetBoard(){
         assertEquals(board.to2dStringArray(), gr.getBoard().to2dStringArray());
     }
 
@@ -48,7 +44,9 @@ public class TestGameRule {
         board.addPiece(new Pawn("pawn_0", Color.BLACK), 0, 0);
         assertEquals(MoveType.INVALID, gr.isMoveValid(0, 0, 0, -1));    // out of bounds
         board.addPiece(new Pawn("pawn_1", Color.BLACK), 1, 0);
-        assertEquals(MoveType.REGULAR, gr.isMoveValid(1, 0, 2, 0));
+        assertEquals(MoveType.INVALID, gr.isMoveValid(1, 0, 2, 0)); // black pieces can't start the game
+        board.addPiece(new Pawn("pawn_1", Color.WHITE), 6, 0);
+        assertEquals(MoveType.REGULAR, gr.isMoveValid(6, 0, 5, 0));
     }
 
     @Test(timeout = 50)
@@ -65,13 +63,13 @@ public class TestGameRule {
     }
 
     @Test(timeout = 50)
-    public void TestpathCoordinates(){
+    public void TestPathCoordinates(){
         ArrayList<Point> coords = gr.pathCoordinates(0, 0, 2, 0);
         assertEquals(new Point(1, 0), coords.get(0));
     }
 
     @Test(timeout = 50)
-    public void TestgetAvailableMoves(){
+    public void TestGetAvailableMoves(){
         ArrayList<Point> moves = new ArrayList<>();
         moves.add(new Point(2, 0));
         moves.add(new Point(3, 0));
@@ -80,18 +78,21 @@ public class TestGameRule {
     }
 
     @Test(timeout = 50)
-    public void TestenPassant(){
-        bm.movePiece(1, 0, 3, 0);
-        MR.add(new ChessMove(bm, 1, 0, 3, 0, true, MoveType.REGULAR));
-        bm.movePiece(6, 1, 4, 1);
+    public void TestEnPassant(){
         MR.add(new ChessMove(bm, 6, 1, 4, 1, true, MoveType.REGULAR));
-        bm.movePiece(3, 0, 4, 0);
-        MR.add(new ChessMove(bm, 3, 0, 4, 0, false, MoveType.REGULAR));
-        //assertTrue(gr.enPassant(4, 1, 3, 0)); //TODO: this isn't working
+        bm.movePiece(6, 1, 4, 1);
+        // move random piece
+        MR.add(new ChessMove(bm, 1, 2, 2, 2, true, MoveType.REGULAR));
+        bm.movePiece(1, 2, 2, 2);
+        MR.add(new ChessMove(bm, 4, 1, 3, 1, false, MoveType.REGULAR));
+        bm.movePiece(4, 1, 3, 1);
+        MR.add(new ChessMove(bm, 1, 0, 3, 0, true, MoveType.REGULAR));
+        bm.movePiece(1, 0, 3, 0);
+        assertTrue(gr.enPassant(3, 1, 2, 0));
     }
 
     @Test(timeout = 50)
-    public void TestpawnCapture(){
+    public void TestPawnCapture(){
         bm.movePiece(1, 0, 3, 0);
         bm.movePiece(6, 1, 4, 1);
         assertTrue(gr.pawnCapture(3, 0, 4, 1));
@@ -105,7 +106,7 @@ public class TestGameRule {
         bm.movePiece(0, 1, 2, 0);
         bm.movePiece(0, 2, 1, 1);
         bm.movePiece(0, 3, 1, 3);
-        //assertTrue(gr.Castling(0, 4, 0, 0));  //TODO: this is't working
+        assertTrue(gr.Castling(0, 4, 0, 2));
     }
 
 }

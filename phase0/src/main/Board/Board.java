@@ -112,7 +112,7 @@ public class Board implements BoardInterface{
     /**
      *
      * @param color piece color
-     * @return all position of piece with same coloc.
+     * @return all position of piece with same color.
      */
     public List<Point> getAllPiece(Color color){
         ArrayList<Point> solution = new ArrayList<>();
