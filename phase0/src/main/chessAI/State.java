@@ -5,6 +5,7 @@ import piece.Color;
 import piece.PieceInterface;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * This only works in classic piece yet
  */
-public class State {
+public class State implements Serializable {
 
 	private final Board board;
 	private final Color activePlayer;

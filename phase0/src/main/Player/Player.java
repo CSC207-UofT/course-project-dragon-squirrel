@@ -2,7 +2,9 @@ package Player;
 
 import piece.Color;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private String ID;
     private Color color;
     private boolean status;     // This tells whether a player is in its turn to move

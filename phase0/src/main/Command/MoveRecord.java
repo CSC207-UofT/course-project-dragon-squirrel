@@ -1,8 +1,9 @@
 package Command;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class MoveRecord {
+public class MoveRecord implements Serializable {
     LinkedList<ChessMove> record;
 
     public MoveRecord(){

@@ -8,13 +8,14 @@ import piece.*;
 import piece.Color;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know
  */
-public class BoardManager {
+public class BoardManager implements Serializable {
 
     protected Board board;
     protected Player activePlayer;

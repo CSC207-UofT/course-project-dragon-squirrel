@@ -9,9 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.*;
 import java.util.List;
 
-public class GUI_ChessBoard extends JFrame {
+public class GUI_ChessBoard extends JFrame implements Serializable{
     // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
@@ -64,18 +65,103 @@ public class GUI_ChessBoard extends JFrame {
         save.addActionListener(e -> {
             // save
             System.out.println("Test save");
+            ObjectOutputStream o;
 
-
+            try {
+                o = new ObjectOutputStream(new FileOutputStream("myObjects.txt"));
+                o.writeObject(this);
+                o.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         reload.addActionListener(e -> {
             // reload
             System.out.println("Test reload");
+            ObjectInputStream oi;
 
+            try {
+                oi = new ObjectInputStream(new FileInputStream("myObjects.txt"));
+            } catch (IOException e1) {
+                return;
+            }
+
+            // Read objects
+            try {
+                GUI_ChessBoard loadedBoard = (GUI_ChessBoard) oi.readObject();
+                loadedBoard.setVisible(true);
+
+
+                for (int i = 0; i < loadedBoard.icons.length; i++) {
+                    int finalI = i;     // intelliJ suggests me to write this
+                    loadedBoard.icons[i].addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            Point clicked = indexToCoordinate(finalI);
+                            PieceIcon clickedIcon = loadedBoard.icons[finalI];
+
+                            // When clicked on a previously highlighted tile, make a move
+                            if (clickedIcon.highlighted) {
+                                loadedBoard.unselectAll();
+                                loadedBoard.unHighlightAll();
+                                loadedBoard.cs.pressMove(loadedBoard.prevSelected.x, loadedBoard.prevSelected.y, clicked.x, clicked.y);
+                                loadedBoard.updateBoardInfo(loadedBoard.bu.getBoardImageAsUnicode());
+
+                                if (loadedBoard.ai != null) {
+                                    loadedBoard.ai.makeMove();
+                                    loadedBoard.updateBoardInfo(loadedBoard.bu.getBoardImageAsUnicode());
+                                }
+                            }
+                            // Click on a piece, show available moves
+                            else if (!clickedIcon.getText().equals(" ")) {
+                                loadedBoard.unselectAll();
+                                loadedBoard.unHighlightAll();
+                                clickedIcon.setSelected(true);
+                                loadedBoard.showValidMove(clicked.x, clicked.y);
+                                loadedBoard.prevSelected = clicked;
+                            }
+                            // Clicking for fun, unselect and unhighlight everything else
+                            else if (clickedIcon.getText().equals(" ")) {
+                                loadedBoard.unselectAll();
+                                loadedBoard.unHighlightAll();
+                                clickedIcon.setSelected(true);
+                            }
+                            else
+                                System.out.println("we re not expecting this");
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+
+                        }
+                    });
+                }
+                oi.close();
+
+            } catch (ClassNotFoundException | IOException e1) {
+                e1.printStackTrace();
+            }
 
         });
 
-        file.add(save); file.add(reload); file.add(undo);
+        file.add(save); file.add(reload);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);

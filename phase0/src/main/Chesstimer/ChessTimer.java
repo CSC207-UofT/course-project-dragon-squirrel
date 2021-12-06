@@ -2,12 +2,13 @@ package Chesstimer;
 
 import piece.Color;
 
+import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 /**
  * This is a timer for chess game. And it contains two timer, one for white player and the other for black player.
  */
-public class ChessTimer {
+public class ChessTimer implements Serializable {
     Timer timer;
     private long blackRemainTime;
     private long whiteRemainTime;

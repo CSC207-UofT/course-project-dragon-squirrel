@@ -2,6 +2,8 @@ package Player;
 
 import Player.Player;
 
+import java.io.Serializable;
+
 public class AI extends Player {
 
     public AI(String ID) {

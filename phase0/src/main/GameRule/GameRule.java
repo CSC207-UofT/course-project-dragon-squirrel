@@ -8,13 +8,14 @@ import piece.*;
 import piece.Color;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Verifies whether move is valid according to game rules.
  */
-public class GameRule {
+public class GameRule implements Serializable {
 
 	private final Board board;
 	private final MoveRecord MR;

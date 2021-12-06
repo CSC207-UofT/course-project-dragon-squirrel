@@ -5,13 +5,14 @@ import Command.*;
 import GameRule.*;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
  * Like it said, sends commands from player
  */
-public class CommandSender {
+public class CommandSender implements Serializable {
 
 	private BoardManager bm;
 	private GameRule gr;    // A set of rules that determines valid move and piece interactions

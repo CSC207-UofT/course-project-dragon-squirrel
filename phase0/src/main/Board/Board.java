@@ -4,13 +4,14 @@ import piece.*;
 
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Entity
  */
-public class Board implements BoardInterface{
+public class Board implements BoardInterface, Serializable {
 
     protected PieceInterface[][] board;   // Each cell can be the name/ID of a piece
     protected Point boundaries;
