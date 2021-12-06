@@ -154,7 +154,6 @@ public class GameRule {
 
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an AI player make thoughtful decisions (involves decision tree etc.)
 	 *
 	 * @param p The position of the piece
 	 * @return  An array of coordinates, each is a valid position to move

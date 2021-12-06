@@ -46,6 +46,9 @@ public class BoardManager {
         this.board = new SuperBoard(column, row);
         this.MR = new MoveRecord();
         resetBoard();
+        timer = new ChessTimer(600000, 600000);
+        activePlayer = whitePlayer;
+        timer.startTimer();
     }
 
     /**
