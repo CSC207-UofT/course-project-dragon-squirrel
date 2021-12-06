@@ -31,15 +31,7 @@ public class BoardManager {
         timer = new ChessTimer(600000, 600000);
         activePlayer = whitePlayer;
         timer.startTimer();
-    }
-
-    public BoardManager(int x, int y, PieceInterface piece){
-        board = new Board(8,8);
-        MR = new MoveRecord();
-        board.setPiece(x,y,piece);
-        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-        timer.startTimer();
+        status = GameStatus.ACTIVE;
     }
 
     public BoardManager(int column, int row) {
@@ -248,5 +240,9 @@ public class BoardManager {
         if (!whiteFlag){
             status = GameStatus.BLACK_WIN;
         }
+    }
+
+    public GameStatus getStatus(){
+        return status;
     }
 }

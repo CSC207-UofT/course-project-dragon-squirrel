@@ -4,6 +4,7 @@ import BoardManager.BoardManager;
 import piece.Pawn;
 import piece.PieceInterface;
 
+
 public abstract class Move implements Command{
     protected BoardManager BM;
     protected ChessMove CM;
@@ -25,6 +26,8 @@ public abstract class Move implements Command{
     public void execute() {
         if (actionPiece instanceof Pawn)
             ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+        System.out.println("Black remain time: " + BM.getTimer().getBlackRemainTime()/1000 + "s");
+        System.out.println("White remain time: " + BM.getTimer().getWhiteRemainTime()/1000 + "s");
     }
     
     @Override

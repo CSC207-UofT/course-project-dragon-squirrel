@@ -25,7 +25,7 @@ public class ChessTimer {
     private class whiteTimerTask extends TimerTask{
         @Override
         public void run(){
-            whiteRemainTime --;
+            whiteRemainTime -= 1000;
             if (whiteRemainTime == 0){
                 cancel();
             }
@@ -38,7 +38,7 @@ public class ChessTimer {
     private class blackTimerTask extends TimerTask{
         @Override
         public void run(){
-            blackRemainTime --;
+            blackRemainTime -= 1000;
             if (blackRemainTime == 0){
                 cancel();
             }

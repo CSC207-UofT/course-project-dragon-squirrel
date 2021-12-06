@@ -2,6 +2,7 @@ package Command;
 
 
 import BoardManager.BoardManager;
+import BoardManager.GameStatus;
 
 public class RegularMove extends Move {
 	public RegularMove(BoardManager bm, ChessMove cm) {
