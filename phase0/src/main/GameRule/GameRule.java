@@ -32,7 +32,7 @@ public class GameRule {
 	 */
 	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
-		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
+		if (!isCoordinateValid(oldX, oldY, newX, newY)) {
 			return MoveType.INVALID;
 		}
 		if (enPassant(oldX, oldY, newX, newY)){
@@ -150,17 +150,6 @@ public class GameRule {
 		}
 
 		return coordinates;
-	}
-
-	public boolean isCoordinateVacant(int X, int Y) {
-		return false;
-	}
-
-	/**
-	 * Check if the current player wins
-	 */
-	public boolean isPlayerWinning() {
-		return false;
 	}
 
 	/**
