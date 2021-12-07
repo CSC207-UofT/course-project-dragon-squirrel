@@ -21,7 +21,7 @@ public class BoardManager implements Serializable {
     protected Player activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
-//    protected ChessTimer timer;
+    protected ChessTimer timer;
     protected Player whitePlayer = new Player(Color.WHITE);
     protected Player blackPlayer = new Player(Color.BLACK);
 
@@ -29,9 +29,9 @@ public class BoardManager implements Serializable {
         this.board = new Board(8, 8);
         this.MR = new MoveRecord();
         resetBoard();
-//        timer = new ChessTimer(600000, 600000);
+        timer = new ChessTimer();
         activePlayer = whitePlayer;
-//        timer.startTimer();
+        timer.startWhiteTimer();
 
         try {
             Thread.sleep(1000);
@@ -61,9 +61,9 @@ public class BoardManager implements Serializable {
         return this.board;
     }
 
-//    public ChessTimer getTimer(){
-//        return timer;
-//    }
+    public ChessTimer getTimer(){
+        return timer;
+    }
 
     /**
      * Stored strings are piece names ("b_pawn", "w_rook", etc.) or "vacant"
@@ -213,9 +213,9 @@ public class BoardManager implements Serializable {
     /**
      * Switch timer at the end of every round.
      */
-//    public void switchChessTimer(){
-//        timer.switchTimer();
-//    }
+    public void switchChessTimer(){
+        timer.switchTimer();
+    }
 
     /**
      * check whether both king still stay at board. if not, change the game status. specifically, if white king lose,

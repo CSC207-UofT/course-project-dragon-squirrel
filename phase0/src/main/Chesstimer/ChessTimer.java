@@ -1,91 +1,60 @@
 package Chesstimer;
 
 import piece.Color;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
-import java.util.Timer;
-import java.util.TimerTask;
-/**
- * This is a timer for chess game. And it contains two timer, one for white player and the other for black player.
- */
+import javax.swing.Timer;
+
 public class ChessTimer implements Serializable {
-    Timer timer;
-    private long blackRemainTime;
-    private long whiteRemainTime;
-    TimerTask timerTask;
-    Color activeTimerColor = Color.WHITE;
+    private int blackRemainTime;
+    private int whiteRemainTime;
+    private final static int ONE_SECOND = 1000;
+    Color activeTimerColor;
+    ActionListener whiteTimerListener = new whiteTimerListener();
+    ActionListener blackTimerListener = new blackTimerListener();
+    Timer whiteTimer = new Timer(ONE_SECOND, whiteTimerListener);
+    Timer blackTimer = new Timer(ONE_SECOND, blackTimerListener);
 
-    public ChessTimer(long blackRemainTime, long whiteRemainTime){
-        this.blackRemainTime = blackRemainTime;
-        this.whiteRemainTime = whiteRemainTime;
+    public ChessTimer(){
+        blackRemainTime = 600 * ONE_SECOND;
+        whiteRemainTime = 600 * ONE_SECOND;
+        activeTimerColor = Color.WHITE;
     }
 
-    /**
-     * Subtract one second from whiteRemainTime for every second that passes.
-     */
-    private class whiteTimerTask extends TimerTask{
-        @Override
-        public void run(){
-            whiteRemainTime --;
-            if (whiteRemainTime == 0){
-                cancel();
-            }
-        }
-    }
-
-    /**
-     * Subtract one second from blackRemainTime for every second that passes.
-     */
-    private class blackTimerTask extends TimerTask{
-        @Override
-        public void run(){
-            blackRemainTime --;
-            if (blackRemainTime == 0){
-                cancel();
-            }
-        }
-    }
-
-    public long getBlackRemainTime(){
-        return blackRemainTime;
-    }
-
-    public long getWhiteRemainTime(){
+    public int getWhiteRemainTime() {
         return whiteRemainTime;
     }
 
-    public void startBlackTimer(){
-        timer = new Timer();
-        timerTask = new blackTimerTask();
-        timer.schedule(timerTask, 0,1000L);
+    public int getBlackRemainTime() {
+        return blackRemainTime;
+    }
+
+    public Color getActiveTimerColor(){
+        return activeTimerColor;
     }
 
     public void startWhiteTimer(){
-        timer = new Timer();
-        timerTask = new whiteTimerTask();
-        timer.schedule(timerTask, 0,1000L);
+        whiteTimer.setRepeats(true);
+        whiteTimer.setInitialDelay(0);
+        whiteTimer.start();
+    }
+
+    public void startBlackTimer(){
+        blackTimer.setRepeats(true);
+        blackTimer.setInitialDelay(0);
+        blackTimer.start();
     }
 
     public void pauseTimer(){
-        timer.cancel();
-    }
-
-    public void stopTimer(){
-        if (timer != null){
-            timer.cancel();
+        if (whiteTimer.isRunning()){
+            whiteTimer.stop();
+        }
+        if (blackTimer.isRunning()) {
+            blackTimer.stop();
         }
     }
 
-    /**
-     * When a new game start, start this timer.
-     */
-    public void startTimer(){
-        startWhiteTimer();
-    }
-
-    /**
-     * Switch timer each turn.
-     */
     public void switchTimer(){
         pauseTimer();
         if (activeTimerColor.equals(Color.WHITE)){
@@ -97,4 +66,21 @@ public class ChessTimer implements Serializable {
             activeTimerColor = Color.WHITE;
         }
     }
+
+    public class whiteTimerListener implements ActionListener, Serializable {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            whiteRemainTime--;
+        }
+    }
+
+    public class blackTimerListener implements ActionListener, Serializable {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            blackRemainTime--;
+        }
+    }
+
 }
