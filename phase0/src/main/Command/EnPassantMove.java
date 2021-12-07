@@ -24,7 +24,7 @@ public class EnPassantMove extends Move {
 	@Override
 	public void execute() {
 		BM.getMR().add(CM);
-		BM.switchChessTimer();
+//		BM.switchChessTimer();
 		BM.switchActivePlayer();
 
 		BM.getBoard().addPiece(actionPiece, CM.getNewX(), CM.getNewY());
@@ -44,7 +44,7 @@ public class EnPassantMove extends Move {
 	@Override
 	public void undo() {
 		BM.getMR().remove();
-		BM.switchChessTimer();
+//		BM.switchChessTimer();
 		BM.switchActivePlayer();
 
 		BM.getBoard().addPiece(CM.getOldPiece(), CM.getOldX(), CM.getOldY());

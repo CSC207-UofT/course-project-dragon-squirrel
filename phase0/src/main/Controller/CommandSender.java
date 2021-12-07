@@ -2,16 +2,18 @@ package Controller;
 
 import BoardManager.*;
 import Command.*;
+import GUI_JFRAME.GUI_ChessBoard;
 import GameRule.*;
 
 import java.awt.Point;
+import java.io.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
  * Like it said, sends commands from player
  */
-public class CommandSender {
+public class CommandSender implements Serializable {
 
 	private BoardManager bm;
 	private GameRule gr;    // A set of rules that determines valid move and piece interactions
@@ -154,5 +156,34 @@ public class CommandSender {
 	 */
 	public void getBoardUpdate() {
 		bu.display();
+	}
+
+	public void saveGame() {
+		ObjectOutputStream oos;
+
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("saveGame.txt"));
+			oos.writeObject(bm);
+			oos.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+	}
+
+	public void loadGame() {
+
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("saveGame.txt"));
+			BoardManager loadedBM = (BoardManager) ois.readObject();
+
+			this.bm = loadedBM;
+			gr.loadBoardManager(loadedBM);
+			bu.loadBoardManager(loadedBM);
+
+			ois.close();
+		} catch (ClassNotFoundException | IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

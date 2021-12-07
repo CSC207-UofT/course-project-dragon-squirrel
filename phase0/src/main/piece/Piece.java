@@ -1,5 +1,6 @@
 package piece;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.awt.Point;
 import Board.BoardInterface;
 
 
-public abstract class Piece implements PieceInterface {
+public abstract class Piece implements PieceInterface, Serializable {
     protected String name;  // ex: "w_pawn_1"
     protected Color color;    // Black or White (BLACK/WHITE)
     protected boolean status;     // This tells whether this piece has been moved during the turn

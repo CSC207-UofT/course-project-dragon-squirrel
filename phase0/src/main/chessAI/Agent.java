@@ -2,11 +2,12 @@ package chessAI;
 
 import Controller.*;
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  * Represent an AI player, can make a chess move
  */
-public class Agent {
+public class Agent implements Serializable {
 
 	private Engine engine;
 	private final CommandSender cs;

@@ -1,6 +1,7 @@
 package GameRule;
 
 import Board.Board;
+import BoardManager.BoardManager;
 import Command.ChessMove;
 import Command.MoveRecord;
 import Command.MoveType;
@@ -8,23 +9,32 @@ import piece.*;
 import piece.Color;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Verifies whether move is valid according to game rules.
  */
-public class GameRule {
+public class GameRule implements Serializable {
 
-	private final Board board;
-	private final MoveRecord MR;
+	private  Board board;
+	private  MoveRecord mr;
 
-	public GameRule(Board board, MoveRecord MR) {
+	public GameRule(Board board, MoveRecord mr) {
 		this.board = board;
-		this.MR = MR;
+		this.mr = mr;
 	}
 
 	public Board getBoard(){return board;}
+
+	/**
+	 * For deserialization only, load the sava game
+	 */
+	public void loadBoardManager(BoardManager bm) {
+		board = bm.getBoard();
+		mr = bm.getMR();
+	}
 
 	/**
 	 * Check whether move is valid according to classic chess game rules
@@ -65,7 +75,7 @@ public class GameRule {
 			return MoveType.INVALID;
 		}
 
-		if (MR.isEmpty()){
+		if (mr.isEmpty()){
 			try {
 				if (board.getPiece(oldX,oldY).isBlack()){
 					return MoveType.INVALID;
@@ -75,7 +85,7 @@ public class GameRule {
 			}
 		}else {
 			try {
-				if (MR.get().getOldPiece().hasSameColor(board.getPiece(oldX, oldY))){
+				if (mr.get().getOldPiece().hasSameColor(board.getPiece(oldX, oldY))){
 					return MoveType.INVALID;
 				}
 			}catch (NullPointerException e){
@@ -166,10 +176,10 @@ public class GameRule {
 	 * @return true if enPassant is applicable, false otherwise
 	 */
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){
-		if (MR.isEmpty()){
+		if (mr.isEmpty()){
 			return false;
 		}
-		ChessMove lastMove = MR.get();
+		ChessMove lastMove = mr.get();
 		PieceInterface lastMovePiece = lastMove.getOldPiece();
 		PieceInterface movingPiece = board.getPiece(oldX, oldY);
 		if (!(movingPiece instanceof Pawn)){

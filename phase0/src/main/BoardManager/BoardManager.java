@@ -8,19 +8,20 @@ import piece.*;
 import piece.Color;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know
  */
-public class BoardManager {
+public class BoardManager implements Serializable {
 
     protected Board board;
     protected Player activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
-    protected ChessTimer timer;
+//    protected ChessTimer timer;
     protected Player whitePlayer = new Player(Color.WHITE);
     protected Player blackPlayer = new Player(Color.BLACK);
 
@@ -28,27 +29,29 @@ public class BoardManager {
         this.board = new Board(8, 8);
         this.MR = new MoveRecord();
         resetBoard();
-        timer = new ChessTimer(600000, 600000);
+//        timer = new ChessTimer(600000, 600000);
         activePlayer = whitePlayer;
-        timer.startTimer();
+//        timer.startTimer();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public BoardManager(int x, int y, PieceInterface piece){
-        board = new Board(8,8);
-        MR = new MoveRecord();
+        this();
         board.setPiece(x,y,piece);
-        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-        timer.startTimer();
     }
 
     public BoardManager(int column, int row) {
         this.board = new SuperBoard(column, row);
         this.MR = new MoveRecord();
         resetBoard();
-        timer = new ChessTimer(600000, 600000);
+//        timer = new ChessTimer(600000, 600000);
         activePlayer = whitePlayer;
-        timer.startTimer();
+//        timer.startTimer();
     }
 
     /**
@@ -58,9 +61,9 @@ public class BoardManager {
         return this.board;
     }
 
-    public ChessTimer getTimer(){
-        return timer;
-    }
+//    public ChessTimer getTimer(){
+//        return timer;
+//    }
 
     /**
      * Stored strings are piece names ("b_pawn", "w_rook", etc.) or "vacant"
@@ -210,9 +213,9 @@ public class BoardManager {
     /**
      * Switch timer at the end of every round.
      */
-    public void switchChessTimer(){
-        timer.switchTimer();
-    }
+//    public void switchChessTimer(){
+//        timer.switchTimer();
+//    }
 
     /**
      * check whether both king still stay at board. if not, change the game status. specifically, if white king lose,

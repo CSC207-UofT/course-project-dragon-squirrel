@@ -4,7 +4,9 @@ import BoardManager.BoardManager;
 import piece.Pawn;
 import piece.PieceInterface;
 
-public abstract class Move implements Command{
+import java.io.Serializable;
+
+public abstract class Move implements Command, Serializable {
     protected BoardManager BM;
     protected ChessMove CM;
     protected PieceInterface actionPiece;

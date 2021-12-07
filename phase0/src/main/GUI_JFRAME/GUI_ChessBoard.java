@@ -9,9 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.*;
 import java.util.List;
 
-public class GUI_ChessBoard extends JFrame {
+public class GUI_ChessBoard extends JFrame implements Serializable{
     // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 
@@ -63,19 +64,18 @@ public class GUI_ChessBoard extends JFrame {
     private void set_bar(){
         save.addActionListener(e -> {
             // save
-            System.out.println("Test save");
-
-
+            cs.saveGame();
+            JOptionPane.showMessageDialog(this, "Game saved");
         });
 
         reload.addActionListener(e -> {
             // reload
-            System.out.println("Test reload");
-
-
+            cs.loadGame();
+            updateBoardInfo(bu.getBoardImageAsUnicode());
+            JOptionPane.showMessageDialog(this, "Game loaded");
         });
 
-        file.add(save); file.add(reload); file.add(undo);
+        file.add(save); file.add(reload);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);
