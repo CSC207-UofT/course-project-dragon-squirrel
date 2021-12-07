@@ -27,6 +27,9 @@ public abstract class Move implements Command, Serializable {
     public void execute() {
         if (actionPiece instanceof Pawn)
             ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+
+        System.out.println("Black remain time: " + BM.getTimer().getBlackRemainTime() + "s");
+        System.out.println("White remain time: " + BM.getTimer().getWhiteRemainTime() + "s");
     }
     
     @Override
@@ -34,5 +37,8 @@ public abstract class Move implements Command, Serializable {
         if (CM.getFirstMoveStatus() && actionPiece instanceof Pawn) {
             ((Pawn) actionPiece).hasNotMovedDuringGame = true;
         }
+
+        System.out.println("Black remain time: " + BM.getTimer().getBlackRemainTime() + "s");
+        System.out.println("White remain time: " + BM.getTimer().getWhiteRemainTime() + "s");
     }
 }

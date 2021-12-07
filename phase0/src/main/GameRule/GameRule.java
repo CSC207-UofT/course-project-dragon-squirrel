@@ -58,20 +58,15 @@ public class GameRule {
 		PieceInterface targetPiece = board.getPiece(newX, newY);
 
 		if (actionPiece == null) {
-			System.out.println("Piece not found");
 			return MoveType.INVALID;
 		}
 		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
-			System.out.println("Invalid capture");
 			return MoveType.INVALID;
 		}
 		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
-			System.out.println("Invalid Move");
 			return MoveType.INVALID;
 		}
 		if (!(actionPiece.getName().contains("knight")) && !isPathClear(oldX, oldY, newX , newY)) {
-			System.out.println("Path not clear");
-			System.out.println(actionPiece.getName());
 			return MoveType.INVALID;
 		}
 
@@ -274,7 +269,10 @@ public class GameRule {
 		if (!isPathClear(oldX, oldY, newX, (newY == 6) ? 7 : 0)) {
 			return false;
 		}
+		try {
 		if (((Rook) rook).getHasMovedDuringGame()) {
+			return false;
+		}}catch (NullPointerException e){
 			return false;
 		}
 
@@ -294,5 +292,22 @@ public class GameRule {
 		} // check that the king does not pass through a square that is attacked by an enemy piece.
 
 		return true;
+	}
+
+	/**
+	 *
+	 * @param p square of chosen piece
+	 * @return all square which p can reach.
+	 */
+	public List<Point> getValidMove(Point p){
+		ArrayList<Point> solution = new ArrayList<>();
+		for (int i = 0; i < board.getBoard().length; i++){
+			for (int j = 0; j < board.getBoard()[0].length; j++){
+				if (isMoveValid(p.x, p.y, i, j) != MoveType.INVALID){
+					solution.add(new Point(i, j));
+				}
+			}
+		}
+		return solution;
 	}
 }

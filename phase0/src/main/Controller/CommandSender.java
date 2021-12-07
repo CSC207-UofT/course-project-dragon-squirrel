@@ -144,7 +144,7 @@ public class CommandSender {
 	 * Ask GameRule for the valid moves
 	 */
 	public List<Point> passValidMove(Point p) {
-		return gr.getAvailableMoves(p);
+		return gr.getValidMove(p);
 	}
 
 	/**

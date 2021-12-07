@@ -39,13 +39,6 @@ public class King extends Piece{
 	 */
 	@Override
     public boolean validMove(int oldX, int oldY, int newX, int newY) {
-		if (!hasMovedDuringGame) { //Castling
-			if (getColor() == Color.BLACK && oldX == 0 && oldY == 4 && newX == 0 && (newY == 2 || newY == 6)){
-				return true;
-			} if (getColor() == Color.WHITE && (oldX == 7 && oldY == 4 && newX == 7 && (newY == 2 || newY == 6))){
-				return true;
-			}
-		}
 		// regular movement
 		return Math.abs(oldX - newX) <= 1 && Math.abs(oldY - newY) <= 1;
 	}

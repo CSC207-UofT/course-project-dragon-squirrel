@@ -55,6 +55,9 @@ public class ChessTimer implements Serializable {
         }
     }
 
+    /**
+     * switch timer each turn
+     */
     public void switchTimer(){
         pauseTimer();
         if (activeTimerColor.equals(Color.WHITE)){
@@ -67,6 +70,9 @@ public class ChessTimer implements Serializable {
         }
     }
 
+    /**
+     * this class define the function of white timer
+     */
     public class whiteTimerListener implements ActionListener, Serializable {
 
         @Override
@@ -75,6 +81,9 @@ public class ChessTimer implements Serializable {
         }
     }
 
+    /**
+     * this class define the function of black timer
+     */
     public class blackTimerListener implements ActionListener, Serializable {
 
         @Override
