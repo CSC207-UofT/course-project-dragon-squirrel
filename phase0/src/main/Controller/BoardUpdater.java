@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class BoardUpdater implements Serializable {
 
-	private final BoardManager bm;
+	private BoardManager bm;
 
 	private String[][] boardImage;
 	private final int[] boundary;
@@ -21,6 +21,13 @@ public class BoardUpdater implements Serializable {
 		this.bm = bm;
 		boundary = new int[]{13, 10};
 		boardImage = new String[13][10];
+	}
+
+	/**
+	 * For deserialization only, load the sava game
+	 */
+	public void loadBoardManager(BoardManager bm) {
+		this.bm = bm;
 	}
 
 	/**

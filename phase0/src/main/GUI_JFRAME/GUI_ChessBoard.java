@@ -64,101 +64,15 @@ public class GUI_ChessBoard extends JFrame implements Serializable{
     private void set_bar(){
         save.addActionListener(e -> {
             // save
-            System.out.println("Test save");
-            ObjectOutputStream o;
-
-            try {
-                o = new ObjectOutputStream(new FileOutputStream("myObjects.txt"));
-                o.writeObject(this);
-                o.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            cs.saveGame();
+            JOptionPane.showMessageDialog(this, "Game saved");
         });
 
         reload.addActionListener(e -> {
             // reload
-            System.out.println("Test reload");
-            ObjectInputStream oi;
-
-            try {
-                oi = new ObjectInputStream(new FileInputStream("myObjects.txt"));
-            } catch (IOException e1) {
-                return;
-            }
-
-            // Read objects
-            try {
-                GUI_ChessBoard loadedBoard = (GUI_ChessBoard) oi.readObject();
-                loadedBoard.setVisible(true);
-
-
-                for (int i = 0; i < loadedBoard.icons.length; i++) {
-                    int finalI = i;     // intelliJ suggests me to write this
-                    loadedBoard.icons[i].addMouseListener(new MouseListener() {
-
-                        @Override
-                        public void mouseClicked(MouseEvent e) {
-                            Point clicked = indexToCoordinate(finalI);
-                            PieceIcon clickedIcon = loadedBoard.icons[finalI];
-
-                            // When clicked on a previously highlighted tile, make a move
-                            if (clickedIcon.highlighted) {
-                                loadedBoard.unselectAll();
-                                loadedBoard.unHighlightAll();
-                                loadedBoard.cs.pressMove(loadedBoard.prevSelected.x, loadedBoard.prevSelected.y, clicked.x, clicked.y);
-                                loadedBoard.updateBoardInfo(loadedBoard.bu.getBoardImageAsUnicode());
-
-                                if (loadedBoard.ai != null) {
-                                    loadedBoard.ai.makeMove();
-                                    loadedBoard.updateBoardInfo(loadedBoard.bu.getBoardImageAsUnicode());
-                                }
-                            }
-                            // Click on a piece, show available moves
-                            else if (!clickedIcon.getText().equals(" ")) {
-                                loadedBoard.unselectAll();
-                                loadedBoard.unHighlightAll();
-                                clickedIcon.setSelected(true);
-                                loadedBoard.showValidMove(clicked.x, clicked.y);
-                                loadedBoard.prevSelected = clicked;
-                            }
-                            // Clicking for fun, unselect and unhighlight everything else
-                            else if (clickedIcon.getText().equals(" ")) {
-                                loadedBoard.unselectAll();
-                                loadedBoard.unHighlightAll();
-                                clickedIcon.setSelected(true);
-                            }
-                            else
-                                System.out.println("we re not expecting this");
-                        }
-
-                        @Override
-                        public void mousePressed(MouseEvent e) {
-
-                        }
-
-                        @Override
-                        public void mouseReleased(MouseEvent e) {
-
-                        }
-
-                        @Override
-                        public void mouseEntered(MouseEvent e) {
-
-                        }
-
-                        @Override
-                        public void mouseExited(MouseEvent e) {
-
-                        }
-                    });
-                }
-                oi.close();
-
-            } catch (ClassNotFoundException | IOException e1) {
-                e1.printStackTrace();
-            }
-
+            cs.loadGame();
+            updateBoardInfo(bu.getBoardImageAsUnicode());
+            JOptionPane.showMessageDialog(this, "Game loaded");
         });
 
         file.add(save); file.add(reload);
