@@ -26,10 +26,6 @@ public class Agent {
 		}
 	}
 
-	public void setEngine(Engine engine) {
-		this.engine = engine;
-	}
-
 	/**
 	 * Send a make move command to controller
 	 */
