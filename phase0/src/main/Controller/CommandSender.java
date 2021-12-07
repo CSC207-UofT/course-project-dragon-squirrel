@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 /**
  * Like it said, sends commands from player
  */
-public class CommandSender implements Serializable {
+public class CommandSender {
 
 	private BoardManager bm;
 	private GameRule gr;    // A set of rules that determines valid move and piece interactions

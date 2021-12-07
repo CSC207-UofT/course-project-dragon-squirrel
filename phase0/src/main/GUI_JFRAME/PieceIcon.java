@@ -5,7 +5,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 
-public class PieceIcon extends JLabel implements Serializable {
+public class PieceIcon extends JLabel{
     Font font = new Font("Ariel", Font.PLAIN, 45);
     Color W_background = new Color(222, 184, 135);
     Color B_background = new Color(140, 100, 60);

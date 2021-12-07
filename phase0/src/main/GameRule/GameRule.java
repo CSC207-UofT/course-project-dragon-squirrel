@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Verifies whether move is valid according to game rules.
  */
-public class GameRule implements Serializable {
+public class GameRule {
 
 	private  Board board;
 	private  MoveRecord mr;

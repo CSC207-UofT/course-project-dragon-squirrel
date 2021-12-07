@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.io.Serializable;
 import java.util.List;
 
-public class GUI_SuperBoard extends JFrame implements Serializable {
+public class GUI_SuperBoard extends JFrame{
     private final PieceIcon[] icons = new PieceIcon[]{
             //
             new PieceIcon("\u265C"), new PieceIcon(" "), new PieceIcon("\u265E"),

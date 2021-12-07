@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.List;
 
-public class GUI_ChessBoard extends JFrame implements Serializable{
+public class GUI_ChessBoard extends JFrame{
     // icons is an array list that store the initial stage of each piece, note that empty space is considered as an
     // empty piece. We can, if that's the way, by changing the order of the list, to make moves.
 

@@ -4,7 +4,7 @@ import BoardManager.*;
 
 import java.io.Serializable;
 
-public class BoardUpdater implements Serializable {
+public class BoardUpdater{
 
 	private BoardManager bm;
 
