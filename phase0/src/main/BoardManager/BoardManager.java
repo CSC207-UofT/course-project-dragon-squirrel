@@ -37,9 +37,6 @@ public class BoardManager implements Serializable {
         initializeBM();
     }
 
-    /**
-     * @return Board
-     */
     public Board getBoard() {
         return this.board;
     }
@@ -106,14 +103,6 @@ public class BoardManager implements Serializable {
         }else {
             activePlayer = Color.WHITE;
         }
-    }
-
-    /**
-     * Switch piece status between 'moved' and 'movable'
-     * This is useful if we are moving multiple pieces in a round
-     */
-    public void switchPieceStatus(Piece p) {
-
     }
 
     /**

@@ -79,6 +79,9 @@ public class GUI_SuperBoard extends JFrame{
     private final JMenuItem instructions = new JMenuItem("instructions");
     private final JMenuItem attackAndHealthTable = new JMenuItem("hp and atk lvl");
 
+    /**
+     * Set up the menu bar
+     */
     private void set_bar(){
         save.addActionListener(e -> {
             // save
@@ -112,9 +115,6 @@ public class GUI_SuperBoard extends JFrame{
         bar.setVisible(true);
         bar.setBounds(0, 0, 800, 20);
     }
-
-
-    // TODO: Probably will change some code below, as we need to have operation on the board
 
     public GUI_SuperBoard(){
 
@@ -192,6 +192,9 @@ public class GUI_SuperBoard extends JFrame{
         }
     }
 
+    /**
+     * Display this window
+     */
     void display(){
         setTitle("Super board");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -238,29 +241,41 @@ public class GUI_SuperBoard extends JFrame{
         setVisible(true);
     }
 
+    /**
+     * Unselect all tiles on the board
+     */
     private void unselectAll() {
         for (PieceIcon icon: icons) {
             icon.setSelected(false);
         }
     }
 
+    /**
+     * Unhighlight all tiles on the board
+     */
     private void unHighlightAll() {
         for (PieceIcon icon: icons) {
             icon.setHighlighted(false);
         }
     }
 
+    /**
+     * Convert array index to 2d array coordinate
+     */
     private Point indexToCoordinate(int index) {
-        int row = index / 10;
-        int col = index % 10;
-
-        return new Point(row, col);
+        return new Point(index / 10, index % 10);
     }
 
+    /**
+     * Convert 2d array coordinate to array index
+     */
     private int coordinateToIndex(Point p) {
         return p.x * 10 + p.y;
     }
 
+    /**
+     * Assume icons[x][y] is a piece, show its valid moves
+     */
     private void showValidMove(int x, int y) {
 
         unHighlightAll();
@@ -270,6 +285,10 @@ public class GUI_SuperBoard extends JFrame{
         }
     }
 
+    /**
+     * Refresh the board in gui with the unicode info
+     * @param unicode   The unicode representation of board, provided by BoardUpdater
+     */
     private void updateBoardInfo(String[][] unicode) {
         for (int i = 0; i < 13; i++) {
             for (int j = 0; j < 10; j++) {

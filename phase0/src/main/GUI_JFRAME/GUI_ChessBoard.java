@@ -60,6 +60,9 @@ public class GUI_ChessBoard extends JFrame{
     private final JMenuItem reload = new JMenuItem("reload");
     private final JMenuItem undo = new JMenuItem("undo");
 
+    /**
+     * Set up the menu bar
+     */
     private void set_bar(){
         save.addActionListener(e -> {
             // save
@@ -160,6 +163,9 @@ public class GUI_ChessBoard extends JFrame{
         }
     }
 
+    /**
+     * Display this window
+     */
     void display(){
         setTitle("Chess board");
 

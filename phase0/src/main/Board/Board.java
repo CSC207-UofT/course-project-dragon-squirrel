@@ -40,6 +40,11 @@ public class Board implements BoardInterface, Serializable {
         return piece;
     }
 
+    /**
+     * Return true if there is no piece at the given location
+     * @param X coordinate x
+     * @param Y coordinate y
+     */
     public boolean isPositionVacant(int X, int Y) {
         return board[X][Y] == null;
     }
@@ -48,6 +53,9 @@ public class Board implements BoardInterface, Serializable {
         return board[X][Y];
     }
 
+    /**
+     * Return the coordinate of King with the specific color
+     */
     public Point findKing(Color color) {
         Point position = null;
         for (int i = 0; i < boundaries.x; i++) {
@@ -69,6 +77,9 @@ public class Board implements BoardInterface, Serializable {
         this.board = board;
     }
 
+    /**
+     * Return a 2d array of string, representing the current board and the pieces
+     */
     public String[][] to2dStringArray() {
         String[][] boardAsString = new String[boundaries.x][boundaries.y];
 
@@ -89,11 +100,12 @@ public class Board implements BoardInterface, Serializable {
         return boardAsString;
     }
 
-    // TODO need to test it actually works, hopefully it does
+    /**
+     * Return a deep copy of this object
+     */
     public Board deepCopy() {
-        if (board == null) {
+        if (board == null)
             return null;
-        }
 
         // Deep copy the 2d array
         PieceInterface[][] piece2dArray = new PieceInterface[boundaries.x][boundaries.y];

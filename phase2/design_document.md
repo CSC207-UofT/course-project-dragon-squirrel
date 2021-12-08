@@ -170,4 +170,4 @@ Refer to the "[accessibility.md](accessibility.md)".
     - Pieces, Boards, BoardManager getters and setters
     - reset board method
 - Dylan
-    - ...
+    - Serialization

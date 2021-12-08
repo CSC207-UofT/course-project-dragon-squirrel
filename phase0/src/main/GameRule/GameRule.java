@@ -9,7 +9,6 @@ import piece.*;
 import piece.Color;
 
 import java.awt.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

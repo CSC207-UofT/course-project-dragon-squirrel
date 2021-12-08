@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ChessMove implements Serializable {
     private final Point oldPosition;
     private final Point newPosition;
-    private BoardManager BM;
+    private final BoardManager BM;
     private final PieceInterface oldPiece;
     private final PieceInterface newPiece;
     private final PieceInterface otherPiece;

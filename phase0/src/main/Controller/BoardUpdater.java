@@ -2,8 +2,6 @@ package Controller;
 
 import BoardManager.*;
 
-import java.io.Serializable;
-
 public class BoardUpdater{
 
 	private BoardManager bm;
