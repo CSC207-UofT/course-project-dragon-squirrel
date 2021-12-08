@@ -29,19 +29,19 @@ later to follow the single responsibility principle: BoardUpdater is presenter a
 
 ## Adherence to Clean Architecture
 Entities:\
-Player, AI, Human, (Super)Board, Piece(and all its subclasses)
+(Super)Board, Piece(and its subclasses)
 
 Use cases:\
-(Super)BoardManager, ChessMove, Move, MoveRecord, (Super)GameRule, (Super)PieceDecorator
+(Super)BoardManager, ChessMove, Move, MoveRecord, (Super)GameRule, (Super)PieceDecorator, Engine(and its subclasses), State
 
 Controllers/Presenters:\
-BoardUpdater, CommandSender
+BoardUpdater, CommandSender, Agent
 
 The outermost layer (GUI):\
 Main, LaunchPage, GUI_ChessBoard, GUI_SuperBoard, PieceIcon, SuperChessInstruction
 
 The entity classes contain the essential information of a game play. The position of piece are stored in Board.
-BoardManager is responsible for generating move commands and for making changes to Board & Piece (i.e. move a piece).\
+BoardManager is responsible for making changes to Board & Piece (i.e. move a piece).\
 ChessMove and Move are utilities of Command Pattern, they package move commands into objects.\
 MoveRecord is move history. It is accessed by BoardManager.\
 GameRule is responsible for checking whether a given move command is valid, it needs to access Piece to further check
@@ -54,9 +54,9 @@ Among all the classes, entities only store primitives and depend on no other cla
 other and entities; Controller & presenter depends on each other and use cases; GUI only depends on controller & 
 presenter.
 
-One problem: we want to design a game AI, and this requires each piece generate its next available moves. It is hard to 
-write the code in Piece classes without depending on Board, and it will also be tedious to write all the code in 
-GameRule since we have to use instanceof to check which type the piece is.
+We basically introduce interfaces to every group of modules, so they can depend on interfaces to eliminate potential 
+dependencies. For example the entity classes Board and Piece invoke each other, but technically there is no dependency
+because they are only calling the methods in interfaces.
 
 
 
@@ -158,7 +158,7 @@ Refer to the "[accessibility.md](accessibility.md)".
     - Rewrite getValidMoves() in Piece and its subclasses to fix bugs & improve readability
     - Add MouseListener to GUI and connect it up with controller & presenter
     - Other style & bug fix and quality improvement
-    - Update design pattern document
+    - Update CLEAN architecture and design pattern document
 - Tingzhou
     - UI Structural design
     - GUI_Chessboard develop
