@@ -7,7 +7,7 @@ public class MoveRecord implements Serializable {
     LinkedList<ChessMove> record;
 
     public MoveRecord(){
-        record = new LinkedList<ChessMove>();
+        record = new LinkedList<>();
     }
 
     /**

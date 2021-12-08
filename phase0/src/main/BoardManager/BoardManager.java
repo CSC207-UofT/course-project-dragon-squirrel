@@ -3,7 +3,6 @@ package BoardManager;
 import Board.*;
 import Chesstimer.ChessTimer;
 import Command.MoveRecord;
-import Player.*;
 import piece.*;
 import piece.Color;
 
@@ -18,19 +17,17 @@ import java.util.ArrayList;
 public class BoardManager implements Serializable {
 
     protected Board board;
-    protected Player activePlayer;
+    protected Color activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
     protected ChessTimer timer;
-    protected Player whitePlayer = new Player(Color.WHITE);
-    protected Player blackPlayer = new Player(Color.BLACK);
 
     public BoardManager() {
         this.board = new Board(8, 8);
         this.MR = new MoveRecord();
         resetBoard();
         timer = new ChessTimer();
-        activePlayer = whitePlayer;
+        activePlayer = Color.WHITE;
         timer.startWhiteTimer();
 
         try {
@@ -49,9 +46,9 @@ public class BoardManager implements Serializable {
         this.board = new SuperBoard(column, row);
         this.MR = new MoveRecord();
         resetBoard();
-//        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-//        timer.startTimer();
+        timer = new ChessTimer();
+        activePlayer = Color.WHITE;
+        timer.startWhiteTimer();
     }
 
     /**
@@ -88,13 +85,6 @@ public class BoardManager implements Serializable {
     }
 
     /**
-     * @return the current active player
-     */
-    public Player getActivePlayer() {
-        return activePlayer;
-    }
-
-    /**
      * @return true if piece (Pawn, Rook, or King) has moved during game, false if piece has not moved or if
      * piece is not an instance of the aforementioned piece types.
      */
@@ -112,13 +102,6 @@ public class BoardManager implements Serializable {
     }
 
     /**
-     * Set activePlayer as player
-     */
-    public void setActivePlayer(Player player) {
-        this.activePlayer = player;
-    }
-
-    /**
      * Move piece from board[oldX][oldY] to board[newX][newY] by removing piece from its old coordinate in board and
      * adding it to the new coordinate in board.
      */
@@ -132,10 +115,10 @@ public class BoardManager implements Serializable {
      * Switch player status between
      */
     public void switchActivePlayer() {
-        if (activePlayer.getColor().equals(Color.WHITE)){
-            activePlayer = blackPlayer;
+        if (activePlayer.equals(Color.WHITE)){
+            activePlayer = Color.BLACK;
         }else {
-            activePlayer = whitePlayer;
+            activePlayer = Color.WHITE;
         }
     }
 

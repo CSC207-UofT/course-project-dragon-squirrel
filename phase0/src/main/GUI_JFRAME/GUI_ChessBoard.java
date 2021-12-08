@@ -72,10 +72,14 @@ public class GUI_ChessBoard extends JFrame{
             // reload
             cs.loadGame();
             updateBoardInfo(bu.getBoardImageAsUnicode());
+            if (ai != null)
+                ai.reloadAI();
             JOptionPane.showMessageDialog(this, "Game loaded");
         });
 
-        file.add(save); file.add(reload);
+        file.add(save);
+        file.add(reload);
+        file.add(undo);
 
         bar.add(file); bar.add(pref);
         bar.setVisible(true);
