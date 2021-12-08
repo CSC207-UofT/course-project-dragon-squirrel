@@ -100,20 +100,6 @@ public class CommandSender {
 	}
 
 	/**
-	 * End a player's round, and let the other player move
-	 */
-	public void passRound() {
-
-	}
-
-	/**
-	 * If opponent is too strong u can give up lol
-	 */
-	public void giveUp() {
-
-	}
-
-	/**
 	 * @param classic true if the game played is a classic game
 	 */
 	public void startNewGame(boolean classic) {
