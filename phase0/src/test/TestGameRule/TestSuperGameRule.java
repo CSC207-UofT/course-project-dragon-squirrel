@@ -35,8 +35,8 @@ public class TestSuperGameRule {
     public void TestisMoveValid(){
         superBoard.addPiece(new Pawn("pawn_0", Color.BLACK), 0, 0);
         assertEquals(MoveType.INVALID, sgr.isMoveValid(0, 0, 0, -1));    // out of bounds
-        superBoard.addPiece(new Pawn("pawn_1", Color.BLACK), 1, 0);
-        assertEquals(MoveType.REGULAR, sgr.isMoveValid(1, 0, 2, 0));
+        superBoard.addPiece(new Pawn("pawn_1", Color.WHITE), 8, 0);
+        assertEquals(MoveType.REGULAR, sgr.isMoveValid(8, 0, 7, 0));
     }
 
 }

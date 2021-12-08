@@ -60,6 +60,10 @@ public class Board implements BoardInterface, Serializable {
         return position;
     }
 
+    /**
+     * Reset/overwrite the board with the given 2d array
+     * This method should be invoked by BoardManager
+     */
     public void reset(PieceInterface[][] board)
     {
         this.board = board;
