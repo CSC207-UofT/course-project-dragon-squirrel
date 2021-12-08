@@ -2,7 +2,6 @@ package Controller;
 
 import BoardManager.*;
 import Command.*;
-import GUI_JFRAME.GUI_ChessBoard;
 import GameRule.*;
 
 import java.awt.Point;
