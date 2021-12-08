@@ -146,7 +146,9 @@ have a method getAvailableMoves() in Board sort through these coordinates and re
     - Class Diagram
     - *GUI with chessboard: Graphical Visualization*
 - Christopher
-    - Testing
-    - *Testing*
+    - Unit tests
+    - Superchess design/layout/rules
+    - Pieces, Boards, and BoardManager getters and setters
+    - reset board method
 - Dylan
     - getAvailableMoves()

@@ -9,50 +9,9 @@ public class SuperBoardManager extends BoardManager{
     }
 
     /**
-     * @return Hp of piece at board[X][Y]
+     * Instantiate the super pieces and add them to their corresponding starting positions in a 2d SuperPieceDecorator
+     * array. Set this array as the board held by the Board class.
      */
-    public int getHp(int X, int Y){
-        SuperPieceDecorator piece = (SuperPieceDecorator) board.getPiece(X, Y);
-        return piece.getHp();
-    }
-
-    /**
-     * If deduct is true, subtract the hp of the attacked piece at board[newX][newY] by the attack level of the piece at
-     * board [oldX][oldY]. If the hp of the attacked piece becomes less than 1, set its hp as 0. <p>
-     *
-     * If deduct is false, add the hp of the attacked piece by the attack level of the attacking piece. This is used in
-     * undo.
-     */
-    public void deductOrAddHp(int oldX, int oldY, int newX, int newY, boolean deduct) {
-        SuperPieceDecorator piece = (SuperPieceDecorator) board.getPiece(oldX, oldY);
-        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) board.getPiece(newX, newY);
-
-        int atkLevel = piece.getAtk();
-        int newHp;
-
-        if (deduct) {
-            newHp = pieceToModify.getHp() - atkLevel;
-            if (newHp < 1) {
-                newHp = 0;
-            }
-        }
-        else {
-            newHp = pieceToModify.getHp() + atkLevel;
-        }
-        pieceToModify.setHp(newHp);
-    }
-
-    /**
-     * Changes Hp of the piece attacked.
-     * @return true if piece has been attacked to death, false otherwise
-     */
-    public boolean attackToDeath(int oldX, int oldY, int newX, int newY){
-        deductOrAddHp(oldX, oldY, newX, newY, true);
-        SuperPieceDecorator pieceToModify = (SuperPieceDecorator) board.getPiece(newX, newY);
-
-        return pieceToModify.getHp() < 1;
-    }
-
     @Override
     public void resetBoard() {
         SuperPieceDecorator[][] Piece2dArray = new SuperPieceDecorator[13][10];

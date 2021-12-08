@@ -1,58 +1,96 @@
 package BoardManager;
 
 import Board.*;
+import Chesstimer.ChessTimer;
 import Command.MoveRecord;
-import Player.*;
 import piece.*;
+import piece.Color;
+
+import java.awt.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know
  */
-public class BoardManager {
+public class BoardManager implements Serializable {
 
-    // These are the variables we might need
     protected Board board;
-    protected Player activePlayer;
+    protected Color activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
+    protected ChessTimer timer;
 
     public BoardManager() {
         this.board = new Board(8, 8);
-        this.MR = new MoveRecord();
-        resetBoard();
+        initializeBM();
+    }
+
+    public BoardManager(int x, int y, PieceInterface piece){
+        this();
+        board.setPiece(x,y,piece);
     }
 
     public BoardManager(int column, int row) {
         this.board = new SuperBoard(column, row);
-        this.MR = new MoveRecord();
-        resetBoard();
+        initializeBM();
     }
 
+    /**
+     * @return Board
+     */
     public Board getBoard() {
         return this.board;
     }
 
-    public String[][] getBoardAsString() {
-        return board.to2dStringArray(board.getBoundaries().x, board.getBoundaries().y);
+    public ChessTimer getTimer(){
+        return timer;
     }
 
+    /**
+     * Stored strings are piece names ("b_pawn", "w_rook", etc.) or "vacant"
+     * @return 2d string array of board
+     */
+    public String[][] getBoardAsString() {
+        return board.to2dStringArray();
+    }
+
+    /**
+     * @return MoveRecord
+     */
     public MoveRecord getMR(){
         return MR;
     }
 
+    /**
+     * @return the piece at board[X][Y], or null if there is no piece.
+     */
     public PieceInterface getPiece(int x, int y) {
         return board.getPiece(x, y);
     }
 
-    public Player getActivePlayer() {
-        return activePlayer;
+    /**
+     * @return true if piece (Pawn, Rook, or King) has moved during game, false if piece has not moved or if
+     * piece is not an instance of the aforementioned piece types.
+     */
+    public boolean getHasMovedStatus(PieceInterface p) {
+        if (p instanceof Pawn){
+            return !((Pawn) p).getHasNotMovedDuringGame();
+        }
+        if (p instanceof Rook){
+            return ((Rook) p).getHasMovedDuringGame();
+        }
+        if (p instanceof King){
+            return ((King) p).getHasMovedDuringGame();
+        }
+        return false;
     }
 
-    public void setActivePlayer(Player player) {
-        this.activePlayer = player;
-    }
-
+    /**
+     * Move piece from board[oldX][oldY] to board[newX][newY] by removing piece from its old coordinate in board and
+     * adding it to the new coordinate in board.
+     */
     public void movePiece(int oldX, int oldY, int newX, int newY) {
         // Calls board.addPiece() and board.removePiece()
         PieceInterface pieceToMove = board.removePiece(oldX, oldY);
@@ -63,7 +101,11 @@ public class BoardManager {
      * Switch player status between
      */
     public void switchActivePlayer() {
-
+        if (activePlayer.equals(Color.WHITE)){
+            activePlayer = Color.BLACK;
+        }else {
+            activePlayer = Color.WHITE;
+        }
     }
 
     /**
@@ -74,6 +116,26 @@ public class BoardManager {
 
     }
 
+    /**
+     * Switch piece's (Pawn, King, and Rook) status hasMovedDuringGame or hasNotMovedDuringGame to true or false
+     * depending on parameter hasMoved.
+     */
+    public void switchPieceHasMovedStatus(PieceInterface p, boolean hasMoved) {
+        if (p instanceof Pawn){
+            ((Pawn) p).setHasNotMovedDuringGame(!hasMoved);
+        }
+        if (p instanceof King) {
+            ((King) p).setHasMovedDuringGame(hasMoved);
+        }
+        if (p instanceof Rook){
+            ((Rook) p).setHasMovedDuringGame(hasMoved);
+        }
+    }
+
+    /**
+     * Instantiate the pieces and add them to their corresponding starting positions in the board (2d piece interface
+     * array) attribute held by Board.
+     */
     public void resetBoard() {
         Piece[][] Piece2dArray = new Piece[8][8];
 
@@ -115,5 +177,62 @@ public class BoardManager {
         }
 
         board.reset(Piece2dArray);
+    }
+
+    /**
+     * Switch timer at the end of every round.
+     */
+    public void switchChessTimer(){
+        timer.switchTimer();
+    }
+
+    /**
+     * check whether both king still stay at board. if not, change the game status. specifically, if white king lose,
+     * black player win; if black king lose, white player win.
+     */
+    public void gameStatus(){
+        boolean blackFlag = false;
+        boolean whiteFlag = false;
+        ArrayList<PieceInterface> blackPiece = new ArrayList<>();
+        ArrayList<PieceInterface> whitePiece = new ArrayList<>();
+        ArrayList<Point> blackPiecePosition = (ArrayList<Point>) board.getAllPiece(Color.BLACK);
+        ArrayList<Point> whitePiecePosition = (ArrayList<Point>) board.getAllPiece(Color.WHITE);
+        for (Point loc: blackPiecePosition){
+            PieceInterface piece = board.getPiece(loc.x, loc.y);
+            blackPiece.add(piece);
+        }
+        for (Point loc: whitePiecePosition){
+            PieceInterface piece = board.getPiece(loc.x, loc.y);
+            whitePiece.add(piece);
+        }
+        for (PieceInterface piece: blackPiece){
+            if (piece instanceof King) {
+                blackFlag = true;
+                break;
+            }
+        }
+        if (!blackFlag){
+            status = GameStatus.WHITE_WIN;
+        }
+        for (PieceInterface piece: whitePiece){
+            if (piece instanceof King) {
+                whiteFlag = true;
+                break;
+            }
+        }
+        if (!whiteFlag){
+            status = GameStatus.BLACK_WIN;
+        }
+    }
+
+    /**
+     * Part of the constructor's work
+     */
+    private void initializeBM() {
+        this.MR = new MoveRecord();
+        resetBoard();
+        timer = new ChessTimer();
+        activePlayer = Color.WHITE;
+        timer.startWhiteTimer();
     }
 }

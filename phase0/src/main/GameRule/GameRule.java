@@ -1,51 +1,59 @@
 package GameRule;
 
 import Board.Board;
+import BoardManager.BoardManager;
 import Command.ChessMove;
 import Command.MoveRecord;
 import Command.MoveType;
+import piece.*;
 import piece.Color;
-import piece.Knight;
-import piece.Pawn;
-import piece.PieceInterface;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Verifies whether move is valid according to game rules.
  */
 public class GameRule {
 
-	private Board board;
-	private MoveRecord MR;
+	private  Board board;
+	private  MoveRecord mr;
 
-	public GameRule(Board board, MoveRecord MR) {
+	public GameRule(Board board, MoveRecord mr) {
 		this.board = board;
-		this.MR = MR;
+		this.mr = mr;
 	}
 
 	public Board getBoard(){return board;}
 
 	/**
+	 * For deserialization only, load the sava game
+	 */
+	public void loadBoardManager(BoardManager bm) {
+		board = bm.getBoard();
+		mr = bm.getMR();
+	}
+
+	/**
 	 * Check whether move is valid according to classic chess game rules
-	 * @return type of move (INVALID, ENPASSANT, CAPTURE, REGULAR)
+	 * @return type of move (INVALID, EN_PASSANT, CASTLING, CAPTURE, REGULAR)
 	 */
 	public MoveType isMoveValid(int oldX, int oldY, int newX, int newY) {
 
-		if (!isCoordinateValid(oldX, oldY, newX , newY)) {
-			System.out.println("Coordinate invalid");
+		if (!isCoordinateValid(oldX, oldY, newX, newY)) {
 			return MoveType.INVALID;
 		}
-
 		if (enPassant(oldX, oldY, newX, newY)){
-			return MoveType.ENPASSANT;
+			return MoveType.EN_PASSANT;
 		}
-
 		if (pawnCapture(oldX, oldY, newX, newY)){
 			return MoveType.CAPTURE;
 		}
-
+		if (Castling(oldX, oldY, newX, newY)) {
+			return MoveType.CASTLING;
+		}
 		PieceInterface actionPiece = board.getPiece(oldX, oldY);
 		PieceInterface targetPiece = board.getPiece(newX, newY);
 
@@ -53,20 +61,36 @@ public class GameRule {
 			System.out.println("Piece not found");
 			return MoveType.INVALID;
 		}
-
 		if (targetPiece != null && actionPiece.hasSameColor(targetPiece)) {
 			System.out.println("Invalid capture");
 			return MoveType.INVALID;
 		}
-
 		if (!actionPiece.validMove(oldX, oldY, newX , newY)) {
 			System.out.println("Invalid Move");
 			return MoveType.INVALID;
 		}
-
-		if (!(actionPiece instanceof Knight) && !isPathClear(oldX, oldY, newX , newY)) {
+		if (!(actionPiece.getName().contains("knight")) && !isPathClear(oldX, oldY, newX , newY)) {
 			System.out.println("Path not clear");
+			System.out.println(actionPiece.getName());
 			return MoveType.INVALID;
+		}
+
+		if (mr.isEmpty()){
+			try {
+				if (board.getPiece(oldX,oldY).isBlack()){
+					return MoveType.INVALID;
+				}
+			}catch (NullPointerException e){
+				return MoveType.INVALID;
+			}
+		}else {
+			try {
+				if (mr.get().getOldPiece().hasSameColor(board.getPiece(oldX, oldY))){
+					return MoveType.INVALID;
+				}
+			}catch (NullPointerException e){
+				return MoveType.INVALID;
+			}
 		}
 
 		if (targetPiece != null && !actionPiece.hasSameColor(targetPiece)) {
@@ -101,6 +125,7 @@ public class GameRule {
 	}
 
 	/**
+	 * Does not add coordinates old and new to the list.
 	 * @return a list of the coordinates in the path between (oldX, oldY) and (newX, newY)
 	 */
 	public ArrayList<Point> pathCoordinates(int oldX, int oldY, int newX, int newY) {
@@ -137,36 +162,24 @@ public class GameRule {
 		return coordinates;
 	}
 
-	public boolean isCoordinateVacant(int X, int Y) {
-		return false;
-	}
-
-	/**
-	 * Check if the current player wins
-	 */
-	public boolean isPlayerWinning() {
-		return false;
-	}
-
 	/**
 	 * Get the next available moves of a piece
-	 * This is VERY important if we want an Player.AI player make thoughtful decisions (involves decision tree etc.)
-	 * We don't need to worry about it now
 	 *
-	 * @param p The piece that moves (we want to know which kind of piece it is)
-	 * @param X Current X coordinate
-	 * @param Y Current Y coordinate
+	 * @param p The position of the piece
 	 * @return  An array of coordinates, each is a valid position to move
 	 */
-	public int[][] getAvailableMoves(PieceInterface p, int X, int Y) {
-		return null;
+	public List<Point> getAvailableMoves(Point p) {
+		return board.getBoard()[p.x][p.y].getValidMoves(board, p.x, p.y);
 	}
 
+	/**
+	 * @return true if enPassant is applicable, false otherwise
+	 */
 	public boolean enPassant(int oldX, int oldY, int newX, int newY){
-		if (MR.isEmpty()){
+		if (mr.isEmpty()){
 			return false;
 		}
-		ChessMove lastMove = MR.get();
+		ChessMove lastMove = mr.get();
 		PieceInterface lastMovePiece = lastMove.getOldPiece();
 		PieceInterface movingPiece = board.getPiece(oldX, oldY);
 		if (!(movingPiece instanceof Pawn)){
@@ -190,6 +203,9 @@ public class GameRule {
 		else return newX == oldX + 1 && newY == lastMove.getNewY();
 	}
 
+	/**
+	 * @return true if a pawnCapture is applicable, false otherwise
+	 */
 	public boolean pawnCapture(int oldX, int oldY, int newX, int newY){
 		PieceInterface movingPiece = board.getPiece(oldX, oldY);
 		PieceInterface capturedPiece = board.getPiece(newX, newY);
@@ -207,5 +223,76 @@ public class GameRule {
 		}
 		else return (newX - oldX == 1 && Math.abs(newY - oldY) == 1);
 
+	}
+
+	/**
+	 *
+	 * @param X coordinate X of detected point
+	 * @param Y coordinate Y of detected point
+	 * @param color the player will be attacked.
+	 * @return true if Point(x,y) can be attacked by player controlling different colored pieces
+	 */
+	public boolean isAttackedStatus(int X, int Y, Color color){
+		ArrayList<Point> opponentPiece;
+		if (color.equals(Color.WHITE)){
+			opponentPiece = (ArrayList<Point>) board.getAllPiece(Color.BLACK);
+		}
+		else {opponentPiece = (ArrayList<Point>) board.getAllPiece(Color.WHITE);}
+		for (Point piece:opponentPiece){
+			Point newPoint = new Point(X, Y);
+			if (board.getPiece(piece.x, piece.y).getValidMoves(board, piece.x, piece.y).contains(newPoint)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check: 	Moving King and implicated rook has not moved during the game.
+	 * 			King either moves two squares to the right or two to the left.
+	 * 			Path is clear between the king and the rook.
+	 * 			The current king position and king's path is not under checkmate.
+	 * @return true if Castling is applicable, false otherwise
+	 */
+	public boolean Castling(int oldX, int oldY, int newX, int newY) {
+		PieceInterface movingPiece = board.getPiece(oldX, oldY);
+		PieceInterface capturedPiece = board.getPiece(newX, newY);
+		PieceInterface rook = board.getPiece(newX, (newY == 6) ? 7 : 0);
+		if (!(movingPiece instanceof King)) {
+			return false;
+		}
+		if (((King) movingPiece).getHasMovedDuringGame()) {
+			return false;
+		}
+		if (capturedPiece != null) {
+			return false;
+		}
+		if (!((oldX == 0 && newX == 0 && (newY == 2 || newY == 6)) ||
+				(oldX == 7 && newX == 7 && (newY == 2 || newY == 6)))) {
+			return false;
+		}
+		if (!isPathClear(oldX, oldY, newX, (newY == 6) ? 7 : 0)) {
+			return false;
+		}
+		if (((Rook) rook).getHasMovedDuringGame()) {
+			return false;
+		}
+
+		ArrayList<Point> passingLocation = new ArrayList<>();
+		int start = Math.min(oldY, newY);
+		int end = Math.max(oldY, newY);
+		for (int i = start; i <= end; i++){
+			Point passingLoc = new Point();
+			passingLoc.x = oldX;
+			passingLoc.y = i;
+			passingLocation.add(passingLoc);
+		}
+		for (Point location: passingLocation){
+			if (isAttackedStatus(location.x, location.y, movingPiece.getColor())){
+				return false;
+			}
+		} // check that the king does not pass through a square that is attacked by an enemy piece.
+
+		return true;
 	}
 }

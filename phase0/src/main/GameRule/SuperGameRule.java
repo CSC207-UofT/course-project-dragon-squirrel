@@ -43,13 +43,13 @@ public class SuperGameRule extends GameRule {
             }
         }
 
-        if (moveType == MoveType.ENPASSANT || moveType == MoveType.CAPTURE) {
+        if (moveType == MoveType.EN_PASSANT || moveType == MoveType.CAPTURE) {
             if (!isAttackValid(oldX, oldY, newX, newY)) {
                 return MoveType.INVALID;
             }
             if (isAttackSuccessful(oldX, oldY, newX, newY)) {
-                if (moveType == MoveType.ENPASSANT) {
-                    return MoveType.ENPASSANT;
+                if (moveType == MoveType.EN_PASSANT) {
+                    return MoveType.EN_PASSANT;
                 } return MoveType.CAPTURE;
             } return MoveType.ATTACK;
         }

@@ -6,5 +6,5 @@ public enum MoveType {
     ATTACK,
     CAPTURE,
     CASTLING,
-    ENPASSANT,
+    EN_PASSANT,
 }

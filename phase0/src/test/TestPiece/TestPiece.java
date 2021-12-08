@@ -9,6 +9,7 @@ import piece.Rook;
 import static org.junit.Assert.*;
 
 public class TestPiece {
+
     Pawn p1;
     Pawn p2;
     Rook p3;
@@ -35,6 +36,18 @@ public class TestPiece {
     @Test(timeout = 50)
     public void TestgetStatus(){
         assertEquals(false, p1.getStatus());
+    }
+
+    @Test(timeout = 50)
+    public void TestisBlack(){
+        assertFalse(p1.isBlack());
+        assertTrue(p2.isBlack());
+    }
+
+    @Test(timeout = 50)
+    public void TestisWhite(){
+        assertTrue(p1.isWhite());
+        assertFalse(p2.isWhite());
     }
 
     @Test(timeout = 50)

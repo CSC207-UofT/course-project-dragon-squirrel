@@ -1,9 +1,14 @@
 package Command;
 
-import BoardManager.*;
+import BoardManager.BoardManager;
+import piece.King;
+import piece.Pawn;
 import piece.PieceInterface;
+import piece.Rook;
 
-public abstract class Move implements Command{
+import java.io.Serializable;
+
+public abstract class Move implements Command, Serializable {
     protected BoardManager BM;
     protected ChessMove CM;
     protected PieceInterface actionPiece;
@@ -13,16 +18,33 @@ public abstract class Move implements Command{
         this.BM = newBM;
     }
 
-    public Move(BoardManager newBM, ChessMove newChessRule){
+    public Move(BoardManager newBM, ChessMove newChessMove){
         this.BM = newBM;
-        this.CM = newChessRule;
-        this.actionPiece = newChessRule.getOldPiece();
-        this.targetPiece = newChessRule.getNewPiece();
+        this.CM = newChessMove;
+        this.actionPiece = newChessMove.getOldPiece();
+        this.targetPiece = newChessMove.getNewPiece();
     }
 
     @Override
-    public abstract void execute();
+    public void execute() {
+        if (actionPiece instanceof Pawn)
+            ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+        if (actionPiece instanceof Rook)
+            ((Rook) actionPiece).setHasMovedDuringGame(true);
+        if (actionPiece instanceof King)
+            ((King) actionPiece).setHasMovedDuringGame(true);
+    }
     
     @Override
-    public abstract void undo();
+    public void undo() {
+        if (CM.getFirstMoveStatus() && actionPiece instanceof Pawn) {
+            ((Pawn) actionPiece).hasNotMovedDuringGame = true;
+        }
+        if (CM.getFirstMoveStatus() && actionPiece instanceof Rook) {
+            ((Rook) actionPiece).setHasMovedDuringGame(false);
+        }
+        if (CM.getFirstMoveStatus() && actionPiece instanceof King) {
+            ((King) actionPiece).setHasMovedDuringGame(false);
+        }
+    }
 }
