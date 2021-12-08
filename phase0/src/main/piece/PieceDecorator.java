@@ -2,11 +2,12 @@ package piece;
 
 import java.awt.Point;
 
+import java.io.Serializable;
 import java.util.List;
 
 import Board.BoardInterface;
 
-public abstract class PieceDecorator implements PieceInterface {
+public abstract class PieceDecorator implements PieceInterface, Serializable {
     protected Piece piece;
 
     public PieceDecorator(Piece piece) {

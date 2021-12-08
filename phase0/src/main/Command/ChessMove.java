@@ -4,8 +4,9 @@ import BoardManager.BoardManager;
 import piece.PieceInterface;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class ChessMove {
+public class ChessMove implements Serializable {
     private final Point oldPosition;
     private final Point newPosition;
     private BoardManager BM;

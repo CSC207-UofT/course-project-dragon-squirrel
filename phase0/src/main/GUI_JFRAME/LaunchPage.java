@@ -4,8 +4,9 @@ import chessAI.Difficulty;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.Serializable;
 
-public class LaunchPage implements ActionListener {
+public class LaunchPage implements ActionListener{
     JFrame frame = new JFrame();
     JButton chess = new JButton("Chess");
     JButton chessWithAI = new JButton("Chess With AI");

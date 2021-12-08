@@ -2,9 +2,11 @@ package Controller;
 
 import BoardManager.*;
 import Command.*;
+import GUI_JFRAME.GUI_ChessBoard;
 import GameRule.*;
 
 import java.awt.Point;
+import java.io.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -103,7 +105,6 @@ public class CommandSender {
 			return true;
 		}
 		catch (NoSuchElementException e){
-			System.out.println("cannot undo any further");
 			return false;
 		}
 	}
@@ -145,14 +146,32 @@ public class CommandSender {
 		return gr.getAvailableMoves(p);
 	}
 
-	/**
-	 * This returns an update to whatever in the upper layer
-	 *
-	 * Depends on the implementation, it could return different things:
-	 * ex. a full image (doesn't have to be a picture) of the current board, and players can see it directly
-	 * ex. updates/changes from the last round, so UI handles the update info and shows the correct things
-	 */
-	public void getBoardUpdate() {
-		bu.display();
+	public void saveGame() {
+		ObjectOutputStream oos;
+
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("saveGame.txt"));
+			oos.writeObject(bm);
+			oos.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+	}
+
+	public void loadGame() {
+
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("saveGame.txt"));
+			BoardManager loadedBM = (BoardManager) ois.readObject();
+
+			this.bm = loadedBM;
+			gr.loadBoardManager(loadedBM);
+			bu.loadBoardManager(loadedBM);
+
+			ois.close();
+		} catch (ClassNotFoundException | IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

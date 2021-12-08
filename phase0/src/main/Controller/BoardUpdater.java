@@ -2,9 +2,11 @@ package Controller;
 
 import BoardManager.*;
 
-public class BoardUpdater {
+import java.io.Serializable;
 
-	private final BoardManager bm;
+public class BoardUpdater{
+
+	private BoardManager bm;
 
 	private String[][] boardImage;
 	private final int[] boundary;
@@ -19,6 +21,13 @@ public class BoardUpdater {
 		this.bm = bm;
 		boundary = new int[]{13, 10};
 		boardImage = new String[13][10];
+	}
+
+	/**
+	 * For deserialization only, load the sava game
+	 */
+	public void loadBoardManager(BoardManager bm) {
+		this.bm = bm;
 	}
 
 	/**
@@ -76,21 +85,5 @@ public class BoardUpdater {
 		}
 
 		return unicodeArray;
-	}
-
-	/**
-	 * Print boardImage to console as string
-	 */
-	public void display() {
-		updateBoardImage();
-
-		for (String[] row: boardImage) {
-			for (String item: row) {
-				System.out.printf("%10s" + " ", item);
-			}
-			System.out.println();
-		}
-
-		System.out.println("---------------------------------");
 	}
 }

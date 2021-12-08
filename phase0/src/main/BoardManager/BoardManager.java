@@ -3,52 +3,38 @@ package BoardManager;
 import Board.*;
 import Chesstimer.ChessTimer;
 import Command.MoveRecord;
-import Player.*;
 import piece.*;
 import piece.Color;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * It should receive some input from players and send command to a Board.Board instance
  * It should reflect the changes on the board and let players know
  */
-public class BoardManager {
+public class BoardManager implements Serializable {
 
     protected Board board;
-    protected Player activePlayer;
+    protected Color activePlayer;
     protected GameStatus status;
     protected MoveRecord MR;
     protected ChessTimer timer;
-    protected Player whitePlayer = new Player(Color.WHITE);
-    protected Player blackPlayer = new Player(Color.BLACK);
 
     public BoardManager() {
         this.board = new Board(8, 8);
-        this.MR = new MoveRecord();
-        resetBoard();
-        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-        timer.startTimer();
+        initializeBM();
     }
 
     public BoardManager(int x, int y, PieceInterface piece){
-        board = new Board(8,8);
-        MR = new MoveRecord();
+        this();
         board.setPiece(x,y,piece);
-        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-        timer.startTimer();
     }
 
     public BoardManager(int column, int row) {
         this.board = new SuperBoard(column, row);
-        this.MR = new MoveRecord();
-        resetBoard();
-        timer = new ChessTimer(600000, 600000);
-        activePlayer = whitePlayer;
-        timer.startTimer();
+        initializeBM();
     }
 
     /**
@@ -85,13 +71,6 @@ public class BoardManager {
     }
 
     /**
-     * @return the current active player
-     */
-    public Player getActivePlayer() {
-        return activePlayer;
-    }
-
-    /**
      * @return true if piece (Pawn, Rook, or King) has moved during game, false if piece has not moved or if
      * piece is not an instance of the aforementioned piece types.
      */
@@ -109,13 +88,6 @@ public class BoardManager {
     }
 
     /**
-     * Set activePlayer as player
-     */
-    public void setActivePlayer(Player player) {
-        this.activePlayer = player;
-    }
-
-    /**
      * Move piece from board[oldX][oldY] to board[newX][newY] by removing piece from its old coordinate in board and
      * adding it to the new coordinate in board.
      */
@@ -129,10 +101,10 @@ public class BoardManager {
      * Switch player status between
      */
     public void switchActivePlayer() {
-        if (activePlayer.getColor().equals(Color.WHITE)){
-            activePlayer = blackPlayer;
+        if (activePlayer.equals(Color.WHITE)){
+            activePlayer = Color.BLACK;
         }else {
-            activePlayer = whitePlayer;
+            activePlayer = Color.WHITE;
         }
     }
 
@@ -251,5 +223,16 @@ public class BoardManager {
         if (!whiteFlag){
             status = GameStatus.BLACK_WIN;
         }
+    }
+
+    /**
+     * Part of the constructor's work
+     */
+    private void initializeBM() {
+        this.MR = new MoveRecord();
+        resetBoard();
+        timer = new ChessTimer();
+        activePlayer = Color.WHITE;
+        timer.startWhiteTimer();
     }
 }

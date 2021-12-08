@@ -5,13 +5,14 @@ import piece.Color;
 import piece.PieceInterface;
 
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  * Search algorithm for AI goes here
  *
  * We will likely implement a few different algorithms, they change AI's chess skill
  */
-public abstract class Engine {
+public abstract class Engine implements Serializable {
 	protected State startingState;  // The first (root) state to search with
 	protected State bestState;  // The decision of engine, can only be one of the immediate next state
 
