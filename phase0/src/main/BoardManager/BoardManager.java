@@ -24,17 +24,7 @@ public class BoardManager implements Serializable {
 
     public BoardManager() {
         this.board = new Board(8, 8);
-        this.MR = new MoveRecord();
-        resetBoard();
-        timer = new ChessTimer();
-        activePlayer = Color.WHITE;
-        timer.startWhiteTimer();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        initializeBM();
     }
 
     public BoardManager(int x, int y, PieceInterface piece){
@@ -44,11 +34,7 @@ public class BoardManager implements Serializable {
 
     public BoardManager(int column, int row) {
         this.board = new SuperBoard(column, row);
-        this.MR = new MoveRecord();
-        resetBoard();
-        timer = new ChessTimer();
-        activePlayer = Color.WHITE;
-        timer.startWhiteTimer();
+        initializeBM();
     }
 
     /**
@@ -237,5 +223,16 @@ public class BoardManager implements Serializable {
         if (!whiteFlag){
             status = GameStatus.BLACK_WIN;
         }
+    }
+
+    /**
+     * Part of the constructor's work
+     */
+    private void initializeBM() {
+        this.MR = new MoveRecord();
+        resetBoard();
+        timer = new ChessTimer();
+        activePlayer = Color.WHITE;
+        timer.startWhiteTimer();
     }
 }

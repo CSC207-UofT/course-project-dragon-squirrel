@@ -3,9 +3,7 @@ package TestBoardManager;
 import Board.Board;
 import BoardManager.BoardManager;
 import Command.MoveRecord;
-import Player.Player;
 import BoardManager.GameStatus;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import piece.*;
@@ -13,9 +11,7 @@ import piece.Color;
 
 import java.awt.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class TestBoardManager {
 
@@ -23,7 +19,7 @@ public class TestBoardManager {
     int row;
     Point boundaries;
     Board board;
-    Player activePlayer;
+    Color activePlayer;
     GameStatus gameStatus;
     MoveRecord MR;
     BoardManager bm;
@@ -34,7 +30,6 @@ public class TestBoardManager {
         row = 8;
         boundaries = new Point(col, row);
         board = new Board(boundaries.x, boundaries.y);
-        activePlayer = new Player("bob");
         MR = new MoveRecord();
         bm = new BoardManager();
     }
@@ -138,12 +133,6 @@ public class TestBoardManager {
     }
 
     @Test(timeout = 50)
-    public void TestgetActivePlayer(){
-        bm.setActivePlayer(activePlayer);
-        assertEquals("bob", bm.getActivePlayer().getID());
-    }
-
-    @Test(timeout = 50)
     public void TestgetHasMovedStatus(){
         assertFalse(bm.getHasMovedStatus(bm.getPiece(0, 0)));
         assertFalse(bm.getHasMovedStatus(bm.getPiece(1, 0)));
@@ -151,16 +140,9 @@ public class TestBoardManager {
     }
 
     @Test(timeout = 50)
-    public void TestsetActivePlayer(){
-        Player newPlayer = new Player("joe");
-        bm.setActivePlayer(newPlayer);
-        assertEquals("joe", bm.getActivePlayer().getID());
-    }
-
-    @Test(timeout = 50)
     public void TestmovePiece(){
         assertEquals("pawn_0", bm.getBoard().getPiece(1, 0).getName());
-        assertEquals(null, bm.getBoard().getPiece(3, 0));
+        assertNull(bm.getBoard().getPiece(3, 0));
         bm.movePiece(1, 0, 3, 0);
         assertEquals("pawn_0", bm.getBoard().getPiece(3, 0).getName());
     }

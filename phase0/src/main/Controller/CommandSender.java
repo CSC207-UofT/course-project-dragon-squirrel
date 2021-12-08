@@ -105,7 +105,6 @@ public class CommandSender {
 			return true;
 		}
 		catch (NoSuchElementException e){
-			System.out.println("cannot undo any further");
 			return false;
 		}
 	}
@@ -145,17 +144,6 @@ public class CommandSender {
 	 */
 	public List<Point> passValidMove(Point p) {
 		return gr.getAvailableMoves(p);
-	}
-
-	/**
-	 * This returns an update to whatever in the upper layer
-	 *
-	 * Depends on the implementation, it could return different things:
-	 * ex. a full image (doesn't have to be a picture) of the current board, and players can see it directly
-	 * ex. updates/changes from the last round, so UI handles the update info and shows the correct things
-	 */
-	public void getBoardUpdate() {
-		bu.display();
 	}
 
 	public void saveGame() {

@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.*;
 import java.util.List;
 
 public class GUI_ChessBoard extends JFrame{
@@ -99,9 +98,10 @@ public class GUI_ChessBoard extends JFrame{
 
         undo.addActionListener(e -> {
             boolean undoSuccess = cs.undoMove();
-            if (undoSuccess) {
+            if (undoSuccess)
                 updateBoardInfo(bu.getBoardImageAsUnicode());
-            }
+            else
+                JOptionPane.showMessageDialog(this, "Cannot undo any further");
         });
 
         // Add listener to every PieceIcon

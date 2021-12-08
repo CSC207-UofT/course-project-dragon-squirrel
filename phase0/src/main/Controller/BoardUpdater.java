@@ -86,20 +86,4 @@ public class BoardUpdater{
 
 		return unicodeArray;
 	}
-
-	/**
-	 * Print boardImage to console as string
-	 */
-	public void display() {
-		updateBoardImage();
-
-		for (String[] row: boardImage) {
-			for (String item: row) {
-				System.out.printf("%10s" + " ", item);
-			}
-			System.out.println();
-		}
-
-		System.out.println("---------------------------------");
-	}
 }
