@@ -1,6 +1,5 @@
 package TestGameRule;
 
-import Board.Board;
 import Board.SuperBoard;
 import Command.MoveRecord;
 import Command.MoveType;
@@ -9,14 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 import piece.*;
-import Command.MoveRecord;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class TestSuperGameRule {
 

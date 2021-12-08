@@ -1,10 +1,8 @@
 package TestController;
 
-import Board.Board;
 import BoardManager.BoardManager;
 import Command.ChessMove;
 import Command.MoveType;
-import Command.RegularMove;
 import Controller.BoardUpdater;
 import Controller.CommandSender;
 import org.junit.Before;
@@ -43,20 +41,20 @@ public class TestCommandSender {
 
     @Test(timeout = 50)
     public void TestcreateNewChessMove(){
-        ChessMove commandMove = cs.createNewChessMove(1, 0, 2, 0);
-        ChessMove cm = new ChessMove(cs.getBm(),1, 0, 2, 0, true, MoveType.REGULAR);
+        ChessMove commandMove = cs.createNewChessMove(6, 0, 5, 0);
+        ChessMove cm = new ChessMove(cs.getBm(),6, 0, 5, 0, true, MoveType.REGULAR);
         assertEquals(cm.getBM().getBoardAsString(), commandMove.getBM().getBoardAsString());
     }
 
     @Test(timeout = 50)
     public void TestpressMove(){
-        assertTrue(cs.pressMove(1, 0, 2, 0));
+        assertTrue(cs.pressMove(6, 0, 5, 0));
     }
 
     @Test(timeout = 50)
     public void TestundoMove(){
         assertFalse(cs.undoMove());
-        cs.pressMove(1, 0, 2, 0);
+        cs.pressMove(6, 0, 5, 0);
         assertTrue(cs.undoMove());
     }
 
