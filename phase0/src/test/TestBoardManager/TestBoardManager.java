@@ -39,7 +39,7 @@ public class TestBoardManager {
         bm = new BoardManager();
     }
 
-    @Test(timeout = 50)
+    @Test(timeout = 250)
     public void TestgetBoard(){
         Piece[][] Piece2dArray = new Piece[8][8];
 
