@@ -144,7 +144,9 @@ Refer to the "[accessibility.md](accessibility.md)".
 ### Contribution of Phase 2
 
 - Jin
-    - ...
+    - Implementation of timer
+    - Implementation of en passant rule / fix bugs in castling
+    - SwitchActivePlayer() and gameStatus()
 - Jennifer
     - SuperChess GUI + super chess instructions
     - Merge Future and Jin's implementations of command pattern 
