@@ -41,6 +41,11 @@ public class SuperGameRule extends GameRule {
                 System.out.println("invalid move over river");
                 return MoveType.INVALID;
             }
+            if (pieceToMove.getName().contains("pawn") && !((SuperPieceDecorator) pieceToMove).hasNotMoved
+                    && oldY == newY && Math.abs(newX - oldX) == 2){
+                System.out.println("invalid two square move after pawn has moved");
+                return MoveType.INVALID;
+            }
         }
 
         if (moveType == MoveType.EN_PASSANT || moveType == MoveType.CAPTURE) {

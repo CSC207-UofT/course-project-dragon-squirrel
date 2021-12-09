@@ -6,10 +6,8 @@ import org.junit.Test;
 import piece.*;
 import piece.Color;
 
-import java.awt.*;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class TestSuperBoardManager {
 
@@ -21,7 +19,7 @@ public class TestSuperBoardManager {
     }
 
     @Test(timeout = 50)
-    public void TestresetBoard(){
+    public void TestResetBoard(){
         SuperPieceDecorator[][] Piece2dArray = new SuperPieceDecorator[13][10];
 
         // initialize white pieces
@@ -70,6 +68,13 @@ public class TestSuperBoardManager {
 
         sbm.getBoard().reset(Piece2dArray);
         assertEquals(Piece2dArray, sbm.getBoard().getBoard());
+    }
+
+    @Test(timeout = 50)
+    public void TestGetHasMovedStatus(){
+        assertFalse(sbm.getHasMovedStatus(sbm.getPiece(0, 0)));
+        assertFalse(sbm.getHasMovedStatus(sbm.getPiece(1, 0)));
+        assertFalse(sbm.getHasMovedStatus(sbm.getPiece(0, 4)));
     }
 
 }

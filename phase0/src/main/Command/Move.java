@@ -1,10 +1,7 @@
 package Command;
 
 import BoardManager.BoardManager;
-import piece.King;
-import piece.Pawn;
-import piece.PieceInterface;
-import piece.Rook;
+import piece.*;
 
 import java.io.Serializable;
 
@@ -27,8 +24,13 @@ public abstract class Move implements Command, Serializable {
 
     @Override
     public void execute() {
-        if (actionPiece instanceof Pawn)
-            ((Pawn) actionPiece).hasNotMovedDuringGame = false;
+        if (actionPiece.getName().contains("pawn")) {
+            try {
+                ((Pawn) actionPiece).hasNotMovedDuringGame = false;}
+            catch (ClassCastException e){
+                ((SuperPieceDecorator) actionPiece).hasNotMoved = false;
+            }
+        }
         if (actionPiece instanceof Rook)
             ((Rook) actionPiece).setHasMovedDuringGame(true);
         if (actionPiece instanceof King)
@@ -37,8 +39,12 @@ public abstract class Move implements Command, Serializable {
     
     @Override
     public void undo() {
-        if (CM.getFirstMoveStatus() && actionPiece instanceof Pawn) {
-            ((Pawn) actionPiece).hasNotMovedDuringGame = true;
+        if (CM.getFirstMoveStatus() && actionPiece.getName().contains("pawn")) {
+            try {
+                ((Pawn) actionPiece).hasNotMovedDuringGame = true;}
+            catch (ClassCastException e) {
+                ((SuperPieceDecorator) actionPiece).hasNotMoved = true;
+            }
         }
         if (CM.getFirstMoveStatus() && actionPiece instanceof Rook) {
             ((Rook) actionPiece).setHasMovedDuringGame(false);

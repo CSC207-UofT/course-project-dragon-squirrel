@@ -59,6 +59,4 @@ Below is the health points and attack levels of pieces:
 
 * A GUI displays the board. When a piece is clicked, its available moves are highlighted on the board.
 * The game can save its state and reload.
-* The game may be played with a timer. If players do not make their move(s) within the time limit, they automatically
-forfeit their turn.
-* The game will end if checkmate occurs.
+* The game may be played with a timer.

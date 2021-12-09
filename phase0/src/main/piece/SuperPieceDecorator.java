@@ -7,7 +7,7 @@ import Board.BoardInterface;
 public class SuperPieceDecorator extends PieceDecorator{
     int hp;
     int atk;
-    boolean hasNotMoved;
+    public boolean hasNotMoved;
     boolean hasNotAttacked;
 
     public SuperPieceDecorator(Piece piece, int hp, int atk) {

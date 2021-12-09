@@ -141,7 +141,7 @@ Refer to the "[accessibility.md](accessibility.md)".
 
 ## Progress Report
 
-### Contribution 
+### Contribution of Phase 2
 
 - Jin
     - ...
@@ -152,6 +152,7 @@ Refer to the "[accessibility.md](accessibility.md)".
       - Polish CommandSender methods containing Move
     - Add javadoc / check and fix team member's code 
     - Updating previous specification / SOLID description / Packaging Strategy description
+    - Significant pull request: #32 Implemented super chess.
 - Future
     - Chess AI
     - Redesign command pattern
