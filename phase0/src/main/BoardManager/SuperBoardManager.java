@@ -62,4 +62,12 @@ public class SuperBoardManager extends BoardManager{
 
         board.reset(Piece2dArray);
     }
+
+    /**
+     * @return true if piece has moved during game, false otherwise.
+     */
+    @Override
+    public boolean getHasMovedStatus(PieceInterface p) {
+        return !((SuperPieceDecorator) p).hasNotMoved;
+    }
 }
